@@ -18,6 +18,8 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <button class="btn btn-warning">Warning</button>
     </div>
   );
 }
