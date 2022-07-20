@@ -1,0 +1,25 @@
+.banner{
+      height: 300px;
+      width: 100%;  
+      background-image: linear-gradient(rgba(50, 174, 60, 0.316), rgba(0, 0, 0, 0.43)), url("https://i.ibb.co/S6g4Bwt/shiromani-kant-mo3-FOTG62ao-unsplash.jpg");
+      background-size: cover;
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+.background{
+   height: 70px;
+   width: 35%;   
+   background-color: aliceblue;
+   margin-top: 60px;
+   position: absolute;
+}
+.input{
+      margin-right: 130px;
+}
+.btn-color{
+      background-color: rgba(40, 135, 81, 0.775);
+      color: aliceblue;
+      
+}
+.btn-color:hover{
+      background-color: #229955;
+}
