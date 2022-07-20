@@ -2,7 +2,7 @@ import React from 'react';
 import discountBanner from '../asset/Images/discountBanner.jpg'
 const DiscountBanner = () => {
     return (
-        <div class="hero min-h-screen bg-base-200" style={{
+        <div class="hero py-[150px] bg-base-200" style={{
             background: `url(${discountBanner})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
