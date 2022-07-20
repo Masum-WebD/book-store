@@ -65,7 +65,6 @@ const Header = () => {
       </div>
       <div class="navbar-end mx-5 d-flex text-white  font-bold">
         <Link to="">
-          {" "}
           <FontAwesomeIcon className="mr-5 h-6" icon={faCartShopping} />
         </Link>
         <ul className="hover:bg-secondary">
