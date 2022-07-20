@@ -38,11 +38,18 @@ const Header = () => {
         <ul className='hover:bg-secondary'>
             <Link to=''>LOGIN</Link>
         </ul>
-      
-       
-  </div>
-</div>
-    );
+      </div>
+      <div class="navbar-end mx-5 d-flex text-white  font-bold">
+
+        <Link to=''> <FontAwesomeIcon className='mr-5 h-6' icon={faCartShopping} /></Link>
+        <ul>
+          <Link to=''>LOGIN</Link>
+        </ul>
+
+
+      </div>
+    </div>
+  );
 };
 
 export default Header;
