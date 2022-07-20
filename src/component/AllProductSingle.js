@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SingleProduct = ({ book }) => {
+const AllProductSingle = ({ book }) => {
     const { name, img, category, language, author, price, stock } = book;
     return (
 
@@ -17,4 +17,4 @@ const SingleProduct = ({ book }) => {
     );
 };
 
-export default SingleProduct;
+export default AllProductSingle;
