@@ -15,11 +15,17 @@
 }
 .input{
       margin-right: 130px;
+      width: 100%;
 }
 .btn-color{
       background-color: rgba(40, 135, 81, 0.775);
       color: aliceblue;
       
+}
+@media only screen and (max-width: 800px) {
+  .background{
+      display: block;
+  }
 }
 .btn-color:hover{
       background-color: #229955;
