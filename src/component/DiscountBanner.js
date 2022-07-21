@@ -10,7 +10,7 @@ const DiscountBanner = () => {
         }}>
             <div class="hero-content text-center">
                 <div class="max-w-md">
-                    <h1 class="text-3xl uppercase font-bold mb-8"><span className='text-5xl'>50% </span> discount on any historical fiction book</h1>
+                    <h1 class="text-3xl uppercase font-bold mb-8"><span className='text-5xl'>50% </span> discount on any historical fiction books</h1>
                     <button class="btn btn-primary text-xl text-white uppercase">Buy Now</button>
                 </div>
             </div>
