@@ -4,6 +4,7 @@ import AllProducts from "./component/AllProducts";
 import AllTopProducts from "./component/AllTopProducts";
 import Banner from "./component/Banner";
 import Header from './component/Header'
+import Subscribe from './component/Subscribe'
 import Footer from "./share/Footer/Footer";
 
 
@@ -15,7 +16,7 @@ function App() {
       <AllProducts></AllProducts>
       <AllTopProducts></AllTopProducts>
       <Routes></Routes>
-
+      <Subscribe></Subscribe>
       <Footer></Footer>
     </div>
   );

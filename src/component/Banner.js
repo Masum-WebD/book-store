@@ -6,7 +6,7 @@ import "./Banner.css";
 const Banner = () => {
   return (
     <div class="hero ">
-      <img className="banner" />
+      <img className="banner" alt='' />
       <div></div>
       <div class="hero-content text-center text-neutral-content">
         <div class="max-w-md">
@@ -14,11 +14,11 @@ const Banner = () => {
             THE EASIEST WAY TO BUY ANY BOOK
           </h1>
 
-          <div className="background flex ">
+          <div className="background flex justify-center">
             <div>
               <input
                 type="text"
-                placeholder="Type here"
+                placeholder="Search books"
                 class="input mt-3   w-full max-w-xs"
               />
             </div>
