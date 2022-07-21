@@ -49,7 +49,6 @@
   "main": "tailwind.config.js",
   "repository": {
     "type": "git"
-    
   },
   "keywords": [],
   "author": "",
@@ -57,5 +56,4 @@
   "bugs": {
     "url": "https://github.com/Masum-WebD/book-store/issues"
   }
- 
 }
