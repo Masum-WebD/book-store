@@ -15,6 +15,7 @@
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-scroll-to-top": "^1.0.9",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -43,5 +44,18 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.1.6"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "tailwind.config.js",
+  "repository": {
+    "type": "git"
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Masum-WebD/book-store/issues"
   }
+ 
 }
