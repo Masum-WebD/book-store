@@ -1,10 +1,9 @@
 import React from "react";
-import ItemsContainer from "./ItemsContainer";
-import { FaCcPaypal } from "react-icons/fa";
-import { FaCcVisa } from "react-icons/fa";
-import { SiMastercard } from "react-icons/si";
-import { SiAmericanexpress } from "react-icons/si";
+import { FaCcPaypal, FaCcVisa } from "react-icons/fa";
+import { SiAmericanexpress, SiMastercard } from "react-icons/si";
+import ScrollToTop from "react-scroll-to-top";
 import "./Footer.css";
+import ItemsContainer from "./ItemsContainer";
 
 const Footer = () => {
   return (
@@ -17,9 +16,11 @@ const Footer = () => {
         <span>© 2022 Book Store. All rights reserved.</span>
         <span>Terms · Privacy Policy</span>
         <span className="text-3xl text-gray-500 flex gap-3">
-          <FaCcPaypal /> <FaCcVisa /> <SiMastercard /> <SiAmericanexpress/>
+          <FaCcPaypal /> <FaCcVisa /> <SiMastercard /> <SiAmericanexpress top='1000' />
         </span>
       </div>
+      <ScrollToTop smooth />
+      
     </footer>
   );
 };
