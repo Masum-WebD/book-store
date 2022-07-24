@@ -5,6 +5,7 @@
       background-size: cover;
       box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
 }
+ database/jeem
 
 .background {
       height: 70px;
@@ -13,6 +14,14 @@
       margin-top: 65px;
       position: absolute;
       border-radius: 10px;
+.background{
+   height: 70px;
+   width: 35%;   
+   background-color: rgb(249, 249, 249);
+   margin-top: 60px;
+   position: absolute;
+   border-radius: 10px;
+main
 }
 
 .input {
