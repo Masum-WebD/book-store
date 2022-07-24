@@ -13,7 +13,7 @@ const Banner = () => {
             THE EASIEST WAY TO BUY ANY BOOK
           </h1>
 
-          <div className="background flex shadow-2xl">
+          <div className="background flex shadow-xl">
             <div>
               <input
                 type="text"
