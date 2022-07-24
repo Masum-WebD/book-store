@@ -1,12 +1,11 @@
 import React from "react";
 import { BsSearch } from "react-icons/bs";
-import image1 from "../../src/asset/Images/shiromani-kant-mo3FOTG62ao-unsplash.jpg";
 import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div class="hero ">
-      <img className="banner" />
+    <div class="hero mt-16">
+      <img className="banner" alt="" />
       <div></div>
       <div class="hero-content text-center text-neutral-content">
         <div class="max-w-md">

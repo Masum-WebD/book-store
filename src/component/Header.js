@@ -6,8 +6,8 @@ import logo from "../asset/Images/logo.png";
 
 const Header = () => {
   return (
-    <div class="navbar bg-primary ">
-      <div class="navbar-start mx-5">
+    <div class="navbar bg-primary fixed top-0 z-50">
+      <div class="navbar-start lg:mx-5">
         <div class="dropdown">
           <label tabindex="0" class="btn btn-ghost lg:hidden">
             <svg
@@ -44,11 +44,11 @@ const Header = () => {
           </ul>
         </div>
         <a class="btn btn-ghost normal-case text-xl" href=" ">
-          <img className="w-[182px] h-[50px] text-white" src={logo} alt="" />
+          <img className="lg:w-48 w-36 text-white" src={logo} alt="" />
         </a>
       </div>
       <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal p-0 text-white font-bold">
+        <ul class="menu menu-horizontal p-0 text-white font-semibold">
           <li className="hover:bg-secondary">
             <Link to="/">HOME</Link>
           </li>
@@ -67,9 +67,9 @@ const Header = () => {
         <Link to="">
           <FontAwesomeIcon className="mr-5 h-6" icon={faCartShopping} />
         </Link>
-        <ul className="hover:bg-secondary">
-          <Link to="">LOGIN</Link>
-        </ul>
+        <div class="">
+          <Link to='/login' class="btn text-white">Log in</Link>
+        </div>
       </div>
     </div>
   );
