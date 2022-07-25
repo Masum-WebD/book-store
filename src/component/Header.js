@@ -80,9 +80,9 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <a class="btn btn-ghost normal-case p-0 text-xl" href=" ">
+        <Link class="btn btn-ghost normal-case p-0 text-xl" to="/">
           <img className="lg:w-48 w-36 text-white" src={logo} alt="" />
-        </a>
+        </Link>
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0 text-white font-semibold">
