@@ -1,12 +1,11 @@
 import React from "react";
 import { BsSearch } from "react-icons/bs";
-import image1 from "../../src/asset/Images/shiromani-kant-mo3FOTG62ao-unsplash.jpg";
 import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div class="hero ">
-      <img className="banner" alt='' />
+    <div class="hero mt-16">
+      <img className="banner" alt="" />
       <div></div>
       <div class="hero-content text-center text-neutral-content">
         <div class="max-w-md">
@@ -14,12 +13,12 @@ const Banner = () => {
             THE EASIEST WAY TO BUY ANY BOOK
           </h1>
 
-          <div className="background flex justify-center">
+          <div className="background flex ">
             <div>
               <input
                 type="text"
-                placeholder="Search books"
-                class="input mt-3   w-full max-w-xs"
+                placeholder="Type here"
+                class="input mt-3 text-black   w-full max-w-xs"
               />
             </div>
             <div className="mt-3">
