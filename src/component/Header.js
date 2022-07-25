@@ -42,7 +42,7 @@ const Header = () => {
               <Link to=" ">FEATURES</Link>
             </li>
             <li>
-              <Link to=" ">CONTACT US</Link>
+              <Link to="/contact">CONTACT US</Link>
             </li>
           </ul>
         </div>
@@ -65,7 +65,7 @@ const Header = () => {
             <Link to=" ">FEATURES</Link>
           </li>
           <li className="hover:bg-secondary">
-            <Link to=" ">CONTACT US</Link>
+            <Link to="/contact">CONTACT US</Link>
           </li>
         </ul>
       </div>
