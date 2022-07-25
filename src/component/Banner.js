@@ -18,7 +18,7 @@ const Banner = () => {
               <input
                 type="text"
                 placeholder="Type here"
-                class="input mt-3   w-full max-w-xs"
+                class="input mt-3 text-black   w-full max-w-xs"
               />
             </div>
             <div className="mt-3">
