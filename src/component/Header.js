@@ -41,6 +41,9 @@ const Header = () => {
             <li>
               <Link to=" ">FEATURES</Link>
             </li>
+            <li>
+              <Link to=" ">CONTACT US</Link>
+            </li>
           </ul>
         </div>
         <a class="btn btn-ghost normal-case text-xl" href=" ">
@@ -60,6 +63,9 @@ const Header = () => {
           </li>
           <li className="hover:bg-secondary">
             <Link to=" ">FEATURES</Link>
+          </li>
+          <li className="hover:bg-secondary">
+            <Link to=" ">CONTACT US</Link>
           </li>
         </ul>
       </div>
