@@ -13,12 +13,12 @@ const Banner = () => {
             THE EASIEST WAY TO BUY ANY BOOK
           </h1>
 
-          <div className="background flex ">
+          <div className="background flex">
             <div>
               <input
                 type="text"
                 placeholder="Type here"
-                class="input mt-3   w-full max-w-xs"
+                class="input mt-3 w-full max-w-xs"
               />
             </div>
             <div className="mt-3">
