@@ -55,12 +55,12 @@ const Signup = () => {
                         <div className='flex justify-center items-center'>
                             <div className="card flex-shrink-0 lg:w-96 w-80 shadow-2xl glass mt-24 mb-11">
                                 <img className='w-48 mx-auto mt-4' src={logo} alt="" />
-                                <p className='text-center font-bold mt-3 underline underline-offset-2'>CREATE NEW ACCOUNT</p>
+                                <p className='text-center font-bold mt-3 underline underline-offset-2 text-white'>CREATE NEW ACCOUNT</p>
                                 <div className="card-body">
                                     <form onSubmit={handleSubmit(onSubmit)}>
                                         <div className="form-control">
                                             <label className="label">
-                                                <span className="label-text">Name</span>
+                                                <span className="label-text text-white">Name</span>
                                             </label>
                                             <input type="text" placeholder="your name" className="input input-bordered" {...register("name", {
                                                 required: {
@@ -75,7 +75,7 @@ const Signup = () => {
 
                                         <div className="form-control">
                                             <label className="label">
-                                                <span className="label-text">Email</span>
+                                                <span className="label-text text-white">Email</span>
                                             </label>
                                             <input type="email" placeholder="email" className="input input-bordered" {...register("email", {
                                                 required: {
@@ -95,7 +95,7 @@ const Signup = () => {
 
                                         <div className="form-control">
                                             <label className="label">
-                                                <span className="label-text">Password</span>
+                                                <span className="label-text text-white">Password</span>
                                             </label>
                                             <input type="password" placeholder="password" className="input input-bordered" {...register("password", {
                                                 required: {
@@ -117,11 +117,11 @@ const Signup = () => {
                                     </form>
                                     <div className="divider">OR</div>
                                     <div className="form-control">
-                                        <button onClick={() => signInWithGoogle()} className="btn btn-outline" >
+                                        <button onClick={() => signInWithGoogle()} className="btn btn-outline hover:text-black" >
                                             <img src={googleIcon} className='w-5 mr-2' alt="" /> Continue with google
                                         </button>
                                     </div>
-                                    <Link to="/login" className="text-center text-sm label-text-alt link link-hover mt-2">Already have an account? Login</Link>
+                                    <Link to="/login" className="text-center text-sm label-text-alt link link-hover mt-2 text-white">Already have an account? Login</Link>
                                 </div>
                             </div>
                         </div>
