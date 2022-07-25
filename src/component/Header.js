@@ -74,7 +74,13 @@ const Header = () => {
           <FontAwesomeIcon className="mr-5 h-6" icon={faCartShopping} />
         </Link>
         <div class="">
-          <Link to='/login' class="btn text-white">Log in</Link>
+          <Link to="/login" class="btn text-white">
+            Log in
+          </Link>
+          <Link to="/dashboard" class="btn mx-3 text-white">
+            DASHBOARD
+          </Link>
+          
         </div>
       </div>
     </div>
