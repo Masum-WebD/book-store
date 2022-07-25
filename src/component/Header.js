@@ -80,7 +80,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <a class="btn btn-ghost normal-case text-xl" href=" ">
+        <a class="btn btn-ghost normal-case p-0 text-xl" href=" ">
           <img className="lg:w-48 w-36 text-white" src={logo} alt="" />
         </a>
       </div>
@@ -103,9 +103,9 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div class="navbar-end mx-5 d-flex text-white  font-bold">
+      <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
         <Link to="">
-          <FontAwesomeIcon className="mr-5 h-6" icon={faCartShopping} />
+          <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping} />
         </Link>
         {
           user ?
@@ -117,7 +117,7 @@ const Header = () => {
             :
 
             <div class="">
-              <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
+              <Link to='/login' class="btn btn-sm text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
             </div>
         }
       </div>
