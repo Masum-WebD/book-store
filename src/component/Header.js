@@ -56,7 +56,7 @@ const Header = () => {
             <Link to="/">HOME</Link>
           </li>
           <li className="hover:bg-secondary">
-            <Link to="">SHOP</Link>
+            <Link to="/shop">SHOP</Link>
           </li>
           <li className="hover:bg-secondary">
             <Link to=" ">CATEGORY</Link>
