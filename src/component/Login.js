@@ -62,7 +62,7 @@ const Login = () => {
                     <div className='min-h-screen bg-no-repeat bg-cover bg-fixed' style={{ backgroundImage: `url(${bg})` }}>
 
                         <div className='flex justify-center items-center'>
-                            <div className="card flex-shrink-0 lg:w-96 w-80 shadow-2xl mt-24 glass">
+                            <div className="card flex-shrink-0 lg:w-96 w-80 shadow-2xl mt-24 glass mb-12">
                                 <img className='w-48 mx-auto mt-4' src={logo} alt="" />
                                 <p className='text-center font-bold mt-3 text-white underline-offset-2 underline'>USER LOGIN</p>
                                 <div className="card-body">
