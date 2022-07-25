@@ -75,16 +75,16 @@ const Header = () => {
               <Link to=" ">FEATURES</Link>
             </li>
             <li>
-              <Link to=" ">CONTACT US</Link>
+              <Link to="/contact">CONTACT US</Link>
             </li>
             <li className="">
               <Link to="/dashboard">DASHBOARD</Link>
             </li>
           </ul>
         </div>
-        <a class="btn btn-ghost normal-case p-0 text-xl" href=" ">
+        <Link class="btn btn-ghost normal-case p-0 text-xl" to="/">
           <img className="lg:w-48 w-36 text-white" src={logo} alt="" />
-        </a>
+        </Link>
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0 text-white font-semibold">
@@ -101,7 +101,7 @@ const Header = () => {
             <Link to=" ">FEATURES</Link>
           </li>
           <li className="hover:bg-secondary">
-            <Link to=" ">CONTACT US</Link>
+            <Link to="/contact">CONTACT US</Link>
           </li>
           <li className="hover:bg-secondary">
             <Link to="/dashboard">DASHBOARD</Link>
@@ -125,6 +125,19 @@ const Header = () => {
             </Link>
           </div>
         )}
+        {
+          user ?
+
+            <div class="">
+              <button onClick={handleOpen} class="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
+            </div>
+
+            :
+
+            <div class="">
+              <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
+            </div>
+        }
       </div>
       
       <Modal
