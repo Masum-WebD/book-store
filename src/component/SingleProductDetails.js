@@ -48,7 +48,7 @@ const SingleProductDetails = () => {
   };
 
   return (
-    <div className="container mx-auto mt-32">
+    <div className="container lg:p-32 px-5 mt-20 lg:mt-0">
       <h2 className="text-left my-2 text-green-500 font-bold">Book / {name}</h2>
       <div onSubmit={handlePlaceOrder} className="gap-3">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -102,7 +102,7 @@ const SingleProductDetails = () => {
                 </div>
                 <div>
                   <button class="btn btn-primary text-white">
-                    Add To Cart <FaShoppingCart />
+                    Add To Cart <FaShoppingCart className="text-lg ml-2" />
                   </button>
                 </div>
               </div>
@@ -112,24 +112,24 @@ const SingleProductDetails = () => {
             <ul class="menu bg-base-100 w-56 p-2 rounded-box">
               <li>
                 <a className="text-left text-gray-600">
-                  <BsCashCoin />
+                  <BsCashCoin className="text-lg" />
                   Cash On Delivery
                 </a>
               </li>
               <li>
                 <a className="text-left text-gray-600">
-                  <FaUndo />7 Days Happy Return
+                  <FaUndo className="text-lg" />7 Days Happy Return
                 </a>
               </li>
               <li>
                 <a className="text-left text-gray-600">
-                  <TbTruckDelivery />
-                  Delivery Charge Tk.50(Online Order)
+                  <TbTruckDelivery className="text-2xl" />
+                  Delivery Charge <br />$50(Online Order)
                 </a>
               </li>
               <li>
                 <a className="text-left text-gray-600">
-                  <BiWalletAlt />
+                  <BiWalletAlt className="text-lg" />
                   Purchase & Earn
                 </a>
               </li>
@@ -185,15 +185,15 @@ const SingleProductDetails = () => {
             </table>
           </TabPanel>
           <TabPanel>
-          <div class="flex flex-col">
-            <h2 className="text-primary font-semibold">Write Your Review</h2>
-            <textarea
-              placeholder="Please write your honest opinion here..."
-              className="review-area"
-            />
+            <div class="flex flex-col">
+              <h2 className="text-primary font-semibold">Write Your Review</h2>
+              <textarea
+                placeholder="Please write your honest opinion here..."
+                className="review-area"
+              />
 
-            <button className="review-btn text-white">Submit</button>
-          </div>
+              <button className="review-btn text-white">Submit</button>
+            </div>
           </TabPanel>
         </Tabs>
       </div>
