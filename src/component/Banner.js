@@ -4,7 +4,7 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div class="hero ">
+    <div class="hero mt-16">
       <img className="banner" alt="" />
       <div></div>
       <div class="hero-content text-center text-neutral-content">
@@ -18,7 +18,7 @@ const Banner = () => {
               <input
                 type="text"
                 placeholder="Type here"
-                class="input mt-3   w-full max-w-xs"
+                class="input mt-3 text-black   w-full max-w-xs"
               />
             </div>
             <div className="mt-3">
