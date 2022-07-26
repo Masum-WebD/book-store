@@ -24,7 +24,7 @@ const Footer = () => {
           <img className="w-14 mx-2" src={americanExpress} alt="" />
         </div>
       </div>
-      <ScrollToTop smooth />
+      <ScrollToTop color="primary"  smooth />
 
     </footer>
   );
