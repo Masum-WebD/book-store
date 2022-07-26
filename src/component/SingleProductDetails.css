@@ -1,0 +1,22 @@
+.book-img {
+  height: 484px;
+  width: 400px;
+}
+.book-card{
+  height: 484px;
+  width: 423px;
+}
+.review-area {
+  border: 1px solid #a9a9a9;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px 0;
+  width: 300px;
+}
+.review-btn {
+  background-color: #229955;
+  border: 1px solid #229955;
+  border-radius: 5px;
+  width: 300px;
+  padding: 10px;
+}

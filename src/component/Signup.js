@@ -1,41 +1,24 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import auth from '../Firebase/firebase.init';
+import Loading from './Loading';
 import bg from '../asset/Images/login-bg.jpg';
 import logo from '../asset/Images/logo.png';
-import auth from '../Firebase/firebase.init';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { toast } from 'react-toastify';
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import googleIcon from '../asset/Icons/google.png';
-import Loading from './Loading';
 
-const Login = () => {
+const Signup = () => {
 
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth,
+        { sendEmailVerification: true }
+    );
 
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-    const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-    if (googleError?.message === "Firebase: Error (auth/popup-closed-by-user).") {
-        toast.error("You closed the popup");
-    };
-
-    if (error?.message === "Firebase: Error (auth/wrong-password).") {
-        toast.error("You entered a wrong password");
-    };
-
-    if (error?.message === "Firebase: Error (auth/invalid-email).") {
-        toast.error("Invalid Email");
-    };
-
-    if (error?.message === "Firebase: Error (auth/user-not-found).") {
-        toast.error("No user found. Please check your E-mail");
-    };
-
-    const onSubmit = async data => {
-        await signInWithEmailAndPassword(data.email, data.password);
-    };
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -44,16 +27,24 @@ const Login = () => {
     useEffect(() => {
         if (user || googleUser) {
             navigate(from, { replace: true });
-            toast.success("Login successful")
+            toast.success("Account created successful");
         }
-    }, [from, user, googleUser, navigate,])
+    }, [from, user, googleUser, navigate]);
 
+    const onSubmit = async data => {
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name });
+        reset();
+    };
+
+    if (googleError || error || updateError) {
+        toast.error("Something went wrong. Please try again.");
+    }
 
     return (
         <section>
-
             {
-                loading || googleLoading ?
+                loading || googleLoading || updating ?
 
                     <Loading />
 
@@ -62,17 +53,31 @@ const Login = () => {
                     <div className='min-h-screen bg-no-repeat bg-cover bg-fixed' style={{ backgroundImage: `url(${bg})` }}>
 
                         <div className='flex justify-center items-center'>
-                            <div className="card flex-shrink-0 lg:w-96 w-80 shadow-2xl mt-24 glass">
+                            <div className="card flex-shrink-0 lg:w-96 w-80 shadow-2xl glass mt-24 mb-11">
                                 <img className='w-48 mx-auto mt-4' src={logo} alt="" />
-                                <p className='text-center font-bold mt-3 text-white underline-offset-2 underline'>USER LOGIN</p>
+                                <p className='text-center font-bold mt-3 underline underline-offset-2 text-white'>CREATE NEW ACCOUNT</p>
                                 <div className="card-body">
-
                                     <form onSubmit={handleSubmit(onSubmit)}>
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text text-white">Name</span>
+                                            </label>
+                                            <input type="text" placeholder="your name" className="input input-bordered" {...register("name", {
+                                                required: {
+                                                    value: true,
+                                                    message: "Name is required"
+                                                }
+                                            })} />
+                                            <label className="label">
+                                                {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                                            </label>
+                                        </div>
+
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text text-white">Email</span>
                                             </label>
-                                            <input type="email" placeholder="Your email" className="input input-bordered" {...register("email", {
+                                            <input type="email" placeholder="email" className="input input-bordered" {...register("email", {
                                                 required: {
                                                     value: true,
                                                     message: "Email is required"
@@ -92,7 +97,7 @@ const Login = () => {
                                             <label className="label">
                                                 <span className="label-text text-white">Password</span>
                                             </label>
-                                            <input type="password" placeholder="Your password" className="input input-bordered" {...register("password", {
+                                            <input type="password" placeholder="password" className="input input-bordered" {...register("password", {
                                                 required: {
                                                     value: true,
                                                     message: "Password is required"
@@ -105,28 +110,26 @@ const Login = () => {
                                             <label className="label">
                                                 {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                                                 {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
-                                                <Link to="/reset-your-password"><span className="label-text-alt link-hover link text-white">Forget Password?</span></Link>
                                             </label>
                                         </div>
 
-                                        <input type="submit" value='Log in' className="btn text-white w-full mt-3" />
+                                        <input type="submit" value='Sign Up' className="btn text-white w-full mt-3" />
                                     </form>
-
                                     <div className="divider">OR</div>
                                     <div className="form-control">
                                         <button onClick={() => signInWithGoogle()} className="btn btn-outline hover:text-black" >
                                             <img src={googleIcon} className='w-5 mr-2' alt="" /> Continue with google
                                         </button>
                                     </div>
-                                    <Link to="/create-new-account" className="text-center text-sm label-text-alt link link-hover mt-2 text-white">New here? Please create account</Link>
+                                    <Link to="/login" className="text-center text-sm label-text-alt link link-hover mt-2 text-white">Already have an account? Login</Link>
                                 </div>
                             </div>
                         </div>
+
                     </div>
             }
-
         </section>
     );
 };
 
-export default Login;
+export default Signup;
