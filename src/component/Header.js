@@ -118,19 +118,7 @@ const Header = () => {
         <Link to="">
           <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping} />
         </Link>
-        {user ? (
-          <div class="">
-            <button onClick={handleOpen} class="btn text-white">
-              Log Out <FiLogOut className="text-xl ml-2" />
-            </button>
-          </div>
-        ) : (
-          <div class="">
-            <Link to="/login" class="btn btn-sm text-white">
-              Log in <FiLogIn className="text-xl ml-2" />
-            </Link>
-          </div>
-        )}
+        
         {
           user ?
 
