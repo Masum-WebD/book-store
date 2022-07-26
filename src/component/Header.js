@@ -75,6 +75,9 @@ const Header = () => {
               <Link to=" ">FEATURES</Link>
             </li>
             <li>
+              <Link to="/about">ABOUT US</Link>
+            </li>
+            <li>
               <Link to="/contact">CONTACT US</Link>
             </li>
             <li className="">
@@ -99,6 +102,9 @@ const Header = () => {
           </li>
           <li className="hover:bg-secondary">
             <Link to=" ">FEATURES</Link>
+          </li>
+          <li className="hover:bg-secondary">
+            <Link to="/about">ABOUT US</Link>
           </li>
           <li className="hover:bg-secondary">
             <Link to="/contact">CONTACT US</Link>

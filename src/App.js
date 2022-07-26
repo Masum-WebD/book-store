@@ -9,6 +9,9 @@ import Signup from "./component/Signup";
 import ResetPass from "./component/ResetPass";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import About from "./component/Contact/About/About";
+import TermPolicy from "./component/Contact/TermCondition/TermPolicy";
+
 import Dashboard from "./component/Dashboard/Dashboard";
 import User from "./component/Dashboard/User";
 import AddProducts from "./component/Dashboard/AddProducts";
@@ -25,7 +28,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path='/about' element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/term" element={<TermPolicy />} />
         <Route path="/login" element={<Login />} />
         <Route path="dashboard" element={<Dashboard />}>
           <Route index element={<MyProfile />}></Route>
@@ -33,7 +38,7 @@ function App() {
           <Route path="order" element={<MyOrders />}></Route>
           <Route path="manageOrders" element={<ManageAllOrder />}></Route>
           <Route path="addProduct" element={<AddProducts />}></Route>
-          <Route path="payment" element={<Payment/>}></Route>
+          <Route path="payment" element={<Payment />}></Route>
         </Route>
         <Route path="/create-new-account" element={<Signup />} />
         <Route path="/reset-your-password" element={<ResetPass />} />
