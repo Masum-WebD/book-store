@@ -35,7 +35,7 @@ const SingleProductDetails = () => {
     fetch(`https://p-hero-bookshop.herokuapp.com/product/${bookId}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
-  }, []);
+  }, [bookId]);
 
   const handlePlaceOrder = (event) => {
     event.preventDefault();
