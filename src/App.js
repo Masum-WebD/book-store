@@ -10,6 +10,7 @@ import ResetPass from "./component/ResetPass";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 import About from "./component/Contact/About/About";
+import TermPolicy from "./component/Contact/TermCondition/TermPolicy";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/term" element={<TermPolicy />} />
         <Route path="/login" element={<Login />} />
         <Route path="/create-new-account" element={<Signup />} />
         <Route path="/reset-your-password" element={<ResetPass />} />
