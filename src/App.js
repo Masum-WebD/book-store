@@ -9,6 +9,7 @@ import Signup from "./component/Signup";
 import ResetPass from "./component/ResetPass";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
+import About from "./component/Contact/About/About";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path='/about' element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/create-new-account" element={<Signup />} />
