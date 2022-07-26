@@ -3,36 +3,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../asset/Images/logo.png";
-import { FiLogIn } from 'react-icons/fi';
-import { FiLogOut } from 'react-icons/fi';
+import { FiLogIn } from "react-icons/fi";
+import { FiLogOut } from "react-icons/fi";
 import auth from "../Firebase/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { Modal } from "@mui/material";
-import Box from '@mui/material/Box';
-import { toast } from 'react-toastify';
+import Box from "@mui/material/Box";
+import { toast } from "react-toastify";
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '5px solid #229955',
+  bgcolor: "background.paper",
+  border: "5px solid #229955",
   boxShadow: 24,
   p: 4,
-  borderRadius: "10px"
+  borderRadius: "10px",
 };
 
 const Header = () => {
-
   const [user] = useAuthState(auth);
 
   const logout = () => {
     signOut(auth);
     handleClose();
-    toast.success("Logout successful")
+    toast.success("Logout successful");
   };
 
   const [open, setOpen] = React.useState(false);
@@ -76,13 +75,19 @@ const Header = () => {
               <Link to=" ">FEATURES</Link>
             </li>
             <li>
-              <Link to=" ">CONTACT US</Link>
+              <Link to="/about">ABOUT US</Link>
+            </li>
+            <li>
+              <Link to="/contact">CONTACT US</Link>
+            </li>
+            <li className="">
+              <Link to="/dashboard">DASHBOARD</Link>
             </li>
           </ul>
         </div>
-        <a class="btn btn-ghost normal-case p-0 text-xl" href=" ">
+        <Link class="btn btn-ghost normal-case p-0 text-xl" to="/">
           <img className="lg:w-48 w-36 text-white" src={logo} alt="" />
-        </a>
+        </Link>
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0 text-white font-semibold">
@@ -99,7 +104,13 @@ const Header = () => {
             <Link to=" ">FEATURES</Link>
           </li>
           <li className="hover:bg-secondary">
-            <Link to=" ">CONTACT US</Link>
+            <Link to="/about">ABOUT US</Link>
+          </li>
+          <li className="hover:bg-secondary">
+            <Link to="/contact">CONTACT US</Link>
+          </li>
+          <li className="hover:bg-secondary">
+            <Link to="/dashboard">DASHBOARD</Link>
           </li>
         </ul>
       </div>
@@ -107,6 +118,7 @@ const Header = () => {
         <Link to="">
           <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping} />
         </Link>
+        
         {
           user ?
 
@@ -117,10 +129,11 @@ const Header = () => {
             :
 
             <div class="">
-              <Link to='/login' class="btn btn-sm text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
+              <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
             </div>
         }
       </div>
+      
       <Modal
         open={open}
         onClose={handleClose}
@@ -128,10 +141,16 @@ const Header = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <h1 className="text-black text-2xl text-center font-semibold">Are sure for logout?</h1>
+          <h1 className="text-black text-2xl text-center font-semibold">
+            Are sure for logout?
+          </h1>
           <div className="mt-6 flex justify-evenly">
-            <button onClick={logout} className="btn">Yes</button>
-            <button onClick={handleClose} className="btn">Cancel</button>
+            <button onClick={logout} className="btn">
+              Yes
+            </button>
+            <button onClick={handleClose} className="btn">
+              Cancel
+            </button>
           </div>
         </Box>
       </Modal>
