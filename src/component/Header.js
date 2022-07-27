@@ -17,7 +17,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 300,
   bgcolor: "background.paper",
   border: "5px solid #229955",
   boxShadow: 24,
@@ -75,6 +75,9 @@ const Header = () => {
               <Link to=" ">FEATURES</Link>
             </li>
             <li>
+              <Link to="/about">ABOUT US</Link>
+            </li>
+            <li>
               <Link to="/contact">CONTACT US</Link>
             </li>
             <li className="">
@@ -101,11 +104,18 @@ const Header = () => {
             <Link to=" ">FEATURES</Link>
           </li>
           <li className="hover:bg-secondary">
-            <Link to="/contact">CONTACT US</Link>
+            <Link to="/about">ABOUT US</Link>
           </li>
           <li className="hover:bg-secondary">
-            <Link to="/dashboard">DASHBOARD</Link>
+            <Link to="/contact">CONTACT US</Link>
           </li>
+          {
+            user &&
+
+            <li className="hover:bg-secondary">
+              <Link to="/dashboard">DASHBOARD</Link>
+            </li>
+          }
         </ul>
       </div>
       <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
@@ -113,6 +123,7 @@ const Header = () => {
           <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping} />
         </Link>
         
+
         {
           user ?
 
@@ -127,24 +138,25 @@ const Header = () => {
             </div>
         }
       </div>
-      
+
       <Modal
         open={open}
-        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <h1 className="text-black text-2xl text-center font-semibold">
-            Are sure for logout?
-          </h1>
-          <div className="mt-6 flex justify-evenly">
-            <button onClick={logout} className="btn">
-              Yes
-            </button>
-            <button onClick={handleClose} className="btn">
-              Cancel
-            </button>
+          <div>
+            <h1 className="text-black text-2xl text-center font-semibold">
+              Are sure for logout?
+            </h1>
+            <div className="mt-6 flex justify-evenly">
+              <button onClick={logout} className="btn">
+                Yes
+              </button>
+              <button onClick={handleClose} className="btn">
+                Cancel
+              </button>
+            </div>
           </div>
         </Box>
       </Modal>
