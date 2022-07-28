@@ -63,26 +63,38 @@ const Header = () => {
             class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="/">HOME</Link>
+              <Link className="text-black" to="/home">HOME</Link>
             </li>
             <li>
-              <Link to="">SHOP</Link>
+              <Link className="text-black" to="/shop">SHOP</Link>
             </li>
             <li>
-              <Link to=" ">CATEGORY</Link>
+              <Link className="text-black" to="/category">CATEGORY</Link>
             </li>
             <li>
-              <Link to=" ">FEATURES</Link>
+              <Link className="text-black" to="/features">FEATURES</Link>
             </li>
             <li>
-              <Link to="/about">ABOUT US</Link>
+              <Link className="text-black" to="/about">ABOUT US</Link>
             </li>
             <li>
-              <Link to="/contact">CONTACT US</Link>
+              <Link className="text-black" to="/contact">CONTACT US</Link>
             </li>
-            <li className="">
-              <Link to="/dashboard">DASHBOARD</Link>
+            <li>
+              {
+                user && <Link className="text-black" to="/dashboard">DASHBOARD</Link>
+              }
             </li>
+            {
+              user ?
+
+                <button onClick={handleOpen} class="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
+
+                :
+
+                <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
+
+            }
           </ul>
         </div>
         <Link class="btn btn-ghost normal-case p-0 text-xl" to="/">
@@ -122,18 +134,18 @@ const Header = () => {
         <Link to="addToCart">
           <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping} />
         </Link>
-        
+
 
         {
           user ?
 
-            <div class="">
+            <div class="hidden lg:block">
               <button onClick={handleOpen} class="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
             </div>
 
             :
 
-            <div class="">
+            <div class="hidden lg:block">
               <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
             </div>
         }
