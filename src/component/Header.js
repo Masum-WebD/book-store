@@ -119,9 +119,10 @@ const Header = () => {
         </ul>
       </div>
       <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
-        <Link to="">
+        <Link to="addToCart">
           <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping} />
         </Link>
+        
 
         {
           user ?
