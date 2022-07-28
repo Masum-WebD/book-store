@@ -1,25 +1,26 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import About from "./component/Contact/About/About";
+import Contact from "./component/Contact/Contact";
+import TermPolicy from "./component/Contact/TermCondition/TermPolicy";
 import Header from "./component/Header";
-import Footer from "./share/Footer/Footer";
 import Home from "./component/Home";
 import Login from "./component/Login";
-import Contact from "./component/Contact/Contact";
-import Signup from "./component/Signup";
 import ResetPass from "./component/ResetPass";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
+import Signup from "./component/Signup";
 import SingleProductDetails from "./component/SingleProductDetails";
-import About from "./component/Contact/About/About";
-import TermPolicy from "./component/Contact/TermCondition/TermPolicy";
+import Footer from "./share/Footer/Footer";
 
-import Dashboard from "./component/Dashboard/Dashboard";
-import User from "./component/Dashboard/User";
 import AddProducts from "./component/Dashboard/AddProducts";
+import Dashboard from "./component/Dashboard/Dashboard";
 import ManageAllOrder from "./component/Dashboard/ManageAllOrder";
-import MyProfile from "./component/Dashboard/MyProfile";
 import MyOrders from "./component/Dashboard/MyOrders";
+import MyProfile from "./component/Dashboard/MyProfile";
 import Payment from "./component/Dashboard/Payment";
+import User from "./component/Dashboard/User";
+import AddToCart from "./component/AddToCart/AddToCart";
 
 function App() {
   return (
@@ -44,7 +45,9 @@ function App() {
         <Route path="/create-new-account" element={<Signup />} />
         <Route path="/reset-your-password" element={<ResetPass />} />
         <Route path="/book/:bookId" element={<SingleProductDetails />} />
+        <Route path='/addToCart' element={<AddToCart />}/>
       </Routes>
+
 
       <Footer></Footer>
       <ToastContainer />
