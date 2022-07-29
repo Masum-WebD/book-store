@@ -26,7 +26,7 @@ const SingleProductDetails = () => {
   };
 
   const handleIncrement = () => {
-    if (qty < 100) {
+    if (qty < stock) {
       setQty((prevCount) => prevCount + 1);
     }
   };
@@ -37,20 +37,10 @@ const SingleProductDetails = () => {
       .then((data) => setItem(data));
   }, [bookId]);
 
-  const handlePlaceOrder = (event) => {
-    event.preventDefault();
-    const order = {
-      bookId: _id,
-      book: name,
-      totalPrice,
-      order: qty,
-    };
-  };
-
   return (
     <div className="container lg:p-32 px-5 mt-20 lg:mt-0">
       <h2 className="text-left my-2 text-green-500 font-bold">Book / {name}</h2>
-      <div onSubmit={handlePlaceOrder} className="gap-3">
+      <div className="gap-3">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div>
             <figure>
@@ -58,7 +48,9 @@ const SingleProductDetails = () => {
             </figure>
           </div>
           <div className="book-card">
-            <h2 className="card-title text-left mb-3 text-2xl text-gray-700">{name}</h2>
+            <h2 className="card-title text-left mb-3 text-2xl text-gray-700">
+              {name}
+            </h2>
             <h2 className="card-title mb-3 text-sm text-gray-700">
               by <span className=" text-green-500">{author}</span>
             </h2>
@@ -124,7 +116,8 @@ const SingleProductDetails = () => {
               <li>
                 <a className="text-left text-gray-600">
                   <TbTruckDelivery className="text-2xl" />
-                  Delivery Charge <br />$50(Online Order)
+                  Delivery Charge <br />
+                  $50(Online Order)
                 </a>
               </li>
               <li>
@@ -134,10 +127,37 @@ const SingleProductDetails = () => {
                 </a>
               </li>
             </ul>
+            <div>
+              <h1 className="uppercase text-gray-600 text-lg font-bold">
+                Related Books
+              </h1>
+              <div class="w-50 carousel rounded-box">
+                <div class="carousel-item w-full">
+                  <div class="flex shadow-lg gap-5 p-5 border-box">
+                    <img
+                      className="object-scale-down h-[160px] w-[115px]"
+                      src={img}
+                      alt=""
+                    />
+                    <div className="text-left flex flex-col text-accent">
+                      <h2 className="text-lg font-bold">{name}</h2>
+                      <p>{author}</p>
+                      <p>${price}</p>
+                      <button
+                        style={{ marginTop: "25px", maxWidth: "155px" }}
+                        className="bg-primary text-white py-2 px-2 rounded-sm mt-4 uppercase"
+                      >
+                        View Product
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="text-left my-12">
+      <div className="text-left my-5">
         <Tabs>
           <TabList>
             <Tab>

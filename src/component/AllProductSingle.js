@@ -1,7 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const AllProductSingle = ({ book }) => {
-  const { name, img, category, language, author, price, stock } = book;
+  const { _id, name, img, category, language, author, price, stock } = book;
+  const navigate = useNavigate();
+  const navigateToProductDetail = (id) => {
+    navigate(`/book/${id}`);
+  };
 
   return (
     <div class="flex shadow-lg gap-5 p-5 border-box">
@@ -11,6 +16,7 @@ const AllProductSingle = ({ book }) => {
         <p>{author}</p>
         <p>${price}</p>
         <button
+          onClick={() => navigateToProductDetail(_id)}
           style={{ marginTop: "auto", maxWidth: "155px" }}
           className="bg-primary text-white py-2 px-5 rounded-sm mt-4 uppercase"
         >
