@@ -21,6 +21,7 @@ import MyProfile from "./component/Dashboard/MyProfile";
 import Payment from "./component/Dashboard/Payment";
 import User from "./component/Dashboard/User";
 import AddToCart from "./component/AddToCart/AddToCart";
+import ErrorPage from "./component/ErrorPage";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/term" element={<TermPolicy />} />
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<ErrorPage />} />
         <Route path="dashboard" element={<Dashboard />}>
           <Route index element={<MyProfile />}></Route>
           <Route path="user" element={<User></User>}></Route>
@@ -45,7 +47,7 @@ function App() {
         <Route path="/create-new-account" element={<Signup />} />
         <Route path="/reset-your-password" element={<ResetPass />} />
         <Route path="/book/:bookId" element={<SingleProductDetails />} />
-        <Route path='/addToCart' element={<AddToCart />}/>
+        <Route path='/addToCart' element={<AddToCart />} />
       </Routes>
 
 
