@@ -1,7 +1,7 @@
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../asset/Images/logo.png";
 import { FiLogIn } from "react-icons/fi";
 import { FiLogOut } from "react-icons/fi";
@@ -63,26 +63,26 @@ const Header = () => {
             class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link className="text-black" to="/home">HOME</Link>
+              <NavLink className="text-black" to="/home">HOME</NavLink>
             </li>
             <li>
-              <Link className="text-black" to="/shop">SHOP</Link>
+              <NavLink className="text-black" to="/shop">SHOP</NavLink>
             </li>
             <li>
-              <Link className="text-black" to="/category">CATEGORY</Link>
+              <NavLink className="text-black" to="/category">CATEGORY</NavLink>
             </li>
             <li>
-              <Link className="text-black" to="/features">FEATURES</Link>
+              <NavLink className="text-black" to="/features">FEATURES</NavLink>
             </li>
             <li>
-              <Link className="text-black" to="/about">ABOUT US</Link>
+              <NavLink className="text-black" to="/about">ABOUT US</NavLink>
             </li>
             <li>
-              <Link className="text-black" to="/contact">CONTACT US</Link>
+              <NavLink className="text-black" to="/contact">CONTACT US</NavLink>
             </li>
             <li>
               {
-                user && <Link className="text-black" to="/dashboard">DASHBOARD</Link>
+                user && <NavLink className="text-black" to="/dashboard">DASHBOARD</NavLink>
               }
             </li>
             {
@@ -97,43 +97,43 @@ const Header = () => {
             }
           </ul>
         </div>
-        <Link class="btn btn-ghost normal-case p-0 text-xl" to="/">
+        <NavLink class="btn btn-ghost normal-case p-0 text-xl" to="/">
           <img className="lg:w-48 w-36 text-white" src={logo} alt="" />
-        </Link>
+        </NavLink>
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0 text-white font-semibold">
           <li className="hover:bg-secondary">
-            <Link to="/">HOME</Link>
+            <NavLink to="/">HOME</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <Link to="/shop">SHOP</Link>
+            <NavLink to="/shop">SHOP</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <Link to=" ">CATEGORY</Link>
+            <NavLink to=" ">CATEGORY</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <Link to=" ">FEATURES</Link>
+            <NavLink to=" ">FEATURES</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <Link to="/about">ABOUT US</Link>
+            <NavLink to="/about">ABOUT US</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <Link to="/contact">CONTACT US</Link>
+            <NavLink to="/contact">CONTACT US</NavLink>
           </li>
           {
             user &&
 
             <li className="hover:bg-secondary">
-              <Link to="/dashboard">DASHBOARD</Link>
+              <NavLink to="/dashboard">DASHBOARD</NavLink>
             </li>
           }
         </ul>
       </div>
       <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
-        <Link to="addToCart">
+        <NavLink to="addToCart">
           <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping} />
-        </Link>
+        </NavLink>
 
 
         {

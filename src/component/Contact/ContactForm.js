@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ContactForm = () => {
     return (
-        <div className='md:block lg:flex justify-around container p-20'>
+        <div className='md:block lg:flex justify-around container lg:p-20 p-4'>
             <div className=' md: w-full lg:w-1/2 text-start'>
                 <h2 className='text-2xl text-black uppercase font-medium'>Contact Form</h2>
                 <p className='text-xl text-gray-500 mt-6'>Send an Email. All Fields with an asterisk (*) are required.</p>
