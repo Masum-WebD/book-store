@@ -23,6 +23,7 @@ import User from "./component/Dashboard/User";
 import AddToCart from "./component/AddToCart/AddToCart";
 import ErrorPage from "./component/ErrorPage";
 import { QueryClient, QueryClientProvider } from 'react-query';
+import Shop from "./component/Shop";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/term" element={<TermPolicy />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/all-products" element={<Shop />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="dashboard" element={<Dashboard />}>
             <Route index element={<MyProfile />}></Route>

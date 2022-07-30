@@ -66,7 +66,7 @@ const Header = () => {
               <NavLink className="text-black" to="/home">HOME</NavLink>
             </li>
             <li>
-              <NavLink className="text-black" to="/shop">SHOP</NavLink>
+              <NavLink className="text-black" to="/all-products">SHOP</NavLink>
             </li>
             <li>
               <NavLink className="text-black" to="/category">CATEGORY</NavLink>
@@ -107,7 +107,7 @@ const Header = () => {
             <NavLink to="/">HOME</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <NavLink to="/shop">SHOP</NavLink>
+            <NavLink to="/all-products">SHOP</NavLink>
           </li>
           <li className="hover:bg-secondary">
             <NavLink to=" ">CATEGORY</NavLink>
