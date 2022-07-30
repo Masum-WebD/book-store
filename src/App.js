@@ -12,7 +12,6 @@ import ResetPass from "./component/ResetPass";
 import Signup from "./component/Signup";
 import SingleProductDetails from "./component/SingleProductDetails";
 import Footer from "./share/Footer/Footer";
-
 import AddProducts from "./component/Dashboard/AddProducts";
 import Dashboard from "./component/Dashboard/Dashboard";
 import ManageAllOrder from "./component/Dashboard/ManageAllOrder";
