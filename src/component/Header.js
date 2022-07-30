@@ -68,8 +68,27 @@ const Header = () => {
             <li>
               <NavLink className="text-black" to="/all-products">SHOP</NavLink>
             </li>
-            <li>
-              <NavLink className="text-black" to="/category">CATEGORY</NavLink>
+            <li tabindex="0" className="text-black">
+              <Link to="">
+                CATEGORY
+                <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+              </Link>
+              <ul class="p-2 bg-white">
+                <li className="text-black"><Link to="">Poem</Link></li>
+                <li className="text-black"><Link to="">Novel</Link></li>
+                <li className="text-black"><Link to="">Drama</Link></li>
+                <li className="text-black"><Link to="">History</Link></li>
+                <li className="text-black"><Link to="">Research</Link></li>
+                <li className="text-black"><Link to="">Business</Link></li>
+                <li className="text-black"><Link to="">Biography</Link></li>
+                <li className="text-black"><Link to="">Criticism</Link></li>
+                <li className="text-black"><Link to="">Phycology</Link></li>
+                <li className="text-black"><Link to="">Philosophy</Link></li>
+                <li className="text-black"><Link to="">Science fiction</Link></li>
+                <li className="text-black"><Link to="">Mystery and thriller</Link></li>
+                <li className="text-black"><Link to="">Fantasy and adventure</Link></li>
+                <li className="text-black"><Link to="">Science and technologies</Link></li>
+              </ul>
             </li>
             <li>
               <NavLink className="text-black" to="/features">FEATURES</NavLink>
@@ -115,8 +134,20 @@ const Header = () => {
               <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
             </Link>
             <ul class="p-2 bg-white">
-              <li className="text-black"><Link to="">Submenu 1</Link></li>
-              <li className="text-black"><Link to="">Submenu 2</Link></li>
+              <li className="text-black"><Link to="">Poem</Link></li>
+              <li className="text-black"><Link to="">Novel</Link></li>
+              <li className="text-black"><Link to="">Drama</Link></li>
+              <li className="text-black"><Link to="">History</Link></li>
+              <li className="text-black"><Link to="">Research</Link></li>
+              <li className="text-black"><Link to="">Business</Link></li>
+              <li className="text-black"><Link to="">Biography</Link></li>
+              <li className="text-black"><Link to="">Criticism</Link></li>
+              <li className="text-black"><Link to="">Phycology</Link></li>
+              <li className="text-black"><Link to="">Philosophy</Link></li>
+              <li className="text-black"><Link to="">Science fiction</Link></li>
+              <li className="text-black"><Link to="">Mystery and thriller</Link></li>
+              <li className="text-black"><Link to="">Fantasy and adventure</Link></li>
+              <li className="text-black"><Link to="">Science and technologies</Link></li>
             </ul>
           </li>
           <li className="hover:bg-secondary">
