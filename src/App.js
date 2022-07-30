@@ -24,6 +24,7 @@ import AddToCart from "./component/AddToCart/AddToCart";
 import ErrorPage from "./component/ErrorPage";
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Shop from "./component/Shop";
+import StartFromTop from "./component/StartFromTop";
 
 const queryClient = new QueryClient();
 
@@ -33,28 +34,30 @@ function App() {
       <Header></Header>
 
       <QueryClientProvider client={queryClient}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/term" element={<TermPolicy />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/all-products" element={<Shop />} />
-          <Route path="*" element={<ErrorPage />} />
-          <Route path="dashboard" element={<Dashboard />}>
-            <Route index element={<MyProfile />}></Route>
-            <Route path="user" element={<User></User>}></Route>
-            <Route path="order" element={<MyOrders />}></Route>
-            <Route path="manageOrders" element={<ManageAllOrder />}></Route>
-            <Route path="addProduct" element={<AddProducts />}></Route>
-            <Route path="payment" element={<Payment />}></Route>
-          </Route>
-          <Route path="/create-new-account" element={<Signup />} />
-          <Route path="/reset-your-password" element={<ResetPass />} />
-          <Route path="/book/:bookId" element={<SingleProductDetails />} />
-          <Route path='/addToCart' element={<AddToCart />} />
-        </Routes>
+        <StartFromTop>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/term" element={<TermPolicy />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/all-products" element={<Shop />} />
+            <Route path="*" element={<ErrorPage />} />
+            <Route path="dashboard" element={<Dashboard />}>
+              <Route index element={<MyProfile />}></Route>
+              <Route path="user" element={<User></User>}></Route>
+              <Route path="order" element={<MyOrders />}></Route>
+              <Route path="manageOrders" element={<ManageAllOrder />}></Route>
+              <Route path="addProduct" element={<AddProducts />}></Route>
+              <Route path="payment" element={<Payment />}></Route>
+            </Route>
+            <Route path="/create-new-account" element={<Signup />} />
+            <Route path="/reset-your-password" element={<ResetPass />} />
+            <Route path="/book/:bookId" element={<SingleProductDetails />} />
+            <Route path='/addToCart' element={<AddToCart />} />
+          </Routes>
+        </StartFromTop>
       </QueryClientProvider>
 
 
