@@ -9,7 +9,7 @@ const SingleProduct = ({ book }) => {
   };
 
   return (
-    <div class="flex shadow-lg gap-5 p-5 border-box border">
+    <div class="flex shadow-lg gap-5 p-5 border-box border rounded-md">
       <img className="object-scale-down h-[160px] w-[115px]" src={img} alt="" />
       <div className="text-left flex flex-col text-accent">
         <h2 className="text-lg font-bold text-gray-800">{name}</h2>
