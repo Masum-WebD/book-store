@@ -220,7 +220,7 @@ const SingleProductDetails = () => {
 
               <textarea
                 placeholder="Please write your honest opinion here..."
-                className="review-area"
+                className="review-area textarea text-black"
               />
 
               <button className="review-btn text-white">Submit</button>
