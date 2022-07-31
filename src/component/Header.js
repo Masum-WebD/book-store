@@ -10,7 +10,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { Modal } from "@mui/material";
 import Box from "@mui/material/Box";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const style = {
   position: "absolute",
@@ -31,7 +31,13 @@ const Header = () => {
   const logout = () => {
     signOut(auth);
     handleClose();
-    toast.success("Logout successful");
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Logout Successful',
+      showConfirmButton: false,
+      timer: 2000
+    })
   };
 
   const [open, setOpen] = React.useState(false);

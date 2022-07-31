@@ -5,10 +5,10 @@ import logo from '../asset/Images/logo.png';
 import auth from '../Firebase/firebase.init';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import googleIcon from '../asset/Icons/google.png';
 import Loading from './Loading';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
@@ -18,19 +18,35 @@ const Login = () => {
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
 
     if (googleError?.message === "Firebase: Error (auth/popup-closed-by-user).") {
-        toast.error("You closed the popup");
+        Swal.fire({
+            icon: 'error',
+            title: 'Something went wrong!',
+            text: 'You closed the popup, which will complete the process. Please try again.',
+        })
     };
 
     if (error?.message === "Firebase: Error (auth/wrong-password).") {
-        toast.error("You entered a wrong password");
+        Swal.fire({
+            icon: 'error',
+            title: 'Something went wrong!',
+            text: 'You entered a wrong password. Please try again.',
+        })
     };
 
     if (error?.message === "Firebase: Error (auth/invalid-email).") {
-        toast.error("Invalid Email");
+        Swal.fire({
+            icon: 'error',
+            title: 'Something went wrong!',
+            text: 'You entered a wrong email. Please try again.',
+        })
     };
 
     if (error?.message === "Firebase: Error (auth/user-not-found).") {
-        toast.error("No user found. Please check your E-mail");
+        Swal.fire({
+            icon: 'error',
+            title: 'Something went wrong!',
+            text: 'No user found. Please check your E-mail and try again.',
+        })
     };
 
     const onSubmit = async data => {
@@ -44,7 +60,13 @@ const Login = () => {
     useEffect(() => {
         if (user || googleUser) {
             navigate(from, { replace: true });
-            toast.success("Login successful")
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Login Successful',
+                showConfirmButton: false,
+                timer: 2000
+            })
         }
     }, [from, user, googleUser, navigate,])
 
