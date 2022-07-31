@@ -25,7 +25,7 @@ const Header = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Logout Successful'
+          'Logout Successful', ' ', 'success'
         )
         signOut(auth);
       }
