@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../Firebase/firebase.init';
 import Loading from './Loading';
 import bg from '../asset/Images/login-bg.jpg';
 import logo from '../asset/Images/logo.png';
 import googleIcon from '../asset/Icons/google.png';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
 
@@ -27,7 +27,13 @@ const Signup = () => {
     useEffect(() => {
         if (user || googleUser) {
             navigate(from, { replace: true });
-            toast.success("Account created successful");
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Registration Successful',
+                showConfirmButton: false,
+                timer: 2000
+            })
         }
     }, [from, user, googleUser, navigate]);
 
@@ -38,7 +44,11 @@ const Signup = () => {
     };
 
     if (googleError || error || updateError) {
-        toast.error("Something went wrong. Please try again.");
+        Swal.fire({
+            icon: 'error',
+            title: 'Something went wrong!',
+            text: 'Please try again after some minutes',
+        });
     }
 
     return (

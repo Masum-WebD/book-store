@@ -1,8 +1,8 @@
 import React from 'react';
-import about from '../../../asset/Images/about.jpg'
+import about from '../../../asset/Images/about.png'
 const AboutDetails = () => {
     return (
-        <div className='container mx-auto grid grid-cols-2 mt-20 mb-10'>
+        <div className='container mx-auto grid lg:grid-cols-2 lg:mt-20 mt-12 mb-10'>
             <div>
                 <img src={about} className="w-full p-4" alt="" />
             </div>

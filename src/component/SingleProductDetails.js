@@ -9,6 +9,8 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { BsCashCoin } from "react-icons/bs";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import profile from '../asset/Images/author-1.jpg';
+import profile2 from '../asset/Images/author-2.jpg';
 
 const SingleProductDetails = () => {
   const { bookId } = useParams();
@@ -26,7 +28,7 @@ const SingleProductDetails = () => {
   };
 
   const handleIncrement = () => {
-    if (qty < 100) {
+    if (qty < stock) {
       setQty((prevCount) => prevCount + 1);
     }
   };
@@ -37,20 +39,10 @@ const SingleProductDetails = () => {
       .then((data) => setItem(data));
   }, [bookId]);
 
-  const handlePlaceOrder = (event) => {
-    event.preventDefault();
-    const order = {
-      bookId: _id,
-      book: name,
-      totalPrice,
-      order: qty,
-    };
-  };
-
   return (
     <div className="container lg:p-32 px-5 mt-20 lg:mt-0">
       <h2 className="text-left my-2 text-green-500 font-bold">Book / {name}</h2>
-      <div onSubmit={handlePlaceOrder} className="gap-3">
+      <div className="gap-3">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div>
             <figure>
@@ -58,12 +50,14 @@ const SingleProductDetails = () => {
             </figure>
           </div>
           <div className="book-card">
-            <h2 className="card-title text-left mb-3 text-2xl text-gray-700">{name}</h2>
+            <h2 className="card-title text-left mb-3 text-2xl text-gray-700">
+              {name}
+            </h2>
             <h2 className="card-title mb-3 text-sm text-gray-700">
               by <span className=" text-green-500">{author}</span>
             </h2>
             <h2 className="card-title text-secondary mb-2 font-bold">
-              ${price}
+              <span className="line-through text-gray-600">$1500</span> ${price}
             </h2>
             <div className="">
               <p className="text-xl text-left text-gray-600">
@@ -124,7 +118,8 @@ const SingleProductDetails = () => {
               <li>
                 <a className="text-left text-gray-600">
                   <TbTruckDelivery className="text-2xl" />
-                  Delivery Charge <br />$50(Online Order)
+                  Delivery Charge <br />
+                  $50(Online Order)
                 </a>
               </li>
               <li>
@@ -134,10 +129,37 @@ const SingleProductDetails = () => {
                 </a>
               </li>
             </ul>
+            <div>
+              <h1 className="uppercase text-gray-600 text-lg font-bold">
+                Related Books
+              </h1>
+              <div class="w-50 carousel rounded-box">
+                <div class="carousel-item w-full">
+                  <div class="flex shadow-lg gap-5 p-5 border-box">
+                    <img
+                      className="object-scale-down h-[160px] w-[115px]"
+                      src={img}
+                      alt=""
+                    />
+                    <div className="text-left flex flex-col text-accent">
+                      <h2 className="text-lg font-bold">{name}</h2>
+                      <p>{author}</p>
+                      <p>${price}</p>
+                      <button
+                        style={{ marginTop: "25px", maxWidth: "155px" }}
+                        className="bg-primary text-white py-2 px-2 rounded-sm mt-4 uppercase"
+                      >
+                        View Product
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="text-left my-12">
+      <div className="text-left my-5">
         <Tabs>
           <TabList>
             <Tab>
@@ -187,13 +209,65 @@ const SingleProductDetails = () => {
           <TabPanel>
             <div class="flex flex-col">
               <h2 className="text-primary font-semibold">Write Your Review</h2>
+
+              <div class="rating my-2">
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+              </div>
+
               <textarea
                 placeholder="Please write your honest opinion here..."
-                className="review-area"
+                className="review-area textarea text-black"
               />
 
               <button className="review-btn text-white">Submit</button>
             </div>
+
+
+            <article className="mt-14">
+              <div class="flex items-center mb-4 space-x-4">
+                <img class="w-10 h-10 rounded-full" src={profile} alt="" />
+                <div class="space-y-1 font-medium ">
+                  <p className="text-black">Jese Leos</p>
+                </div>
+              </div>
+              <div class="flex items-center mb-1">
+                <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Second star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Third star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fourth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fifth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              </div>
+
+              <p class="mb-2 font-light text-black">Thanks for fast delivery. The book quality is good.</p>
+              <a href="#" class="block mb-5 text-sm font-medium link text-primary">Read more</a>
+            </article>
+
+
+
+            <article className="mt-14">
+              <div class="flex items-center mb-4 space-x-4">
+                <img class="w-10 h-10 rounded-full" src={profile2} alt="" />
+                <div class="space-y-1 font-medium ">
+                  <p className="text-black">Chris Hemsworth</p>
+                </div>
+              </div>
+              <div class="flex items-center mb-1">
+                <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Second star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Third star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fourth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fifth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              </div>
+
+              <p class="mb-2 font-light text-black">This is my third order from book store. As a book lover I can say proudly that the site is very helpful for a book reader. Thank you book store.</p>
+              <a href="#" class="block mb-5 text-sm font-medium link text-primary">Read more</a>
+            </article>
+
+
           </TabPanel>
         </Tabs>
       </div>

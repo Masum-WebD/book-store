@@ -4,30 +4,34 @@ import { faBuilding, faCartShopping, faGlobe, faLocationDot, faMagicWandSparkles
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const formControl = e => {
+    e.preventDefault();
+}
+
 const ContactForm = () => {
     return (
-        <div className='md:block lg:flex justify-around container p-20'>
+        <div className='md:block lg:flex justify-around container lg:p-20 p-4'>
             <div className=' md: w-full lg:w-1/2 text-start'>
                 <h2 className='text-2xl text-black uppercase font-medium'>Contact Form</h2>
                 <p className='text-xl text-gray-500 mt-6'>Send an Email. All Fields with an asterisk (*) are required.</p>
-                <form action="" className='mt-8'>
+                <form onSubmit={formControl} className='mt-8'>
                     <div className='md:block lg:flex justify-between'>
                         <div>
-                            <label htmlFor="" className='text-xl text-gray-400'>Name(*)</label>
-                            <input type="text" class="input  input-accent w-full " />
+                            <label htmlFor="" className='text-xl text-gray-400'>Name*</label>
+                            <input type="text" class="input  input-accent w-full  text-black" required />
                         </div>
                         <div className='md:ml-0 lg:ml-5'>
-                            <label htmlFor="" className='text-xl text-gray-400'>Email(*)</label>
-                            <input type="email" class="input input-accent w-full " />
+                            <label htmlFor="" className='text-xl text-gray-400'>Email*</label>
+                            <input type="email" class="input input-accent w-full  text-black" required />
                         </div>
                     </div>
                     <div className='mt-5'>
                         <label htmlFor="" className='text-xl text-gray-400'>Subject</label>
-                        <input type="text" class="input input-accent w-full" />
+                        <input type="text" class="input input-accent w-full text-black" />
                     </div>
                     <div className='mt-5'>
-                        <label htmlFor="" className='text-xl text-gray-400'>Message</label>
-                        <textarea class="textarea textarea-accent w-full lg:h-60" ></textarea>
+                        <label htmlFor="" className='text-xl text-gray-400'>Message*</label>
+                        <textarea class="textarea textarea-accent w-full lg:h-60 text-black" required></textarea>
                     </div>
                     <div className='text-center mt-5'>
                         <button class="btn btn-accent w-1/2">Submit</button>
