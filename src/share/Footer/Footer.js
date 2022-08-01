@@ -16,7 +16,7 @@ const Footer = () => {
       my-auto pt-6 text-black items-center text-sm pb-8"
       >
         <span>© 2022 Book Store. All rights reserved.</span>
-        <span>Terms · Privacy Policy</span>
+        <a href="/term"><span>Terms · Privacy Policy</span></a>
         <div className="flex mx-auto">
           <img className="w-14 mx-2" src={paypal} alt="" />
           <img className="w-14 mx-2" src={visa} alt="" />
@@ -24,7 +24,7 @@ const Footer = () => {
           <img className="w-14 mx-2" src={americanExpress} alt="" />
         </div>
       </div>
-      <ScrollToTop smooth />
+      <ScrollToTop color="primary"  smooth />
 
     </footer>
   );
