@@ -127,7 +127,7 @@ const Signup = () => {
                                     </form>
                                     <div className="divider">OR</div>
                                     <div className="form-control">
-                                        <button onClick={() => signInWithGoogle()} className="btn btn-outline hover:text-black" >
+                                        <button onClick={() => signInWithGoogle()} className="btn btn-outline hover:text-black hover:bg-white" >
                                             <img src={googleIcon} className='w-5 mr-2' alt="" /> Continue with google
                                         </button>
                                     </div>
