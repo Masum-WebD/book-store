@@ -24,6 +24,7 @@ import ErrorPage from "./component/ErrorPage";
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Shop from "./component/Shop";
 import StartFromTop from "./component/StartFromTop";
+import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
 
 const queryClient = new QueryClient();
 
@@ -37,7 +38,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
-            <Route path='/about' element={<About />} />
+            <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/term" element={<TermPolicy />} />
             <Route path="/login" element={<Login />} />
@@ -54,12 +55,15 @@ function App() {
             <Route path="/create-new-account" element={<Signup />} />
             <Route path="/reset-your-password" element={<ResetPass />} />
             <Route path="/book/:bookId" element={<SingleProductDetails />} />
-            <Route path='/addToCart' element={<AddToCart />} />
+            <Route path="/addToCart" element={<AddToCart />} />
           </Routes>
         </StartFromTop>
       </QueryClientProvider>
 
-
+      <MessengerCustomerChat
+        pageId="107580278651104"
+        appId="5213313418754051"
+      />
       <Footer></Footer>
       <ToastContainer />
     </div>
