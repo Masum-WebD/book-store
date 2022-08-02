@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
 
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
@@ -51,6 +51,7 @@ const Login = () => {
 
     const onSubmit = async data => {
         await signInWithEmailAndPassword(data.email, data.password);
+        reset();
     };
 
     const location = useLocation();
@@ -136,7 +137,7 @@ const Login = () => {
 
                                     <div className="divider">OR</div>
                                     <div className="form-control">
-                                        <button onClick={() => signInWithGoogle()} className="btn btn-outline hover:text-black" >
+                                        <button onClick={() => signInWithGoogle()} className="btn btn-outline hover:text-black hover:bg-white" >
                                             <img src={googleIcon} className='w-5 mr-2' alt="" /> Continue with google
                                         </button>
                                     </div>
