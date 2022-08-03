@@ -12,7 +12,7 @@ const ErrorPage = () => {
                 <div className="w-full lg:w-1/2">
                     <h1 className="py-4 text-3xl lg:text-4xl font-extrabold text-gray-800">Looks like you've found the doorway to the great nothing</h1>
                     <p className="py-4 text-base text-gray-800">The content you’re looking for doesn’t exist. Either it was removed, or you mistyped the link.</p>
-                    <p className="py-2 text-base text-gray-800">Sorry about that! Please visit our hompage to get where you need to go.</p>
+                    <p className="py-2 text-base text-gray-800">Sorry about that! Please visit our homepage to get where you need to go.</p>
                     <Link to="/home" className="w-full lg:w-auto my-4 btn focus:ring-opacity-50 text-white">Go back to Homepage</Link>
                 </div>
             </div>
