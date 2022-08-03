@@ -1,42 +1,36 @@
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../asset/Images/logo.png";
 import { FiLogIn } from "react-icons/fi";
 import { FiLogOut } from "react-icons/fi";
 import auth from "../Firebase/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
-import { Modal } from "@mui/material";
-import Box from "@mui/material/Box";
-import { toast } from "react-toastify";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 300,
-  bgcolor: "background.paper",
-  border: "5px solid #229955",
-  boxShadow: 24,
-  p: 4,
-  borderRadius: "10px",
-};
+import Swal from "sweetalert2";
 
 const Header = () => {
   const [user] = useAuthState(auth);
 
-  const logout = () => {
-    signOut(auth);
-    handleClose();
-    toast.success("Logout successful");
-  };
-
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpen = () => {
+    Swal.fire({
+      title: 'Are you sure for logout?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#27AE61',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+      allowEnterKey: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Logout Successful', ' ', 'success'
+        )
+        signOut(auth);
+      }
+    })
+  }
 
   return (
     <div class="navbar bg-primary fixed top-0 z-50">
@@ -63,104 +57,131 @@ const Header = () => {
             class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="/">HOME</Link>
+              <NavLink className="text-black" to="/home">HOME</NavLink>
             </li>
             <li>
-              <Link to="">SHOP</Link>
+              <NavLink className="text-black" to="/all-products">SHOP</NavLink>
+            </li>
+            <li tabindex="0" className="text-black">
+              <Link to="">
+                CATEGORY
+                <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+              </Link>
+              <ul class="p-2 bg-white">
+                <li className="text-black"><Link to="">Poem</Link></li>
+                <li className="text-black"><Link to="">Novel</Link></li>
+                <li className="text-black"><Link to="">Drama</Link></li>
+                <li className="text-black"><Link to="">History</Link></li>
+                <li className="text-black"><Link to="">Research</Link></li>
+                <li className="text-black"><Link to="">Business</Link></li>
+                <li className="text-black"><Link to="">Biography</Link></li>
+                <li className="text-black"><Link to="">Criticism</Link></li>
+                <li className="text-black"><Link to="">Phycology</Link></li>
+                <li className="text-black"><Link to="">Philosophy</Link></li>
+                <li className="text-black"><Link to="">Science fiction</Link></li>
+                <li className="text-black"><Link to="">Mystery and thriller</Link></li>
+                <li className="text-black"><Link to="">Fantasy and adventure</Link></li>
+                <li className="text-black"><Link to="">Science and technologies</Link></li>
+              </ul>
             </li>
             <li>
-              <Link to=" ">CATEGORY</Link>
+              <NavLink className="text-black" to="/features">FEATURES</NavLink>
             </li>
             <li>
-              <Link to=" ">FEATURES</Link>
+              <NavLink className="text-black" to="/about">ABOUT US</NavLink>
             </li>
             <li>
-              <Link to="/about">ABOUT US</Link>
+              <NavLink className="text-black" to="/contact">CONTACT US</NavLink>
             </li>
             <li>
-              <Link to="/contact">CONTACT US</Link>
+              {
+                user && <NavLink className="text-black" to="/dashboard">DASHBOARD</NavLink>
+              }
             </li>
-            <li className="">
-              <Link to="/dashboard">DASHBOARD</Link>
-            </li>
+            {
+              user ?
+
+                <button onClick={handleOpen} class="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
+
+                :
+
+                <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
+
+            }
           </ul>
         </div>
-        <Link class="btn btn-ghost normal-case p-0 text-xl" to="/">
+        <NavLink class="btn btn-ghost normal-case p-0 text-xl" to="/">
           <img className="lg:w-48 w-36 text-white" src={logo} alt="" />
-        </Link>
+        </NavLink>
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0 text-white font-semibold">
           <li className="hover:bg-secondary">
-            <Link to="/">HOME</Link>
+            <NavLink to="/">HOME</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <Link to="/shop">SHOP</Link>
+            <NavLink to="/all-products">SHOP</NavLink>
+          </li>
+          <li tabindex="0">
+            <Link to="">
+              CATEGORY
+              <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+            </Link>
+            <ul class="p-2 bg-white">
+              <li className="text-black"><Link to="">Poem</Link></li>
+              <li className="text-black"><Link to="">Novel</Link></li>
+              <li className="text-black"><Link to="">Drama</Link></li>
+              <li className="text-black"><Link to="">History</Link></li>
+              <li className="text-black"><Link to="">Research</Link></li>
+              <li className="text-black"><Link to="">Business</Link></li>
+              <li className="text-black"><Link to="">Biography</Link></li>
+              <li className="text-black"><Link to="">Criticism</Link></li>
+              <li className="text-black"><Link to="">Phycology</Link></li>
+              <li className="text-black"><Link to="">Philosophy</Link></li>
+              <li className="text-black"><Link to="">Science fiction</Link></li>
+              <li className="text-black"><Link to="">Mystery and thriller</Link></li>
+              <li className="text-black"><Link to="">Fantasy and adventure</Link></li>
+              <li className="text-black"><Link to="">Science and technologies</Link></li>
+            </ul>
           </li>
           <li className="hover:bg-secondary">
-            <Link to=" ">CATEGORY</Link>
+            <NavLink to=" ">FEATURES</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <Link to=" ">FEATURES</Link>
+            <NavLink to="/about">ABOUT US</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <Link to="/about">ABOUT US</Link>
-          </li>
-          <li className="hover:bg-secondary">
-            <Link to="/contact">CONTACT US</Link>
+            <NavLink to="/contact">CONTACT US</NavLink>
           </li>
           {
             user &&
 
             <li className="hover:bg-secondary">
-              <Link to="/dashboard">DASHBOARD</Link>
+              <NavLink to="/dashboard">DASHBOARD</NavLink>
             </li>
           }
         </ul>
       </div>
       <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
-        <Link to="addToCart">
+        <NavLink to="addToCart">
           <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping} />
-         
-        </Link>
-        
+        </NavLink>
+
 
         {
           user ?
 
-            <div class="">
+            <div class="hidden lg:block">
               <button onClick={handleOpen} class="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
             </div>
 
             :
 
-            <div class="">
+            <div class="hidden lg:block">
               <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
             </div>
         }
       </div>
-
-      <Modal
-        open={open}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <div>
-            <h1 className="text-black text-2xl text-center font-semibold">
-              Are sure for logout?
-            </h1>
-            <div className="mt-6 flex justify-evenly">
-              <button onClick={logout} className="btn">
-                Yes
-              </button>
-              <button onClick={handleClose} className="btn">
-                Cancel
-              </button>
-            </div>
-          </div>
-        </Box>
-      </Modal>
     </div>
   );
 };
