@@ -49,7 +49,7 @@ const ShopUserInfo = () => {
                    <div className="flex">
                    <label className=' block ' >State/Province</label>
                     <input type="text" className='h-[40px] rounded-md mr-2' />
-                    <label htmlFor="">Pstal code</label>
+                    <label htmlFor="">Postal code</label>
                     <input type="number" className='h-[40px] rounded-md' />
                    </div>
                 
