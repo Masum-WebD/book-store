@@ -1,19 +1,10 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useRef } from "react";
 
 const CartProduct = ({ product }) => {
   const { bookName, bookAuthor, bookPrice, bookImage, bookQty, bookStock } =
     product;
-    const emailRef = useRef()
 
-  const increaseButton = (e) => {
-    e.preventDefault();
-    const quantity = e.target.number.value;
-    
-    // const email =emailRef.current.value;
-    console.log('hi', quantity );
-  };
 
   return (
     <div className=" ">

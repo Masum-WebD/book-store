@@ -35,7 +35,7 @@ const ShopUserInfo = () => {
                     <div className="flex mt-3 mb-3">
                     <label htmlFor="">City</label><br/>
                     <input type="text" className='h-[40px] rounded-md mr-2' />
-                    <label htmlFor="">country </label><br/>
+                    <label htmlFor="">country </label>
                     <select name="" id="">
                         <option value="" disabled >select country</option>
                         {
