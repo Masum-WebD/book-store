@@ -9,6 +9,7 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { BsCashCoin } from "react-icons/bs";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { toast } from 'react-toastify';
 
 const SingleProductDetails = () => {
   const { bookId } = useParams();
@@ -26,7 +27,7 @@ const SingleProductDetails = () => {
   };
 
   const handleIncrement = () => {
-    if (qty < 100) {
+    if (qty < stock) {
       setQty((prevCount) => prevCount + 1);
     }
   };
@@ -37,20 +38,43 @@ const SingleProductDetails = () => {
       .then((data) => setItem(data));
   }, [bookId]);
 
-  const handlePlaceOrder = (event) => {
-    event.preventDefault();
-    const order = {
+ const handleAddToCart= (item) => {
+    console.log(item)
+    const AddToCart = {
       bookId: _id,
-      book: name,
-      totalPrice,
-      order: qty,
-    };
-  };
+      bookName: name,
+      bookImage: img,
+      bookAuthor: author,
+      bookPrice: price,
+      bookQty: qty,
+      bookStock:stock
+    }
+    console.log(AddToCart)
+    fetch('http://localhost:5000/cartProduct',{
+      method:'POST',
+      headers:{
+        'content-type':'application/json'
+      },
+      body: JSON.stringify(AddToCart)
+    })
+    .then(res => res.json())
+    .then(data=>{
+      console.log(data)
+      if(data.success){
+        toast("Add to cart");
+      }
+      else{
+        toast.error('this products all add to cart')
+      }
+    })
+
+    
+  }
 
   return (
     <div className="container lg:p-32 px-5 mt-20 lg:mt-0">
       <h2 className="text-left my-2 text-green-500 font-bold">Book / {name}</h2>
-      <div onSubmit={handlePlaceOrder} className="gap-3">
+      <div  className="gap-3">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div>
             <figure>
@@ -101,8 +125,9 @@ const SingleProductDetails = () => {
                   </div>
                 </div>
                 <div>
-                  <button class="btn btn-primary text-white">
+                  <button onClick={()=>handleAddToCart(item)} class="btn btn-primary text-white">
                     Add To Cart <FaShoppingCart className="text-lg ml-2" />
+                    
                   </button>
                 </div>
               </div>
@@ -111,24 +136,24 @@ const SingleProductDetails = () => {
           <div>
             <ul class="menu bg-base-100 w-56 p-2 rounded-box">
               <li>
-                <a className="text-left text-gray-600">
+                <a className="text-left text-gray-600" href=' '>
                   <BsCashCoin className="text-lg" />
                   Cash On Delivery
                 </a>
               </li>
               <li>
-                <a className="text-left text-gray-600">
+                <a className="text-left text-gray-600" href=' '>
                   <FaUndo className="text-lg" />7 Days Happy Return
                 </a>
               </li>
               <li>
-                <a className="text-left text-gray-600">
+                <a className="text-left text-gray-600" href=' '>
                   <TbTruckDelivery className="text-2xl" />
                   Delivery Charge <br />$50(Online Order)
                 </a>
               </li>
               <li>
-                <a className="text-left text-gray-600">
+                <a className="text-left text-gray-600" href=' '>
                   <BiWalletAlt className="text-lg" />
                   Purchase & Earn
                 </a>
@@ -157,7 +182,7 @@ const SingleProductDetails = () => {
             <p className="text-gray-600">{summary}</p>
             <p className="text-gray-500">
               Source:{" "}
-              <a href="https://en.wikipedia.org/wiki/Mario" target="_blank">
+              <a href="https://en.wikipedia.org/wiki/Mario" target="_blank" >
                 Wikipedia
               </a>
             </p>
@@ -197,6 +222,7 @@ const SingleProductDetails = () => {
           </TabPanel>
         </Tabs>
       </div>
+      
     </div>
   );
 };
