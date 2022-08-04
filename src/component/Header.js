@@ -9,9 +9,11 @@ import auth from "../Firebase/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import Swal from "sweetalert2";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [user] = useAuthState(auth);
+  const items =useSelector((state)=>state.cart)
 
   const handleOpen = () => {
     Swal.fire({
@@ -31,6 +33,7 @@ const Header = () => {
       }
     })
   }
+
 
   return (
     <div class="navbar bg-primary fixed top-0 z-50">

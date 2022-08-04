@@ -10,10 +10,13 @@ import profile from '../asset/Images/author-1.jpg';
 import profile2 from '../asset/Images/author-2.jpg';
 import useProducts from "./Hooks/useProducts";
 import "./SingleProductDetails.css";
+import { useDispatch } from "react-redux";
+import {add} from "../store/cartSlice"
 
 const SingleProductDetails = () => {
   const { bookId } = useParams();
   const [book] = useProducts(bookId);
+  const dispatch = useDispatch()
   const [item, setItem] = useState([]);
   const { _id, name, img, summary, category, language, author, price, stock } =
     item;
@@ -62,6 +65,7 @@ const SingleProductDetails = () => {
       console.log(data)
      
     })
+    dispatch(add(item))
 
     
   }
