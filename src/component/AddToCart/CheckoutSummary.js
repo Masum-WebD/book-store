@@ -49,6 +49,8 @@ const CheckoutSummary = () => {
           </div>
         </div>
         <button className='btn btn-outline btn-primary  hover:bg-[#3f9866] text-black mt-10'>Place Order</button>
+
+        
       </div>
     );
 };

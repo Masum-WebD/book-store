@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import useProducts from "./Hooks/useProducts";
-import { FaShoppingCart } from "react-icons/fa";
-import { FaUndo } from "react-icons/fa";
-import "./SingleProductDetails.css";
 import { BiWalletAlt } from "react-icons/bi";
-import { TbTruckDelivery } from "react-icons/tb";
 import { BsCashCoin } from "react-icons/bs";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { FaShoppingCart, FaUndo } from "react-icons/fa";
+import { TbTruckDelivery } from "react-icons/tb";
+import { useParams } from "react-router-dom";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import profile from '../asset/Images/author-1.jpg';
 import profile2 from '../asset/Images/author-2.jpg';
-import { Toast } from "react-toastify/dist/components";
+import useProducts from "./Hooks/useProducts";
+import "./SingleProductDetails.css";
 
 const SingleProductDetails = () => {
   const { bookId } = useParams();
@@ -211,7 +209,7 @@ const SingleProductDetails = () => {
             <p className="text-gray-600">{summary}</p>
             <p className="text-gray-500">
               Source:{" "}
-              <a href="https://en.wikipedia.org/wiki/Mario" target="_blank" >
+              <a href="https://en.wikipedia.org/wiki/Mario" target="_blank" rel="noreferrer" >
                 Wikipedia
               </a>
             </p>
