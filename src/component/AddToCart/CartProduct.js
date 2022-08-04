@@ -1,8 +1,8 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const CartProduct = ({ product }) => {
-  const { bookName, bookAuthor, bookPrice, bookImage, bookQty, bookStock } =
+const CartProduct = ({ product,handleRemove }) => {
+  const { name, author, price, img,_id } =
     product;
 
 
@@ -10,17 +10,17 @@ const CartProduct = ({ product }) => {
     <div className="p-5 rounded border border-red-100">
       <div className="flex gap-3">
         <div>
-          <img className="w-16" src={bookImage} alt="" />
+          <img className="w-16" src={img} alt="" />
         </div>
         <div className="w-full">
 
 
           <div className="flex justify-between items-start">
             <div>
-              <p className="font-medium">{bookName} </p>
-              <p className="text-sm">by {bookAuthor}</p>
+              <p className="font-medium">{name} </p>
+              <p className="text-sm">by {author}</p>
             </div>
-            <button>
+            <button onClick={()=>handleRemove(_id)} >
               <FontAwesomeIcon className="text-[#fa6a6a]" icon={faTrashCan}></FontAwesomeIcon>
             </button>
           </div>
@@ -28,7 +28,7 @@ const CartProduct = ({ product }) => {
 
           <div className=" mt-5">
             <div className="flex justify-between items-start">
-              <h1 className=" align-text-bottom font-medium text-sm ">$ {bookPrice}</h1>
+              <h1 className=" align-text-bottom font-medium text-sm ">$ {price}</h1>
               <select name="" id="" className="align-bottom mr-0 bg-white border border-red-100" >
                 <option value="">1</option>
                 <option value="">2</option>

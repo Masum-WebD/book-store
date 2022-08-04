@@ -9,7 +9,7 @@ const cartSlice =createSlice({
             state.push(action.payload)
         },
         remove(state,action){
-            state = state.filter(item =>item._id !== action.payload)
+            return state.filter(item =>item._id !== action.payload)
 
         }
     }
