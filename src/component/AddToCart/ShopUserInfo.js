@@ -18,7 +18,7 @@ const ShopUserInfo = () => {
             </label>
             <input type="text" class="bg-white focus:outline-red-100 border border-red-100 p-1 rounded" />
           </div>
-          <div class="form-control w-full">
+          <div class="form-control mt-5 lg:mt-0 w-full">
             <label class="">
               <span class="text-accent ">Last Name</span>
             </label>

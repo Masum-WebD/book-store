@@ -14,7 +14,7 @@ const AddToCart = () => {
 
   return (
     <div className="bg-[#F9FAFB]">
-      <div className="pt-32 pb-16 flex flex-col-reverse lg:flex-row gap-10 text-left text-neutral container mx-auto">
+      <div className="pt-16 lg:pt-32 pb-16 flex flex-col-reverse lg:flex-row gap-10 text-left text-neutral container mx-auto">
         <div className=" lg:w-1/2 px-6 lg:px-0">
           <ShopUserInfo />
         </div>
