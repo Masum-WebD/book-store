@@ -162,9 +162,10 @@ const Header = () => {
           }
         </ul>
       </div>
-      <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
-        <NavLink to="addToCart">
-          <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping} />
+      <div class="navbar-end lg:mx-5 d-flex text-white   font-bold">
+        <NavLink to="addToCart ">
+          <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping}  />
+          
         </NavLink>
 
 
