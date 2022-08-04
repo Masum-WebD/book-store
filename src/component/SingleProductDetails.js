@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BiWalletAlt } from "react-icons/bi";
 import { BsCashCoin } from "react-icons/bs";
+import { VscBook } from "react-icons/vsc";
 import { FaShoppingCart, FaUndo } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
 import { useParams } from "react-router-dom";
@@ -8,29 +9,14 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import profile from '../asset/Images/author-1.jpg';
 import profile2 from '../asset/Images/author-2.jpg';
-import useProducts from "./Hooks/useProducts";
 import "./SingleProductDetails.css";
 
 const SingleProductDetails = () => {
   const { bookId } = useParams();
-  const [book] = useProducts(bookId);
   const [item, setItem] = useState([]);
   const { _id, name, img, summary, category, language, author, price, stock } =
     item;
-  const [qty, setQty] = useState(1);
-  const [totalPrice, setTotalPrice] = useState();
-
-  const handleDecrement = () => {
-    if (qty > 1) {
-      setQty((prevCount) => prevCount - 1);
-    }
-  };
-
-  const handleIncrement = () => {
-    if (qty < stock) {
-      setQty((prevCount) => prevCount + 1);
-    }
-  };
+  
 
   useEffect(() => {
     fetch(`https://p-hero-bookshop.herokuapp.com/product/${bookId}`)
@@ -46,7 +32,6 @@ const SingleProductDetails = () => {
       bookImage: img,
       bookAuthor: author,
       bookPrice: price,
-      bookQty: qty,
       bookStock:stock
     }
     console.log(AddToCart)
@@ -95,33 +80,12 @@ const SingleProductDetails = () => {
             </div>
             <div class="divider"></div>
             <div>
-              <h2 className="text-xl text-left my-2 text-gray-600">Quantity</h2>
               <div className="flex flex-row gap-6">
-                <div className="w-16 flex items-center justify-center">
-                  <div className="from-control px-5 py-3 bg-primary border-green-200 rounded-lg text-white text-center my-auto">
-                    {qty}
-                  </div>
-
-                  <div className="flex flex-col ml-2">
-                    <div
-                      type="button"
-                      onClick={handleIncrement}
-                      className="border-green-200 rounded-md"
-                    >
-                      <span className=" text-white btn btn-secondary btn-xs">
-                        +
-                      </span>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={handleDecrement}
-                      className=""
-                    >
-                      <span className=" text-white btn btn-secondary btn-xs">
-                        -
-                      </span>
-                    </button>
-                  </div>
+                <div className="flex items-center justify-center">
+                <button class="btn btn-primary text-white">
+                    Read The Book <VscBook className="text-lg ml-2" />
+                    
+                  </button>
                 </div>
                 <div>
                   <button onClick={()=>handleAddToCart(item)} class="btn btn-primary text-white">
