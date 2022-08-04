@@ -164,20 +164,22 @@ const Header = () => {
       </div>
       <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
         <NavLink to="addToCart">
-          <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping} />
+          <div class="tooltip tooltip-open tooltip-right" data-tip="0">
+            <FontAwesomeIcon className="w-4" icon={faCartShopping} />
+          </div>
         </NavLink>
 
 
         {
           user ?
 
-            <div class="hidden lg:block">
+            <div class="hidden ml-8 lg:block">
               <button onClick={handleOpen} class="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
             </div>
 
             :
 
-            <div class="hidden lg:block">
+            <div class="hidden ml-8 lg:block">
               <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
             </div>
         }
