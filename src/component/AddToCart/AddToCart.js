@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CartProduct from "./CartProduct";
+import CheckoutSummary from "./CheckoutSummary";
 import ShopUserInfo from "./ShopUserInfo";
 
 const AddToCart = () => {
@@ -20,9 +21,10 @@ const AddToCart = () => {
         <div className=" w-1/2">
           <h2 className="text-2xl text-left text-neutral font-medium mb-4">Order Summary</h2>
           <div className=" bg-white">
-          {cartProduct.map((p) => (
-            <CartProduct key={p._id} product={p}></CartProduct>
-          ))}
+            {cartProduct.map((p) => (
+              <CartProduct key={p._id} product={p}></CartProduct>
+            ))}
+            <CheckoutSummary/>
           </div>
         </div>
       </div>
