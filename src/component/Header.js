@@ -176,13 +176,13 @@ const Header = () => {
         {
           user ?
 
-            <div class="hidden lg:block">
+            <div class="hidden ml-8 lg:block">
               <button onClick={handleOpen} class="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
             </div>
 
             :
 
-            <div class="hidden lg:block">
+            <div class="hidden ml-8 lg:block">
               <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
             </div>
         }
