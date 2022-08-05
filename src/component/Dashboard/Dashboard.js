@@ -46,13 +46,13 @@ const Dashboard = () => {
           </li>
           <>
             <li>
-              <Link to="/dashboard/user">My eBook Library</Link>
+              <Link to="/dashboard/myEBook">My eBook Library</Link>
             </li>
             <li>
-              <Link to="/dashboard/manageOrders">My Ratings and Review</Link>
+              <Link to="/dashboard/myReview">My Ratings and Review</Link>
             </li>
             <li>
-              <Link to="/dashboard/payment">Payment</Link>
+              <Link to="/dashboard/wishlist">My Wishlist</Link>
             </li>
           </>
         </ul>

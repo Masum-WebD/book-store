@@ -1,7 +1,7 @@
 export const PRODUCTS = [
-  { name: "1998 Wall Street 707, Washington DC, USA", link: "#" },
+  { name: " Washington DC, USA", link: "#" },
   { name: "bookstore@domain.com", link: "#" },
-  { name: "(85) 0124 567 658", link: "#" },
+  { name: "(850) 0124 567 658", link: "#" },
 ];
 export const RESOURCES = [
   { name: "Industries and tools", link: "#" },

@@ -4,7 +4,7 @@ import { PRODUCTS, RESOURCES, COMPANY, SUPPORT } from "./Menus";
 
 const ItemsContainer = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:px-8 px-5 py-16">
+    <div className="flex justify-evenly gap-6 sm:px-8 px-5 py-16">
       <Item Links={PRODUCTS} title="CONTACT US" />
       <Item Links={RESOURCES} title="INFORMATION" />
       <Item Links={COMPANY} title="COMPANY" />

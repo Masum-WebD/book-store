@@ -58,10 +58,10 @@ const SingleProductDetails = () => {
   return (
     
  
-    <div className="container lg:p-32 px-5 mt-20 lg:mt-0">
+    <div className="container lg:p-32 mt-20 lg:mt-0">
       <h2 className="text-left my-2 text-green-500 font-bold">Book / {name}</h2>
-      <div className="gap-3">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="lg:gap-3">
+        <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-6">
           <div>
             <figure>
               <img src={img} className="book-img" alt="tool" />
@@ -84,7 +84,7 @@ const SingleProductDetails = () => {
             </div>
             <div class="divider"></div>
             <div>
-              <div className="flex flex-row gap-6">
+              <div className="flex flex-row lg:gap-6 gap-3">
                 <div className="flex items-center justify-center">
                 <button class="btn btn-primary text-white">
                     Read The Book <VscBook className="text-lg ml-2" />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SingleProduct from "./SingleProduct";
 import {fetchProducts, STATUSES} from '../store/productSlice'
 import { useDispatch,useSelector } from "react-redux";
+import Loading from "./Loading";
 
 const AllProducts = () => {
   // const [products, setProducts] = useState([]);
@@ -15,10 +16,10 @@ const AllProducts = () => {
   
   }, []);
   if(status === STATUSES.LOADING){
-    return <h2 className="text-black">Loading ....</h2>
+    return <Loading/>
   }
   if(status === STATUSES.ERROR){
-    return <h2 className="text-black">Something went wrong!</h2>
+    return <h2 className="text-black">Product not found!</h2>
   }
   console.log(products.map(p => p.category));
   return (
