@@ -10,9 +10,12 @@ import "react-tabs/style/react-tabs.css";
 import profile from '../asset/Images/author-1.jpg';
 import profile2 from '../asset/Images/author-2.jpg';
 import "./SingleProductDetails.css";
+import { useDispatch } from "react-redux";
+import {add} from "../store/cartSlice"
 
 const SingleProductDetails = () => {
   const { bookId } = useParams();
+  const dispatch = useDispatch()
   const [item, setItem] = useState([]);
   const { _id, name, img, summary, category, language, author, price, stock } =
     item;
@@ -27,12 +30,12 @@ const SingleProductDetails = () => {
  const handleAddToCart= (item) => {
     console.log(item)
     const AddToCart = {
-      bookId: _id,
-      bookName: name,
-      bookImage: img,
-      bookAuthor: author,
-      bookPrice: price,
-      bookStock:stock
+      _id: _id,
+      name: name,
+      img: img,
+      author: author,
+      price: price,
+      stock:stock
     }
     console.log(AddToCart)
     fetch('http://localhost:5000/cartProduct',{
@@ -47,6 +50,7 @@ const SingleProductDetails = () => {
       console.log(data)
      
     })
+    dispatch(add(item))
 
     
   }
