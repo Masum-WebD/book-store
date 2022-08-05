@@ -16,8 +16,8 @@ const Shop = () => {
 
             <div className='grid lg:grid-cols-3 gap-8 lg:px-4 px-3'>
                 {
-                    books.map((book) => (
-                        <EachProductForShop key={book._id} book={book}></EachProductForShop>
+                    books.map((EachBook) => (
+                        <EachProductForShop key={EachBook._id} book={EachBook}></EachProductForShop>
                     ))
                 }
             </div>
