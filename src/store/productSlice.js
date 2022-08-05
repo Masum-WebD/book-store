@@ -1,27 +1,46 @@
 const { createSlice } = require("@reduxjs/toolkit")
 
-// const STATUSES= object.freeze(
-//     {
-//         IDLE:"idle",
-//         ERROR:"error",
-//         LOADING:"loading",
-//     }
-// )
+export const STATUSES= Object.freeze(
+    {
+        IDLE:"idle",
+        ERROR:"error",
+        LOADING:"loading",
+    }
+)
 const productSlice =createSlice({
     name: "product",
     initialState:{
         data:[],
-        // status: STATUSES.IDLE
+        status: STATUSES.IDLE,
     },   
     reducers:{
         setProducts(state,action){
             state.data =action.payload
         },
-        remove(state,action){
-            return state.filter(item =>item._id !== action.payload)
-
-        }
+        setStatus(state,action){
+            state.status=action.payload
+        },
+       
     }
 })
-export const {add, remove} =productSlice.actions;
+export const {setProducts,setStatus} =productSlice.actions;
 export default productSlice.reducer;
+
+// thunk 
+export function fetchProducts(){
+   return async function fetchProductsThunk(dispatch,getState){
+        dispatch(setStatus(STATUSES.LOADING))
+        try{
+            const res= await fetch('https://p-hero-bookshop.herokuapp.com/products');
+            const data =await res.json();
+            dispatch(setProducts(data));
+            dispatch(setStatus(STATUSES.IDLE))
+        }
+        catch(err){
+            console.log(err)
+            dispatch(setStatus(STATUSES.ERROR))
+    
+        }
+    }
+    
+}
