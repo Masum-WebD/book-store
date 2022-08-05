@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import EachProductForShop from './EachProductForShop';
 
 const Shop = () => {
-    return (
-        <div>
 
-        </div>
+    const [books, setBooks] = useState([]);
+
+    useEffect(() => {
+        fetch("https://p-hero-bookshop.herokuapp.com/products")
+            .then((res) => res.json())
+            .then((data) => setBooks(data));
+    }, []);
+
+    return (
+        <section className='py-20'>
+
+            <div className='grid lg:grid-cols-3 gap-8 lg:px-4 px-3'>
+                {
+                    books.map((EachBook) => (
+                        <EachProductForShop key={EachBook._id} book={EachBook}></EachProductForShop>
+                    ))
+                }
+            </div>
+
+        </section>
     );
 };
 
