@@ -14,17 +14,17 @@ import SingleProductDetails from "./component/SingleProductDetails";
 import Footer from "./share/Footer/Footer";
 import AddProducts from "./component/Dashboard/AddProducts";
 import Dashboard from "./component/Dashboard/Dashboard";
-import ManageAllOrder from "./component/Dashboard/ManageAllOrder";
 import MyOrders from "./component/Dashboard/MyOrders";
 import MyProfile from "./component/Dashboard/MyProfile";
-import Payment from "./component/Dashboard/Payment";
-import User from "./component/Dashboard/User";
 import AddToCart from "./component/AddToCart/AddToCart";
 import ErrorPage from "./component/ErrorPage";
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Shop from "./component/Shop";
 import StartFromTop from "./component/StartFromTop";
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
+import Ebook from "./component/Dashboard/Ebook";
+import MyWishlist from "./component/Dashboard/MyWishlist";
+import MyReview from "./component/Dashboard/MyReview";
 
 const queryClient = new QueryClient();
 
@@ -46,11 +46,11 @@ function App() {
             <Route path="*" element={<ErrorPage />} />
             <Route path="dashboard" element={<Dashboard />}>
               <Route index element={<MyProfile />}></Route>
-              <Route path="user" element={<User></User>}></Route>
+              <Route path="myEbook" element={<Ebook></Ebook>}></Route>
               <Route path="order" element={<MyOrders />}></Route>
-              <Route path="manageOrders" element={<ManageAllOrder />}></Route>
+              <Route path="myReview" element={<MyReview></MyReview>}></Route>
               <Route path="addProduct" element={<AddProducts />}></Route>
-              <Route path="payment" element={<Payment />}></Route>
+              <Route path="wishlist" element={<MyWishlist></MyWishlist>}></Route>
             </Route>
             <Route path="/create-new-account" element={<Signup />} />
             <Route path="/reset-your-password" element={<ResetPass />} />
