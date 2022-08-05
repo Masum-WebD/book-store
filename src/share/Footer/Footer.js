@@ -9,7 +9,7 @@ import americanExpress from "../../asset/Icons/american-express.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary  text-white">
+    <footer className="footer-bg text-white">
       <ItemsContainer />
       <div
         className="grid under-footer grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
