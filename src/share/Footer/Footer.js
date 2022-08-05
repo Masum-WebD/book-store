@@ -9,7 +9,7 @@ import americanExpress from "../../asset/Icons/american-express.png";
 
 const Footer = () => {
   return (
-    <footer className="footer-bg text-white">
+    <footer className="bg-primary  text-white">
       <ItemsContainer />
       <div
         className="grid under-footer grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
@@ -24,7 +24,7 @@ const Footer = () => {
           <img className="w-14 mx-2" src={americanExpress} alt="" />
         </div>
       </div>
-      <ScrollToTop color="primary"  smooth />
+      <ScrollToTop color="primary" smooth />
 
     </footer>
   );
