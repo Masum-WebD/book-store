@@ -21,7 +21,7 @@ const CheckoutSummary = () => {
             type="text"
             name="subTotal"
             disabled
-            value="$100"
+            value="$50"
           />
         </div>
         <div className="justify-between mt-3 flex">

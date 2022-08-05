@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from "react";
 import SingleProduct from "./SingleProduct";
+import {fetchProducts, STATUSES} from '../store/productSlice'
+import { useDispatch,useSelector } from "react-redux";
+import Loading from "./Loading";
 
 const AllProducts = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetch("https://p-hero-bookshop.herokuapp.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+  // const [products, setProducts] = useState([]);
+  const {data: products , status}=useSelector((state) =>state.product)
+  const dispatch =useDispatch()
+  useEffect(() => { 
+    dispatch(fetchProducts())
+    // fetch("https://p-hero-bookshop.herokuapp.com/products")
+    //   .then((res) => res.json())
+    //   .then((data) => setProducts(data));
+  
   }, []);
+  if(status === STATUSES.LOADING){
+    return <Loading/>
+  }
+  if(status === STATUSES.ERROR){
+    return <h2 className="text-black">Product not found!</h2>
+  }
   console.log(products.map(p => p.category));
   return (
     <div>
