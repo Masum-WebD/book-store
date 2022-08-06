@@ -8,9 +8,11 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
+import { IoIosArrowDown } from 'react-icons/io';
 
 const Header = () => {
   const [user] = useAuthState(auth);
+  console.log(user)
   const items = useSelector((state) => state.cart)
 
   const handleOpen = () => {
@@ -154,13 +156,6 @@ const Header = () => {
           <li className="hover:bg-secondary">
             <NavLink to="/contact">CONTACT US</NavLink>
           </li>
-          {
-            user &&
-
-            <li className="hover:bg-secondary">
-              <NavLink to="/dashboard">DASHBOARD</NavLink>
-            </li>
-          }
         </ul>
       </div>
       <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
@@ -177,8 +172,22 @@ const Header = () => {
         {
           user ?
 
-            <div class="hidden ml-5 lg:block">
-              <button onClick={handleOpen} class="btn btn-secondary text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
+            <div class="dropdown dropdown-end ml-2 hidden lg:block">
+              <label tabindex="0" class="btn btn-outline text-white hover:text-black m-1">
+                <div className="flex items-center">
+                  <div class="avatar">
+                    <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                      <img src={user.photoURL} alt="" />
+                    </div>
+                  </div>
+                  <p className="ml-2">{user.displayName}</p>
+                  <IoIosArrowDown className="text-lg font-bold ml-2" />
+                </div>
+              </label>
+              <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                <Link className="text-black hover:underline hover:underline-offset-2 my-5" to="/dashboard">DASHBOARD</Link>
+                <button onClick={handleOpen} class="btn btn-secondary text-white">Log Out<FiLogOut className="text-xl ml-2" /></button>
+              </ul>
             </div>
 
             :
