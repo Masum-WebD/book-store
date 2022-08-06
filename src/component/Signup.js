@@ -123,7 +123,7 @@ const Signup = () => {
                                             </label>
                                         </div>
 
-                                        <input type="submit" value='Sign Up' className="btn text-white w-full mt-3" />
+                                        <input type="submit" value='Sign Up' className="btn btn-primary text-white w-full mt-3" />
                                     </form>
                                     <div className="divider">OR</div>
                                     <div className="form-control">

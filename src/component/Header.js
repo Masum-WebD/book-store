@@ -1,5 +1,3 @@
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../asset/Images/logo.png";
@@ -10,10 +8,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
+import { IoIosArrowDown } from 'react-icons/io';
 
 const Header = () => {
   const [user] = useAuthState(auth);
-  const items =useSelector((state)=>state.cart)
+  console.log(user)
+  const items = useSelector((state) => state.cart)
 
   const handleOpen = () => {
     Swal.fire({
@@ -104,11 +104,11 @@ const Header = () => {
             {
               user ?
 
-                <button onClick={handleOpen} class="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
+                <button onClick={handleOpen} class="btn btn-secondary text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
 
                 :
 
-                <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
+                <Link to='/login' class="btn btn-secondary text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
 
             }
           </ul>
@@ -156,37 +156,44 @@ const Header = () => {
           <li className="hover:bg-secondary">
             <NavLink to="/contact">CONTACT US</NavLink>
           </li>
-          {
-            user &&
-
-            <li className="hover:bg-secondary">
-              <NavLink to="/dashboard">DASHBOARD</NavLink>
-            </li>
-          }
         </ul>
       </div>
       <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
         <NavLink to="addToCart">
-        <label tabindex="0" class="btn btn-ghost btn-circle">
-        <div class="indicator mr-2 h-6">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-          <span class="badge badge-sm indicator-item">{items.length}</span>
-        </div>
-      </label>
+          <label tabindex="0" class="btn btn-ghost btn-circle">
+            <div class="indicator mr-2 h-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+              <span class="badge badge-sm indicator-item">{items.length}</span>
+            </div>
+          </label>
         </NavLink>
 
 
         {
           user ?
 
-            <div class="hidden ml-5 lg:block">
-              <button onClick={handleOpen} class="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
+            <div class="dropdown dropdown-end ml-2 hidden lg:block">
+              <label tabindex="0" class="btn btn-outline text-white hover:text-black m-1">
+                <div className="flex items-center">
+                  <div class="avatar">
+                    <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                      <img src={user.photoURL} alt="" />
+                    </div>
+                  </div>
+                  <p className="ml-2">{user.displayName}</p>
+                  <IoIosArrowDown className="text-lg font-bold ml-2" />
+                </div>
+              </label>
+              <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                <Link className="text-black hover:underline hover:underline-offset-2 my-5" to="/dashboard">DASHBOARD</Link>
+                <button onClick={handleOpen} class="btn btn-secondary text-white">Log Out<FiLogOut className="text-xl ml-2" /></button>
+              </ul>
             </div>
 
             :
 
             <div class="hidden ml-5 lg:block">
-              <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
+              <Link to='/login' class="btn btn-secondary text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
             </div>
         }
       </div>
