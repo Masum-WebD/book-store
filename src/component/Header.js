@@ -1,5 +1,3 @@
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../asset/Images/logo.png";
@@ -10,10 +8,13 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
+import { IoIosArrowDown } from 'react-icons/io';
+import userProfile from '../asset/Icons/user.png';
 
 const Header = () => {
   const [user] = useAuthState(auth);
-  const items =useSelector((state)=>state.cart)
+  console.log(user)
+  const items = useSelector((state) => state.cart)
 
   const handleOpen = () => {
     Swal.fire({
@@ -65,28 +66,6 @@ const Header = () => {
             <li>
               <NavLink className="text-black" to="/all-products">SHOP</NavLink>
             </li>
-            <li tabindex="0" className="text-black">
-              <Link to="">
-                CATEGORY
-                <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
-              </Link>
-              <ul class="p-2 bg-white">
-                <li className="text-black"><Link to="">Poem</Link></li>
-                <li className="text-black"><Link to="">Novel</Link></li>
-                <li className="text-black"><Link to="">Drama</Link></li>
-                <li className="text-black"><Link to="">History</Link></li>
-                <li className="text-black"><Link to="">Research</Link></li>
-                <li className="text-black"><Link to="">Business</Link></li>
-                <li className="text-black"><Link to="">Biography</Link></li>
-                <li className="text-black"><Link to="">Criticism</Link></li>
-                <li className="text-black"><Link to="">Phycology</Link></li>
-                <li className="text-black"><Link to="">Philosophy</Link></li>
-                <li className="text-black"><Link to="">Science fiction</Link></li>
-                <li className="text-black"><Link to="">Mystery and thriller</Link></li>
-                <li className="text-black"><Link to="">Fantasy and adventure</Link></li>
-                <li className="text-black"><Link to="">Science and technologies</Link></li>
-              </ul>
-            </li>
             <li>
               <NavLink className="text-black" to="/features">FEATURES</NavLink>
             </li>
@@ -104,11 +83,11 @@ const Header = () => {
             {
               user ?
 
-                <button onClick={handleOpen} class="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
+                <button onClick={handleOpen} class="btn btn-secondary text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
 
                 :
 
-                <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
+                <Link to='/login' class="btn btn-secondary text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
 
             }
           </ul>
@@ -125,28 +104,6 @@ const Header = () => {
           <li className="hover:bg-secondary">
             <NavLink to="/all-products">SHOP</NavLink>
           </li>
-          <li tabindex="0">
-            <Link to="">
-              CATEGORY
-              <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
-            </Link>
-            <ul class="p-2 bg-white">
-              <li className="text-black"><Link to="">Poem</Link></li>
-              <li className="text-black"><Link to="">Novel</Link></li>
-              <li className="text-black"><Link to="">Drama</Link></li>
-              <li className="text-black"><Link to="">History</Link></li>
-              <li className="text-black"><Link to="">Research</Link></li>
-              <li className="text-black"><Link to="">Business</Link></li>
-              <li className="text-black"><Link to="">Biography</Link></li>
-              <li className="text-black"><Link to="">Criticism</Link></li>
-              <li className="text-black"><Link to="">Phycology</Link></li>
-              <li className="text-black"><Link to="">Philosophy</Link></li>
-              <li className="text-black"><Link to="">Science fiction</Link></li>
-              <li className="text-black"><Link to="">Mystery and thriller</Link></li>
-              <li className="text-black"><Link to="">Fantasy and adventure</Link></li>
-              <li className="text-black"><Link to="">Science and technologies</Link></li>
-            </ul>
-          </li>
           <li className="hover:bg-secondary">
             <NavLink to=" ">FEATURES</NavLink>
           </li>
@@ -156,37 +113,49 @@ const Header = () => {
           <li className="hover:bg-secondary">
             <NavLink to="/contact">CONTACT US</NavLink>
           </li>
-          {
-            user &&
-
-            <li className="hover:bg-secondary">
-              <NavLink to="/dashboard">DASHBOARD</NavLink>
-            </li>
-          }
         </ul>
       </div>
       <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
         <NavLink to="addToCart">
-        <label tabindex="0" class="btn btn-ghost btn-circle">
-        <div class="indicator mr-2 h-6">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-          <span class="badge badge-sm indicator-item">{items.length}</span>
-        </div>
-      </label>
+          <label tabindex="0" class="btn btn-ghost btn-circle">
+            <div class="indicator mr-2 h-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+              <span class="badge badge-sm indicator-item">{items.length}</span>
+            </div>
+          </label>
         </NavLink>
 
 
         {
           user ?
 
-            <div class="hidden ml-5 lg:block">
-              <button onClick={handleOpen} class="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
+            <div class="dropdown dropdown-end ml-2 hidden lg:block">
+              <label tabindex="0" class="btn btn-outline text-white hover:text-black m-1">
+                <div className="flex items-center">
+                  <div class="avatar">
+                    <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                      <img src={user?.photoURL ? user.photoURL : userProfile} alt="" />
+                    </div>
+                  </div>
+                  <p className="ml-2">{user.displayName}</p>
+                  <IoIosArrowDown className="text-lg font-bold ml-2" />
+                </div>
+              </label>
+              <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                <Link className="text-black hover:underline hover:underline-offset-2 my-2" to="/dashboard">DASHBOARD</Link>
+                <Link className="text-black hover:underline hover:underline-offset-2 my-2" to="/dashboard">My Orders</Link>
+                <Link className="text-black hover:underline hover:underline-offset-2 my-2" to="/dashboard">My Account</Link>
+                <Link className="text-black hover:underline hover:underline-offset-2 my-2" to="/dashboard">My Wishlist</Link>
+                <Link className="text-black hover:underline hover:underline-offset-2 my-2" to="/dashboard">My eBook Library</Link>
+                <Link className="text-black hover:underline hover:underline-offset-2 my-2" to="/dashboard">My Ratings and Reviews</Link>
+                <button onClick={handleOpen} class="btn btn-secondary text-white">Log Out<FiLogOut className="text-xl ml-2" /></button>
+              </ul>
             </div>
 
             :
 
             <div class="hidden ml-5 lg:block">
-              <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
+              <Link to='/login' class="btn btn-secondary text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
             </div>
         }
       </div>
