@@ -18,7 +18,6 @@ import MyOrders from "./component/Dashboard/MyOrders";
 import MyProfile from "./component/Dashboard/MyProfile";
 import AddToCart from "./component/AddToCart/AddToCart";
 import ErrorPage from "./component/ErrorPage";
-import { QueryClient, QueryClientProvider } from 'react-query';
 import Shop from "./component/Shop";
 import StartFromTop from "./component/StartFromTop";
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
@@ -29,42 +28,39 @@ import AddProduct from "./component/Dashboard/AddProduct";
 import AllUsers from "./component/Dashboard/AllUsers";
 import ManageALLOrder from "./component/Dashboard/ManageALLOrder";
 
-const queryClient = new QueryClient();
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
 
-      <QueryClientProvider client={queryClient}>
-        <StartFromTop>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/term" element={<TermPolicy />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/all-products" element={<Shop />} />
-            <Route path="*" element={<ErrorPage />} />
-            <Route path="dashboard" element={<Dashboard />}>
-              <Route index element={<MyProfile />}></Route>
-              <Route path="myEbook" element={<Ebook></Ebook>}></Route>
-              <Route path="order" element={<MyOrders />}></Route>
-              <Route path="myReview" element={<MyReview></MyReview>}></Route>
-              <Route path="addProduct" element={<AddProducts />}></Route>
-              <Route path="addProducts" element={<AddProduct />}></Route>
-              <Route path="allUser" element={<AllUsers/>}></Route>
-              <Route path="manageAllOrders" element={<ManageALLOrder/>} ></Route>
-              <Route path="wishlist" element={<MyWishlist></MyWishlist>}></Route>
-            </Route>
-            <Route path="/create-new-account" element={<Signup />} />
-            <Route path="/reset-your-password" element={<ResetPass />} />
-            <Route path="/book/:bookId" element={<SingleProductDetails />} />
-            <Route path="/addToCart" element={<AddToCart />} />
-          </Routes>
-        </StartFromTop>
-      </QueryClientProvider>
+
+      <StartFromTop>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/term" element={<TermPolicy />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/all-products" element={<Shop />} />
+          <Route path="*" element={<ErrorPage />} />
+          <Route path="dashboard" element={<Dashboard />}>
+            <Route index element={<MyProfile />}></Route>
+            <Route path="myEbook" element={<Ebook></Ebook>}></Route>
+            <Route path="order" element={<MyOrders />}></Route>
+            <Route path="myReview" element={<MyReview></MyReview>}></Route>
+            <Route path="addProduct" element={<AddProducts />}></Route>
+            <Route path="wishlist" element={<MyWishlist></MyWishlist>}></Route>
+          </Route>
+          <Route path="/create-new-account" element={<Signup />} />
+          <Route path="/reset-your-password" element={<ResetPass />} />
+          <Route path="/book/:bookId" element={<SingleProductDetails />} />
+          <Route path="/addToCart" element={<AddToCart />} />
+        </Routes>
+      </StartFromTop>
+
+      
 
       <MessengerCustomerChat
         pageId="107580278651104"
