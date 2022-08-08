@@ -72,7 +72,7 @@ const ResetPass = () => {
                                             </label>
                                         </div>
 
-                                        <input type="submit" value='Reset Password' className="btn text-white w-full mt-3" />
+                                        <input type="submit" value='Reset Password' className="btn btn-primary text-white w-full mt-3" />
                                     </form>
 
 

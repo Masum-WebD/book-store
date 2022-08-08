@@ -168,7 +168,7 @@ const Login = () => {
                   <input
                     type="submit"
                     value="Log in"
-                    className="btn text-white w-full mt-3"
+                    className="btn btn-primary text-white w-full mt-3"
                   />
                 </form>
 
