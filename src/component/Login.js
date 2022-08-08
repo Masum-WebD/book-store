@@ -4,7 +4,7 @@ import bg from "../asset/Images/login-bg.jpg";
 import logo from "../asset/Images/logo.png";
 import auth from "../Firebase/firebase.init";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import googleIcon from "../asset/Icons/google.png";
 import Loading from "./Loading";
@@ -16,6 +16,7 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  
 
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
@@ -56,6 +57,7 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     await signInWithEmailAndPassword(data.email, data.password);
+    
   };
 
   const location = useLocation();
