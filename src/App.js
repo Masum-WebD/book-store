@@ -25,6 +25,9 @@ import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCu
 import Ebook from "./component/Dashboard/Ebook";
 import MyWishlist from "./component/Dashboard/MyWishlist";
 import MyReview from "./component/Dashboard/MyReview";
+import AddProduct from "./component/Dashboard/AddProduct";
+import AllUsers from "./component/Dashboard/AllUsers";
+import ManageALLOrder from "./component/Dashboard/ManageALLOrder";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +53,9 @@ function App() {
               <Route path="order" element={<MyOrders />}></Route>
               <Route path="myReview" element={<MyReview></MyReview>}></Route>
               <Route path="addProduct" element={<AddProducts />}></Route>
+              <Route path="addProducts" element={<AddProduct />}></Route>
+              <Route path="allUser" element={<AllUsers/>}></Route>
+              <Route path="manageAllOrders" element={<ManageALLOrder/>} ></Route>
               <Route path="wishlist" element={<MyWishlist></MyWishlist>}></Route>
             </Route>
             <Route path="/create-new-account" element={<Signup />} />
