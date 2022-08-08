@@ -52,7 +52,16 @@ const Dashboard = () => {
               <Link to="/dashboard/myReview">My Ratings and Review</Link>
             </li>
             <li>
-              <Link to="/dashboard/wishlist">My Wishlist</Link>
+              <Link to="/dashboard/wishlist">WhichList</Link>
+            </li>
+            <li>
+              <Link to="/dashboard/addProducts">Add Product</Link>
+            </li>
+            <li>
+              <Link to="/dashboard/allUser">All Users</Link>
+            </li>
+            <li>
+              <Link to="/dashboard/manageAllOrders">Manage All Order</Link>
             </li>
           </>
         </ul>

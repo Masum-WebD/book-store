@@ -24,12 +24,16 @@ import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCu
 import Ebook from "./component/Dashboard/Ebook";
 import MyWishlist from "./component/Dashboard/MyWishlist";
 import MyReview from "./component/Dashboard/MyReview";
+import AddProduct from "./component/Dashboard/AddProduct";
+import AllUsers from "./component/Dashboard/AllUsers";
+import ManageALLOrder from "./component/Dashboard/ManageALLOrder";
 
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
+
 
       <StartFromTop>
         <Routes>
@@ -55,6 +59,8 @@ function App() {
           <Route path="/addToCart" element={<AddToCart />} />
         </Routes>
       </StartFromTop>
+
+      
 
       <MessengerCustomerChat
         pageId="107580278651104"
