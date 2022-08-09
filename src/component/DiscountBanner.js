@@ -2,12 +2,14 @@ import React from 'react';
 import discountBanner from '../asset/Images/discountBanner.jpg'
 const DiscountBanner = () => {
     return (
+
         <div class="bg-base-200" style={{
             background: `url(${discountBanner})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundAttachment: 'fixed'
         }}>
+
             <div className='bg-green-900/50 py-28'>
                 <div class="text-center">
                     <div class="">
