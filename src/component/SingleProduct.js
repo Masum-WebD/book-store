@@ -8,19 +8,6 @@ const SingleProduct = ({ book }) => {
     navigate(`/book/${id}`);
   };
 
-<<<<<<< HEAD
-        <div className="flex shadow-lg gap-5 p-5 border-box">
-            <img className='object-scale-down h-[160px] w-[115px]' src={img} alt="" />
-            <div className='text-left flex flex-col text-accent'>
-                <h2 className='text-lg font-bold'>{name}</h2>
-                <p>{author}</p>
-                <p>${price}</p>
-                <button style={{ marginTop: 'auto', maxWidth: '155px' }} className='bg-primary text-white py-2 px-5 rounded-sm mt-4 uppercase'>View Product</button>
-            </div>
-        </div>
-
-    );
-=======
   return (
     <div class="flex shadow-lg gap-5 p-5 border-box border rounded-md">
       <img className="object-scale-down h-[160px] w-[115px]" src={img} alt="" />
@@ -38,7 +25,6 @@ const SingleProduct = ({ book }) => {
       </div>
     </div>
   );
->>>>>>> afc8f38b10ae175d5f883e260ed4efde661a2967
 };
 
 export default SingleProduct;
