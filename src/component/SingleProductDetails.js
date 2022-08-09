@@ -28,7 +28,7 @@ const SingleProductDetails = () => {
   }, [bookId]);
 
  const handleAddToCart= (item) => {
-    console.log(item)
+   
     const AddToCart = {
       _id: _id,
       name: name,
@@ -37,7 +37,7 @@ const SingleProductDetails = () => {
       price: price,
       stock:stock
     }
-    console.log(AddToCart)
+ 
     fetch('http://localhost:5000/cartProduct',{
       method:'POST',
       headers:{

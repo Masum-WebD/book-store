@@ -13,9 +13,7 @@ import userProfile from '../asset/Icons/user.png';
 
 const Header = () => {
   const [user] = useAuthState(auth);
-  console.log(user)
   const items = useSelector((state) => state.cart)
-
   const handleOpen = () => {
     Swal.fire({
       title: 'Are you sure for logout?',
@@ -31,6 +29,7 @@ const Header = () => {
           'Logout Successful', ' ', 'success'
         )
         signOut(auth);
+        localStorage.removeItem('accessToken')
       }
     })
   }
