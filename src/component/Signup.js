@@ -8,6 +8,8 @@ import bg from '../asset/Images/login-bg.jpg';
 import logo from '../asset/Images/logo.png';
 import googleIcon from '../asset/Icons/google.png';
 import Swal from 'sweetalert2';
+import useToken from './Hooks/useToken.js'
+
 
 const Signup = () => {
 
@@ -19,13 +21,15 @@ const Signup = () => {
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const [token] =useToken(user||googleUser)
 
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
+    
 
     useEffect(() => {
-        if (user || googleUser) {
+        if (token) {
             navigate(from, { replace: true });
             Swal.fire({
                 position: 'center',
@@ -35,7 +39,7 @@ const Signup = () => {
                 timer: 2000
             })
         }
-    }, [from, user, googleUser, navigate]);
+    }, [from, user, googleUser, navigate,token]);
 
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);

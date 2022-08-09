@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import googleIcon from "../asset/Icons/google.png";
 import Loading from "./Loading";
 import Swal from "sweetalert2";
+import useToken from './Hooks/useToken.js'
 
 const Login = () => {
   const {
@@ -22,6 +23,7 @@ const Login = () => {
     useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+    const [token] =useToken(user || googleUser)
 
   if (googleError?.message === "Firebase: Error (auth/popup-closed-by-user).") {
     Swal.fire({
@@ -65,7 +67,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user || googleUser) {
+    if (token) {
       navigate(from, { replace: true });
       Swal.fire({
         position: "center",
@@ -75,7 +77,7 @@ const Login = () => {
         timer: 2000,
       });
     }
-  }, [from, user, googleUser, navigate]);
+  }, [from, token, navigate]);
 
   return (
     <section>

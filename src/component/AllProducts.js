@@ -21,7 +21,6 @@ const AllProducts = () => {
   if (status === STATUSES.ERROR) {
     return <h2 className="text-black">Product not found!</h2>
   }
-  console.log(products.map(p => p.category));
   return (
     <div>
       <h2 className="uppercase text-primary text-3xl mt-20 font-bold">
