@@ -39,28 +39,28 @@ const Header = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <div class="navbar bg-primary fixed top-0 z-50">
-      <div class="navbar-start lg:mx-5">
-        <div class="dropdown">
-          <label tabindex="0" class="btn btn-ghost lg:hidden">
+    <div className="navbar bg-primary fixed top-0 z-50">
+      <div className="navbar-start lg:mx-5">
+        <div className="dropdown">
+          <label tabIndex="0" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              className="h-5 w-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
               />
             </svg>
           </label>
           <ul
-            tabindex="0"
-            class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            tabIndex="0"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
               <Link to="/">HOME</Link>
@@ -85,12 +85,12 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <Link class="btn btn-ghost normal-case p-0 text-xl" to="/">
+        <Link className="btn btn-ghost normal-case p-0 text-xl" to="/">
           <img className="lg:w-48 w-36 text-white" src={logo} alt="" />
         </Link>
       </div>
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal p-0 text-white font-semibold">
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal p-0 text-white font-semibold">
           <li className="hover:bg-secondary">
             <Link to="/">HOME</Link>
           </li>
@@ -114,19 +114,19 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
+      <div className="navbar-end lg:mx-5 d-flex text-white  font-bold">
         <Link to="">
           <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping} />
         </Link>
         {user ? (
-          <div class="">
-            <button onClick={handleOpen} class="btn text-white">
+          <div className="">
+            <button onClick={handleOpen} className="btn text-white">
               Log Out <FiLogOut className="text-xl ml-2" />
             </button>
           </div>
         ) : (
-          <div class="">
-            <Link to="/login" class="btn btn-sm text-white">
+          <div className="">
+            <Link to="/login" className="btn btn-sm text-white">
               Log in <FiLogIn className="text-xl ml-2" />
             </Link>
           </div>
@@ -134,18 +134,18 @@ const Header = () => {
         {
           user ?
 
-            <div class="">
-              <button onClick={handleOpen} class="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
+            <div className="">
+              <button onClick={handleOpen} className="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
             </div>
 
             :
 
-            <div class="">
-              <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
+            <div className="">
+              <Link to='/login' className="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
             </div>
         }
       </div>
-      
+
       <Modal
         open={open}
         onClose={handleClose}

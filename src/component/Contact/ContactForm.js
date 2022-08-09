@@ -15,23 +15,23 @@ const ContactForm = () => {
                     <div className='md:block lg:flex justify-between'>
                         <div>
                             <label htmlFor="" className='text-xl text-gray-400'>Name(*)</label>
-                            <input type="text" name='name' required class="input  input-accent w-full " />
+                            <input type="text" name='name' required className="input  input-accent w-full " />
                         </div>
                         <div className='md:ml-0 lg:ml-5'>
                             <label htmlFor="" className='text-xl text-gray-400'>Email(*)</label>
-                            <input type="email" name='email' required class="input input-accent w-full " />
+                            <input type="email" name='email' required className="input input-accent w-full " />
                         </div>
                     </div>
                     <div className='mt-5'>
                         <label htmlFor="" className='text-xl text-gray-400'>Subject</label>
-                        <input type="text" name='subject' class="input input-accent text-xl w-full" />
+                        <input type="text" name='subject' className="input input-accent text-xl w-full" />
                     </div>
                     <div className='mt-5'>
                         <label htmlFor="" className='text-xl text-gray-400'>Message</label>
-                        <textarea name='msg' class="textarea textarea-accent text-xl w-full lg:h-60" ></textarea>
+                        <textarea name='msg' className="textarea textarea-accent text-xl w-full lg:h-60" ></textarea>
                     </div>
                     <div className='text-center mt-5'>
-                        <button class="btn btn-accent w-1/2">Submit</button>
+                        <button className="btn btn-accent w-1/2">Submit</button>
                     </div>
                 </form>
             </div>
@@ -42,32 +42,32 @@ const ContactForm = () => {
                     <div className='md:w-full lg:w-1/2'>
                         <h2 className='text-xl text-black font-medium uppercase'>Contact</h2>
 
-                        <div className='text-start  mt-4 font-medium font-serif'>
+                        <div className='text-start  mt-4 font-medium'>
                             <div className='flex items-center'>
-                                <p><FontAwesomeIcon className="mt-2 border border-accent rounded-full text-accent p-3 h-5 w-5" icon={faLocationDot} /> </p>
+                                <p><FontAwesomeIcon className="mt-2 border border-accent rounded-full text-accent p-3 h-5 w-5 hover:bg-primary hover:text-white" icon={faLocationDot} /> </p>
                                 <p className='text-xl text-black ml-6'>Broklin, My Street</p>
                             </div>
                             <div className='flex  items-center'>
-                                <p> <FontAwesomeIcon className="mt-2 border border-accent rounded-full text-accent p-3 h-5 w-5" icon={faCartShopping} /> </p>
+                                <p> <FontAwesomeIcon className="mt-2 border border-accent rounded-full text-accent p-3 h-5 w-5 hover:bg-primary hover:text-white" icon={faCartShopping} /> </p>
                                 <p className='text-xl text-black ml-6'>NY 10036</p>
                             </div>
                             <div className='flex  items-center'>
-                                <p><FontAwesomeIcon className="mt-2 border border-accent  rounded-full text-accent p-3 h-5 w-5" icon={faMagicWandSparkles} /></p>
+                                <p><FontAwesomeIcon className="mt-2 border border-accent  rounded-full text-accent p-3 h-5 w-5 hover:bg-primary hover:text-white" icon={faMagicWandSparkles} /></p>
                                 <p className='text-xl text-black ml-6'>NY 10036</p>
 
                             </div>
                             <div className='flex  items-center'>
-                                <p><FontAwesomeIcon className="mt-2 border  border-accent  rounded-full text-accent p-3 h-5 w-5" icon={faBuilding} /></p>
+                                <p><FontAwesomeIcon className="mt-2 border  border-accent  rounded-full text-accent p-3 h-5 w-5 hover:bg-primary hover:text-white" icon={faBuilding} /></p>
                                 <p className='text-xl text-black ml-6'>United States
                                 </p>
                             </div>
                             <div className='flex items-center'>
-                                <p> <FontAwesomeIcon className="mt-2 border border-accent  rounded-full text-accent p-3 h-5 w-5" icon={faPhone} /></p>
-                                <p className='text-xl text-black ml-6'>+04321 0123456
+                                <p> <FontAwesomeIcon className="mt-2 border border-accent  rounded-full text-accent p-3 h-5 w-5 hover:bg-primary hover:text-white" icon={faPhone} /></p>
+                                <p className='text-xl text-black ml-6 '>+04321 0123456
                                 </p>
                             </div>
                             <div className='flex items-center'>
-                                <p><FontAwesomeIcon className="mt-2 border border-accent  rounded-full text-accent p-3 h-5 w-5" icon={faGlobe} /></p>
+                                <p><FontAwesomeIcon className="mt-2 border border-accent  rounded-full text-accent p-3 h-5 w-5 hover:bg-primary hover:text-white" icon={faGlobe} /></p>
                                 <p className='text-xl text-black ml-6'>http://www.example.com</p>
                             </div>
                         </div>
@@ -78,21 +78,21 @@ const ContactForm = () => {
                     <div className='md:w-full lg:w-1/2'>
                         <h2 className='text-xl text-black font-medium uppercase'>Links</h2>
 
-                        <div className='mt-4 font-medium font-serif'>
+                        <div className='mt-4 font-medium'>
                             <div className='flex  items-center'>
-                                <p><FontAwesomeIcon className="mt-2 border bg-sky-600 text-white rounded-full p-3 h-5 w-5" icon={faFacebookF} /></p>
+                                <p><FontAwesomeIcon className="mt-2 border hover:bg-primary  bg-sky-600 text-white rounded-full p-3 h-5 w-5" icon={faFacebookF} /></p>
                                 <p className='text-xl text-black ml-6'>Facebook</p>
                             </div>
                             <div className='flex  items-center'>
-                                <p><FontAwesomeIcon className="mt-2 border bg-sky-400 text-white rounded-full p-3 h-5 w-5" icon={faTwitter} /></p>
+                                <p><FontAwesomeIcon className="mt-2 border hover:bg-primary bg-sky-400 text-white rounded-full p-3 h-5 w-5" icon={faTwitter} /></p>
                                 <p className='text-xl text-black ml-6'>Twitter</p>
                             </div>
                             <div className='flex  items-center'>
-                                <p><FontAwesomeIcon className="mt-2 border bg-pink-600 text-white rounded-full p-3 h-5 w-5" icon={faGooglePlusG} /></p>
+                                <p><FontAwesomeIcon className="mt-2 border hover:bg-primary bg-pink-600 text-white rounded-full p-3 h-5 w-5" icon={faGooglePlusG} /></p>
                                 <p className='text-xl text-black ml-6'>Google Plus</p>
                             </div>
                             <div className='flex  items-center'>
-                                <p><FontAwesomeIcon className="mt-2 border bg-pink-700 text-white rounded-full p-3 h-5 w-5" icon={faPinterestP} /></p>
+                                <p><FontAwesomeIcon className="mt-2 border hover:bg-primary bg-pink-700 text-white rounded-full p-3 h-5 w-5" icon={faPinterestP} /></p>
                                 <p className='text-xl text-black ml-6'>Google Plus</p>
                             </div>
                         </div>

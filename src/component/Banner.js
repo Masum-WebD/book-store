@@ -4,12 +4,12 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div class="hero mt-16">
+    <div className="hero mt-16">
       <img className="banner" alt="" />
       <div></div>
-      <div class="hero-content text-center text-neutral-content">
-        <div class="max-w-md">
-          <h1 class="mb-5 text-3xl font-bold text-white">
+      <div className="hero-content text-center text-neutral-content">
+        <div className="max-w-md">
+          <h1 className="mb-5 text-3xl font-bold text-white">
             THE EASIEST WAY TO BUY ANY BOOK
           </h1>
 
@@ -18,11 +18,11 @@ const Banner = () => {
               <input
                 type="text"
                 placeholder="Type here"
-                class="input mt-3 text-black   w-full max-w-xs"
+                className="input mt-3 text-black   w-full max-w-xs"
               />
             </div>
             <div className="mt-3">
-              <button class="btn btn-color mx-4">
+              <button className="btn btn-color mx-4">
                 SEARCH
                 <span className="mx-2">
                   <BsSearch />
