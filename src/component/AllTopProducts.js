@@ -8,7 +8,7 @@ const AllTopProducts = () => {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
-  console.log(products);
+
   return (
     <div>
       <h2 className="uppercase text-primary text-3xl mt-16 font-bold">

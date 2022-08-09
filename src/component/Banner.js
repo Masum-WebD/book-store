@@ -20,6 +20,7 @@ const Banner = () => {
   }
 
   return (
+
     <section className="">
       <div class="banner">
         <div className="bg-green-900/70 py-40">
