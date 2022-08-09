@@ -32,7 +32,7 @@ const MyOrders = () => {
       </div>
       <div>
         <div class="grid grid-cols-5 lg:ml-52 rounded-md min-h-screen">
-          <div class="col-span-12">
+          <div class="col-span-full">
             <div class="overflow-auto lg:overflow-visible ">
               <table class="table text-gray-400 border-separate space-y-6 ">
                 <thead class="bg-gray-800 text-gray-500">
@@ -42,6 +42,7 @@ const MyOrders = () => {
                     <th class="p-3 text-left">Quantity</th>
                     <th class="p-3 text-left">Price</th>
                     <th class="p-3 text-left">Status</th>
+                    <th class="p-3 text-left">Details</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -65,8 +66,13 @@ const MyOrders = () => {
                     <td class="p-3">2</td>
                     <td class="p-3 font-bold">$1258</td>
                     <td class="p-3">
-                      <span class="bg-green-400 text-gray-50 rounded-md px-2">
+                      <span class="bg-green-400 text-gray-50 rounded-md p-2">
                         Processing
+                      </span>
+                    </td>
+                    <td class="p-3">
+                      <span class="bg-green-400 text-gray-50 rounded-md p-2">
+                        Details
                       </span>
                     </td>
                   </tr>
@@ -88,8 +94,13 @@ const MyOrders = () => {
                     <td class="p-3">1</td>
                     <td class="p-3 font-bold">$715</td>
                     <td class="p-3">
-                      <span class="bg-red-400 text-gray-50 rounded-md px-2">
+                      <span class="bg-red-400 text-gray-50 rounded-md p-2">
                         Cancelled
+                      </span>
+                    </td>
+                    <td class="p-3">
+                      <span class="bg-red-400 text-gray-50 rounded-md p-2">
+                        Details
                       </span>
                     </td>
                   </tr>
