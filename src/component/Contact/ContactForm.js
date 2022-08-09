@@ -4,11 +4,16 @@ import { faBuilding, faCartShopping, faGlobe, faLocationDot, faMagicWandSparkles
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const formControl = e => {
+    e.preventDefault();
+}
+
 const ContactForm = () => {
     return (
-        <div className='md:block lg:flex justify-around container p-20'>
+        <div className='md:block lg:flex justify-around container lg:p-20 p-4'>
             <div className=' md: w-full lg:w-1/2 text-start'>
                 <h2 className='text-2xl text-black uppercase font-medium'>Contact Form</h2>
+<<<<<<< HEAD
                 <p className='text-xl text-gray-500 mt-6 mb-8'>Send an Email. All Fields with an asterisk (*) are required.</p>
 
                 <form action="https://formsubmit.co/dd3899985@gmail.com" method="POST">
@@ -20,15 +25,35 @@ const ContactForm = () => {
                         <div className='md:ml-0 lg:ml-5'>
                             <label htmlFor="" className='text-xl text-gray-400'>Email(*)</label>
                             <input type="email" name='email' required className="input input-accent w-full " />
+=======
+                <p className='text-xl text-gray-500 mt-6'>Send an Email. All Fields with an asterisk (*) are required.</p>
+                <form onSubmit={formControl} className='mt-8'>
+                    <div className='md:block lg:flex justify-between'>
+                        <div>
+                            <label htmlFor="" className='text-xl text-gray-400'>Name*</label>
+                            <input type="text" class="input  input-accent w-full  text-black" required />
+                        </div>
+                        <div className='md:ml-0 lg:ml-5'>
+                            <label htmlFor="" className='text-xl text-gray-400'>Email*</label>
+                            <input type="email" class="input input-accent w-full  text-black" required />
+>>>>>>> afc8f38b10ae175d5f883e260ed4efde661a2967
                         </div>
                     </div>
                     <div className='mt-5'>
                         <label htmlFor="" className='text-xl text-gray-400'>Subject</label>
+<<<<<<< HEAD
                         <input type="text" name='subject' className="input input-accent text-xl w-full" />
                     </div>
                     <div className='mt-5'>
                         <label htmlFor="" className='text-xl text-gray-400'>Message</label>
                         <textarea name='msg' className="textarea textarea-accent text-xl w-full lg:h-60" ></textarea>
+=======
+                        <input type="text" class="input input-accent w-full text-black" />
+                    </div>
+                    <div className='mt-5'>
+                        <label htmlFor="" className='text-xl text-gray-400'>Message*</label>
+                        <textarea class="textarea textarea-accent w-full lg:h-60 text-black" required></textarea>
+>>>>>>> afc8f38b10ae175d5f883e260ed4efde661a2967
                     </div>
                     <div className='text-center mt-5'>
                         <button className="btn btn-accent w-1/2">Submit</button>
