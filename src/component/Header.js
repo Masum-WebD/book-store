@@ -91,11 +91,9 @@ const Header = () => {
             }
           </ul>
         </div>
-<<<<<<< HEAD
-        <Link className="btn btn-ghost normal-case p-0 text-xl" to="/">
-=======
+
         <NavLink class="btn btn-ghost normal-case p-0 text-xl" to="/">
->>>>>>> afc8f38b10ae175d5f883e260ed4efde661a2967
+
           <img className="lg:w-48 w-36 text-white" src={logo} alt="" />
         </NavLink>
       </div>
@@ -118,30 +116,6 @@ const Header = () => {
           </li>
         </ul>
       </div>
-<<<<<<< HEAD
-      <div className="navbar-end lg:mx-5 d-flex text-white  font-bold">
-        <Link to="">
-          <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping} />
-        </Link>
-        {user ? (
-          <div className="">
-            <button onClick={handleOpen} className="btn text-white">
-              Log Out <FiLogOut className="text-xl ml-2" />
-            </button>
-          </div>
-        ) : (
-          <div className="">
-            <Link to="/login" className="btn btn-sm text-white">
-              Log in <FiLogIn className="text-xl ml-2" />
-            </Link>
-          </div>
-        )}
-        {
-          user ?
-
-            <div className="">
-              <button onClick={handleOpen} className="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
-=======
       <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
         <NavLink to="addToCart">
           <label tabindex="0" class="btn btn-ghost btn-circle">
@@ -177,45 +151,14 @@ const Header = () => {
                 <Link className="text-black hover:underline hover:underline-offset-2 my-2" to="/dashboard">My Ratings and Reviews</Link>
                 <button onClick={handleOpen} class="btn btn-secondary text-white">Log Out<FiLogOut className="text-xl ml-2" /></button>
               </ul>
->>>>>>> afc8f38b10ae175d5f883e260ed4efde661a2967
             </div>
 
             :
-
-<<<<<<< HEAD
-            <div className="">
-              <Link to='/login' className="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
-            </div>
-        }
-      </div>
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <h1 className="text-black text-2xl text-center font-semibold">
-            Are sure for logout?
-          </h1>
-          <div className="mt-6 flex justify-evenly">
-            <button onClick={logout} className="btn">
-              Yes
-            </button>
-            <button onClick={handleClose} className="btn">
-              Cancel
-            </button>
-          </div>
-        </Box>
-      </Modal>
-=======
             <div class="hidden ml-5 lg:block">
               <Link to='/login' class="btn btn-secondary text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
             </div>
         }
       </div>
->>>>>>> afc8f38b10ae175d5f883e260ed4efde661a2967
     </div>
   );
 };

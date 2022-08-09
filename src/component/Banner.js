@@ -20,32 +20,7 @@ const Banner = () => {
   }
 
   return (
-<<<<<<< HEAD
-    <div className="hero mt-16">
-      <img className="banner" alt="" />
-      <div></div>
-      <div className="hero-content text-center text-neutral-content">
-        <div className="max-w-md">
-          <h1 className="mb-5 text-3xl font-bold text-white">
-            THE EASIEST WAY TO BUY ANY BOOK
-          </h1>
 
-          <div className="background flex ">
-            <div>
-              <input
-                type="text"
-                placeholder="Type here"
-                className="input mt-3 text-black   w-full max-w-xs"
-              />
-            </div>
-            <div className="mt-3">
-              <button className="btn btn-color mx-4">
-                SEARCH
-                <span className="mx-2">
-                  <BsSearch />
-                </span>
-              </button>
-=======
     <section className="">
       <div class="banner">
         <div className="bg-green-900/70 py-40">
@@ -54,7 +29,6 @@ const Banner = () => {
               <h1 class="mb-5 text-5xl font-bold leading-[60px] text-white">
                 THE EASIEST WAY TO<br /> BUY ANY BOOK
               </h1>
->>>>>>> afc8f38b10ae175d5f883e260ed4efde661a2967
             </div>
           </div>
         </div>

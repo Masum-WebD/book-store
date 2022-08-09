@@ -2,11 +2,8 @@ import React from 'react';
 import about from '../../../asset/Images/about.png'
 const AboutDetails = () => {
     return (
-<<<<<<< HEAD
         <div className='container mx-auto sm:grid-cols-1 md:grid-cols-1 grid lg:grid-cols-2 mt-20 mb-10'>
-=======
-        <div className='container mx-auto grid lg:grid-cols-2 lg:mt-20 mt-12 mb-10'>
->>>>>>> afc8f38b10ae175d5f883e260ed4efde661a2967
+
             <div>
                 <img src={about} className="w-full p-4" alt="" />
             </div>
