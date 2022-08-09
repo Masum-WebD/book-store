@@ -12,7 +12,6 @@ import ResetPass from "./component/ResetPass";
 import Signup from "./component/Signup";
 import SingleProductDetails from "./component/SingleProductDetails";
 import Footer from "./share/Footer/Footer";
-import AddProducts from "./component/Dashboard/AddProducts";
 import Dashboard from "./component/Dashboard/Dashboard";
 import MyOrders from "./component/Dashboard/MyOrders";
 import MyProfile from "./component/Dashboard/MyProfile";
@@ -50,7 +49,9 @@ function App() {
             <Route path="myEbook" element={<Ebook></Ebook>}></Route>
             <Route path="order" element={<MyOrders />}></Route>
             <Route path="myReview" element={<MyReview></MyReview>}></Route>
-            <Route path="addProduct" element={<AddProducts />}></Route>
+            <Route path="addProduct" element={<AddProduct></AddProduct>}></Route>
+            <Route path="manageUsers" element={<AllUsers></AllUsers>}></Route>
+            <Route path="manageOrders" element={<ManageALLOrder></ManageALLOrder>}></Route>
             <Route path="wishlist" element={<MyWishlist></MyWishlist>}></Route>
           </Route>
           <Route path="/create-new-account" element={<Signup />} />
