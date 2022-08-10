@@ -8,7 +8,7 @@ const Contact = () => {
         <div>
             <ContactBanner />
             <ContactForm />
-            <OfferNews />
+
         </div>
     );
 };
