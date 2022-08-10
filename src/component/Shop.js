@@ -47,7 +47,6 @@ const Shop = () => {
                     ))
                 }
 
-
             </div>
             <div class="drawer-side">
                 <label for="my-drawer-2" class="drawer-overlay"></label>
