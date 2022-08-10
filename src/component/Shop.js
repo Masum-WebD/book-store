@@ -3,13 +3,36 @@ import EachProductForShop from './EachProductForShop';
 import Loading from './Loading';
 import { MdOutlineCategory } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const Shop = () => {
 
-    const { data: books, isLoading } = useQuery("AllProducts", () => fetch("https://p-hero-bookshop.herokuapp.com/products").then(res => res.json()));
+    const { data, isLoading, refetch } = useQuery("AllProducts", () => fetch("https://p-hero-bookshop.herokuapp.com/products").then(res => res.json()));
+
+    const [filteredItem, setFilteredItem] = useState([]);
+
+    useEffect(() => {
+
+        setFilteredItem(data)
+
+    }, [data])
+
+    const filterResult = (categoryName) => {
+
+        const result = data?.filter((curDate) => {
+            return curDate.category === categoryName;
+        });
+
+        setFilteredItem(result);
+
+    }
 
     if (isLoading) {
         return <Loading />
+    }
+
+    if (filteredItem === undefined) {
+        refetch();
     }
 
     return (
@@ -19,7 +42,7 @@ const Shop = () => {
                 <label for="my-drawer-2" class="btn btn-primary absolute top-6 drawer-button lg:hidden">Open drawer</label>
 
                 {
-                    books?.map((EachBook) => (
+                    filteredItem?.map((EachBook) => (
                         <EachProductForShop key={EachBook._id} book={EachBook}></EachProductForShop>
                     ))
                 }
@@ -28,23 +51,23 @@ const Shop = () => {
             </div>
             <div class="drawer-side">
                 <label for="my-drawer-2" class="drawer-overlay"></label>
-                <ul class="text-left shadow-inner p-10 overflow-y-auto w-80 text-base-content">
+                <ul class="text-left p-10 overflow-y-auto w-80 text-base-content bg-white">
                     <h1 className='text-2xl text-black font-semibold text-left'><MdOutlineCategory className='inline-block relative bottom-[2px]' /> Categories</h1>
                     <div className='border border-gray-200 mt-3'></div>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">Poem</Link></li>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">Novel</Link></li>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">Drama</Link></li>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">History</Link></li>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">Research</Link></li>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">Business</Link></li>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">Criticism</Link></li>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">Biography</Link></li>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">Phycology</Link></li>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">Philosophy</Link></li>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">Science fiction</Link></li>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">Mystery and thriller</Link></li>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">Fantasy and adventure</Link></li>
-                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link to="">Science and technologies</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Poem')} to="">Poem</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Novel')} to="">Novel</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Drama')} to="">Drama</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('History')} to="">History</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Research')} to="">Research</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Business')} to="">Business</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Criticism')} to="">Criticism</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Biography')} to="">Biography</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Phycology')} to="">Phycology</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Philosophy')} to="">Philosophy</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Science fiction')} to="">Science fiction</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Mystery and thriller')} to="">Mystery and thriller</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Fantasy and adventure')} to="">Fantasy and adventure</Link></li>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Science and technologies')} to="">Science and technologies</Link></li>
                 </ul>
 
             </div>
