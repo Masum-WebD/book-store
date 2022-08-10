@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from "react";
+
 import "./Banner.css";
 
 const Banner = () => {
 
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState('""');
   const [books, setBooks] = useState([]);
 
+
+
+
   useEffect(() => {
-    const url = `http://localhost:5000/product?name=${searchText}`;
+    const url = `https://p-hero-bookshop.herokuapp.com/product/?name=${searchText}`;
     fetch(url)
       .then(res => res.json())
       .then(data => setBooks(data))
   }, [searchText])
 
-
   const handleSubmit = e => {
     e.preventDefault()
     setSearchText(e.target.name.value)
   }
+
+
 
   return (
     <section className="">
@@ -41,7 +46,7 @@ const Banner = () => {
           </form>
           <div>
             <h3>
-              {books.length}
+              {books?.map(book => <p className="text-accent">{book.name}</p>)}
             </h3>
           </div>
 
