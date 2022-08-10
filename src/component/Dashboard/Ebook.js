@@ -4,10 +4,10 @@ import "./Ebook.css";
 const Ebook = () => {
   return (
     <div>
-      <div className="text-left ml-10">
-        <h2 className="text-2xl text-gray-700 font-bold">My eBook Library</h2>
-        <h3 className="text-xl text-gray-500">Your eBook : 2</h3>
-      </div>
+      <div className="my-5 text-left border-2 border-t-4 border-gray-400 border-t-green-400 rounded-md mx-10 p-5">
+      <h2 className="text-2xl font-bold text-gray-700">My EBook Library</h2>
+      <h3 className="text-xl text-gray-500">Your Ebook : 2</h3>
+    </div>
       <div>
         <div class="grid grid-cols-5 mx-10 min-h-screen">
           <div class="col-span-12">
