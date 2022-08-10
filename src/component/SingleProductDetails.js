@@ -12,6 +12,7 @@ import profile2 from '../asset/Images/author-2.jpg';
 import "./SingleProductDetails.css";
 import { useDispatch } from "react-redux";
 import {add} from "../store/cartSlice"
+import { AiOutlineHeart } from 'react-icons/ai';
 
 const SingleProductDetails = () => {
   const { bookId } = useParams();
@@ -28,8 +29,7 @@ const SingleProductDetails = () => {
   }, [bookId]);
 
  const handleAddToCart= (item) => {
-   
-    const AddToCart = {
+      const AddToCart = {
       _id: _id,
       name: name,
       img: img,
@@ -37,7 +37,6 @@ const SingleProductDetails = () => {
       price: price,
       stock:stock
     }
- 
     fetch('http://localhost:5000/cartProduct',{
       method:'POST',
       headers:{
@@ -48,11 +47,29 @@ const SingleProductDetails = () => {
     .then(res => res.json())
     .then(data=>{
       console.log(data)
-     
     })
     dispatch(add(item))
-
-    
+  }
+  const handleWishList=() => {
+    const product = {
+      _id: _id,
+      name: name,
+      img: img,
+      author: author,
+      price: price,
+      stock:stock
+    }
+    fetch('http://localhost:5000/wishList',{
+      method:'PUT',
+      headers:{
+        'content-type':'application/json'
+      },
+      body: JSON.stringify(product)
+    })
+    .then(res => res.json())
+    .then(data=>{
+      console.log(data)
+    })
   }
 
   return (
@@ -81,14 +98,14 @@ const SingleProductDetails = () => {
               <p className="text-xl text-left text-gray-600">
                 In Stock: {stock}
               </p>
-            </div>
-            <div class="divider"></div>
+              <button onClick={handleWishList} className='text-start mt-[10px] text-black text-lg flex hover:text-primary pt-5'> <AiOutlineHeart className="text-center mt-[5px]"/> Add to wishlist</button>              
+            </div>  
+            <div class="divider"></div>    
             <div>
               <div className="flex flex-row lg:gap-6 gap-3">
                 <div className="flex items-center justify-center">
                 <button class="btn btn-primary text-white">
                     Read The Book <VscBook className="text-lg ml-2" />
-                    
                   </button>
                 </div>
                 <div>
