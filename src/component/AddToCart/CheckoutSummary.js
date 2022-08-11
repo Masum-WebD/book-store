@@ -1,6 +1,9 @@
 import React from 'react';
 
+
 const CheckoutSummary = () => {
+ 
+  
   return (
     <div className="p-5 border border-red-100">
       <div className="py-4 border-b border-red-100">

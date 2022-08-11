@@ -10,11 +10,12 @@ import "react-tabs/style/react-tabs.css";
 import profile from '../asset/Images/author-1.jpg';
 import profile2 from '../asset/Images/author-2.jpg';
 import "./SingleProductDetails.css";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import {add} from "../store/cartSlice"
 import { AiOutlineHeart } from 'react-icons/ai';
 
 const SingleProductDetails = () => {
+  const {products }= useSelector((state)=>state.cart)
   const { bookId } = useParams();
   const dispatch = useDispatch()
   const [item, setItem] = useState([]);
@@ -259,7 +260,7 @@ const SingleProductDetails = () => {
               </div>
 
               <p class="mb-2 font-light text-black">Thanks for fast delivery. The book quality is good.</p>
-              <a href="#" class="block mb-5 text-sm font-medium link text-primary">Read more</a>
+              <a href="# " class="block mb-5 text-sm font-medium link text-primary">Read more</a>
             </article>
 
 
@@ -280,7 +281,7 @@ const SingleProductDetails = () => {
               </div>
 
               <p class="mb-2 font-light text-black">This is my third order from book store. As a book lover I can say proudly that the site is very helpful for a book reader. Thank you book store.</p>
-              <a href="#" class="block mb-5 text-sm font-medium link text-primary">Read more</a>
+              <a href="# " class="block mb-5 text-sm font-medium link text-primary">Read more</a>
             </article>
 
 

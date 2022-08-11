@@ -8,6 +8,7 @@ import {remove} from "../../store/cartSlice"
 const AddToCart = () => {
   const [cartProduct, setcartProduct] = useState([]);
   const products = useSelector((state)=>state.cart)
+  console.log(products)
   const dispatch =useDispatch()
 
   useEffect(() => {
