@@ -1,10 +1,10 @@
 import React from "react";
-import "./Myorders.css";
+import "./MyOrders.css";
 
 const MyOrders = () => {
   return (
     <div className="mx-10">
-      <div className="grid lg:grid-cols-2 border-2 border-t-4 border-gray-400 border-t-green-400 rounded-md lg:mx-48">
+      <div className="grid lg:grid-cols-2 border-2 border-t-4 border-gray-400 border-t-green-400 rounded-md">
         <div className="my-5">
           <h2 className="text-2xl font-bold text-gray-700">My Orders</h2>
           <h3 className="text-xl text-gray-500">Your Total Order : 2</h3>
@@ -31,7 +31,7 @@ const MyOrders = () => {
         </div>
       </div>
       <div>
-        <div class="grid grid-cols-5 lg:ml-52 rounded-md min-h-screen">
+        <div class="grid grid-cols-5 rounded-md min-h-screen">
           <div class="col-span-full">
             <div class="overflow-auto lg:overflow-visible ">
               <table class="table text-gray-400 border-separate space-y-6 ">

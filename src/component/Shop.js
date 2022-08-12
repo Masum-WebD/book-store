@@ -1,11 +1,12 @@
-import { useQuery } from 'react-query';
-import EachProductForShop from './EachProductForShop';
-import Loading from './Loading';
-import { MdOutlineCategory } from 'react-icons/md';
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useQuery } from "react-query";
+import EachProductForShop from "./EachProductForShop";
+import Loading from "./Loading";
+import { MdOutlineCategory } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Shop = () => {
+
 
     const { data, isLoading } = useQuery("AllProducts", () => fetch("https://p-hero-bookshop.herokuapp.com/products").then(res => res.json()));
 
@@ -91,6 +92,6 @@ const Shop = () => {
             </div>
         </div>
     );
-};
+  };
 
 export default Shop;

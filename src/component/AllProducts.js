@@ -1,25 +1,24 @@
 import React, { useEffect } from "react";
 import SingleProduct from "./SingleProduct";
-import { fetchProducts, STATUSES } from '../store/productSlice'
+import { fetchProducts, STATUSES } from "../store/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
 
 const AllProducts = () => {
   // const [products, setProducts] = useState([]);
-  const { data: products, status } = useSelector((state) => state.product)
-  const dispatch = useDispatch()
+  const { data: products, status } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchProducts())
-    // fetch("https://p-hero-bookshop.herokuapp.com/products")
+    dispatch(fetchProducts());
+    // fetch("http://localhost:5000/products")
     //   .then((res) => res.json())
     //   .then((data) => setProducts(data));
-
   }, [dispatch]);
   if (status === STATUSES.LOADING) {
-    return <Loading />
+    return <Loading />;
   }
   if (status === STATUSES.ERROR) {
-    return <h2 className="text-black">Product not found!</h2>
+    return <h2 className="text-black">Product not found!</h2>;
   }
   return (
     <div>
