@@ -11,7 +11,7 @@ const AddToCart = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("http://localhost:5000/cartProduct")
+    fetch("https://p-hero-bookshop.herokuapp.com/cartProduct")
       .then((res) => res.json())
       .then((data) => setcartProduct(data));
   }, []);
