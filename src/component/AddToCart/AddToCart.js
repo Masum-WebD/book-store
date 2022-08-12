@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { useSelector,useDispatch } from "react-redux";
 import CartProduct from "./CartProduct";
 import CheckoutSummary from "./CheckoutSummary";
 import ShopUserInfo from "./ShopUserInfo";
-import {remove} from "../../store/cartSlice"
+import useCartBooks from "../Hooks/useCartBooks";
 
 const AddToCart = () => {
-  const [cartProduct, setcartProduct] = useState([]);
-  const products = useSelector((state)=>state.cart)
-  console.log(products)
-  const dispatch =useDispatch()
-
-  useEffect(() => {
-    fetch("https://p-hero-bookshop.herokuapp.com/cartProduct")
+ let [cartProduct,setcartProduct] =useCartBooks()
+ const handleDeleteBtn = (id) => {
+  const request = window.confirm("Are you sure you want to delete");
+  if (request) {
+    fetch(`http://localhost:5000/cartProduct/${id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
-      .then((data) => setcartProduct(data));
-  }, []);
-  const handleRemove=(_id)=>{
-    dispatch(remove(_id))
+      .then((data) => {
+        console.log(data);
+        const remaining = cartProduct.filter((product) => product._id !== id);
+        setcartProduct(remaining);
+      });
   }
+};
   
-
+ 
   return (
     <div className="bg-[#F9FAFB]">
       <div className="pt-16 lg:pt-32 pb-16 flex flex-col-reverse lg:flex-row gap-10 text-left text-neutral container mx-auto">
@@ -28,19 +28,17 @@ const AddToCart = () => {
           <ShopUserInfo />
         </div>
         <div className=" lg:w-1/2 px-6 lg:px-0">
-          <h2 className="text-2xl text-left text-neutral font-medium mt-5 lg:mt-0 mb-4">Order Summary</h2>
+          <h2 className="text-2xl text-left text-neutral font-medium mt-5 lg:mt-0 mb-4">
+            Order Summary
+          </h2>
           <div className=" bg-white">
-            {/* {cartProduct.map((p) => (
-              <CartProduct key={p._id} product={p}></CartProduct>
-            ))} */}
-            {products.map((p) => (
-              <CartProduct key={p._id} product={p} handleRemove={handleRemove}></CartProduct>
+            {cartProduct.map((p) => (
+              <CartProduct key={p._id} product={p} handleDeleteBtn={handleDeleteBtn}></CartProduct>
             ))}
-            <CheckoutSummary/>
+            <CheckoutSummary />
           </div>
         </div>
       </div>
-
     </div>
   );
 };

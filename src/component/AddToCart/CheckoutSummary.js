@@ -1,7 +1,17 @@
 import React from 'react';
+import useCartBooks from "../Hooks/useCartBooks";
 
 
 const CheckoutSummary = () => {
+  const [cartProduct] =useCartBooks()
+
+  let cartTotal = cartProduct.reduce((cPrice,PrPrice)=>
+    cPrice+ parseInt(PrPrice.price),0
+  );
+  let tax  = (cartTotal /100) *2;
+  let shopping= 50;
+
+  const subTotal = cartTotal + tax +shopping
  
   
   return (
@@ -14,7 +24,7 @@ const CheckoutSummary = () => {
             type="text"
             name="subTotal"
             disabled
-            value="$100"
+            value={cartTotal}
           />
         </div>
         <div className="justify-between mt-3 flex">
@@ -24,7 +34,7 @@ const CheckoutSummary = () => {
             type="text"
             name="subTotal"
             disabled
-            value="$50"
+            value={shopping}
           />
         </div>
         <div className="justify-between mt-3 flex">
@@ -34,7 +44,7 @@ const CheckoutSummary = () => {
             type="text"
             name="subTotal"
             disabled
-            value="$100"
+            value={tax }
           />
         </div>
       </div>
@@ -45,7 +55,7 @@ const CheckoutSummary = () => {
           type="text"
           name="subTotal"
           disabled
-          value="$300"
+          value={subTotal }
         />
       </div>
       <button className='btn btn-primary  hover:bg-[#3f9866] text-white rounded-sm mt-4 w-full'>Place Order</button>

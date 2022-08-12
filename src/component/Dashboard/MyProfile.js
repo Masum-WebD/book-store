@@ -1,9 +1,16 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/firebase.init";
 
 const MyProfile = () => {
+  const [user] = useAuthState(auth);
+  console.log(user);
   return (
     <div>
-      <h2 className="text-3xl font-bold text-gray-700">Personal Information | <a className="text-xl text-primary">Edit Profile</a></h2>
+      <h2 className="text-3xl font-bold text-gray-700">
+        Personal Information |{" "}
+        <a className="text-xl text-primary">Edit Profile</a>
+      </h2>
       <div class="divider"></div>
       <form className="mx-10">
         <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -18,7 +25,7 @@ const MyProfile = () => {
               type="text"
               id="first_name"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="John Smith"
+              placeholder={user.displayName}
               required=""
             />
           </div>
@@ -33,60 +40,56 @@ const MyProfile = () => {
               type="text"
               id="address"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="720 Road / D block, London"
+              placeholder={user.address}
               required=""
             />
           </div>
-      
         </div>
         <div className="mb-6">
-            <label
-              for="mobile"
-              class="block mb-2 text-left font-medium text-gray-900 text-2xl dark:text-gray-300"
-            >
-              Mobile Number <a className="text-sm text-primary">Add Mobile Number</a>
-            </label>
-            <input
-              type="number"
-              id="mobile"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="0192023409"
-              required=""
-            />
-      
-          </div>
+          <label
+            for="mobile"
+            class="block mb-2 text-left font-medium text-gray-900 text-2xl dark:text-gray-300"
+          >
+            Mobile Number
+          </label>
+          <input
+            type="number"
+            id="mobile"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder={user.phoneNumber}
+            required=""
+          />
+        </div>
         <div className="mb-6">
-            <label
-              for="email"
-              class="block mb-2 text-left font-medium text-gray-900 text-2xl dark:text-gray-300"
-            >
-              Email Address <a className="text-sm text-primary">Add Email Address</a>
-            </label>
-            <input
-              type="email"
-              id="email"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="john.doe@company.com"
-              required=""
-            />
-      
-          </div>
+          <label
+            for="email"
+            class="block mb-2 text-left font-medium text-gray-900 text-2xl dark:text-gray-300"
+          >
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="email"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder={user.email}
+            required=""
+          />
+        </div>
         <div className="mb-6">
-            <label
-              for="password"
-              class="block mb-2 text-left font-medium text-gray-900 text-2xl dark:text-gray-300"
-            >
-              Password <a className="text-sm text-primary">Change Password</a>
-            </label>
-            <input
-              type="password"
-              id="password"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="•••••••••"
-              required=""
-            />
-      
-          </div>
+          <label
+            for="password"
+            class="block mb-2 text-left font-medium text-gray-900 text-2xl dark:text-gray-300"
+          >
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="•••••••••"
+            required=""
+          />
+        </div>
         <div class="flex items-start mb-6">
           <div class="flex items-center h-5">
             <input

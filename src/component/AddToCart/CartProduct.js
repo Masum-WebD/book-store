@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CheckoutSummary from "./CheckoutSummary";
 import React, {useState} from "react"
 
-const CartProduct = ({ product,handleRemove }) => {
+const CartProduct = ({ product,handleDeleteBtn }) => {
   const { name, author, price, img,_id } =
     product;
+    
  
   return (
     <div className="p-5 rounded border border-red-100">
@@ -21,7 +22,7 @@ const CartProduct = ({ product,handleRemove }) => {
               <p className="font-medium">{name} </p>
               <p className="text-sm">by {author}</p>
             </div>
-            <button onClick={()=>handleRemove(_id)} >
+            <button onClick={()=>handleDeleteBtn(_id)} >
               <FontAwesomeIcon className="text-[#fa6a6a]" icon={faTrashCan}></FontAwesomeIcon>
             </button>
           </div>
