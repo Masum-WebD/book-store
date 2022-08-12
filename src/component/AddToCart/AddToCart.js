@@ -4,6 +4,7 @@ import ShopUserInfo from "./ShopUserInfo";
 import useCartBooks from "../Hooks/useCartBooks";
 
 const AddToCart = () => {
+
  let [cartProduct,setcartProduct] =useCartBooks()
  const handleDeleteBtn = (id) => {
   const request = window.confirm("Are you sure you want to delete");
@@ -11,14 +12,7 @@ const AddToCart = () => {
     fetch(`http://localhost:5000/cartProduct/${id}`, {
       method: "DELETE",
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        const remaining = cartProduct.filter((product) => product._id !== id);
-        setcartProduct(remaining);
-      });
-  }
-};
+
   
  
   return (

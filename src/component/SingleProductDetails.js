@@ -26,7 +26,7 @@ const SingleProductDetails = () => {
     item;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${bookId}`)
+    fetch(`https://p-hero-bookshop.herokuapp.com/product/${bookId}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
   }, [bookId]);
@@ -40,7 +40,7 @@ const SingleProductDetails = () => {
       price: price,
       stock: stock,
     };
-    fetch("http://localhost:5000/cartProduct", {
+    fetch("https://p-hero-bookshop.herokuapp.com/cartProduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -64,7 +64,7 @@ const SingleProductDetails = () => {
       price: price,
       stock: stock,
     };
-    fetch("http://localhost:5000/wishList", {
+    fetch("https://p-hero-bookshop.herokuapp.com/wishList", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
