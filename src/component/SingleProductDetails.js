@@ -70,7 +70,7 @@ const SingleProductDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-          toast.success("Product added successfully");
+          toast.success("Product Added to Wishlist Successfully");
         }
       });
   };
