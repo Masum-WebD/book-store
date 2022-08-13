@@ -10,34 +10,37 @@ import "react-tabs/style/react-tabs.css";
 import profile from "../asset/Images/author-1.jpg";
 import profile2 from "../asset/Images/author-2.jpg";
 import "./SingleProductDetails.css";
+
 import { useDispatch } from "react-redux";
 import { add } from "../store/cartSlice";
 import { AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-toastify";
-
+import useCartBooks from "./Hooks/useCartBooks";
 const SingleProductDetails = () => {
+  // const {products }= useSelector((state)=>state.cart)
   const { bookId } = useParams();
+  
   const dispatch = useDispatch();
   const [item, setItem] = useState([]);
   const { _id, name, img, summary, category, language, author, price, stock } =
     item;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${bookId}`)
+    fetch(`https://p-hero-bookshop.herokuapp.com/product/${bookId}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
   }, [bookId]);
 
   const handleAddToCart = (item) => {
     const AddToCart = {
-      _id: _id,
+      _id:_id,
       name: name,
       img: img,
       author: author,
       price: price,
       stock: stock,
     };
-    fetch("http://localhost:5000/cartProduct", {
+    fetch("https://p-hero-bookshop.herokuapp.com/cartProduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -47,8 +50,9 @@ const SingleProductDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+       
       });
-    dispatch(add(item));
+   
   };
 
   const handleWishList = () => {
@@ -60,7 +64,7 @@ const SingleProductDetails = () => {
       price: price,
       stock: stock,
     };
-    fetch("http://localhost:5000/wishList", {
+    fetch("https://p-hero-bookshop.herokuapp.com/wishList", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -335,6 +339,7 @@ const SingleProductDetails = () => {
                 </svg>
               </div>
 
+
               <p class="mb-2 font-light text-black">
                 Thanks for fast delivery. The book quality is good.
               </p>
@@ -405,14 +410,13 @@ const SingleProductDetails = () => {
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                 </svg>
               </div>
-
               <p class="mb-2 font-light text-black">
                 This is my third order from book store. As a book lover I can
                 say proudly that the site is very helpful for a book reader.
                 Thank you book store.
               </p>
               <a
-                href="#"
+                href="# "
                 class="block mb-5 text-sm font-medium link text-primary"
               >
                 Read more

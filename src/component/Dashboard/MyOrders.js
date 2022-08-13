@@ -52,7 +52,7 @@ const MyOrders = () => {
                         <img
                           class="rounded-md h-12 w-12  object-cover"
                           src="https://ds.rokomari.store/rokomari110/ProductNew20190903/260X372/Harry_Potter_and_the_Deathly_Hallows_(Se-J.K_Rowling-699a7-122325.jpg"
-                          alt="unsplash image"
+                          alt="unsplash-image"
                         />
                         <div class="ml-3">
                           <div class="">

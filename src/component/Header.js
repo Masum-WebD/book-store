@@ -10,11 +10,11 @@ import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
 import { IoIosArrowDown } from "react-icons/io";
 import userProfile from "../asset/Icons/user.png";
+import useCartBooks from "./Hooks/useCartBooks";
 
 const Header = () => {
   const [user] = useAuthState(auth);
-
-  const items = useSelector((state) => state.cart);
+  const [cartProduct] =useCartBooks()
   const handleOpen = () => {
     Swal.fire({
       title: "Are you sure for logout?",
@@ -28,7 +28,7 @@ const Header = () => {
       if (result.isConfirmed) {
         Swal.fire("Logout Successful", " ", "success");
         signOut(auth);
-        localStorage.removeItem("accessToken");
+        localStorage.removeItem("accessToken*");
       }
     });
   };
@@ -142,7 +142,7 @@ const Header = () => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span class="badge badge-sm indicator-item">{items.length}</span>
+              <span class="badge badge-sm indicator-item">{cartProduct.length}</span>
             </div>
           </label>
         </NavLink>

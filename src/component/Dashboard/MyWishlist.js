@@ -5,12 +5,23 @@ const MyWishlist = () => {
   const [wishList, setWishList] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/wishList")
+    fetch("https://p-hero-bookshop.herokuapp.com/wishList")
       .then((res) => res.json())
       .then((data) => setWishList(data));
   }, []);
-  const handleRemove = (_id) => {
-    return wishList.filter((item) => item._id !== _id);
+  const handleDeleteBtn = (_id) => {
+    const request = window.confirm("Are you sure you want to delete");
+    if (request) {
+      fetch(`http://localhost:5000/wishList/${_id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          const remaining = wishList.filter((product) => product._id !== _id);
+          setWishList(remaining);
+        });
+    }
   };
 
   return (
@@ -26,7 +37,7 @@ const MyWishlist = () => {
           <MyWishListProduct
             key={p._id}
             product={p}
-            handleRemove={handleRemove}
+            handleRemove={handleDeleteBtn}
           ></MyWishListProduct>
         ))}
       </div>

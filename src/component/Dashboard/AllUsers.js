@@ -4,18 +4,33 @@ import Loading from "../Loading";
 import UserRow from "./UserRow";
 
 const AllUsers = () => {
-  const {
+  
+  let {
     data: users,
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch("http://localhost:5000/user", {
+    fetch("https://p-hero-bookshop.herokuapp.com/user", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     }).then((res) => res.json())
   );
+
+  const handleRemoveBtn = (id) => {
+    const request = window.confirm("Are you sure you want to Remove");
+    if (request) {
+      fetch(`http://localhost:5000/user/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+           users.filter((user) => user._id !== id);
+        });
+    }
+  };
   if (isLoading) {
     return <Loading></Loading>;
   }
@@ -44,6 +59,7 @@ const AllUsers = () => {
                 user={user}
                 index={index}
                 refetch={refetch}
+                handleRemoveBtn={handleRemoveBtn}
               ></UserRow>
             ))}
           </tbody>

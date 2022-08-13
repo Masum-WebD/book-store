@@ -4,7 +4,7 @@ import bg from "../asset/Images/login-bg.jpg";
 import logo from "../asset/Images/logo.png";
 import auth from "../Firebase/firebase.init";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { useSignInWithEmailAndPassword} from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import googleIcon from "../asset/Icons/google.png";
 import Loading from "./Loading";
@@ -17,13 +17,13 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  
+
 
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-    const [token] =useToken(user || googleUser)
+  const [token] = useToken(user || googleUser)
 
   if (googleError?.message === "Firebase: Error (auth/popup-closed-by-user).") {
     Swal.fire({
@@ -59,7 +59,7 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     await signInWithEmailAndPassword(data.email, data.password);
-    
+
   };
 
   const location = useLocation();
@@ -67,7 +67,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token) {
+    if (token || user || googleUser) {
       navigate(from, { replace: true });
       Swal.fire({
         position: "center",
@@ -77,7 +77,7 @@ const Login = () => {
         timer: 2000,
       });
     }
-  }, [from, token, navigate]);
+  }, [from, token, navigate, user, googleUser]);
 
   return (
     <section>
