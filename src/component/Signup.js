@@ -48,7 +48,7 @@ const Signup = () => {
     };
 
     if (googleError || error || updateError) {
-        Swal.fire({
+        return Swal.fire({
             icon: 'error',
             title: 'Something went wrong!',
             text: 'Please try again after some minutes',
