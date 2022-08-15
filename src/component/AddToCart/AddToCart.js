@@ -18,7 +18,8 @@ const AddToCart = () => {
       })
    }
  
-  
+
+
  
   return (
     <div className="bg-[#F9FAFB]">
