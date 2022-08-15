@@ -1,11 +1,10 @@
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { toast } from "react-toastify";
 
-const MyWishListProduct = ({ product, handleRemove }) => {
-
-  const { name, author, price, img, _id ,stock } = product;
-  console.log(product)
+const MyWishListProduct = ({ product,refetch}) => {
+  const {_id, name, author, price, img  ,stock } = product;
   const handleAddToCart = (item) => {
     const AddToCart = {
       _id: _id,
@@ -16,7 +15,7 @@ const MyWishListProduct = ({ product, handleRemove }) => {
       stock: stock,
     };
     fetch("http://localhost:5000/cartProduct", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -28,6 +27,23 @@ const MyWishListProduct = ({ product, handleRemove }) => {
       });
    
   };
+  const handleRemoveWishList =(id)=>{
+    const request = window.confirm("Are you sure you want to Remove");
+    if(request){
+      
+      fetch(`http://localhost:5000/wishList/${id}`,{
+        method: "DELETE",
+      })
+      .then((res) => res.json())
+        .then((data) => {
+          if(data.deletedCount){
+            toast.success('yes delete')
+            refetch()
+
+          }
+      })
+    }
+  }
 
   return (
     <div className="p-5 rounded border border-red-100">
@@ -41,7 +57,7 @@ const MyWishListProduct = ({ product, handleRemove }) => {
               <p className="font-medium text-gray-600">{name} </p>
               <p className="text-sm text-left text-gray-600">by {author}</p>
             </div>
-            <button onClick={() => handleRemove(_id)}>
+            <button onClick={() =>handleRemoveWishList(_id)}>
               <FontAwesomeIcon
                 className="text-[#fa6a6a]"
                 icon={faTrashCan}

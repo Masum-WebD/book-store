@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 
 const useCartBooks = () => {
-  let [cartProduct, setcartProduct] = useState([]);
+  const [cartProduct, setCartProduct] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/cartProduct")
       .then((res) => res.json())
-      .then((data) => setcartProduct(data));
+      .then((data) => setCartProduct(data));
   }, []);
-  
-  
-  return [cartProduct, setcartProduct];
+
+  return [cartProduct, setCartProduct];
 };
-export default useCartBooks
+export default useCartBooks;

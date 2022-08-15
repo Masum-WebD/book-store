@@ -1,29 +1,24 @@
 import React, { useEffect, useState } from "react";
 import MyWishListProduct from "./MyWishListProduct";
+import { useQuery } from "react-query";
+import Loading from "../Loading";
 
 const MyWishlist = () => {
-  const [wishList, setWishList] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:5000/wishList")
-      .then((res) => res.json())
-      .then((data) => setWishList(data));
-  }, []);
-  const handleDeleteBtn = (_id) => {
-    const request = window.confirm("Are you sure you want to delete");
-    if (request) {
-      fetch(`http://localhost:5000/wishList/${_id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          const remaining = wishList.filter((product) => product._id !== _id);
-          setWishList(remaining);
-        });
-    }
-  };
-
+  let {
+    data: wishList,
+    isLoading,
+    refetch,
+  } = useQuery("wishList", () =>
+    fetch("http://localhost:5000/wishList", {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
+  );
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <div className="mx-10">
       <div className="text-left border-2 border-t-4 border-gray-400 border-t-green-400 rounded-md my-5 p-5">
@@ -37,7 +32,8 @@ const MyWishlist = () => {
           <MyWishListProduct
             key={p._id}
             product={p}
-            handleRemove={handleDeleteBtn}
+            refetch={refetch}
+            
           ></MyWishListProduct>
         ))}
       </div>

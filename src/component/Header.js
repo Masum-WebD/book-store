@@ -7,14 +7,15 @@ import auth from "../Firebase/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import Swal from "sweetalert2";
-import { useSelector } from "react-redux";
 import { IoIosArrowDown } from "react-icons/io";
 import userProfile from "../asset/Icons/user.png";
 import useCartBooks from "./Hooks/useCartBooks";
 
+
 const Header = () => {
   const [user] = useAuthState(auth);
   const [cartProduct] =useCartBooks()
+ 
   const handleOpen = () => {
     Swal.fire({
       title: "Are you sure for logout?",
