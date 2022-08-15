@@ -1,20 +1,22 @@
-// import React from "react";
+import useCartBooks from "../Hooks/useCartBooks";
 import CartProduct from "./CartProduct";
 import CheckoutSummary from "./CheckoutSummary";
 import ShopUserInfo from "./ShopUserInfo";
-import useCartBooks from "../Hooks/useCartBooks";
 
 const AddToCart = () => {
-
-  let [cartProduct, setcartProduct] = useCartBooks()
-  const handleDeleteBtn = (id) => {
-    const request = window.confirm("Are you sure you want to delete");
-    if (request) {
-      fetch(`http://localhost:5000/cartProduct/${id}`, {
+  const [cartProduct , setCartProduct] =useCartBooks()
+  const handleDeleteBtn=(id)=>{
+    const url =`http://localhost:5000/cartProduct/${id}`
+      fetch(url,{
         method: "DELETE",
       })
-
-
+      .then((res) => res.json())
+      .then((data) =>{
+        console.log(data)
+        const remaining = cartProduct.filter((product) => product._id !== id);
+        setCartProduct(remaining);
+      })
+   }
 
       return (
         <div className="bg-[#F9FAFB]">
@@ -33,10 +35,10 @@ const AddToCart = () => {
                 <CheckoutSummary />
               </div>
             </div>
+
           </div>
         </div>
       );
     };
-  }
-}
+
 export default AddToCart;
