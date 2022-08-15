@@ -17,12 +17,7 @@ const AddToCart = () => {
         setCartProduct(remaining);
       })
    }
- 
 
-
-
- 
-  
       return (
         <div className="bg-[#F9FAFB]">
           <div className="pt-16 lg:pt-32 pb-16 flex flex-col-reverse lg:flex-row gap-10 text-left text-neutral container mx-auto">
