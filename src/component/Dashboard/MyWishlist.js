@@ -5,7 +5,7 @@ const MyWishlist = () => {
   const [wishList, setWishList] = useState([]);
 
   useEffect(() => {
-    fetch("https://p-hero-bookshop.herokuapp.com/wishList")
+    fetch("http://localhost:5000/wishList")
       .then((res) => res.json())
       .then((data) => setWishList(data));
   }, []);

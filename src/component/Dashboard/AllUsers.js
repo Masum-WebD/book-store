@@ -4,13 +4,12 @@ import Loading from "../Loading";
 import UserRow from "./UserRow";
 
 const AllUsers = () => {
-  
   let {
     data: users,
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch("https://p-hero-bookshop.herokuapp.com/user", {
+    fetch("http://localhost:5000/user", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -27,7 +26,7 @@ const AllUsers = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-           users.filter((user) => user._id !== id);
+          users.filter((user) => user._id !== id);
         });
     }
   };

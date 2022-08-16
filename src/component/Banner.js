@@ -7,7 +7,7 @@ const Banner = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const url = `https://p-hero-bookshop.herokuapp.com/product/?name=${searchText}`;
+    const url = `http://localhost:5000/product/?name=${searchText}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBooks(data));
