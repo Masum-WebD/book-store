@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import Loading from "../Loading";
 
 const MyWishlist = () => {
+
   let {
     data: wishList,
     isLoading,

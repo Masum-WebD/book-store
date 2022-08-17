@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const UserRow = ({ user, refetch, index}) => {
   const { email, role, } = user;
   const makeAdmin = () => {
-    fetch(`https://localhost:5000/user/admin/${email}`, {
+    fetch(`http://localhost:5000/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -49,6 +49,11 @@ const UserRow = ({ user, refetch, index}) => {
         {role !== "admin" && (
           <button onClick={makeAdmin} className="btn btn-xs bg-primary">
             Make Admin
+          </button>
+        )}
+        {role === "admin" && (
+          <button onClick={makeAdmin} className="btn btn-xs bg-primary">
+            Admin
           </button>
         )}
       </td>

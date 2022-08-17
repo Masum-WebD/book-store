@@ -4,7 +4,6 @@ import Loading from "../Loading";
 import UserRow from "./UserRow";
 
 const AllUsers = () => {
-  
   let {
     data: users,
     isLoading,
