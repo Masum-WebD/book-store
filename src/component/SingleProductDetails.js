@@ -4,23 +4,18 @@ import { BsCashCoin } from "react-icons/bs";
 import { VscBook } from "react-icons/vsc";
 import { FaShoppingCart, FaUndo } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import profile from "../asset/Images/author-1.jpg";
 import profile2 from "../asset/Images/author-2.jpg";
 import "./SingleProductDetails.css";
-
-import { useDispatch } from "react-redux";
 import { add } from "../store/cartSlice";
 import { AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-toastify";
-import useCartBooks from "./Hooks/useCartBooks";
 const SingleProductDetails = () => {
-  // const {products }= useSelector((state)=>state.cart)
   const { bookId } = useParams();
 
-  const dispatch = useDispatch();
   const [item, setItem] = useState([]);
   const { _id, name, img, summary, category, language, author, price, stock } =
     item;
@@ -31,7 +26,7 @@ const SingleProductDetails = () => {
       .then((data) => setItem(data));
   }, [bookId]);
 
-  const handleAddToCart = (item) => {
+  const handleAddToCart = () => {
     const AddToCart = {
       _id: _id,
       name: name,
@@ -41,7 +36,7 @@ const SingleProductDetails = () => {
       stock: stock,
     };
     fetch("http://localhost:5000/cartProduct", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -112,7 +107,7 @@ const SingleProductDetails = () => {
             </div>
             <div class="divider"></div>
             <div>
-              <div className="flex flex-row lg:gap-6 gap-3">
+              <div className="flex flex-row lg:gap-6">
                 <div className="flex items-center justify-center">
                   <button class="btn btn-primary text-white">
                     Read The Book <VscBook className="text-lg ml-2" />
@@ -120,7 +115,7 @@ const SingleProductDetails = () => {
                 </div>
                 <div>
                   <button
-                    onClick={() => handleAddToCart(item)}
+                    onClick={handleAddToCart}
                     class="btn btn-primary text-white"
                   >
                     Add To Cart <FaShoppingCart className="text-lg ml-2" />

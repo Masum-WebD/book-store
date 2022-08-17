@@ -3,9 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CheckoutSummary from "./CheckoutSummary";
 import React, {useState} from "react"
 
-const CartProduct = ({ product,handleDeleteBtn }) => {
+const CartProduct = ({ product,handleDeleteBtn}) => {
   const { name, author, price, img,_id } =
     product;
+
+ 
     
  
   return (
