@@ -6,11 +6,8 @@ import React, {useState} from "react"
 const CartProduct = ({ product,handleDeleteBtn}) => {
   const { name, author, price, img,_id } =
     product;
-
- 
-    
- 
   return (
+    
     <div className="p-5 rounded border border-red-100">
       <div className="flex gap-3">
         <div>
@@ -50,6 +47,7 @@ const CartProduct = ({ product,handleDeleteBtn}) => {
         </div>
       </div>
     </div>
+
   );
 };
 

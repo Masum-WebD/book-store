@@ -2,9 +2,12 @@ import useCartBooks from "../Hooks/useCartBooks";
 import CartProduct from "./CartProduct";
 import CheckoutSummary from "./CheckoutSummary";
 import ShopUserInfo from "./ShopUserInfo";
+import { toast } from "react-toastify";
+
 
 const AddToCart = () => {
   const [cartProduct , setCartProduct] =useCartBooks()
+  
   const handleDeleteBtn=(id)=>{
     const url =`http://localhost:5000/cartProduct/${id}`
       fetch(url,{
@@ -12,9 +15,12 @@ const AddToCart = () => {
       })
       .then((res) => res.json())
       .then((data) =>{
-        console.log(data)
-        const remaining = cartProduct.filter((product) => product._id !== id);
+    
+          const remaining = cartProduct.filter((product) => product._id !== id);
         setCartProduct(remaining);
+      
+        console.log(data)
+        
       })
    }
 
@@ -28,12 +34,16 @@ const AddToCart = () => {
               <h2 className="text-2xl text-left text-neutral font-medium mt-5 lg:mt-0 mb-4">
                 Order Summary
               </h2>
+            
               <div className=" bg-white">
                 {cartProduct.map((p) => (
+                 
                   <CartProduct key={p._id} product={p} handleDeleteBtn={handleDeleteBtn}></CartProduct>
+               
                 ))}
                 <CheckoutSummary />
               </div>
+            
             </div>
 
           </div>
