@@ -1,25 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SingleProduct from "./SingleProduct";
-import { fetchProducts, STATUSES } from "../store/productSlice";
-import { useDispatch, useSelector } from "react-redux";
-import Loading from "./Loading";
+// import { fetchProducts, STATUSES } from "../store/productSlice";
+// import { useDispatch, useSelector } from "react-redux";
+// import Loading from "./Loading";
 
 const AllProducts = () => {
-  // const [products, setProducts] = useState([]);
-  const { data: products, status } = useSelector((state) => state.product);
-  const dispatch = useDispatch();
+  const [products, setProducts] = useState([]);
+  // const { data: products, status } = useSelector((state) => state.product);
+  // const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchProducts());
-    // fetch("http://localhost:5000/products")
-    //   .then((res) => res.json())
-    //   .then((data) => setProducts(data));
-  }, [dispatch]);
-  if (status === STATUSES.LOADING) {
-    return <Loading />;
-  }
-  if (status === STATUSES.ERROR) {
-    return <h2 className="text-black">Product not found!</h2>;
-  }
+    fetch("https://p-hero-bookshop.herokuapp.com/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+  // if (status === STATUSES.LOADING) {
+  //   return <Loading />;
+  // }
+  // if (status === STATUSES.ERROR) {
+  //   return <h2 className="text-black">Product not found!</h2>;
+  // }
   return (
     <div>
       <h2 className="uppercase text-primary text-3xl mt-20 font-bold">
