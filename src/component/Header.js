@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
 import { IoIosArrowDown } from 'react-icons/io';
 import userProfile from '../asset/Icons/user.png';
+import { Button } from "flowbite-react";
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -75,6 +76,9 @@ const Header = () => {
               <NavLink className="text-black" to="/contact">CONTACT US</NavLink>
             </li>
             <li>
+              <NavLink className="text-black uppercase" to="/offer">OFFER</NavLink>
+            </li>
+            <li>
               {
                 user && <NavLink className="text-black" to="/dashboard">DASHBOARD</NavLink>
               }
@@ -113,6 +117,9 @@ const Header = () => {
           </li>
           <li className="hover:bg-secondary">
             <NavLink to="/contact">CONTACT US</NavLink>
+          </li>
+          <li className="hover:bg-secondary">
+            <label for="my-modal-6" class="btn-primary bg-transparent">OFFER</label>
           </li>
         </ul>
       </div>
