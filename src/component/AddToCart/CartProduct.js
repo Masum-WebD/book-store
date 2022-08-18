@@ -1,11 +1,15 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CheckoutSummary from "./CheckoutSummary";
+import React, {useState} from "react"
 
-const CartProduct = ({ product,handleRemove }) => {
+const CartProduct = ({ product,handleDeleteBtn}) => {
   const { name, author, price, img,_id } =
     product;
 
-
+ 
+    
+ 
   return (
     <div className="p-5 rounded border border-red-100">
       <div className="flex gap-3">
@@ -20,7 +24,7 @@ const CartProduct = ({ product,handleRemove }) => {
               <p className="font-medium">{name} </p>
               <p className="text-sm">by {author}</p>
             </div>
-            <button onClick={()=>handleRemove(_id)} >
+            <button onClick={()=>handleDeleteBtn(_id)} >
               <FontAwesomeIcon className="text-[#fa6a6a]" icon={faTrashCan}></FontAwesomeIcon>
             </button>
           </div>
@@ -29,7 +33,7 @@ const CartProduct = ({ product,handleRemove }) => {
           <div className=" mt-5">
             <div className="flex justify-between items-start">
               <h1 className=" align-text-bottom font-medium text-sm ">$ {price}</h1>
-              <select name="" id="" className="align-bottom mr-0 bg-white border border-red-100" >
+              <select  name="quantity" id="" className="align-bottom mr-0 bg-white border border-red-100" >
                 <option value="">1</option>
                 <option value="">2</option>
                 <option value="">3</option>
