@@ -13,9 +13,11 @@ import "./SingleProductDetails.css";
 import { add } from "../store/cartSlice";
 import { AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-toastify";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../Firebase/firebase.init";
 const SingleProductDetails = () => {
   const { bookId } = useParams();
-
+  const [user] = useAuthState(auth);
   const [item, setItem] = useState([]);
   const { _id, name, img, summary, category, language, author, price, stock } =
     item;
@@ -26,7 +28,8 @@ const SingleProductDetails = () => {
       .then((data) => setItem(data));
   }, [bookId]);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    e.preventDefault();
     const AddToCart = {
       _id: _id,
       name: name,
@@ -34,6 +37,7 @@ const SingleProductDetails = () => {
       author: author,
       price: price,
       stock: stock,
+      email:user.email
     };
     fetch("https://p-hero-bookshop.herokuapp.com/cartProduct", {
       method: "PUT",
@@ -56,6 +60,7 @@ const SingleProductDetails = () => {
       author: author,
       price: price,
       stock: stock,
+      email:user.email
     };
     fetch("https://p-hero-bookshop.herokuapp.com/wishList", {
       method: "PUT",

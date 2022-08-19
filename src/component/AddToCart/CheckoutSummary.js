@@ -1,9 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import useCartBooks from "../Hooks/useCartBooks";
 
 
+
 const CheckoutSummary = () => {
-  const [cartProduct] = useCartBooks()
+  const [cartProduct] =useCartBooks()
+  const navigate = useNavigate();
+  
 
   const cartTotal = cartProduct.reduce((cPrice, PrPrice) =>
     cPrice + parseInt(PrPrice.price), 0
@@ -13,8 +17,11 @@ const CheckoutSummary = () => {
 
   const subTotal = cartTotal + tax + shopping
 
-
-
+  const handleOrder=()=>{
+    navigate('/payment')
+    
+  }
+ 
   
 
 
