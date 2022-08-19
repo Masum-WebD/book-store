@@ -3,27 +3,46 @@ import CartProduct from "./CartProduct";
 import CheckoutSummary from "./CheckoutSummary";
 import ShopUserInfo from "./ShopUserInfo";
 import { toast } from "react-toastify";
+import { useState } from "react";
+import Swal from 'sweetalert2';
 
 
 const AddToCart = () => {
   const [cartProduct , setCartProduct] =useCartBooks()
   
-  const handleDeleteBtn=(id)=>{
-    const url =`http://localhost:5000/cartProduct/${id}`
-      fetch(url,{
-        method: "DELETE",
-      })
-      .then((res) => res.json())
-      .then((data) =>{
+  
+  const handleDeleteBtn=(id,e)=>{
     
-          const remaining = cartProduct.filter((product) => product._id !== id);
-        setCartProduct(remaining);
-      
-        console.log(data)
+    Swal.fire({
+      title: "Are you sure to delete it? Then this product may not be in our stock!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#27AE61",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+      allowEnterKey: true,
+    }).then((result)=>{
+      if(result.isConfirmed){
+        const url =`http://localhost:5000/cartProduct/${id}`
+          fetch(url,{
+            method: "DELETE",
+          })
+          .then((res) => res.json())
+          .then((data) =>{
         
-      })
+              const remaining = cartProduct.filter((product) => product._id !== id);
+            setCartProduct(remaining);
+          
+            console.log(data)
+            
+          })
+       }
+    })
+   
+   
+    
    }
-
+ 
       return (
         <div className="bg-[#F9FAFB]">
           <div className="pt-16 lg:pt-32 pb-16 flex flex-col-reverse lg:flex-row gap-10 text-left text-neutral container mx-auto">

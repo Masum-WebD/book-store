@@ -28,7 +28,8 @@ const SingleProductDetails = () => {
       .then((data) => setItem(data));
   }, [bookId]);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    e.preventDefault();
     const AddToCart = {
       _id: _id,
       name: name,
