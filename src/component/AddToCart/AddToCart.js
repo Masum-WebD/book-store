@@ -6,7 +6,7 @@ import ShopUserInfo from "./ShopUserInfo";
 const AddToCart = () => {
   const [cartProduct , setCartProduct] =useCartBooks()
   const handleDeleteBtn=(id)=>{
-    const url =`http://localhost:5000/cartProduct/${id}`
+    const url =`https://p-hero-bookshop.herokuapp.com/cartProduct/${id}`
       fetch(url,{
         method: "DELETE",
       })
