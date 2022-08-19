@@ -4,7 +4,7 @@ import AllProductSingle from "./AllProductSingle";
 const AllTopProducts = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://p-hero-bookshop.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

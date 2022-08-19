@@ -21,7 +21,7 @@ const SingleProductDetails = () => {
     item;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${bookId}`)
+    fetch(`https://p-hero-bookshop.herokuapp.com/product/${bookId}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
   }, [bookId]);
@@ -35,7 +35,7 @@ const SingleProductDetails = () => {
       price: price,
       stock: stock,
     };
-    fetch("http://localhost:5000/cartProduct", {
+    fetch("https://p-hero-bookshop.herokuapp.com/cartProduct", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -57,7 +57,7 @@ const SingleProductDetails = () => {
       price: price,
       stock: stock,
     };
-    fetch("http://localhost:5000/wishList", {
+    fetch("https://p-hero-bookshop.herokuapp.com/wishList", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -109,16 +109,27 @@ const SingleProductDetails = () => {
             <div>
               <div className="flex flex-row lg:gap-6">
                 <div className="flex items-center justify-center">
-                  <button class="btn btn-primary text-white">
+                  {/* <button class="btn btn-primary text-white">
                     Read The Book <VscBook className="text-lg ml-2" />
-                  </button>
+                  </button> */}
+                  <label for="my-modal-6" class="btn btn-primary text-sm font-normal text-white">Read a bit <VscBook className="text-lg ml-2" /></label>
+
+                  <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+                  <div class="modal modal-bottom sm:modal-middle">
+                    <div class="modal-box w-2/3 relative">
+                    <label for="my-modal-6" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <img src="https://i.ibb.co/FVs7qgZ/longs.png" alt="longs" border="0"/>
+                        <div class="modal-action">
+                        </div>
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <button
                     onClick={handleAddToCart}
-                    class="btn btn-primary text-white"
+                    class="btn btn-primary text-sm font-normal text-white"
                   >
-                    Add To Cart <FaShoppingCart className="text-lg ml-2" />
+                    Add to Cart <FaShoppingCart className="text-sm ml-2" />
                   </button>
                 </div>
               </div>
