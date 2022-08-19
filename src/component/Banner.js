@@ -13,7 +13,7 @@ const Banner = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/product/?name=${searchText}`;
+    const url = `https://p-hero-bookshop.herokuapp.com/product/?name=${searchText}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBooks(data));
@@ -57,7 +57,12 @@ const Banner = () => {
           <div className="absolute bg-white shadow-md mx-auto w-[97%]">
             <h3 className="">
               {books?.map((book) => (
-                <p onClick={() => navigateToProductDetail(book._id)} className="text-accent hover:text-primary cursor-pointer py-3">{book.name}</p>
+                <p
+                  onClick={() => navigateToProductDetail(book._id)}
+                  className="text-accent hover:text-primary cursor-pointer py-3"
+                >
+                  {book.name}
+                </p>
               ))}
             </h3>
           </div>

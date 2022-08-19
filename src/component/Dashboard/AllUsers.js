@@ -9,7 +9,7 @@ const AllUsers = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch("http://localhost:5000/user", {
+    fetch("https://p-hero-bookshop.herokuapp.com/user", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -45,7 +45,6 @@ const AllUsers = () => {
                 user={user}
                 index={index}
                 refetch={refetch}
-              
               ></UserRow>
             ))}
           </tbody>

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useCartBooks = () => {
   const [cartProduct, setCartProduct] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/cartProduct")
+    fetch("https://p-hero-bookshop.herokuapp.com/cartProduct")
       .then((res) => res.json())
       .then((data) => setCartProduct(data));
   }, []);

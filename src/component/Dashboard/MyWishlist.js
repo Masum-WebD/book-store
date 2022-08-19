@@ -4,13 +4,12 @@ import { useQuery } from "react-query";
 import Loading from "../Loading";
 
 const MyWishlist = () => {
-
   let {
     data: wishList,
     isLoading,
     refetch,
   } = useQuery("wishList", () =>
-    fetch("http://localhost:5000/wishList", {
+    fetch("https://p-hero-bookshop.herokuapp.com/wishList", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -34,7 +33,6 @@ const MyWishlist = () => {
             key={p._id}
             product={p}
             refetch={refetch}
-            
           ></MyWishListProduct>
         ))}
       </div>
