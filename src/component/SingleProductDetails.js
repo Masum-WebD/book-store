@@ -23,7 +23,7 @@ const SingleProductDetails = () => {
     item;
 
   useEffect(() => {
-    fetch(`https://p-hero-bookshop.herokuapp.com/product/${bookId}`)
+    fetch(`http://localhost:5000/product/${bookId}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
   }, [bookId]);
@@ -37,9 +37,9 @@ const SingleProductDetails = () => {
       author: author,
       price: price,
       stock: stock,
-      email:user.email
+      email: user.email,
     };
-    fetch("https://p-hero-bookshop.herokuapp.com/cartProduct", {
+    fetch("http://localhost:5000/cartProduct", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -60,9 +60,9 @@ const SingleProductDetails = () => {
       author: author,
       price: price,
       stock: stock,
-      email:user.email
+      email: user.email,
     };
-    fetch("https://p-hero-bookshop.herokuapp.com/wishList", {
+    fetch("http://localhost:5000/wishList", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -117,15 +117,28 @@ const SingleProductDetails = () => {
                   {/* <button class="btn btn-primary text-white">
                     Read The Book <VscBook className="text-lg ml-2" />
                   </button> */}
-                  <label for="my-modal-5" class="btn btn-primary text-sm font-normal text-white">Read a bit <VscBook className="text-lg ml-2" /></label>
+                  <label
+                    for="my-modal-5"
+                    class="btn btn-primary text-sm font-normal text-white"
+                  >
+                    Read a bit <VscBook className="text-lg ml-2" />
+                  </label>
 
                   <input type="checkbox" id="my-modal-5" class="modal-toggle" />
                   <div class="modal modal-bottom sm:modal-middle">
                     <div class="modal-box w-2/3 relative">
-                    <label for="my-modal-5" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <img src="https://i.ibb.co/FVs7qgZ/longs.png" alt="longs" border="0"/>
-                        <div class="modal-action">
-                        </div>
+                      <label
+                        for="my-modal-5"
+                        class="btn btn-sm btn-circle absolute right-2 top-2"
+                      >
+                        ✕
+                      </label>
+                      <img
+                        src="https://i.ibb.co/FVs7qgZ/longs.png"
+                        alt="longs"
+                        border="0"
+                      />
+                      <div class="modal-action"></div>
                     </div>
                   </div>
                 </div>

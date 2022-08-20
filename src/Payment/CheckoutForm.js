@@ -29,7 +29,7 @@ const CheckoutForm = () => {
       shopping: shopping,
       subTotal: subTotal,
     };
-    fetch("https://p-hero-bookshop.herokuapp.com/create-payment-intent", {
+    fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",

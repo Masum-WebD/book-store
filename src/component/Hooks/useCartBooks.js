@@ -9,9 +9,7 @@ const useCartBooks = () => {
   const [user] = useAuthState(auth);
   useEffect(() => {
     if (user) {
-      fetch(
-        `https://p-hero-bookshop.herokuapp.com/cartProduct?email=${user.email}`
-      )
+      fetch(`http://localhost:5000/cartProduct?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setCartProduct(data);

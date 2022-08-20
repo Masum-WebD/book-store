@@ -21,7 +21,7 @@ const AddToCart = () => {
       allowEnterKey: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://p-hero-bookshop.herokuapp.com/cartProduct/${id}`;
+        const url = `http://localhost:5000/cartProduct/${id}`;
         fetch(url, {
           method: "DELETE",
         })

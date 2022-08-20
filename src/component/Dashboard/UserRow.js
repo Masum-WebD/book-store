@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const UserRow = ({ user, refetch, index }) => {
   const { email, role } = user;
   const makeAdmin = () => {
-    fetch(`https://p-hero-bookshop.herokuapp.com/user/admin/${email}`, {
+    fetch(`http://localhost:5000/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -27,7 +27,7 @@ const UserRow = ({ user, refetch, index }) => {
   const handleRemoveBtn = (email) => {
     const request = window.confirm("Are you sure you want to Remove");
     if (request) {
-      fetch(`https://p-hero-bookshop.herokuapp.com/user/${email}`, {
+      fetch(`http://localhost:5000/user/${email}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
