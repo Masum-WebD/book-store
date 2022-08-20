@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../asset/Images/logo.png";
 import { FiLogIn } from "react-icons/fi";
@@ -7,15 +7,19 @@ import auth from "../Firebase/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import Swal from "sweetalert2";
-import { IoIosArrowDown } from "react-icons/io";
-import userProfile from "../asset/Icons/user.png";
+import { useSelector } from "react-redux";
+import { IoIosArrowDown } from 'react-icons/io';
+import userProfile from '../asset/Icons/user.png';
+import { Button } from "flowbite-react";
+
 import useCartBooks from "./Hooks/useCartBooks";
+
 
 
 const Header = () => {
   const [user] = useAuthState(auth);
-  const [cartProduct] =useCartBooks()
- 
+  const [cartProduct] = useCartBooks()
+
   const handleOpen = () => {
     Swal.fire({
       title: "Are you sure for logout?",
@@ -84,11 +88,19 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
+
+              <NavLink className="text-black uppercase" to="/offer">OFFER</NavLink>
+            </li>
+            <li>
+              {
+                user && <NavLink className="text-black" to="/dashboard">DASHBOARD</NavLink>
+              }
               {user && (
                 <NavLink className="text-black" to="/dashboard">
                   DASHBOARD
                 </NavLink>
               )}
+
             </li>
             {user ? (
               <button onClick={handleOpen} class="btn btn-secondary text-white">
@@ -123,6 +135,9 @@ const Header = () => {
           <li className="hover:bg-secondary">
             <NavLink to="/contact">CONTACT US</NavLink>
           </li>
+          <li className="hover:bg-secondary">
+            <label for="my-modal-6" class="btn-primary bg-transparent">OFFER</label>
+          </li>
         </ul>
       </div>
       <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
@@ -143,7 +158,10 @@ const Header = () => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span class="badge badge-sm indicator-item">{cartProduct.length}</span>
+              <span class="badge badge-sm indicator-item">{cartProduct.length} </span>
+             
+             
+
             </div>
           </label>
         </NavLink>

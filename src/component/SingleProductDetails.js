@@ -13,9 +13,11 @@ import "./SingleProductDetails.css";
 import { add } from "../store/cartSlice";
 import { AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-toastify";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../Firebase/firebase.init";
 const SingleProductDetails = () => {
   const { bookId } = useParams();
-
+  const [user] = useAuthState(auth);
   const [item, setItem] = useState([]);
   const { _id, name, img, summary, category, language, author, price, stock } =
     item;
@@ -26,7 +28,8 @@ const SingleProductDetails = () => {
       .then((data) => setItem(data));
   }, [bookId]);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    e.preventDefault();
     const AddToCart = {
       _id: _id,
       name: name,
@@ -34,6 +37,7 @@ const SingleProductDetails = () => {
       author: author,
       price: price,
       stock: stock,
+      email:user.email
     };
     fetch("https://p-hero-bookshop.herokuapp.com/cartProduct", {
       method: "PUT",
@@ -56,6 +60,7 @@ const SingleProductDetails = () => {
       author: author,
       price: price,
       stock: stock,
+      email:user.email
     };
     fetch("https://p-hero-bookshop.herokuapp.com/wishList", {
       method: "PUT",
@@ -109,16 +114,27 @@ const SingleProductDetails = () => {
             <div>
               <div className="flex flex-row lg:gap-6">
                 <div className="flex items-center justify-center">
-                  <button class="btn btn-primary text-white">
+                  {/* <button class="btn btn-primary text-white">
                     Read The Book <VscBook className="text-lg ml-2" />
-                  </button>
+                  </button> */}
+                  <label for="my-modal-5" class="btn btn-primary text-sm font-normal text-white">Read a bit <VscBook className="text-lg ml-2" /></label>
+
+                  <input type="checkbox" id="my-modal-5" class="modal-toggle" />
+                  <div class="modal modal-bottom sm:modal-middle">
+                    <div class="modal-box w-2/3 relative">
+                    <label for="my-modal-5" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <img src="https://i.ibb.co/FVs7qgZ/longs.png" alt="longs" border="0"/>
+                        <div class="modal-action">
+                        </div>
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <button
                     onClick={handleAddToCart}
-                    class="btn btn-primary text-white"
+                    class="btn btn-primary text-sm font-normal text-white"
                   >
-                    Add To Cart <FaShoppingCart className="text-lg ml-2" />
+                    Add to Cart <FaShoppingCart className="text-sm ml-2" />
                   </button>
                 </div>
               </div>

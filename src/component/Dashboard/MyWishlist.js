@@ -2,19 +2,25 @@ import React, { useEffect, useState } from "react";
 import MyWishListProduct from "./MyWishListProduct";
 import { useQuery } from "react-query";
 import Loading from "../Loading";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/firebase.init";
 
 const MyWishlist = () => {
+  const [user] = useAuthState(auth);
   let {
     data: wishList,
     isLoading,
     refetch,
   } = useQuery("wishList", () =>
-    fetch("https://p-hero-bookshop.herokuapp.com/wishList", {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
+    fetch(
+      `https://p-hero-bookshop.herokuapp.com/wishList?email=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading></Loading>;
