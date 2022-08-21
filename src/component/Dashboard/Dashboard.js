@@ -1,8 +1,13 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { MdSpaceDashboard } from "react-icons/md";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/firebase.init";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
   return (
     <div className="drawer drawer-mobile pt-16">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle " />
@@ -41,28 +46,33 @@ const Dashboard = () => {
           <li>
             <Link to="/dashboard">My Account</Link>
           </li>
-          <li>
-            <Link to="/dashboard/order">My Orders</Link>
-          </li>
           <>
-            <li>
-              <Link to="/dashboard/myEBook">My eBook Library</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/myReview">My Ratings and Review</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/wishlist">My Wishlist</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/addProduct">Add Product</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/manageUsers">Manage All Users</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/manageOrders">Manage All Order</Link>
-            </li>
+            {!admin && (
+              <>
+                <li>
+                  <Link to="/dashboard/order">My Orders</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/myReview">My Ratings and Review</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/wishlist">My Wishlist</Link>
+                </li>
+              </>
+            )}
+            {admin && (
+              <>
+                <li>
+                  <Link to="/dashboard/addProduct">Add Product</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/manageUsers">Manage All Users</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/manageOrders">Manage All Order</Link>
+                </li>
+              </>
+            )}
           </>
         </ul>
       </div>

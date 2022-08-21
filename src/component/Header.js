@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../asset/Images/logo.png";
 import { FiLogIn } from "react-icons/fi";
@@ -8,17 +8,17 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
-import { IoIosArrowDown } from 'react-icons/io';
-import userProfile from '../asset/Icons/user.png';
+import { IoIosArrowDown } from "react-icons/io";
+import userProfile from "../asset/Icons/user.png";
 import { Button } from "flowbite-react";
 
 import useCartBooks from "./Hooks/useCartBooks";
-
-
+import useAdmin from "./Hooks/useAdmin";
 
 const Header = () => {
   const [user] = useAuthState(auth);
-  const [cartProduct] = useCartBooks()
+  const [cartProduct] = useCartBooks();
+  const [admin] = useAdmin(user);
 
   const handleOpen = () => {
     Swal.fire({
@@ -39,7 +39,7 @@ const Header = () => {
   };
 
   return (
-    <div className="navbar bg-primary fixed top-0 z-50">
+    <div className="navbar bg-gradient-to-r from-primary to-blue-400 fixed top-0 z-50">
       <div className="navbar-start lg:mx-5">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -88,19 +88,21 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
-
-              <NavLink className="text-black uppercase" to="/offer">OFFER</NavLink>
+              <NavLink className="text-black uppercase" to="/offer">
+                OFFER
+              </NavLink>
             </li>
             <li>
-              {
-                user && <NavLink className="text-black" to="/dashboard">DASHBOARD</NavLink>
-              }
               {user && (
                 <NavLink className="text-black" to="/dashboard">
                   DASHBOARD
                 </NavLink>
               )}
-
+              {user && (
+                <NavLink className="text-black" to="/dashboard">
+                  DASHBOARD
+                </NavLink>
+              )}
             </li>
             {user ? (
               <button onClick={handleOpen} class="btn btn-secondary text-white">
@@ -136,7 +138,9 @@ const Header = () => {
             <NavLink to="/contact">CONTACT US</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <label for="my-modal-6" class="btn-primary bg-transparent">OFFER</label>
+            <label for="my-modal-6" class="btn-primary bg-transparent">
+              OFFER
+            </label>
           </li>
         </ul>
       </div>
@@ -158,10 +162,9 @@ const Header = () => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span class="badge badge-sm indicator-item">{cartProduct.length} </span>
-             
-             
-
+              <span class="badge badge-sm indicator-item">
+                {cartProduct.length}{" "}
+              </span>
             </div>
           </label>
         </NavLink>
@@ -195,48 +198,50 @@ const Header = () => {
               >
                 My Account
               </Link>
-              <Link
-                className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                to="/dashboard/order"
-              >
-                My Orders
-              </Link>
-              <Link
-                className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                to="/dashboard/myEBook"
-              >
-                My eBook Library
-              </Link>
-              <Link
-                className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                to="/dashboard/myReview"
-              >
-                My Ratings and Reviews
-              </Link>
-              <Link
-                className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                to="/dashboard/wishlist"
-              >
-                My Wishlist
-              </Link>
-              <Link
-                className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                to="/dashboard/addProduct"
-              >
-                Add A Product
-              </Link>
-              <Link
-                className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                to="/dashboard/manageUsers"
-              >
-                Manage All Users
-              </Link>
-              <Link
-                className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                to="/dashboard/manageOrders"
-              >
-                Manage All Orders
-              </Link>
+              {!admin && (
+                <>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/order"
+                  >
+                    My Orders
+                  </Link>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/myReview"
+                  >
+                    My Ratings and Reviews
+                  </Link>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/wishlist"
+                  >
+                    My Wishlist
+                  </Link>
+                </>
+              )}
+              {admin && (
+                <>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/addProduct"
+                  >
+                    Add A Product
+                  </Link>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/manageUsers"
+                  >
+                    Manage All Users
+                  </Link>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/manageOrders"
+                  >
+                    Manage All Orders
+                  </Link>
+                </>
+              )}
               <button onClick={handleOpen} class="btn btn-secondary text-white">
                 Log Out
                 <FiLogOut className="text-xl ml-2" />
