@@ -23,20 +23,20 @@ const CheckoutForm = () => {
 
   useEffect(()=>{
 
-    const price={
-      cartTotal:cartTotal,
-      tax:tax ,
-      shopping:shopping,
-      subTotal:subTotal
+    // const price={
+    //   cartTotal:cartTotal,
+    //   tax:tax ,
+    //   shopping:shopping,
+    //   subTotal:subTotal
 
-    }
+    // }
     fetch('http://localhost:5000/create-payment-intent',{
         method: 'POST',
         headers: {
             'content-type':'application/json',
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
-          body: JSON.stringify(price)
+          body: JSON.stringify({subTotal})
     })
     .then(res => res.json())
     .then(data =>{
@@ -46,7 +46,7 @@ const CheckoutForm = () => {
             setClientSecret(data.clientSecret)
         }
     })
-  },[subTotal,cartTotal,tax,shopping])
+  },[subTotal])
     const handleSubmit= async (e)=>{
       e.preventDefault();
         if (!stripe || !elements) {
@@ -64,28 +64,29 @@ const CheckoutForm = () => {
             setCardError(error?.message || ' ');
         
           // confirm payment 
-    //       const {paymentIntent, error:intentError} = await stripe.confirmCardPayment(
-    //         clientSecret,
-    //         {
-    //           payment_method: {
-    //             card: card,
-    //             billing_details: {
-    //               name: `${ user?.displayName }`,
-    //               email: `${ user?.email }`,
-    //             },
-    //           },
-    //         },
-    //       );
+          const {paymentIntent, error:intentError} = await stripe.confirmCardPayment(
+            clientSecret,
+            console.log(clientSecret),
+            {
+              payment_method: {
+                card: card,
+                billing_details: {
+                  name: `${ user?.displayName }`,
+                  email: `${ user?.email }`,
+                },
+              },
+            },
+          );
 
          
-    //       if(intentError){
-    //         setCardError(intentError?.message)
-    //       }
-    //       else{
-    //         setCardError('')
-    //         console.log(paymentIntent)
-    //         setSuccess('your payment is success')
-    //       }
+          if(intentError){
+            setCardError(intentError?.message)
+          }
+          else{
+            setCardError('')
+            console.log(paymentIntent)
+            setSuccess('your payment is success')
+          }
     }
     console.log(cardError)
 
@@ -108,7 +109,7 @@ const CheckoutForm = () => {
           },
         }}
       />
-      <button className="btn btn-primary px-10 py-5 text-center"type="submit" disabled={!stripe  }>
+      <button className="btn btn-primary px-10 py-5 text-center"type="submit" disabled={!stripe || !clientSecret  }>
         Pay
       </button>
     </form>

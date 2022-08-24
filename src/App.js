@@ -26,8 +26,8 @@ import MyReview from "./component/Dashboard/MyReview";
 import AddProduct from "./component/Dashboard/AddProduct";
 import AllUsers from "./component/Dashboard/AllUsers";
 import ManageALLOrder from "./component/Dashboard/ManageALLOrder";
-import PaymentUi from "./Payment/PaymentUi";
 import HomePopUp from "./component/Contact/PopUp/HomePopUp";
+import UiPayment from "./Payment/UiPayment";
 
 
 function App() {
@@ -61,7 +61,7 @@ function App() {
           <Route path="/reset-your-password" element={<ResetPass />} />
           <Route path="/book/:bookId" element={<SingleProductDetails />} />
           <Route path="/addToCart" element={<AddToCart />} />
-          <Route path="/payment" element={<PaymentUi/>} />
+          <Route path="/paymentUi" element={<UiPayment/>} />
 
         </Routes>
       </StartFromTop>
