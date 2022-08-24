@@ -39,7 +39,7 @@ const SingleProductDetails = () => {
       stock: stock,
       email:user.email
     };
-    fetch("https://p-hero-bookshop.herokuapp.com/cartProduct", {
+    fetch("http://localhost:5000/cartProduct", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
