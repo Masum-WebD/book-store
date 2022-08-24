@@ -99,8 +99,10 @@ const SingleProductDetails = () => {
           Book / {name}
         </h2>
         <div class="card lg:card-side bg-base-100 shadow-xl lg:mt-5">
-          <figure className="lg:p-5 
-          rounded-md">
+          <figure
+            className="lg:p-5 
+          rounded-md  border border-green-400"
+          >
             <img src={img} alt="Book" className="rounded-md" />
           </figure>
           <div class="card-body">
@@ -202,6 +204,19 @@ const SingleProductDetails = () => {
                   Purchase & Earn
                 </a>
               </li>
+              {/* <li>
+                <div class="stats shadow">
+                  <div class="stat">
+                    <h1 class=" text-green-500">Positive Ratings</h1>
+                    <h3 class="text-gray-700">64%</h3>
+                  </div>
+                  <div class="divider lg:divider-horizontal"></div> 
+                  <div class="stat">
+                    <h1 class=" text-green-500">Shipped On Time</h1>
+                    <h3 class="text-gray-700">84%</h3>
+                  </div>
+                </div>
+              </li> */}
             </ul>
           </div>
         </div>
