@@ -4,6 +4,7 @@ import Loading from "./Loading";
 import { MdOutlineCategory } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import PageTitle from "./PageTitle";
 
 const Shop = () => {
 
@@ -41,6 +42,7 @@ const Shop = () => {
 
     return (
         <div class="drawer drawer-mobile pt-16">
+            {/* <PageTitle title="Shop" /> */}
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
             <label for="my-drawer-2" class="btn btn-primary absolute top-6 drawer-button lg:hidden">Open drawer</label>
             <div class="drawer-content py-10">
@@ -92,6 +94,6 @@ const Shop = () => {
             </div>
         </div>
     );
-  };
+};
 
 export default Shop;

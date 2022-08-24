@@ -4,6 +4,8 @@ import auth from "../../Firebase/firebase.init";
 import { BsInfoCircleFill } from 'react-icons/bs';
 import Loading from "../Loading";
 import Swal from "sweetalert2";
+import { ImCross } from 'react-icons/im';
+import userProfile from "../../asset/Icons/user.png";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth);
@@ -11,10 +13,19 @@ const MyProfile = () => {
   const [updateEmail, emailUpdating, emailError] = useUpdateEmail(auth);
 
   const [displayName, setDisplayName] = useState('');
-  const [email, setEmail] = useState('');
+  // const [email, setEmail] = useState('');
+  const [photoURL, setPhotoURL] = useState('');
 
   if (profileUpdating || emailUpdating) {
     return <Loading />
+  }
+
+  const editEmail = () => {
+    Swal.fire(
+      'Privacy Warning',
+      'We are unable to allow you to modify your email due to privacy concerns.',
+      'warning'
+    )
   }
 
   if (profileError || emailError) {
@@ -33,6 +44,42 @@ const MyProfile = () => {
 
       <div className="lg:px-36 px-3 mt-20">
 
+        <div className="mb-5">
+
+          <div class="avatar">
+            <div class="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src={user?.photoURL ? user.photoURL : userProfile} alt="" />
+            </div>
+          </div>
+          <br />
+
+          <label for="my-modal-9" class="btn btn-link modal-button">Edit profile picture</label>
+
+          <input type="checkbox" id="my-modal-9" class="modal-toggle" />
+          <div class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+              <div className="flex justify-between items-center">
+                <h3 class="font-bold text-3xl text-black">Add your picture link</h3>
+                <label for="my-modal-9" class="btn btn-sm btn-primary text-white btn-circle"><ImCross /></label>
+              </div>
+              <input type="link" value={photoURL} onChange={(e) => setPhotoURL(e.target.value)} className="input input-bordered w-full mt-9 text-black border-gray-500 focus:outline-gray-500" />
+              <div class="modal-action">
+                <label for="my-modal-9" onClick={async () => {
+                  await updateProfile({ photoURL });
+                  Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Profile picture updated Successfully",
+                    showConfirmButton: false,
+                    timer: 2000,
+                  });
+                }} class="btn btn-primary text-white">UPDATE</label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
         <div className="flex items-center justify-between border border-gray-500 px-3 rounded">
 
           <div className="flex items-center">
@@ -47,9 +94,11 @@ const MyProfile = () => {
           <input type="checkbox" id="my-modal-6" class="modal-toggle" />
           <div class="modal modal-bottom sm:modal-middle">
             <div class="modal-box">
-              <label for="my-modal-6" class="btn btn-sm btn-primary text-white btn-circle absolute right-2 top-2">✕</label>
-              <h3 class="font-bold text-lg text-black">Edit your name</h3>
-              <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} className="input input-bordered w-full mt-3 text-black border-gray-500 focus:outline-gray-500" />
+              <div className="flex justify-between items-center">
+                <h3 class="font-bold text-3xl text-black">Edit your name</h3>
+                <label for="my-modal-6" class="btn btn-sm btn-primary text-white btn-circle"><ImCross /></label>
+              </div>
+              <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} className="input input-bordered w-full mt-6 text-black border-gray-500 focus:outline-gray-500" />
               <div class="modal-action">
                 <label for="my-modal-6" onClick={async () => {
                   await updateProfile({ displayName });
@@ -75,15 +124,17 @@ const MyProfile = () => {
           </div>
 
           <div>
-            <label for="my-modal-7" class="btn btn-link modal-button">Edit</label>
+            <button onClick={() => editEmail()} class="btn btn-link">Edit</button>
           </div>
 
-          <input type="checkbox" id="my-modal-7" class="modal-toggle" />
+          {/* <input type="checkbox" id="my-modal-7" class="modal-toggle" />
           <div class="modal modal-bottom sm:modal-middle">
             <div class="modal-box">
-              <label for="my-modal-7" class="btn btn-sm btn-primary text-white btn-circle absolute right-2 top-2">✕</label>
-              <h3 class="font-bold text-lg text-black">Edit your email</h3>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="input input-bordered w-full mt-3 text-black border-gray-500 focus:outline-gray-500" />
+              <div className="flex justify-between items-center">
+                <h3 class="font-bold text-3xl text-black">Edit your email</h3>
+                <label for="my-modal-7" class="btn btn-sm btn-primary text-white btn-circle"><ImCross /></label>
+              </div>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="input input-bordered w-full mt-6 text-black border-gray-500 focus:outline-gray-500" />
               <div class="modal-action">
                 <label for="my-modal-7" onClick={async () => {
                   await updateEmail(email);
@@ -97,7 +148,7 @@ const MyProfile = () => {
                 }} class="btn btn-primary text-white">UPDATE</label>
               </div>
             </div>
-          </div>
+          </div> */}
 
         </div>
 
