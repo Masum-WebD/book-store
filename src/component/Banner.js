@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./Banner.css";
 
 const Banner = () => {
+  const navigate = useNavigate();
+  const navigateToProductDetail = (id) => {
+    navigate(`/book/${id}`);
+  };
+
   const [searchText, setSearchText] = useState('""');
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const url = `https://p-hero-bookshop.herokuapp.com/product/?name=${searchText}`;
+    const url = `http://localhost:5000/product/?name=${searchText}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBooks(data));
@@ -19,7 +25,7 @@ const Banner = () => {
   };
 
   return (
-    <section className="">
+    <section className="relative">
       <div class="banner">
         <div className="bg-green-900/70 py-40">
           <div class="text-center text-neutral-content">
@@ -33,8 +39,8 @@ const Banner = () => {
         </div>
       </div>
 
-      <div className="lg:w-3/5 w-4/5 lg:p-3 p-2 mx-auto lg:-mt-9 -mt-9 relative bg-white rounded-lg shadow-lg">
-        <div class="relative">
+      <div className="lg:w-3/5 w-4/5 lg:p-3 p-2 absolute lg:bottom-[-35px] lg:left-[20%] left-[10%] mx-auto lg:-mt-9 -mt-9 bg-white rounded-lg shadow-lg">
+        <div class="">
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -45,13 +51,13 @@ const Banner = () => {
             <input
               type="submit"
               value="Search"
-              class="btn btn-primary absolute top-0 right-0 rounded-l-none text-white"
+              class="btn btn-primary absolute lg:top-3 lg:right-3 right-[8px] rounded-l-none text-white"
             />
           </form>
-          <div>
-            <h3>
+          <div className="absolute bg-white shadow-md mx-auto w-[97%]">
+            <h3 className="">
               {books?.map((book) => (
-                <p className="text-accent">{book.name}</p>
+                <p onClick={() => navigateToProductDetail(book._id)} className="text-accent hover:text-primary cursor-pointer py-3">{book.name}</p>
               ))}
             </h3>
           </div>

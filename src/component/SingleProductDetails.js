@@ -4,23 +4,20 @@ import { BsCashCoin } from "react-icons/bs";
 import { VscBook } from "react-icons/vsc";
 import { FaShoppingCart, FaUndo } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import profile from "../asset/Images/author-1.jpg";
 import profile2 from "../asset/Images/author-2.jpg";
 import "./SingleProductDetails.css";
-
-import { useDispatch } from "react-redux";
 import { add } from "../store/cartSlice";
 import { AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-toastify";
-import useCartBooks from "./Hooks/useCartBooks";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../Firebase/firebase.init";
 const SingleProductDetails = () => {
-  // const {products }= useSelector((state)=>state.cart)
   const { bookId } = useParams();
-  
-  const dispatch = useDispatch();
+  const [user] = useAuthState(auth);
   const [item, setItem] = useState([]);
   const { _id, name, img, summary, category, language, author, price, stock } =
     item;
@@ -31,17 +28,19 @@ const SingleProductDetails = () => {
       .then((data) => setItem(data));
   }, [bookId]);
 
-  const handleAddToCart = (item) => {
+  const handleAddToCart = (e) => {
+    e.preventDefault();
     const AddToCart = {
-      _id:_id,
+      _id: _id,
       name: name,
       img: img,
       author: author,
       price: price,
       stock: stock,
+      email:user.email
     };
-    fetch("https://p-hero-bookshop.herokuapp.com/cartProduct", {
-      method: "POST",
+    fetch("http://localhost:5000/cartProduct", {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -50,9 +49,7 @@ const SingleProductDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-       
       });
-   
   };
 
   const handleWishList = () => {
@@ -63,6 +60,7 @@ const SingleProductDetails = () => {
       author: author,
       price: price,
       stock: stock,
+      email:user.email
     };
     fetch("https://p-hero-bookshop.herokuapp.com/wishList", {
       method: "PUT",
@@ -74,7 +72,7 @@ const SingleProductDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-          toast.success("Product added successfully");
+          toast.success("Product Added to Wishlist Successfully");
         }
       });
   };
@@ -114,18 +112,29 @@ const SingleProductDetails = () => {
             </div>
             <div class="divider"></div>
             <div>
-              <div className="flex flex-row lg:gap-6 gap-3">
+              <div className="flex flex-row lg:gap-6">
                 <div className="flex items-center justify-center">
-                  <button class="btn btn-primary text-white">
+                  {/* <button class="btn btn-primary text-white">
                     Read The Book <VscBook className="text-lg ml-2" />
-                  </button>
+                  </button> */}
+                  <label for="my-modal-5" class="btn btn-primary text-sm font-normal text-white">Read a bit <VscBook className="text-lg ml-2" /></label>
+
+                  <input type="checkbox" id="my-modal-5" class="modal-toggle" />
+                  <div class="modal modal-bottom sm:modal-middle">
+                    <div class="modal-box w-2/3 relative">
+                    <label for="my-modal-5" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <img src="https://i.ibb.co/FVs7qgZ/longs.png" alt="longs" border="0"/>
+                        <div class="modal-action">
+                        </div>
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <button
-                    onClick={() => handleAddToCart(item)}
-                    class="btn btn-primary text-white"
+                    onClick={handleAddToCart}
+                    class="btn btn-primary text-sm font-normal text-white"
                   >
-                    Add To Cart <FaShoppingCart className="text-lg ml-2" />
+                    Add to Cart <FaShoppingCart className="text-sm ml-2" />
                   </button>
                 </div>
               </div>
@@ -338,7 +347,6 @@ const SingleProductDetails = () => {
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                 </svg>
               </div>
-
 
               <p class="mb-2 font-light text-black">
                 Thanks for fast delivery. The book quality is good.

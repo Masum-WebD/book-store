@@ -1,19 +1,53 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import useCartBooks from "../Hooks/useCartBooks";
+
 
 
 const CheckoutSummary = () => {
   const [cartProduct] =useCartBooks()
+  // console.log(cartProduct)
 
-  let cartTotal = cartProduct.reduce((cPrice,PrPrice)=>
-    cPrice+ parseInt(PrPrice.price),0
+  const navigate = useNavigate();
+  
+
+  const cartTotal = cartProduct.reduce((cPrice, PrPrice) =>
+    cPrice + parseInt(PrPrice?.price), 0
   );
-  let tax  = (cartTotal /100) *2;
-  let shopping= 50;
+  const tax = (cartTotal / 100) * 2;
+  const shopping = 50;
 
-  const subTotal = cartTotal + tax +shopping
+  const subTotal = cartTotal + tax + shopping
+
+  const handleOrder=(e)=>{
+    e.preventDefault();
+    // const orderProduct = {
+    //   Name:cartProduct,
+    //   Product:{
+    //     cartProduct:[...cartProduct]
+    //   },
+    //   Price: subTotal,
+    //   Quantity: cartProduct.length
+    // }
+    
+    fetch('http://localhost:5000/order',{
+      method:"POST",
+      headers:{
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({subTotal})
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    });
+    navigate('/paymentUi')
+    
+  }
  
   
+
+
   return (
     <div className="p-5 border border-red-100">
       <div className="py-4 border-b border-red-100">
@@ -44,7 +78,7 @@ const CheckoutSummary = () => {
             type="text"
             name="subTotal"
             disabled
-            value={tax }
+            value={tax}
           />
         </div>
       </div>
@@ -55,10 +89,10 @@ const CheckoutSummary = () => {
           type="text"
           name="subTotal"
           disabled
-          value={subTotal }
+          value={subTotal}
         />
       </div>
-      <button className='btn btn-primary  hover:bg-[#3f9866] text-white rounded-sm mt-4 w-full'>Place Order</button>
+      <button onClick={(e)=>handleOrder(e)} className='btn btn-primary  hover:bg-[#3f9866] text-white rounded-sm mt-4 w-full'>Place Order</button>
 
 
     </div>

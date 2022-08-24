@@ -1,5 +1,5 @@
 import React from "react";
-import "./MyOrders.css";
+import "./Myorders.css";
 
 const MyOrders = () => {
   return (
@@ -50,7 +50,7 @@ const MyOrders = () => {
                     <td class="p-3">
                       <div class="flex items-center">
                         <img
-                          class="rounded-md h-12 w-12  object-cover"
+                          className="rounded-md h-12 w-12 object-cover"
                           src="https://ds.rokomari.store/rokomari110/ProductNew20190903/260X372/Harry_Potter_and_the_Deathly_Hallows_(Se-J.K_Rowling-699a7-122325.jpg"
                           alt="unsplash-image"
                         />
@@ -80,10 +80,10 @@ const MyOrders = () => {
                     <td class="p-3">
                       <div class="flex align-items-center">
                         <img
-                          class="rounded-md h-12 w-12   object-cover"
+                          className="rounded-md h-12 w-12 object-cover"
                           src="https://ds.rokomari.store/rokomari110/ProductNew20190903/130X186/rokimg20141031_90990.gif"
                           alt="unsplash image"
-                        />
+                       />
                         <div class="ml-3">
                           <div class="">For Whom The Bell Tolls</div>
                           <div class="text-gray-500">Ernest Hemingway</div>

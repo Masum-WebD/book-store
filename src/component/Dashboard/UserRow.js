@@ -1,10 +1,10 @@
 import React from "react";
 import { toast } from "react-toastify";
 
-const UserRow = ({ user, refetch, index,handleRemoveBtn }) => {
-  const { email, role } = user;
+const UserRow = ({ user, refetch, index}) => {
+  const { email, role, } = user;
   const makeAdmin = () => {
-    fetch(`https://localhost:5000/user/admin/${email}`, {
+    fetch(`http://localhost:5000/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -24,19 +24,41 @@ const UserRow = ({ user, refetch, index,handleRemoveBtn }) => {
         }
       });
   };
+  const handleRemoveBtn = (email) => {
+    const request = window.confirm("Are you sure you want to Remove");
+    if (request) {
+      fetch(`http://localhost:5000/user/${email}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if(data.deletedCount){
+            toast.success(`Remove "${email}" this user`);
+            refetch()
+          }
+           
+        });
+    }
+  };
   return (
     <tr>
       <th className='text-gray-600'>{index + 1}</th>
-      <td>{email}</td>
+      <td className='text-gray-700' >{email}</td>
       <td className='text-gray-600'>
         {role !== "admin" && (
           <button onClick={makeAdmin} className="btn btn-xs bg-primary">
             Make Admin
           </button>
         )}
+        {role === "admin" && (
+          <button onClick={makeAdmin} className="btn btn-xs bg-primary">
+            Admin
+          </button>
+        )}
       </td>
       <td>
-        <button onClick={()=>handleRemoveBtn(user._id)}  className="btn btn-xs bg-red-400">Remove User</button>
+        <button onClick={()=>handleRemoveBtn(email)}  className="btn btn-xs bg-red-400">Remove User</button>
       </td>
     </tr>
   );

@@ -26,6 +26,8 @@ import MyReview from "./component/Dashboard/MyReview";
 import AddProduct from "./component/Dashboard/AddProduct";
 import AllUsers from "./component/Dashboard/AllUsers";
 import ManageALLOrder from "./component/Dashboard/ManageALLOrder";
+import HomePopUp from "./component/Contact/PopUp/HomePopUp";
+import UiPayment from "./Payment/UiPayment";
 
 
 function App() {
@@ -33,7 +35,7 @@ function App() {
     <div className="App">
       <Header></Header>
 
-
+      <HomePopUp></HomePopUp>
       <StartFromTop>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -41,6 +43,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/term" element={<TermPolicy />} />
+          <Route path="/offer" element={<HomePopUp />}></Route>
           <Route path="/login" element={<Login />} />
           <Route path="/all-products" element={<Shop />} />
           <Route path="*" element={<ErrorPage />} />
@@ -58,10 +61,12 @@ function App() {
           <Route path="/reset-your-password" element={<ResetPass />} />
           <Route path="/book/:bookId" element={<SingleProductDetails />} />
           <Route path="/addToCart" element={<AddToCart />} />
+          <Route path="/paymentUi" element={<UiPayment/>} />
+
         </Routes>
       </StartFromTop>
 
-      
+
 
       <MessengerCustomerChat
         pageId="107580278651104"
