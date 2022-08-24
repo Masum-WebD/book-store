@@ -39,7 +39,7 @@ const Header = () => {
   };
 
   return (
-    <div className="navbar bg-gradient-to-r from-primary to-blue-400 fixed top-0 z-50">
+    <div className="navbar bg-primary fixed top-0 z-50">
       <div className="navbar-start lg:mx-5">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
