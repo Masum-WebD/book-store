@@ -9,11 +9,11 @@ const ThirtyPercentSingle = ({book}) => {
   };
 
     return (
-        <div class="flex shadow-lg gap-5 p-5 border-box border rounded-md lg:h-[200px] lg:w-[100%] ml-5 lg:overflow-auto">
+        <div class="flex shadow-lg gap-5 p-5 border-box border rounded-md lg:h-[200px] lg:w-[100%] ml-5">
       <img className="object-scale-down h-[160px] w-[115px]" src={img} alt="" />
       <div className="text-left flex flex-col text-accent">
-        <h2 className="text-md font-medium text-gray-800">{name}</h2>
-        <p className="text-gray-800 my-1 text-sm">By: <span className="text-primary">{author}</span></p>
+        <h2 className="text-md font-medium text-gray-800">{name.slice(0, 30)}</h2>
+        <p className="text-gray-800 my-1 text-sm">By: <span className="text-primary">{author.slice(0,20)}</span></p>
         <p><span className="line-through text-gray-600">$1500</span> <span className="font-medium text-gray-800">${price}</span></p>
         <button
           onClick={() => navigateToProductDetail(_id)}

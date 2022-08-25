@@ -6,15 +6,14 @@ const CartProduct = ({ product,handleDeleteBtn}) => {
   const { name, author, price, img,_id } =product;
 
   const elementRef =useRef('null')
-
- const quantity =e=>{
-
-  e.preventDefault();
-  
   const qty = elementRef.current.value
   const totalPrice = price *qty
-  console.log(totalPrice)
- }
+
+//  const quantity =e=>{
+//   e.preventDefault();  
+
+//   console.log(totalPrice)
+//  }
     
   return (
     
@@ -39,8 +38,8 @@ const CartProduct = ({ product,handleDeleteBtn}) => {
 
           <div className=" mt-5">
             <div className="flex justify-between items-start">
-              <h1 className=" align-text-bottom font-medium text-sm ">$ {price }</h1>
-              <select onClick={(e) =>quantity(e)} ref={elementRef} name="quantity" id=""  className="align-bottom mr-0 bg-white border border-red-100" >
+              <h1 className=" align-text-bottom font-medium text-sm ">$ {totalPrice }</h1>
+              <select ref={elementRef} name="quantity" id=""  className="align-bottom mr-0 bg-white border border-red-100" >
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
