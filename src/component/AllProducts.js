@@ -9,7 +9,7 @@ const AllProducts = () => {
   // const { data: products, status } = useSelector((state) => state.product);
   // const dispatch = useDispatch();
   useEffect(() => {
-    fetch("https://p-hero-bookshop.herokuapp.com/products")
+    fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -21,7 +21,7 @@ const AllProducts = () => {
   // }
   return (
     <div>
-      <h2 className="uppercase text-primary text-3xl mt-20 font-bold">
+      <h2 className="uppercase text-gray-700 text-3xl mt-20 font-bold">
         Popular books
       </h2>
       <div className="h-[3px] w-[120px] bg-primary mt-2 mx-auto"></div>

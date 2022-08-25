@@ -11,13 +11,13 @@ const MyWishlist = () => {
     data: wishList,
     isLoading,
     refetch,
-  } = useQuery("wishList", ()  =>
-      fetch(`http://localhost:5000/wishList?email=${user.email}`, {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }).then((res) => res.json())
+  } = useQuery("wishList", () =>
+    fetch(`http://localhost:5000/wishList?email=${user.email}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading></Loading>;
@@ -36,7 +36,6 @@ const MyWishlist = () => {
             key={p._id}
             product={p}
             refetch={refetch}
-            
           ></MyWishListProduct>
         ))}
       </div>

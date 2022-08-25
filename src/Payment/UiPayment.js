@@ -19,7 +19,7 @@ const UiPayment =()=>{
   console.log(subTotal)
     
     return (
-        <div className='h-[500px] card text-primary' >
+        <div className='h-[500px] mt-32 card text-primary' >
             <h1> Hi {user?.displayName}</h1>
             <h1> You will pay $ {subTotal} </h1>
             <div className="mx-auto w-[500px] text-black mt-20"  >

@@ -45,7 +45,6 @@ const AllUsers = () => {
                 user={user}
                 index={index}
                 refetch={refetch}
-              
               ></UserRow>
             ))}
           </tbody>

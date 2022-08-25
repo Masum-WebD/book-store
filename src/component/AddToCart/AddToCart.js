@@ -4,8 +4,7 @@ import CheckoutSummary from "./CheckoutSummary";
 import ShopUserInfo from "./ShopUserInfo";
 import { toast } from "react-toastify";
 import { useState } from "react";
-import Swal from 'sweetalert2';
-
+import Swal from "sweetalert2";
 
 const AddToCart = () => {
   const [cartProduct, setCartProduct] = useCartBooks()
@@ -14,7 +13,8 @@ const AddToCart = () => {
   const handleDeleteBtn = (id, e) => {
 
     Swal.fire({
-      title: "Are you sure to delete it? Then this product may not be in our stock!",
+      title:
+        "Are you sure to delete it? Then this product may not be in our stock!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#27AE61",
