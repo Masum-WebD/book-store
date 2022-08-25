@@ -1,5 +1,5 @@
 import React from "react";
-import "./Myorders.css";
+import "./MyOrders.css";
 
 const MyOrders = () => {
   return (
@@ -83,7 +83,7 @@ const MyOrders = () => {
                           className="rounded-md h-12 w-12 object-cover"
                           src="https://ds.rokomari.store/rokomari110/ProductNew20190903/130X186/rokimg20141031_90990.gif"
                           alt="unsplash image"
-                       />
+                        />
                         <div class="ml-3">
                           <div class="">For Whom The Bell Tolls</div>
                           <div class="text-gray-500">Ernest Hemingway</div>

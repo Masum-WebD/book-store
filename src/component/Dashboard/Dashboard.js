@@ -4,7 +4,7 @@ import { MdSpaceDashboard } from "react-icons/md";
 
 const Dashboard = () => {
   return (
-    <div className="drawer drawer-mobile mt-16">
+    <div className="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle " />
       <div className="drawer-content">
         <div className="navbar ">

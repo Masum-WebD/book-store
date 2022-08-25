@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../asset/Images/logo.png";
 import { FiLogIn } from "react-icons/fi";
@@ -73,11 +73,6 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink className="text-black" to="/features">
-                FEATURES
-              </NavLink>
-            </li>
-            <li>
               <NavLink className="text-black" to="/about">
                 ABOUT US
               </NavLink>
@@ -127,9 +122,6 @@ const Header = () => {
             <NavLink to="/all-products">SHOP</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <NavLink to=" ">FEATURES</NavLink>
-          </li>
-          <li className="hover:bg-secondary">
             <NavLink to="/about">ABOUT US</NavLink>
           </li>
           <li className="hover:bg-secondary">
@@ -159,8 +151,8 @@ const Header = () => {
                 />
               </svg>
               <span class="badge badge-sm indicator-item">{cartProduct.length} </span>
-             
-             
+
+
 
             </div>
           </label>

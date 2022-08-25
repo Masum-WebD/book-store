@@ -41,7 +41,7 @@ const Shop = () => {
 
 
     return (
-        <div class="drawer drawer-mobile pt-16">
+        <div class="drawer drawer-mobile ">
             {/* <PageTitle title="Shop" /> */}
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
             <label for="my-drawer-2" class="btn btn-primary absolute top-6 drawer-button lg:hidden">Open drawer</label>
