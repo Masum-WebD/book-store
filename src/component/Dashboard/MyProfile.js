@@ -64,6 +64,7 @@ const MyProfile = () => {
               </div>
               <input type="link" value={photoURL} onChange={(e) => setPhotoURL(e.target.value)} className="input input-bordered w-full mt-9 text-black border-gray-500 focus:outline-gray-500" />
               <div class="modal-action">
+                {/* <a href="https://imgbb.com/" target="_blank" rel="noreferrer" className="hover:link text-left text-xs mt-2 text-gray-500">How do I upload my image link?</a> */}
                 <label for="my-modal-9" onClick={async () => {
                   await updateProfile({ photoURL });
                   Swal.fire({
@@ -88,19 +89,19 @@ const MyProfile = () => {
           </div>
 
           <div>
-            <label for="my-modal-6" class="btn btn-link modal-button">Edit</label>
+            <label for="my-name-modal" class="btn btn-link modal-button">Edit</label>
           </div>
 
-          <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+          <input type="checkbox" id="my-name-modal" class="modal-toggle" />
           <div class="modal modal-bottom sm:modal-middle">
             <div class="modal-box">
               <div className="flex justify-between items-center">
                 <h3 class="font-bold text-3xl text-black">Edit your name</h3>
-                <label for="my-modal-6" class="btn btn-sm btn-primary text-white btn-circle"><ImCross /></label>
+                <label for="my-name-modal" class="btn btn-sm btn-primary text-white btn-circle"><ImCross /></label>
               </div>
               <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} className="input input-bordered w-full mt-6 text-black border-gray-500 focus:outline-gray-500" />
               <div class="modal-action">
-                <label for="my-modal-6" onClick={async () => {
+                <label for="my-name-modal" onClick={async () => {
                   await updateProfile({ displayName });
                   Swal.fire({
                     position: "center",
@@ -126,30 +127,6 @@ const MyProfile = () => {
           <div>
             <button onClick={() => editEmail()} class="btn btn-link">Edit</button>
           </div>
-
-          {/* <input type="checkbox" id="my-modal-7" class="modal-toggle" />
-          <div class="modal modal-bottom sm:modal-middle">
-            <div class="modal-box">
-              <div className="flex justify-between items-center">
-                <h3 class="font-bold text-3xl text-black">Edit your email</h3>
-                <label for="my-modal-7" class="btn btn-sm btn-primary text-white btn-circle"><ImCross /></label>
-              </div>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="input input-bordered w-full mt-6 text-black border-gray-500 focus:outline-gray-500" />
-              <div class="modal-action">
-                <label for="my-modal-7" onClick={async () => {
-                  await updateEmail(email);
-                  Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Email updated Successfully",
-                    showConfirmButton: false,
-                    timer: 2000,
-                  });
-                }} class="btn btn-primary text-white">UPDATE</label>
-              </div>
-            </div>
-          </div> */}
-
         </div>
 
 
