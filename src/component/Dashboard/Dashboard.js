@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import { MdSpaceDashboard } from "react-icons/md";
 
 const Dashboard = () => {
   return (
@@ -27,7 +28,6 @@ const Dashboard = () => {
               />
             </svg>
           </label>
-          <h2 className="text-3xl  text-black">Dashboard </h2>
         </div>
 
         <Outlet></Outlet>
@@ -35,24 +35,33 @@ const Dashboard = () => {
       <div className="drawer-side drawer-mobile">
         <label for="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 overflow-y-auto w-80 bg-green-600 text-white">
+          <h2 className="text-3xl flex justify-center items-center gap-2 my-5">
+            Dashboard<MdSpaceDashboard></MdSpaceDashboard>
+          </h2>
           <li>
-            <Link to="/dashboard">My Profile</Link>
+            <Link to="/dashboard">My Account</Link>
           </li>
           <li>
-            <Link to="/dashboard/order">MY ORDERS</Link>
+            <Link to="/dashboard/order">My Orders</Link>
           </li>
           <>
             <li>
-              <Link to="/dashboard/user">USERS</Link>
+              <Link to="/dashboard/myEBook">My eBook Library</Link>
             </li>
             <li>
-              <Link to="/dashboard/manageOrders">MANAGE ALL PRODUCTS</Link>
+              <Link to="/dashboard/myReview">My Ratings and Review</Link>
             </li>
             <li>
-              <Link to="/dashboard/addProduct">ADD PRODUCTS</Link>
+              <Link to="/dashboard/wishlist">My Wishlist</Link>
             </li>
             <li>
-              <Link to="/dashboard/payment">PAYMENT</Link>
+              <Link to="/dashboard/addProduct">Add Product</Link>
+            </li>
+            <li>
+              <Link to="/dashboard/manageUsers">Manage All Users</Link>
+            </li>
+            <li>
+              <Link to="/dashboard/manageOrders">Manage All Order</Link>
             </li>
           </>
         </ul>
