@@ -25,7 +25,7 @@ const SingleProductDetails = () => {
     item;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${bookId}`)
+    fetch(`https://the-online-book-shop.herokuapp.com/product/${bookId}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
   }, [bookId]);
@@ -41,7 +41,7 @@ const SingleProductDetails = () => {
       stock: stock,
       email: user.email,
     };
-    fetch("http://localhost:5000/cartProduct", {
+    fetch("https://the-online-book-shop.herokuapp.com/cartProduct", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -64,7 +64,7 @@ const SingleProductDetails = () => {
       stock: stock,
       email: user.email,
     };
-    fetch("http://localhost:5000/wishList", {
+    fetch("https://the-online-book-shop.herokuapp.com/wishList", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -81,7 +81,7 @@ const SingleProductDetails = () => {
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://the-online-book-shop.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

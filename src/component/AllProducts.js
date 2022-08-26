@@ -9,7 +9,7 @@ const AllProducts = () => {
   // const { data: products, status } = useSelector((state) => state.product);
   // const dispatch = useDispatch();
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://the-online-book-shop.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

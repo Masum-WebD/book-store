@@ -3,7 +3,7 @@ import discountBanner from '../asset/Images/discountBanner.jpg'
 const DiscountBanner = () => {
     return (
 
-        <div class="bg-base-200" style={{
+        <div class="bg-base-200 my-28" style={{
             background: `url(${discountBanner})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',

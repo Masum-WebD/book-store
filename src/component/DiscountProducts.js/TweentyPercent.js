@@ -5,7 +5,7 @@ import Carousel from "react-elastic-carousel";
 const TweentyPercent = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://the-online-book-shop.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -21,7 +21,7 @@ const TweentyPercent = () => {
       <div className="flex justify-between items-center px-10">
         <div>
           <h2 className="uppercase text-gray-800  text-2xl font-bold">
-          Up to <span className="text-green-600">20%</span> Off Fall's Biggest Books
+            Up to <span className="text-green-600">20%</span> Off Fall's Biggest Books
           </h2>
         </div>
         <div className="text-gray-700 cursor-pointer hover:text-primary font-bold">
@@ -31,7 +31,7 @@ const TweentyPercent = () => {
       <div className="px-4 md:container mx-auto mt-16 lg:mb-0 mb-16">
         <Carousel breakPoints={breakPoints}>
           {products.slice(36, 48).map((book) => (
-              <TweentyPercentSingle book={book}></TweentyPercentSingle>
+            <TweentyPercentSingle book={book}></TweentyPercentSingle>
           ))}
         </Carousel>
       </div>
