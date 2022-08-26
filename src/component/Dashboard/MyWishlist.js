@@ -27,11 +27,11 @@ const MyWishlist = () => {
       <div className="text-left border-2 border-t-4 border-gray-400 border-t-green-400 rounded-md my-5 p-5">
         <h2 className="text-2xl font-bold text-gray-700">My Wishlist</h2>
         <h3 className="text-xl text-gray-500">
-          You have added {wishList.length} products on your wishlist
+          You have added {wishList?.length} products on your wishlist
         </h3>
       </div>
       <div className=" bg-white">
-        {wishList.map((p) => (
+        {wishList?.map((p) => (
           <MyWishListProduct
             key={p._id}
             product={p}
