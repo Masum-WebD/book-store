@@ -54,13 +54,17 @@ const AddToCart = () => {
                 Order Summary
               </h2>
             
-              <div className=" bg-white">
-                {cartProduct.map((p) => (
+              <div className=" bg-white ">
+               <div className='overflow-auto w-[620px] h-[250px]'>
+               {cartProduct.map((p) => (
                  
-                  <CartProduct key={p._id} product={p} handleDeleteBtn={handleDeleteBtn}></CartProduct>
-               
-                ))}
-                <CheckoutSummary />
+                 <CartProduct key={p._id} product={p} handleDeleteBtn={handleDeleteBtn}></CartProduct>
+              
+               ))}
+               </div>
+               <div>
+               <CheckoutSummary />
+               </div>
               </div>
             
             </div>

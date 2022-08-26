@@ -21,14 +21,7 @@ const CheckoutSummary = () => {
 
   const handleOrder=(e)=>{
     e.preventDefault();
-    // const orderProduct = {
-    //   Name:cartProduct,
-    //   Product:{
-    //     cartProduct:[...cartProduct]
-    //   },
-    //   Price: subTotal,
-    //   Quantity: cartProduct.length
-    // }
+ 
     
     fetch('http://localhost:5000/order',{
       method:"POST",

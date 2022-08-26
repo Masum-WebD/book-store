@@ -23,7 +23,6 @@ const Checkout = ({price}) => {
     const [cartProduct,setCartProduct] =useCartBooks()
     
     const email = user?.email;
-    // const price = 19.99
    
     useEffect(() => {
         fetch('http://localhost:5000/create-payment-intent', {
@@ -64,16 +63,6 @@ const Checkout = ({price}) => {
             setCardError(error?.message || '')
             setSuccess('')
          
-        /* if (error) {
-            console.log('[error]', error);
-            setCardError(error.message)
-        } else {
-            console.log('[PaymentMethod]', paymentMethod);
-            setCardError('')
-        } */
-
-
-
         // confirm card payment
         const {paymentIntent, error:intentError} = await stripe.confirmCardPayment(
             clientSecret,
@@ -98,6 +87,7 @@ const Checkout = ({price}) => {
             toast('Congrats!!! Your payment is completed.')
             setSuccess('Congrats!!! Your payment is completed.')
             setTransactionId(paymentIntent.id)
+            setCartProduct('')
             console.log(paymentIntent)
           }
     }
@@ -136,17 +126,20 @@ const Checkout = ({price}) => {
                         <FontAwesomeIcon className='text-[25px] mr-2 mt-1 text-black' icon={faFaceSmile} /> 
                         <h1 className='text-black text-[25px] '> Happy journey</h1>
                         </div>
-                        
-                        <Link className='text-black' to='/all-products'>
-                            <button> <FontAwesomeIcon icon={faArrowLeft}/> Go back for shopping</button>
-                        </Link>
+                    
                         </div>
                         </div>
 
                 }
-                <button className="btn btn-sm btn-outline bg-secondary w-full mt-10" type="submit" disabled={!stripe || !clientSecret}>
+                {
+                    success ? <Link className="btn btn-sm btn-outline bg-secondary w-full mt-10" to='/all-products'>
+                    <button> <FontAwesomeIcon icon={faArrowLeft}/> Go back for shopping</button>
+                    </Link> : <button className="btn btn-sm btn-outline bg-secondary w-full mt-10" type="submit" disabled={!stripe || !clientSecret}>
                     Pay Now
-                </button>
+                    </button>
+                }
+              
+               
             </form>
 
 
