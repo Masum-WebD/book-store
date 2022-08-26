@@ -12,7 +12,7 @@ const MyWishlist = () => {
     isLoading,
     refetch,
   } = useQuery("wishList", () =>
-    fetch(`http://localhost:5000/wishList?email=${user.email}`, {
+    fetch(`https://the-online-book-shop.herokuapp.com/wishList?email=${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

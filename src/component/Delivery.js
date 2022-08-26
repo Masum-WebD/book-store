@@ -4,7 +4,7 @@ import delivery from '../asset/Images/delivery.png';
 
 const Delivery = () => {
     return (
-        <div class="hero min-h-screen my-16 lg:my-0">
+        <div class="hero min-h-screen my-16 lg:mb-28">
             <div class="hero-content flex-col lg:flex-row">
                 <img src={delivery} class="lg:max-w-xl drop-shadow-xl" alt='' />
                 <div className='lg:w-3/6 lg:text-left'>

@@ -12,7 +12,7 @@ const Banner = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/product/?name=${searchText}`;
+    const url = `https://the-online-book-shop.herokuapp.com/product/?name=${searchText}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBooks(data));
@@ -26,7 +26,7 @@ const Banner = () => {
   return (
     <section className="relative bg-[#F5FFF7]">
       <div class="bg-no-repeat bg-contain bg-center" style={{ backgroundImage: `url(${bg})` }}>
-        <div className="py-40">
+        <div className="py-32">
           <div class="text-center text-neutral-content">
             <div class="">
               <h1 class="mb-5 lg:text-[64px] text-4xl font-bold lg:leading-[81px] text-[#0B1B28] capitalize">
