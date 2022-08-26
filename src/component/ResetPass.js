@@ -2,25 +2,35 @@ import React from 'react';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../Firebase/firebase.init';
-import { toast } from 'react-toastify';
 import Loading from './Loading';
 import bg from '../asset/Images/login-bg.jpg';
 import logo from '../asset/Images/logo.png';
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const ResetPass = () => {
 
     const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(auth);
 
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    console.log(error)
 
     if (error) {
-        toast.error("Something went wrong. Please check your email and try again");
+        Swal.fire(
+            'We cannot find this user. Please check your email and try again',
+            '',
+            'error'
+        )
     };
 
     const onSubmit = async data => {
         await sendPasswordResetEmail(data.email);
-        toast.success('Reset link sent successfully. Please check your email !!');
+        reset();
+        Swal.fire(
+            'Reset link sent successfully. Please check your email !!',
+            '',
+            'success'
+        )
     };
 
     return (
@@ -62,7 +72,7 @@ const ResetPass = () => {
                                             </label>
                                         </div>
 
-                                        <input type="submit" value='Reset Password' className="btn text-white w-full mt-3" />
+                                        <input type="submit" value='Reset Password' className="btn btn-primary text-white w-full mt-3" />
                                     </form>
 
 

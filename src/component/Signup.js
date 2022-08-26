@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../Firebase/firebase.init';
 import Loading from './Loading';
 import bg from '../asset/Images/login-bg.jpg';
 import logo from '../asset/Images/logo.png';
 import googleIcon from '../asset/Icons/google.png';
+import Swal from 'sweetalert2';
+import useToken from './Hooks/useToken.js'
+
 
 const Signup = () => {
 
@@ -19,17 +21,25 @@ const Signup = () => {
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const [token] = useToken(user || googleUser)
 
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
 
+
     useEffect(() => {
-        if (user || googleUser) {
+        if (token || user || googleUser) {
             navigate(from, { replace: true });
-            toast.success("Account created successful");
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Registration Successful',
+                showConfirmButton: false,
+                timer: 2000
+            })
         }
-    }, [from, user, googleUser, navigate]);
+    }, [from, user, googleUser, navigate, token]);
 
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
@@ -38,7 +48,11 @@ const Signup = () => {
     };
 
     if (googleError || error || updateError) {
-        toast.error("Something went wrong. Please try again.");
+        return Swal.fire({
+            icon: 'error',
+            title: 'Something went wrong!',
+            text: 'Please try again after some minutes',
+        });
     }
 
     return (
@@ -113,11 +127,11 @@ const Signup = () => {
                                             </label>
                                         </div>
 
-                                        <input type="submit" value='Sign Up' className="btn text-white w-full mt-3" />
+                                        <input type="submit" value='Sign Up' className="btn btn-primary text-white w-full mt-3" />
                                     </form>
                                     <div className="divider">OR</div>
                                     <div className="form-control">
-                                        <button onClick={() => signInWithGoogle()} className="btn btn-outline hover:text-black" >
+                                        <button onClick={() => signInWithGoogle()} className="btn btn-outline hover:text-black hover:bg-white" >
                                             <img src={googleIcon} className='w-5 mr-2' alt="" /> Continue with google
                                         </button>
                                     </div>
