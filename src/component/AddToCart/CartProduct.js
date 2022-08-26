@@ -1,16 +1,22 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CheckoutSummary from "./CheckoutSummary";
-import React, {useState} from "react"
+import React, {useRef, useState} from "react"
 
 const CartProduct = ({ product,handleDeleteBtn}) => {
-  const { name, author, price, img,_id } =
-    product;
+  const { name, author, price, img,_id } =product;
 
- 
+  const elementRef =useRef('null')
+  const qty = elementRef.current.value
+  const totalPrice = price *qty
+
+//  const quantity =e=>{
+//   e.preventDefault();  
+
+//   console.log(totalPrice)
+//  }
     
- 
   return (
+    
     <div className="p-5 rounded border border-red-100">
       <div className="flex gap-3">
         <div>
@@ -32,24 +38,25 @@ const CartProduct = ({ product,handleDeleteBtn}) => {
 
           <div className=" mt-5">
             <div className="flex justify-between items-start">
-              <h1 className=" align-text-bottom font-medium text-sm ">$ {price}</h1>
-              <select  name="quantity" id="" className="align-bottom mr-0 bg-white border border-red-100" >
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
-                <option value="">5</option>
-                <option value="">6</option>
-                <option value="">7</option>
-                <option value="">8</option>
-                <option value="">9</option>
-                <option value="">10</option>
+              <h1 className=" align-text-bottom font-medium text-sm ">$ {totalPrice }</h1>
+              <select ref={elementRef} name="quantity" id=""  className="align-bottom mr-0 bg-white border border-red-100" >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
               </select>
             </div>
           </div>
         </div>
       </div>
     </div>
+
   );
 };
 

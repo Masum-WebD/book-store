@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import MyWishListProduct from "./MyWishListProduct";
 import { useQuery } from "react-query";
 import Loading from "../Loading";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/firebase.init";
 
 const MyWishlist = () => {
-
+  const [user] = useAuthState(auth);
   let {
     data: wishList,
     isLoading,
     refetch,
   } = useQuery("wishList", () =>
-    fetch("http://localhost:5000/wishList", {
+    fetch(`http://localhost:5000/wishList?email=${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -34,7 +36,6 @@ const MyWishlist = () => {
             key={p._id}
             product={p}
             refetch={refetch}
-            
           ></MyWishListProduct>
         ))}
       </div>
