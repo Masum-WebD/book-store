@@ -87,12 +87,8 @@ const Header = () => {
                 OFFER
               </NavLink>
             </li>
-            <li>
-              {user && (
-                <NavLink className="text-black" to="/dashboard">
-                  DASHBOARD
-                </NavLink>
-              )}
+            <li className="mb-2">
+            
               {user && (
                 <NavLink className="text-black" to="/dashboard">
                   DASHBOARD
@@ -154,10 +150,9 @@ const Header = () => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span class="badge badge-sm indicator-item">{cartProduct.length} </span>
-
-
-
+              <span class="badge badge-sm indicator-item">
+                {cartProduct.length}{" "}
+              </span>
             </div>
           </label>
         </NavLink>
@@ -189,6 +184,12 @@ const Header = () => {
                 className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                 to="/dashboard"
               >
+                Dashboard
+              </Link>
+              <Link
+                className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                to="/dashboard/myAccount"
+              >
                 My Account
               </Link>
               {!admin && (
@@ -216,11 +217,18 @@ const Header = () => {
               {admin && (
                 <>
                   <Link
-                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left active:bg-primary"
                     to="/dashboard/addProduct"
                   >
                     Add A Product
                   </Link>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left active:bg-primary"
+                    to="/dashboard/productList"
+                  >
+                    Product List
+                  </Link>
+                  
                   <Link
                     className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                     to="/dashboard/manageUsers"
@@ -232,6 +240,12 @@ const Header = () => {
                     to="/dashboard/manageOrders"
                   >
                     Manage All Orders
+                  </Link>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/wishlist"
+                  >
+                    My Wishlist
                   </Link>
                 </>
               )}
