@@ -1,10 +1,10 @@
 import React from "react";
 import { toast } from "react-toastify";
 
-const UserRow = ({ user, refetch, index}) => {
-  const { email, role, } = user;
+const UserRow = ({ user, refetch, index }) => {
+  const { email, role } = user;
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://the-online-book-shop.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -27,25 +27,24 @@ const UserRow = ({ user, refetch, index}) => {
   const handleRemoveBtn = (email) => {
     const request = window.confirm("Are you sure you want to Remove");
     if (request) {
-      fetch(`http://localhost:5000/user/${email}`, {
+      fetch(`https://the-online-book-shop.herokuapp.com/user/${email}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          if(data.deletedCount){
+          if (data.deletedCount) {
             toast.success(`Remove "${email}" this user`);
-            refetch()
+            refetch();
           }
-           
         });
     }
   };
   return (
     <tr>
-      <th className='text-gray-600'>{index + 1}</th>
-      <td className='text-gray-700' >{email}</td>
-      <td className='text-gray-600'>
+      <th className="text-gray-600">{index + 1}</th>
+      <td className="text-gray-700">{email}</td>
+      <td className="text-gray-600">
         {role !== "admin" && (
           <button onClick={makeAdmin} className="btn btn-xs bg-primary">
             Make Admin
@@ -58,7 +57,12 @@ const UserRow = ({ user, refetch, index}) => {
         )}
       </td>
       <td>
-        <button onClick={()=>handleRemoveBtn(email)}  className="btn btn-xs bg-red-400">Remove User</button>
+        <button
+          onClick={() => handleRemoveBtn(email)}
+          className="btn btn-xs bg-red-400"
+        >
+          Remove User
+        </button>
       </td>
     </tr>
   );
