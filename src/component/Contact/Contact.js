@@ -1,15 +1,15 @@
 import React from 'react';
-import ContactBanner from './ContactBanner';
-import ContactForm from './ContactForm';
-import Faq from './FAQ/Faq';
+import ContactBannerSolid from './ContactPage/ContactBannerSolid';
+import ContactFormSolid from './ContactPage/ContactFormSolid';
+
 
 
 const Contact = () => {
     return (
         <div>
-            <ContactBanner />
-            <ContactForm />
-            <Faq></Faq>
+            <ContactBannerSolid></ContactBannerSolid>
+            <ContactFormSolid></ContactFormSolid>
+
         </div>
     );
 };

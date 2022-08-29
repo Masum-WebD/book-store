@@ -25,8 +25,8 @@ const Banner = () => {
   };
 
   return (
-    <section className="relative bg-[#F5FFF7] lg:mt-[60px]">
-      <div class="bg-no-repeat bg-cover" style={{ backgroundImage: `url(${bg})` }}>
+<section className="relative bg-[#F5FFF7] lg:mt-[60px]">
+      <div class="bg-no-repeat bg-cover" style={{ backgroundImage: url(${bg}) }}>
         <div className="lg:py-[90px] py-[50px] px-4 max-w-[1196px] mx-auto">
           <div class="text-left text-neutral-content lg:w-1/2">
             <div class="">
