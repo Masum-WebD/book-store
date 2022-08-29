@@ -25,8 +25,8 @@ const Banner = () => {
   };
 
   return (
-<section className="relative bg-[#F5FFF7] lg:mt-[60px]">
-      <div class="bg-no-repeat bg-cover" style={{ backgroundImage: url(${bg}) }}>
+    <section className="relative bg-[#F5FFF7] lg:mt-[60px]">
+      <div class="bg-no-repeat bg-cover" style={{ backgroundImage: `url(${bg})` }}>
         <div className="lg:py-[90px] py-[50px] px-4 max-w-[1196px] mx-auto">
           <div class="text-left text-neutral-content lg:w-1/2">
             <div class="">
@@ -47,18 +47,18 @@ const Banner = () => {
                     class="pl-3 w-full bg-white text-sm text-neutral outline-none"
                   />
                   <span className="bg-primary py-3 px-4 rounded-full flex justify-between items-center">
-                    <img src={sicon} alt="" className="mr-2"/>
-                      <input
-                        type="submit"
-                        value="Search"
-                        class="text-white text-sm mr-2"
-                      />
+                    <img src={sicon} alt="" className="mr-2" />
+                    <input
+                      type="submit"
+                      value="Search"
+                      class="text-white text-sm mr-2"
+                    />
                   </span>
                 </form>
                 <div className="absolute bg-white w-full">
-                      {books?.map((book) => (
-                        <p onClick={() => navigateToProductDetail(book._id)} className="text-accent hover:text-primary text-sm cursor-pointer p-3">{book.name}</p>
-                      ))}
+                  {books?.map((book) => (
+                    <p onClick={() => navigateToProductDetail(book._id)} className="text-accent hover:text-primary text-sm cursor-pointer p-3">{book.name}</p>
+                  ))}
                 </div>
               </div>
             </div>
