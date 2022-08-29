@@ -9,6 +9,7 @@ const AllProducts = () => {
   // const { data: products, status } = useSelector((state) => state.product);
   // const dispatch = useDispatch();
   useEffect(() => {
+
     fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
@@ -20,13 +21,12 @@ const AllProducts = () => {
   //   return <h2 className="text-black">Product not found!</h2>;
   // }
   return (
-    <div>
-      <h2 className="uppercase text-gray-700 text-3xl mt-20 font-bold">
+    <div className="max-w-[1140px] mx-auto">
+      <h2 className="capitalize text-neutral text-3xl mt-20 font-bold">
         Popular books
       </h2>
-      <div className="h-[3px] w-[120px] bg-primary mt-2 mx-auto"></div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 px-4 md:container mx-auto my-16 gap-5">
-        {products.slice(0, 6).map((book) => (
+      <div className="grid md:grid-cols-2 lg:grid-cols-5 px-4 md:container mx-auto my-16 gap-5">
+        {products.slice(0, 10).map((book) => (
           <SingleProduct book={book}></SingleProduct>
         ))}
       </div>

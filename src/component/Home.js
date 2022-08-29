@@ -4,25 +4,25 @@ import AllTopProducts from './AllTopProducts';
 import Banner from './Banner';
 import Delivery from './Delivery';
 import DiscountBanner from './DiscountBanner';
-import FiftyPercent from './DiscountProducts.js/FiftyPercent';
 import ThirtyPercent from './DiscountProducts.js/ThirtyPercent';
 import TweentyPercent from './DiscountProducts.js/TweentyPercent';
+import Features from './Features';
 import Subscribe from './Subscribe';
 
 const Home = () => {
     return (
         <div>
             <Banner />
-            {/* <FiftyPercent/> */}
-            
+            <Features />
+
             <AllProducts />
             <DiscountBanner />
-            
-            
-            <TweentyPercent/>
-            <ThirtyPercent/>
+
+
+            <TweentyPercent />
+            <ThirtyPercent />
             <AllTopProducts />
-            
+
             <Delivery />
             <Subscribe />
         </div>

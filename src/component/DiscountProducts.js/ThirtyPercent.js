@@ -5,7 +5,7 @@ import ThirtyPercentSingle from "./ThirtyPercentSingle";
 const ThirtyPercent = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://the-online-book-shop.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -17,11 +17,11 @@ const ThirtyPercent = () => {
     { width: 1200, itemsToShow: 4 },
   ];
   return (
-    <div className="container mx-auto my-16 rounded-md shadow-lg">
+    <div className="container mx-auto my-28 rounded-md shadow-lg">
       <div className="flex justify-between items-center px-10">
         <div className="">
           <h2 className="uppercase text-gray-800  text-2xl font-bold">
-          Up to <span className="text-green-600">30%</span> Off Novels Books
+            Up to <span className="text-green-600">30%</span> Off Novels Books
           </h2>
         </div>
         <div className="text-gray-700 cursor-pointer hover:text-primary font-bold">
@@ -31,7 +31,7 @@ const ThirtyPercent = () => {
       <div className="px-4 md:container mx-auto mt-16 lg:mb-0 mb-16">
         <Carousel breakPoints={breakPoints}>
           {products.slice(50, 68).map((book) => (
-              <ThirtyPercentSingle book={book}></ThirtyPercentSingle>
+            <ThirtyPercentSingle book={book}></ThirtyPercentSingle>
           ))}
         </Carousel>
       </div>

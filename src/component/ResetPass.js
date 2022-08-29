@@ -3,8 +3,7 @@ import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../Firebase/firebase.init';
 import Loading from './Loading';
-import bg from '../asset/Images/login-bg.jpg';
-import logo from '../asset/Images/logo.png';
+import forgetPass from '../asset/Images/Forgot password-pana-min.png';
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 
@@ -43,18 +42,21 @@ const ResetPass = () => {
 
                     :
 
-                    <div className='min-h-screen bg-no-repeat bg-cover bg-fixed' style={{ backgroundImage: `url(${bg})` }}>
+                    <div className='min-h-screen lg:grid lg:grid-cols-2 bg-[#F8F3FF] lg:px-32'>
+
+                        <div>
+                            <img src={forgetPass} className="hidden lg:block mx-auto mt-24 drop-shadow-lg" alt="" />
+                        </div>
 
                         <div className='flex justify-center items-center'>
-                            <div className="card flex-shrink-0 lg:w-96 w-80 shadow-2xl glass mt-24">
-                                <img className='w-48 mx-auto mt-4' src={logo} alt="" />
-                                <p className='text-center font-bold mt-3 underline underline-offset-2 text-white'>RESET YOUR PASSWORD</p>
+                            <div className="card flex-shrink-0 lg:w-96 w-80 mt-24">
+                                <p className='text-center font-bold mt-3 underline underline-offset-4 text-2xl text-neutral'>RESET YOUR PASSWORD</p>
                                 <div className="card-body">
 
                                     <form onSubmit={handleSubmit(onSubmit)}>
                                         <div className="form-control">
                                             <label className="label">
-                                                <span className="label-text text-white">Your existing email</span>
+                                                <span className="label-text text-neutral">Your existing email</span>
                                             </label>
                                             <input type="email" placeholder="email" className="input input-bordered text-black" {...register("email", {
                                                 required: {
@@ -76,7 +78,7 @@ const ResetPass = () => {
                                     </form>
 
 
-                                    <Link to="/Login" className="text-center text-sm label-text-alt link link-hover mt-2 text-white">Return to login page</Link>
+                                    <Link to="/Login" className="text-center text-sm label-text-alt link link-hover mt-2 text-neutral">Return to login page</Link>
                                 </div>
                             </div>
                         </div>
