@@ -39,7 +39,7 @@ const Header = () => {
     <div className="bg-[#F8F3FF] fixed top-0 z-50 w-full">
       <div className="bg-[#F8F3FF] ">
         <div className="navbar p-0 mx-auto max-w-[1196px]">
-          <div className="navbar-start lg:mx-5">
+          <div className="navbar-start lg:mx-0">
             <div className="dropdown">
               <label tabIndex="0" className="btn btn-ghost lg:hidden">
                 <svg
