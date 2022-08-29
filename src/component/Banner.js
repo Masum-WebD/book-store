@@ -28,8 +28,7 @@ const Banner = () => {
       <div class="bg-no-repeat bg-contain bg-center" style={{ backgroundImage: `url(${bg})` }}>
         <div className="py-32">
           <div class="text-center text-neutral-content">
-            <div class="">
-              <h1 class="mb-5 lg:text-[64px] text-4xl font-bold lg:leading-[81px] text-[#0B1B28] capitalize">
+            <div class=""><h1 class="mb-5 lg:text-[64px] text-4xl font-bold lg:leading-[81px] text-[#0B1B28] capitalize">
                 Buy your favorite books
                 <br />from anywhere
               </h1>

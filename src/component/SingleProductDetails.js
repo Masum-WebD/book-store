@@ -25,6 +25,7 @@ const SingleProductDetails = () => {
     item;
 
   useEffect(() => {
+
     fetch(`https://the-online-book-shop.herokuapp.com/product/${bookId}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
@@ -41,6 +42,7 @@ const SingleProductDetails = () => {
       stock: stock,
       email: user.email,
     };
+
     fetch("https://the-online-book-shop.herokuapp.com/cartProduct", {
       method: "PUT",
       headers: {
