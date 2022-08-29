@@ -108,7 +108,7 @@ const Header = () => {
         </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu-horizontal p-0 text-neutral font-semibold">
+        <ul className="menu-horizontal p-0 text-neutral font-medium text-base">
           <li className="mx-5 hover:text-primary">
             <NavLink to="/">Home</NavLink>
           </li>
