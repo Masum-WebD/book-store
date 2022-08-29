@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import bg from '../../src/asset/Images/banner-bg.png';
+import bg from '../../src/asset/Images/thebanner.png';
+import sicon from '../../src/asset/Images/Rectangle 22.png';
 
 const Banner = () => {
   const navigate = useNavigate();
@@ -25,31 +26,36 @@ const Banner = () => {
 
   return (
     <section className="relative bg-[#F5FFF7]">
-      <div class="bg-no-repeat bg-contain bg-center" style={{ backgroundImage: `url(${bg})` }}>
-        <div className="py-32">
-          <div class="text-center text-neutral-content">
-            <div class=""><h1 class="mb-5 lg:text-[64px] text-4xl font-bold lg:leading-[81px] text-[#0B1B28] capitalize">
-                Buy your favorite books
-                <br />from anywhere
+      <div class="bg-no-repeat bg-cover" style={{ backgroundImage: `url(${bg})` }}>
+        <div className="lg:py-[90px] max-w-[1196px] mx-auto">
+          <div class="text-left text-neutral-content w-1/2">
+            <div class="">
+              <h3 className="text-neutral text-[16px] font-medium capitalize">
+                Explore our online shop and
+              </h3>
+              <h1 class="mb-5 lg:text-[64px] mt-2 text-4xl font-bold lg:leading-[81px] text-[#0B1B28] capitalize ">
+                Get your new <span className="text-primary">book</span> with the best price
               </h1>
-              <h1 className="text-xl text-[#0B1B28CC]">We Are Available 24/7</h1>
             </div>
-            <div className="lg:w-2/5 mt-[60px] w-4/5 lg:p-3 p-2 mx-auto bg-white rounded-lg shadow-lg">
-              <div class="relative">
-                <form onSubmit={handleSubmit} className="flex">
+            <div className=" bg-white rounded-full p-2 shadow-lg">
+              <div class="">
+                <form onSubmit={handleSubmit} className="flex justify-between items-center">
                   <input
                     type="text"
                     name="name"
                     placeholder="Search by book name"
-                    class="input input-bordered input-primary rounded-r-none text-black w-full "
+                    class="pl-3"
                   />
-                  <input
-                    type="submit"
-                    value="Search"
-                    class="btn btn-primary rounded-l-none text-white"
-                  />
+                  <span className="bg-primary p-3 rounded-full flex justify-between items-center">
+                    <img src={sicon} alt="" />
+                    <input
+                      type="submit"
+                      value="Search"
+                      class=" text-white pl-2"
+                    />
+                  </span>
                 </form>
-                <div className="absolute bg-white shadow-md mx-auto lg:w-full">
+                <div className="">
                   <h3 className="">
                     {books?.map((book) => (
                       <p onClick={() => navigateToProductDetail(book._id)} className="text-accent hover:text-primary cursor-pointer py-3">{book.name}</p>
