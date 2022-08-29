@@ -44,11 +44,11 @@ const Shop = () => {
         <div class="drawer drawer-mobile mt-10">
             {/* <PageTitle title="Shop" /> */}
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-            <label for="my-drawer-2" class="btn btn-primary absolute top-6 drawer-button lg:hidden">Open drawer</label>
             <div class="drawer-content py-10">
+                <label for="my-drawer-2" class="drawer-button btn btn-link capitalize float-right lg:hidden"><MdOutlineCategory className='inline-block relative text-base mr-1' /> Show All Categories</label>
 
-                <div className='flex justify-between items-center lg:px-7 px-2'>
-                    <div class="breadcrumbs text-black lg:text-lg lg:font-semibold">
+                <div className='lg:flex mt-1 lg:mt-0 justify-between items-center lg:px-7 px-2'>
+                    <div class="breadcrumbs text-black lg:text-lg text-sm lg:font-semibold">
                         <ul>
                             <li><Link to="">Shop</Link></li>
                             <li><Link onClick={() => showAllProduct()} to="">All Products</Link></li>
@@ -58,11 +58,11 @@ const Shop = () => {
                             }
                         </ul>
                     </div>
-                    <h1 className='text-lg text-black my-4 font-semibold'>Showing all {filteredItem?.length} books</h1>
+                    <h1 className='lg:text-lg text-sm text-black my-4 lg:font-semibold'>Showing all {filteredItem?.length} books</h1>
                 </div>
 
 
-                <div className='grid lg:grid-cols-3 gap-4'>
+                <div className='grid lg:grid-cols-3 gap-4 px-3'>
                     {
                         filteredItem?.map((EachBook) => (
                             <EachProductForShop key={EachBook._id} book={EachBook}></EachProductForShop>
@@ -73,7 +73,7 @@ const Shop = () => {
             </div>
             <div class="drawer-side">
                 <label for="my-drawer-2" class="drawer-overlay"></label>
-                <ul class="text-left p-10 overflow-y-auto w-80 text-base-content bg-white">
+                <ul class="text-left p-10 overflow-y-auto w-80 text-base-content bg-[#F8F3FF]">
                     <h1 className='text-2xl text-black font-semibold text-left'><MdOutlineCategory className='inline-block relative bottom-[2px]' /> Categories</h1>
                     <div className='border-t-2 border-gray-300 mt-3'></div>
                     <li className="text-black my-1 hover:underline hover:underline-offset-2 active:text-red-800"><Link onClick={() => filterResult('Poem')} to="">Poem</Link></li>
