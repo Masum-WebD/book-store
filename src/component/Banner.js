@@ -26,12 +26,12 @@ const Banner = () => {
   return (
     <section className="relative bg-[#F5FFF7]">
       <div class="bg-no-repeat bg-contain bg-center" style={{ backgroundImage: `url(${bg})` }}>
-        <div className="py-40">
+        <div className="py-28">
           <div class="text-center text-neutral-content">
             <div class="">
               <h1 class="mb-5 lg:text-[64px] text-4xl font-bold lg:leading-[81px] text-[#0B1B28] capitalize">
                 Buy your favorite books
-                <br />from anywhere
+                <br />from our store
               </h1>
               <h1 className="text-xl text-[#0B1B28CC]">We Are Available 24/7</h1>
             </div>
