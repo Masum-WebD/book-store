@@ -30,7 +30,7 @@ const Banner = () => {
         <div className="bg-green-900/70 py-40">
           <div class="text-center text-neutral-content">
             <div class="">
-              <h1 class="mb-5 text-5xl font-bold leading-[60px] text-white">
+              <h1 class="mb-5 text-5xl font-bold leading-[60px] text-halkabeguni">
                 THE EASIEST WAY TO
                 <br /> BUY ANY BOOK
               </h1>
