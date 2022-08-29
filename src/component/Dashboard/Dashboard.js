@@ -151,7 +151,7 @@ const Dashboard = () => {
                       </Link>
                     </div>
                     <div class="collapse-content flex flex-col text-left ml-10">
-                      <Link to="/dashboard/manageOrders">List</Link>
+                      <Link to="/dashboard/manageUsers">List</Link>
                       <Link to="/dashboard/addProduct" className="mt-3">
                         Details
                       </Link>

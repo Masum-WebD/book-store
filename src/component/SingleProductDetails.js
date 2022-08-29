@@ -25,7 +25,8 @@ const SingleProductDetails = () => {
     item;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${bookId}`)
+
+    fetch(`https://the-online-book-shop.herokuapp.com/product/${bookId}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
   }, [bookId]);
@@ -41,7 +42,8 @@ const SingleProductDetails = () => {
       stock: stock,
       email: user.email,
     };
-    fetch("http://localhost:5000/cartProduct", {
+
+    fetch("https://the-online-book-shop.herokuapp.com/cartProduct", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -64,7 +66,7 @@ const SingleProductDetails = () => {
       stock: stock,
       email: user.email,
     };
-    fetch("http://localhost:5000/wishList", {
+    fetch("https://the-online-book-shop.herokuapp.com/wishList", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -81,7 +83,7 @@ const SingleProductDetails = () => {
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://the-online-book-shop.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -93,15 +95,15 @@ const SingleProductDetails = () => {
     { width: 1200, itemsToShow: 4 },
   ];
   return (
-    <div className="container mx-auto pt-[80px] p-5 lg:mt-0">
+    <div className="container mx-auto max-w-[1196px] pt-[80px] p-5 lg:mt-0">
       <div className="lg:gap-3">
-        <h2 className="text-left my-2 text-gray-600 font-bold">
+        <h2 className="text-left my-2 text-secondary font-bold">
           Book / {name}
         </h2>
         <div class="card lg:card-side bg-base-100 shadow-xl lg:mt-5">
           <figure
-            className="lg:p-5 
-          rounded-md  border border-green-400"
+            className="lg:p-3 
+          rounded-md border border-secondary"
           >
             <img src={img} alt="Book" className="rounded-md" />
           </figure>
@@ -111,9 +113,9 @@ const SingleProductDetails = () => {
                 {name}
               </h2>
               <h2 className="card-title mb-3 text-sm text-gray-700">
-                by <span className=" text-green-500">{author}</span>
+                by <span className=" text-primary">{author}</span>
               </h2>
-              <h2 className="card-title text-secondary mb-2 font-bold">
+              <h2 className="card-title text-primary mb-2 font-bold">
                 <span className="line-through text-gray-600">$1500</span> $
                 {price}
               </h2>
@@ -204,19 +206,7 @@ const SingleProductDetails = () => {
                   Purchase & Earn
                 </a>
               </li>
-              {/* <li>
-                <div class="stats shadow">
-                  <div class="stat">
-                    <h1 class=" text-green-500">Positive Ratings</h1>
-                    <h3 class="text-gray-700">64%</h3>
-                  </div>
-                  <div class="divider lg:divider-horizontal"></div> 
-                  <div class="stat">
-                    <h1 class=" text-green-500">Shipped On Time</h1>
-                    <h3 class="text-gray-700">84%</h3>
-                  </div>
-                </div>
-              </li> */}
+              
             </ul>
           </div>
         </div>
@@ -226,15 +216,15 @@ const SingleProductDetails = () => {
         <Tabs>
           <TabList>
             <Tab>
-              <h3 class="collapse-title font-medium text-green-500">Summary</h3>
+              <h3 class="collapse-title font-medium text-secondary">Summary</h3>
             </Tab>
             <Tab>
-              <h3 class="collapse-title font-medium text-green-500">
+              <h3 class="collapse-title font-medium text-secondary">
                 Specification
               </h3>
             </Tab>
             <Tab>
-              <h3 class="collapse-title font-medium text-green-500">Reviews</h3>
+              <h3 class="collapse-title font-medium text-secondary">Reviews</h3>
             </Tab>
           </TabList>
 
@@ -310,7 +300,7 @@ const SingleProductDetails = () => {
                 className="review-area textarea text-black"
               />
 
-              <button className="review-btn text-white">Submit</button>
+              <button className="review-btn bg-primary border-1 border-primary text-white">Submit</button>
             </div>
 
             <article className="mt-14">

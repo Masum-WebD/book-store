@@ -1,8 +1,8 @@
-.popup {
+/* .popup {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .popup-details h2 {
     font-size: 48px;
@@ -68,7 +68,7 @@
 .circle {
     width: 15em;
     height: 15em;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     position: relative;
     padding: 0;
     margin: 1em auto;
@@ -99,14 +99,14 @@
 }
 
 .circle .arrow {
-    width: 0;
-    height: 0;
+    width: 10;
+    height: 10;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     border-top: 50px solid black;
     position: absolute;
     left: 50%;
-    top: -10px;
+    top: 0px;
     z-index: 1;
 }
 
@@ -127,4 +127,8 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+.stop-rotate {
+    animation-play-state: paused;
 }

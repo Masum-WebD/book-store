@@ -78,6 +78,7 @@ function App() {
         pageId="107580278651104"
         appId="5213313418754051"
       />
+      
       <Footer></Footer>
       <ToastContainer />
     </div>
