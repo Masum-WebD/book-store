@@ -1,171 +1,251 @@
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../asset/Images/logo.png";
 import { FiLogIn } from "react-icons/fi";
 import { FiLogOut } from "react-icons/fi";
 import auth from "../Firebase/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
-import { Modal } from "@mui/material";
-import Box from "@mui/material/Box";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import { IoIosArrowDown } from "react-icons/io";
+import userProfile from "../asset/Icons/user.png";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "5px solid #229955",
-  boxShadow: 24,
-  p: 4,
-  borderRadius: "10px",
-};
+import useCartBooks from "./Hooks/useCartBooks";
+import useAdmin from "./Hooks/useAdmin";
 
 const Header = () => {
   const [user] = useAuthState(auth);
+  const [cartProduct] = useCartBooks();
+  const [admin] = useAdmin(user);
 
-  const logout = () => {
-    signOut(auth);
-    handleClose();
-    toast.success("Logout successful");
+  const handleOpen = () => {
+    Swal.fire({
+      title: "Are you sure for logout?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#27AE61",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+      allowEnterKey: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Logout Successful", " ", "success");
+        signOut(auth);
+        localStorage.removeItem("accessToken*");
+      }
+    });
   };
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   return (
-    <div class="navbar bg-primary fixed top-0 z-50">
-      <div class="navbar-start lg:mx-5">
-        <div class="dropdown">
-          <label tabindex="0" class="btn btn-ghost lg:hidden">
+    <div className="navbar bg-primary fixed top-0 z-50">
+      <div className="navbar-start lg:mx-5">
+        <div className="dropdown">
+          <label tabIndex="0" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              className="h-5 w-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
               />
             </svg>
           </label>
           <ul
-            tabindex="0"
-            class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            tabIndex="0"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="/">HOME</Link>
+              <NavLink className="text-black" to="/home">
+                HOME
+              </NavLink>
             </li>
             <li>
-              <Link to="">SHOP</Link>
+              <NavLink className="text-black" to="/all-products">
+                SHOP
+              </NavLink>
             </li>
             <li>
-              <Link to=" ">CATEGORY</Link>
+              <NavLink className="text-black" to="/about">
+                ABOUT US
+              </NavLink>
             </li>
             <li>
-              <Link to=" ">FEATURES</Link>
+              <NavLink className="text-black" to="/contact">
+                CONTACT US
+              </NavLink>
             </li>
             <li>
-              <Link to="/about">ABOUT US</Link>
+              <NavLink className="text-black uppercase" to="/offer">
+                OFFER
+              </NavLink>
             </li>
             <li>
-              <Link to="/contact">CONTACT US</Link>
+              {user && (
+                <NavLink className="text-black" to="/dashboard">
+                  DASHBOARD
+                </NavLink>
+              )}
+              {user && (
+                <NavLink className="text-black" to="/dashboard">
+                  DASHBOARD
+                </NavLink>
+              )}
             </li>
-            <li className="">
-              <Link to="/dashboard">DASHBOARD</Link>
-            </li>
+            {user ? (
+              <button onClick={handleOpen} class="btn btn-secondary text-white">
+                Log Out <FiLogOut className="text-xl ml-2" />
+              </button>
+            ) : (
+              <Link to="/login" class="btn btn-secondary text-white">
+                Log in <FiLogIn className="text-xl ml-2" />
+              </Link>
+            )}
           </ul>
         </div>
-        <Link class="btn btn-ghost normal-case p-0 text-xl" to="/">
-          <img className="lg:w-48 w-36 text-white" src={logo} alt="" />
-        </Link>
+
+        <NavLink class="btn btn-ghost normal-case p-0 text-xl" to="/">
+          <img className="w-48 text-white" src={logo} alt="" />
+        </NavLink>
       </div>
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal p-0 text-white font-semibold">
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal p-0 text-white font-semibold">
           <li className="hover:bg-secondary">
-            <Link to="/">HOME</Link>
+            <NavLink to="/">HOME</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <Link to="/shop">SHOP</Link>
+            <NavLink to="/all-products">SHOP</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <Link to=" ">CATEGORY</Link>
+            <NavLink to="/about">ABOUT US</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <Link to=" ">FEATURES</Link>
+            <NavLink to="/contact">CONTACT US</NavLink>
           </li>
           <li className="hover:bg-secondary">
-            <Link to="/about">ABOUT US</Link>
-          </li>
-          <li className="hover:bg-secondary">
-            <Link to="/contact">CONTACT US</Link>
-          </li>
-          <li className="hover:bg-secondary">
-            <Link to="/dashboard">DASHBOARD</Link>
+            <label for="my-modal-6" class="btn-primary bg-transparent">
+              OFFER
+            </label>
           </li>
         </ul>
       </div>
       <div class="navbar-end lg:mx-5 d-flex text-white  font-bold">
-        <Link to="">
-          <FontAwesomeIcon className="lg:mr-5 mr-2 h-6" icon={faCartShopping} />
-        </Link>
+        <NavLink to="addToCart">
+          <label tabindex="0" class="btn btn-ghost btn-circle">
+            <div class="indicator mr-2 h-6">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+              <span class="badge badge-sm indicator-item">{cartProduct.length} </span>
+
+
+
+            </div>
+          </label>
+        </NavLink>
+
         {user ? (
-          <div class="">
-            <button onClick={handleOpen} class="btn text-white">
-              Log Out <FiLogOut className="text-xl ml-2" />
-            </button>
+          <div class="dropdown dropdown-end ml-2 hidden lg:block">
+            <label
+              tabindex="0"
+              class="btn btn-outline text-white hover:text-black m-1"
+            >
+              <div className="flex items-center">
+                <div class="avatar">
+                  <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <img
+                      src={user?.photoURL ? user.photoURL : userProfile}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <p className="ml-2">{user.displayName}</p>
+                <IoIosArrowDown className="text-lg font-bold ml-2" />
+              </div>
+            </label>
+            <ul
+              tabindex="0"
+              class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <Link
+                className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                to="/dashboard"
+              >
+                My Account
+              </Link>
+              {!admin && (
+                <>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/order"
+                  >
+                    My Orders
+                  </Link>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/myReview"
+                  >
+                    My Ratings and Reviews
+                  </Link>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/wishlist"
+                  >
+                    My Wishlist
+                  </Link>
+                </>
+              )}
+              {admin && (
+                <>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/addProduct"
+                  >
+                    Add A Product
+                  </Link>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/manageUsers"
+                  >
+                    Manage All Users
+                  </Link>
+                  <Link
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/manageOrders"
+                  >
+                    Manage All Orders
+                  </Link>
+                </>
+              )}
+              <button onClick={handleOpen} class="btn btn-secondary text-white">
+                Log Out
+                <FiLogOut className="text-xl ml-2" />
+              </button>
+            </ul>
           </div>
         ) : (
-          <div class="">
-            <Link to="/login" class="btn btn-sm text-white">
+          <div class="hidden ml-5 lg:block">
+            <Link to="/login" class="btn btn-secondary text-white">
               Log in <FiLogIn className="text-xl ml-2" />
             </Link>
           </div>
         )}
-        {
-          user ?
-
-            <div class="">
-              <button onClick={handleOpen} class="btn text-white">Log Out <FiLogOut className="text-xl ml-2" /></button>
-            </div>
-
-            :
-
-            <div class="">
-              <Link to='/login' class="btn text-white">Log in <FiLogIn className="text-xl ml-2" /></Link>
-            </div>
-        }
       </div>
-      
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <h1 className="text-black text-2xl text-center font-semibold">
-            Are sure for logout?
-          </h1>
-          <div className="mt-6 flex justify-evenly">
-            <button onClick={logout} className="btn">
-              Yes
-            </button>
-            <button onClick={handleClose} className="btn">
-              Cancel
-            </button>
-          </div>
-        </Box>
-      </Modal>
     </div>
   );
 };

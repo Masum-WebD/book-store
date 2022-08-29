@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: 'Be Vietnam Pro';
+}
+
+p {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 500;
+}
