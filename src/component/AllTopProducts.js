@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import AllProductSingle from "./AllProductSingle";
 import SingleProduct from "./SingleProduct";
 
 const AllTopProducts = () => {
