@@ -85,7 +85,7 @@ const Login = () => {
       ) : (
         <div className="min-h-screen lg:grid lg:grid-cols-2 bg-[#F8F3FF] lg:px-32">
           <div>
-            <img src={login} className="hidden lg:block mx-auto mt-24" alt="" />
+            <img src={login} className="hidden lg:block mx-auto mt-24 drop-shadow-lg" alt="" />
           </div>
           <div className="flex justify-center items-center">
             <div className="card flex-shrink-0 lg:w-96 w-80 mt-24 mb-12">

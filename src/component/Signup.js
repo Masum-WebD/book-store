@@ -66,7 +66,7 @@ const Signup = () => {
                     <div className='min-h-screen lg:grid lg:grid-cols-2 bg-[#F8F3FF] lg:px-32'>
 
                         <div>
-                            <img src={signup} className="hidden lg:block mx-auto mt-24" alt="" />
+                            <img src={signup} className="hidden lg:block mx-auto mt-24 drop-shadow-lg" alt="" />
                         </div>
 
                         <div className='flex justify-center items-center'>
