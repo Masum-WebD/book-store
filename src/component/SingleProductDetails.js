@@ -97,43 +97,39 @@ const SingleProductDetails = () => {
   return (
     <div className="container mx-auto pt-[80px] p-5 lg:mt-0">
       <div className="lg:gap-3">
-        <h2 className="text-left my-2 text-gray-600 font-bold">
-          Book / {name}
-        </h2>
+        
         <div class="card lg:card-side bg-base-100 shadow-xl lg:mt-5">
           <figure
             className="lg:p-5 
-          rounded-md  border border-green-400"
+          rounded-md"
           >
             <img src={img} alt="Book" className="rounded-md" />
           </figure>
           <div class="card-body">
             <div>
-              <h2 className="card-title text-left mb-3 text-2xl text-gray-700">
+              <h2 className="card-title text-left mb-3 text-2xl text-neutral">
                 {name}
               </h2>
-              <h2 className="card-title mb-3 text-sm text-gray-700">
-                by <span className=" text-green-500">{author}</span>
+              <h2 className="card-title mb-3 text-sm capitalize text-neutral">
+                by:<span className=" text-primary">{author}</span>
               </h2>
-              <h2 className="card-title text-secondary mb-2 font-bold">
-                <span className="line-through text-gray-600">$1500</span> $
+              <h2 className="card-title text-sm text-neutral mb-2 font-medium">$
                 {price}
               </h2>
               <div className="">
-                <p className="text-xl text-left text-gray-600">
+                <p className="text-sm text-left text-neutral">
                   In Stock: {stock}
                 </p>
                 <button
                   onClick={() => handleWishList(item)}
-                  className="text-start mt-[10px] text-gray-600 text-lg flex hover:text-primary pt-5"
+                  className="text-start text-neutral text-sm capitalize flex hover:text-primary pt-5"
                 >
                   {" "}
-                  <AiOutlineHeart className="text-center mt-[5px]" /> Add to
+                  <AiOutlineHeart className="text-center mr-[4px] mt-[4px]" /> Add to
                   Wishlist
                 </button>
               </div>
-              <div class="divider"></div>
-              <div>
+              <div className="mt-2">
                 <div className="flex flex-row lg:gap-6">
                   <div className="flex items-center justify-center">
                     {/* <button class="btn btn-primary text-white">
@@ -141,9 +137,9 @@ const SingleProductDetails = () => {
                   </button> */}
                     <label
                       for="my-modal-5"
-                      class="btn btn-primary text-sm font-normal text-white mr-5 lg:mr-0"
+                      class="btn bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0"
                     >
-                      Read a bit <VscBook className="text-lg ml-2" />
+                      Read a bit <VscBook className="ml-2" />
                     </label>
 
                     <input
@@ -171,7 +167,7 @@ const SingleProductDetails = () => {
                   <div>
                     <button
                       onClick={handleAddToCart}
-                      class="btn btn-primary text-sm font-normal text-white"
+                      class="btn bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0"
                     >
                       Add to Cart <FaShoppingCart className="text-sm ml-2" />
                     </button>
@@ -180,28 +176,28 @@ const SingleProductDetails = () => {
               </div>
             </div>
           </div>
-          <div className="card card-side gap-2 bg-gray-100">
-            <ul class="menu bg-gray-100 p-2 rounded-box">
+          <div className=" gap-2 bg-gray-100">
+            <ul class="menu bg-gray-100 p-2">
               <li>
-                <a className="text-left text-gray-600" href=" ">
+                <a className="text-left text-neutral" href=" ">
                   <BsCashCoin className="text-lg" />
                   Cash On Delivery
                 </a>
               </li>
               <li>
-                <a className="text-left text-gray-600" href=" ">
+                <a className="text-left text-neutral" href=" ">
                   <FaUndo className="text-lg" />7 Days Happy Return
                 </a>
               </li>
               <li>
-                <a className="text-left text-gray-600" href=" ">
+                <a className="text-left text-neutral" href=" ">
                   <TbTruckDelivery className="text-2xl" />
                   Delivery Charge <br />
                   $50(Online Order)
                 </a>
               </li>
               <li>
-                <a className="text-left text-gray-600" href=" ">
+                <a className="text-left text-neutral" href=" ">
                   <BiWalletAlt className="text-lg" />
                   Purchase & Earn
                 </a>
@@ -228,20 +224,20 @@ const SingleProductDetails = () => {
         <Tabs>
           <TabList>
             <Tab>
-              <h3 class="collapse-title font-medium text-green-500">Summary</h3>
+              <h3 class="collapse-title font-medium text-primary">Summary</h3>
             </Tab>
             <Tab>
-              <h3 class="collapse-title font-medium text-green-500">
+              <h3 class="collapse-title font-medium text-primary">
                 Specification
               </h3>
             </Tab>
             <Tab>
-              <h3 class="collapse-title font-medium text-green-500">Reviews</h3>
+              <h3 class="collapse-title font-medium text-primary">Reviews</h3>
             </Tab>
           </TabList>
 
           <TabPanel>
-            <p className="text-gray-600">{summary}</p>
+            <p className="text-neutral font-normal leading-6">{summary}</p>
             <p className="text-gray-500">
               Source:{" "}
               <a
@@ -461,14 +457,14 @@ const SingleProductDetails = () => {
         </Tabs>
       </div>
       <div>
-        <h1 className="uppercase text-gray-600 text-2xl mt-10 mb-5 font-bold">
+        {/* <h1 className="uppercase text-gray-600 text-2xl mt-10 mb-5 font-bold">
           Related Books
-        </h1>
-        <Carousel breakPoints={breakPoints}>
+        </h1> */}
+        {/* <Carousel breakPoints={breakPoints}>
           {products.slice(50, 68).map((book) => (
             <RelatedProducts book={book}></RelatedProducts>
           ))}
-        </Carousel>
+        </Carousel> */}
       </div>
     </div>
   );

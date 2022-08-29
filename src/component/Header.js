@@ -133,7 +133,7 @@ const Header = () => {
           <div class="navbar-end lg:mx-5 d-flex text-white font-bold">
             <NavLink to="addToCart">
               <label tabindex="0" class="text-neutral hover:cursor-pointer btn-circle">
-                <div class="indicator mr-2 h-6">
+                <div class="indicator mr-4 h-6">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-5 w-5"
