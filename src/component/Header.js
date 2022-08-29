@@ -36,7 +36,7 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-[#F8F3FF]">
+<div className="bg-[#F8F3FF]">
       <div className="navbar mx-auto max-w-[1196px]">
         <div className="navbar-start lg:mx-5">
           <div className="dropdown">
