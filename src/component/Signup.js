@@ -21,15 +21,15 @@ const Signup = () => {
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-    const [token] =useToken(user||googleUser)
+    const [token] = useToken(user || googleUser)
 
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
-    
+
 
     useEffect(() => {
-        if (token) {
+        if (token || user || googleUser) {
             navigate(from, { replace: true });
             Swal.fire({
                 position: 'center',
@@ -39,7 +39,7 @@ const Signup = () => {
                 timer: 2000
             })
         }
-    }, [from, user, googleUser, navigate,token]);
+    }, [from, user, googleUser, navigate, token]);
 
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
@@ -48,7 +48,7 @@ const Signup = () => {
     };
 
     if (googleError || error || updateError) {
-        Swal.fire({
+        return Swal.fire({
             icon: 'error',
             title: 'Something went wrong!',
             text: 'Please try again after some minutes',

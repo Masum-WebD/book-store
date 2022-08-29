@@ -1,127 +1,139 @@
-import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+import React, { useState } from "react";
+import { useAuthState, useUpdateEmail, useUpdateProfile } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/firebase.init";
+import { BsInfoCircleFill } from 'react-icons/bs';
+import Loading from "../Loading";
+import Swal from "sweetalert2";
+import { ImCross } from 'react-icons/im';
+import userProfile from "../../asset/Icons/user.png";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
+  const [updateProfile, profileUpdating, profileError] = useUpdateProfile(auth);
+  const [updateEmail, emailUpdating, emailError] = useUpdateEmail(auth);
+
+  const [displayName, setDisplayName] = useState('');
+  // const [email, setEmail] = useState('');
+  const [photoURL, setPhotoURL] = useState('');
+
+  if (profileUpdating || emailUpdating) {
+    return <Loading />
+  }
+
+  const editEmail = () => {
+    Swal.fire(
+      'Privacy Warning',
+      'We are unable to allow you to modify your email due to privacy concerns.',
+      'warning'
+    )
+  }
+
+  if (profileError || emailError) {
+    return Swal.fire({
+      icon: 'error',
+      title: 'Something went wrong!',
+      text: 'Please try again after some minutes',
+    });
+  }
+  console.log(emailError)
+
   return (
-    <div>
-      <h2 className="text-3xl font-bold text-gray-700">
-        Personal Information |{" "}
-        <a className="text-xl text-primary">Edit Profile</a>
-      </h2>
-      <div class="divider"></div>
-      <form className="mx-10">
-        <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <section>
+
+      <h1 className="text-3xl font-semibold text-center underline underline-offset-8 text-gray-600"><BsInfoCircleFill className="inline-block relative bottom-[2px]" /> Personal Information</h1>
+
+      <div className="lg:px-36 px-3 mt-20">
+
+        <div className="mb-5">
+
+          <div class="avatar">
+            <div class="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src={user?.photoURL ? user.photoURL : userProfile} alt="" />
+            </div>
+          </div>
+          <br />
+
+          <label for="my-modal-9" class="btn btn-link modal-button">Edit profile picture</label>
+
+          <input type="checkbox" id="my-modal-9" class="modal-toggle" />
+          <div class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+              <div className="flex justify-between items-center">
+                <h3 class="font-bold text-3xl text-black">Add your picture link</h3>
+                <label for="my-modal-9" class="btn btn-sm btn-primary text-white btn-circle"><ImCross /></label>
+              </div>
+              <input type="link" value={photoURL} onChange={(e) => setPhotoURL(e.target.value)} className="input input-bordered w-full mt-9 text-black border-gray-500 focus:outline-gray-500" />
+              <div class="modal-action">
+                {/* <a href="https://imgbb.com/" target="_blank" rel="noreferrer" className="hover:link text-left text-xs mt-2 text-gray-500">How do I upload my image link?</a> */}
+                <label for="my-modal-9" onClick={async () => {
+                  await updateProfile({ photoURL });
+                  Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Profile picture updated Successfully",
+                    showConfirmButton: false,
+                    timer: 2000,
+                  });
+                }} class="btn btn-primary text-white">UPDATE</label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="flex items-center justify-between border border-gray-500 px-3 rounded">
+
+          <div className="flex items-center">
+            <p className="text-black lg:text-lg text-sm text-left uppercase">Name: </p>
+            <p className="text-black text-sm lg:text-base ml-3">{user?.displayName}</p>
+          </div>
+
           <div>
-            <label
-              for="name"
-              class="block text-left mb-2 text-2xl font-medium text-gray-900 dark:text-gray-300"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              id="first_name"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder={user.displayName}
-              required=""
-            />
+            <label for="my-name-modal" class="btn btn-link modal-button">Edit</label>
           </div>
+
+          <input type="checkbox" id="my-name-modal" class="modal-toggle" />
+          <div class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+              <div className="flex justify-between items-center">
+                <h3 class="font-bold text-3xl text-black">Edit your name</h3>
+                <label for="my-name-modal" class="btn btn-sm btn-primary text-white btn-circle"><ImCross /></label>
+              </div>
+              <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} className="input input-bordered w-full mt-6 text-black border-gray-500 focus:outline-gray-500" />
+              <div class="modal-action">
+                <label for="my-name-modal" onClick={async () => {
+                  await updateProfile({ displayName });
+                  Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Name updated Successfully",
+                    showConfirmButton: false,
+                    timer: 2000,
+                  });
+                }} class="btn btn-primary text-white">UPDATE</label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="flex items-center justify-between border border-gray-500 px-3 rounded mt-5">
+
+          <div className="flex items-center">
+            <p className="text-black lg:text-lg text-sm text-left uppercase">Email: </p>
+            <p className="text-black text-sm lg:text-base ml-3">{user?.email}</p>
+          </div>
+
           <div>
-            <label
-              for="address"
-              class="block text-left mb-2 text-2xl font-medium text-gray-900 dark:text-gray-300"
-            >
-              Address
-            </label>
-            <input
-              type="text"
-              id="address"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder={user.address}
-              required=""
-            />
+            <button onClick={() => editEmail()} class="btn btn-link">Edit</button>
           </div>
         </div>
-        <div className="mb-6">
-          <label
-            for="mobile"
-            class="block mb-2 text-left font-medium text-gray-900 text-2xl dark:text-gray-300"
-          >
-            Mobile Number
-          </label>
-          <input
-            type="number"
-            id="mobile"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder={user.phoneNumber}
-            required=""
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            for="email"
-            class="block mb-2 text-left font-medium text-gray-900 text-2xl dark:text-gray-300"
-          >
-            Email Address
-          </label>
-          <input
-            type="email"
-            id="email"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder={user.email}
-            required=""
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            for="password"
-            class="block mb-2 text-left font-medium text-gray-900 text-2xl dark:text-gray-300"
-          >
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="•••••••••"
-            required=""
-          />
-        </div>
-        <div class="flex items-start mb-6">
-          <div class="flex items-center h-5">
-            <input
-              id="remember"
-              type="checkbox"
-              value=""
-              class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-              required=""
-            />
-          </div>
-          <label
-            for="remember"
-            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-400"
-          >
-            I agree with the{" "}
-            <a
-              href="#"
-              class="text-blue-600 hover:underline dark:text-blue-500"
-            >
-              terms and conditions
-            </a>
-            .
-          </label>
-        </div>
-        <button
-          type="submit"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Save
-        </button>
-      </form>
-    </div>
+
+
+
+      </div>
+
+    </section>
   );
 };
 
