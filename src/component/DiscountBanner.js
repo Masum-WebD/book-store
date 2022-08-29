@@ -1,24 +1,22 @@
 import React from 'react';
-import discountBanner from '../asset/Images/discountBanner.jpg'
+import discountBanner from '../asset/Images/discountBanner.png';
+
 const DiscountBanner = () => {
     return (
 
-        <div class="bg-base-200 my-28" style={{
-            background: `url(${discountBanner})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundAttachment: 'fixed'
-        }}>
-
-            <div className='bg-green-900/50 py-28'>
-                <div class="text-center">
-                    <div class="">
-                        <h1 class="text-3xl uppercase font-bold mb-8 text-white"><span className='text-6xl'>50% </span> discount on any historical fiction books</h1>
-                        <button class="btn btn-primary btn-xl border-0 rounded-sm px-7 hover:bg-green-800 text-white">Buy Now</button>
+        <section>
+            <div class="hero min-h-screen">
+                <div class="hero-content flex-col lg:flex-row-reverse">
+                    <img src={discountBanner} class="lg:w-3/6 rounded-lg drop-shadow-xl" alt='' />
+                    <div className='lg:w-3/6 text-left'>
+                        <h1 class="text-5xl font-bold text-neutral capitalize lg:leading-[65px]">Get 20% Discount on any
+                            fiction books</h1>
+                        <button class="btn btn-primary capitalize text-white mt-10">Shop Now</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
     );
 };
 
