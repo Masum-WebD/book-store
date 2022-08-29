@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AllProductSingle from "./AllProductSingle";
+import SingleProduct from "./SingleProduct";
 
 const AllTopProducts = () => {
   const [products, setProducts] = useState([]);
@@ -11,14 +11,13 @@ const AllTopProducts = () => {
   }, []);
 
   return (
-    <div className="my-28">
-      <h2 className="uppercase text-gray-700 text-3xl mt-20 font-bold">
-        Top Selling books
+    <div className="max-w-[1140px] mx-auto">
+      <h2 className="capitalize text-neutral text-3xl mt-20 font-bold">
+        Top selling books
       </h2>
-      <div className="h-[3px] w-[120px] bg-primary mt-2 mx-auto"></div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 px-4 md:container mx-auto mt-16 lg:mb-0 gap-5">
-        {products.slice(9, 12).map((book) => (
-          <AllProductSingle book={book}></AllProductSingle>
+      <div className="grid md:grid-cols-2 lg:grid-cols-5 px-4 md:container mx-auto my-16 gap-5">
+        {products.slice(12, 17).map((book) => (
+          <SingleProduct book={book}></SingleProduct>
         ))}
       </div>
     </div>

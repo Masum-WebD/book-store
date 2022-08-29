@@ -7,9 +7,9 @@ import fastDeli from '../asset/Icons/packing.png';
 
 const Features = () => {
     return (
-        <section className='lg:px-32 px-3 my-28'>
+        <section className='lg:px-32 px-3 mt-16 mb-24'>
 
-            <div className='grid lg:grid-cols-5 grid-cols-2 gap-5'>
+            <div className='grid lg:grid-cols-5 grid-cols-3 gap-5'>
 
                 <div className='border border-gray-[#D8DBDD] rounded-2xl p-12'>
                     <div>
