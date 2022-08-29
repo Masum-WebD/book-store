@@ -1,35 +1,13 @@
-import { Timeline, TimelineEvent } from "@mailtop/horizontal-timeline";
-import { FaBug, FaRegCalendarCheck, FaRegFileAlt } from "react-icons/fa";
-import React from "react";
 
+import React from "react";
 import "./Myorders.css";
+import { Link } from "react-router-dom";
+import OrderHistory from "./OrderHistory";
 
 const MyOrders = () => {
+ 
   return (
     <div className=" overflow-auto">
-      <Timeline minEvents={5} placeholder>
-        <TimelineEvent
-          icon={FaRegFileAlt}
-          title="Em rascunho"
-          subtitle="26/03/2019 09:51"
-        />
-        <TimelineEvent
-          color="#87a2c7"
-          icon={FaRegCalendarCheck}
-          title="Agendado"
-          subtitle="26/03/2019 09:51"
-        />
-        <TimelineEvent
-          color="#9c2919"
-          icon={FaBug}
-          title="Erro"
-          subtitle="26/03/2019 09:51"
-          action={{
-            label: "Ver detalhes...",
-            onClick: () => window.alert("Erro!"),
-          }}
-        />
-      </Timeline>
       <div className="grid lg:grid-cols-2 border-2 border-t-4  rounded-md">
         <div className="my-5">
           <h2 className="text-2xl font-bold text-gray-700">My Orders</h2>
@@ -95,9 +73,11 @@ const MyOrders = () => {
                 </span>
               </td>
               <td class="p-3">
-                <span class="bg-green-400 text-gray-50 rounded-md p-2">
-                  Details
-                </span>
+                <Link to="/dashboard/order/orderHistory">
+                  <button className="bg-primary btn-sm rounded text-white px-5 border-0 hover:bg-green-800 rounded-sm mt-2 uppercase">
+                    Details
+                  </button>
+                </Link>
               </td>
             </tr>
             <tr class="bg-gray-800">
@@ -123,9 +103,11 @@ const MyOrders = () => {
                 </span>
               </td>
               <td class="p-3">
-                <span class="bg-red-400 text-gray-50 rounded-md p-2">
-                  Details
-                </span>
+                <Link to="/dashboard/order/orderHistory">
+                  <button className="bg-primary btn-sm rounded text-white px-5 border-0 hover:bg-green-800 rounded-sm mt-2 uppercase">
+                    Details
+                  </button>
+                </Link>
               </td>
             </tr>
           </tbody>

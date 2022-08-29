@@ -28,7 +28,9 @@ import AllUsers from "./component/Dashboard/AllUsers";
 import ManageALLOrder from "./component/Dashboard/ManageALLOrder";
 import HomePopUp from "./component/Contact/PopUp/HomePopUp";
 import UiPayment from "./Payment/UiPayment";
-
+import DashboardDetails from "./component/Dashboard/DashboardDetails/DashboardDetails";
+import ProductList from "./component/Dashboard/ProductsDetails/ProductList";
+import OrderHistory from "./component/Dashboard/OrderHistory";
 
 function App() {
   return (
@@ -48,25 +50,31 @@ function App() {
           <Route path="/all-products" element={<Shop />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="dashboard" element={<Dashboard />}>
-            <Route index element={<MyProfile />}></Route>
+            <Route index element={<DashboardDetails />}></Route>
+            <Route path="myAccount" element={<MyProfile />}></Route>
             <Route path="myEbook" element={<Ebook></Ebook>}></Route>
             <Route path="order" element={<MyOrders />}></Route>
             <Route path="myReview" element={<MyReview></MyReview>}></Route>
-            <Route path="addProduct" element={<AddProduct></AddProduct>}></Route>
+            <Route path="order/orderHistory" element={<OrderHistory></OrderHistory>}></Route>
+            <Route
+              path="addProduct"
+              element={<AddProduct></AddProduct>}
+            ></Route>
+            <Route path="productList" element={<ProductList />}></Route>
             <Route path="manageUsers" element={<AllUsers></AllUsers>}></Route>
-            <Route path="manageOrders" element={<ManageALLOrder></ManageALLOrder>}></Route>
+            <Route
+              path="manageOrders"
+              element={<ManageALLOrder></ManageALLOrder>}
+            ></Route>
             <Route path="wishlist" element={<MyWishlist></MyWishlist>}></Route>
           </Route>
           <Route path="/create-new-account" element={<Signup />} />
           <Route path="/reset-your-password" element={<ResetPass />} />
           <Route path="/book/:bookId" element={<SingleProductDetails />} />
           <Route path="/addToCart" element={<AddToCart />} />
-          <Route path="/paymentUi" element={<UiPayment/>} />
-
+          <Route path="/paymentUi" element={<UiPayment />} />
         </Routes>
       </StartFromTop>
-
-
 
       <MessengerCustomerChat
         pageId="107580278651104"
