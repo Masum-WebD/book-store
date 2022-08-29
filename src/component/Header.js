@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../asset/Images/logo.png";
 import { FiLogIn } from "react-icons/fi";
@@ -7,10 +6,8 @@ import auth from "../Firebase/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import Swal from "sweetalert2";
-import { useSelector } from "react-redux";
 import { IoIosArrowDown } from "react-icons/io";
 import userProfile from "../asset/Icons/user.png";
-import { Button } from "flowbite-react";
 
 import useCartBooks from "./Hooks/useCartBooks";
 import useAdmin from "./Hooks/useAdmin";
@@ -112,7 +109,7 @@ const Header = () => {
         </div>
 
         <NavLink class="btn btn-ghost normal-case p-0 text-xl" to="/">
-          <img className="lg:w-48 w-36 text-white" src={logo} alt="" />
+          <img className="w-48 text-white" src={logo} alt="" />
         </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
