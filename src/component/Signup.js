@@ -4,8 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../Firebase/firebase.init';
 import Loading from './Loading';
-import bg from '../asset/Images/login-bg.jpg';
-import logo from '../asset/Images/logo.png';
+import signup from '../asset/Images/Sign up-amico-min.png';
 import googleIcon from '../asset/Icons/google.png';
 import Swal from 'sweetalert2';
 import useToken from './Hooks/useToken.js'
@@ -64,17 +63,20 @@ const Signup = () => {
 
                     :
 
-                    <div className='min-h-screen bg-no-repeat bg-cover bg-fixed' style={{ backgroundImage: `url(${bg})` }}>
+                    <div className='min-h-screen lg:grid lg:grid-cols-2 bg-[#F8F3FF] lg:px-32'>
+
+                        <div>
+                            <img src={signup} className="hidden lg:block mx-auto mt-24" alt="" />
+                        </div>
 
                         <div className='flex justify-center items-center'>
-                            <div className="card flex-shrink-0 lg:w-96 w-80 shadow-2xl glass mt-24 mb-12">
-                                <img className='w-48 mx-auto mt-4' src={logo} alt="" />
-                                <p className='text-center font-bold mt-3 underline underline-offset-2 text-white'>CREATE NEW ACCOUNT</p>
+                            <div className="card flex-shrink-0 lg:w-96 w-80 mt-24 mb-12">
+                                <p className='text-center font-bold mt-3 underline text-2xl underline-offset-4 text-neutral'>CREATE NEW ACCOUNT</p>
                                 <div className="card-body">
                                     <form onSubmit={handleSubmit(onSubmit)}>
                                         <div className="form-control">
                                             <label className="label">
-                                                <span className="label-text text-white">Name</span>
+                                                <span className="label-text text-neutral">Name</span>
                                             </label>
                                             <input type="text" placeholder="your name" className="input input-bordered text-black" {...register("name", {
                                                 required: {
@@ -89,7 +91,7 @@ const Signup = () => {
 
                                         <div className="form-control">
                                             <label className="label">
-                                                <span className="label-text text-white">Email</span>
+                                                <span className="label-text text-neutral">Email</span>
                                             </label>
                                             <input type="email" placeholder="email" className="input input-bordered text-black" {...register("email", {
                                                 required: {
@@ -109,7 +111,7 @@ const Signup = () => {
 
                                         <div className="form-control">
                                             <label className="label">
-                                                <span className="label-text text-white">Password</span>
+                                                <span className="label-text text-neutral">Password</span>
                                             </label>
                                             <input type="password" placeholder="password" className="input input-bordered text-black" {...register("password", {
                                                 required: {
@@ -131,18 +133,18 @@ const Signup = () => {
                                     </form>
                                     <div className="divider">OR</div>
                                     <div className="form-control">
-                                        <button onClick={() => signInWithGoogle()} className="btn btn-outline hover:text-black hover:bg-white" >
+                                        <button onClick={() => signInWithGoogle()} className="btn btn-outline text-neutral hover:text-neutral" >
                                             <img src={googleIcon} className='w-5 mr-2' alt="" /> Continue with google
                                         </button>
                                     </div>
-                                    <Link to="/login" className="text-center text-sm label-text-alt link link-hover mt-2 text-white">Already have an account? Login</Link>
+                                    <Link to="/login" className="text-center text-sm label-text-alt link link-hover mt-2 text-neutral">Already have an account? Login</Link>
                                 </div>
                             </div>
                         </div>
 
-                    </div>
+                    </div >
             }
-        </section>
+        </section >
     );
 };
 
