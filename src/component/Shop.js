@@ -53,7 +53,7 @@ const Shop = () => {
                             <li><Link to="">Shop</Link></li>
                             <li><Link onClick={() => showAllProduct()} to="">All Products</Link></li>
                             {
-                                filteredItem.length > 60 ? <li></li> :
+                                filteredItem?.length > 60 ? <li></li> :
                                     filteredItem?.slice(0, 1).map(b => <li>{b.category}</li>)
                             }
                         </ul>
