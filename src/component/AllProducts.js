@@ -10,7 +10,7 @@ const AllProducts = () => {
   // const dispatch = useDispatch();
   useEffect(() => {
 
-    fetch("http://localhost:5000/products")
+    fetch("https://the-online-book-shop.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
