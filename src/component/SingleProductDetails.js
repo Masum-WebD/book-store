@@ -15,8 +15,6 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../Firebase/firebase.init";
-import Carousel from "react-elastic-carousel";
-import RelatedProducts from "./RelatedProducts";
 const SingleProductDetails = () => {
   const { bookId } = useParams();
   const [user] = useAuthState(auth);
@@ -26,7 +24,7 @@ const SingleProductDetails = () => {
 
   useEffect(() => {
 
-    fetch(`https://the-online-book-shop.herokuapp.com/product/${bookId}`)
+    fetch(`https://book-store-46yi.onrender.com/product/${bookId}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
   }, [bookId]);
@@ -43,7 +41,7 @@ const SingleProductDetails = () => {
       email: user.email,
     };
 
-    fetch("https://the-online-book-shop.herokuapp.com/cartProduct", {
+    fetch("https://book-store-46yi.onrender.com/cartProduct", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -66,7 +64,7 @@ const SingleProductDetails = () => {
       stock: stock,
       email: user.email,
     };
-    fetch("https://the-online-book-shop.herokuapp.com/wishList", {
+    fetch("https://book-store-46yi.onrender.com/wishList", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -83,7 +81,7 @@ const SingleProductDetails = () => {
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("https://the-online-book-shop.herokuapp.com/products")
+    fetch("https://book-store-46yi.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -95,12 +93,12 @@ const SingleProductDetails = () => {
     { width: 1200, itemsToShow: 4 },
   ];
   return (
-    <div className="container mx-auto pt-[80px] p-5 lg:mt-0">
+    <div className="max-w-[1196px] mx-auto pt-[80px] lg:mt-0">
       <div className="lg:gap-3">
         
-        <div class="card lg:card-side bg-base-100 shadow-xl lg:mt-5">
+        <div class="card lg:card-side bg-base-100 shadow-sm rounded-none lg:mt-5">
           <figure
-            className="lg:p-5 
+            className=" 
           rounded-md"
           >
             <img src={img} alt="Book" className="rounded-md" />
@@ -220,7 +218,7 @@ const SingleProductDetails = () => {
         </div>
       </div>
 
-      <div className="card bg-base-100 shadow-xl text-left my-5 p-5">
+      <div className="card bg-base-100 shadow-sm text-left my-5 p-5">
         <Tabs>
           <TabList>
             <Tab>

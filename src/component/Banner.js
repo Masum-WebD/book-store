@@ -13,7 +13,7 @@ const Banner = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/product/?name=${searchText}`;
+    const url = `https://book-store-46yi.onrender.com/product/?name=${searchText}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBooks(data));
