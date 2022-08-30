@@ -7,13 +7,13 @@ import Loading from "./Loading";
 
 const Shop = () => {
   const { data, isLoading } = useQuery("AllProducts", () =>
-    fetch("http://localhost:5000/products").then((res) => res.json())
+    fetch("https://book-store-46yi.onrender.com/products").then((res) => res.json())
   );
 
   const [filteredItem, setFilteredItem] = useState([]);
 
   const showAllProduct = () => {
-    fetch("http://localhost:5000/products")
+    fetch("https://book-store-46yi.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setFilteredItem(data));
   };

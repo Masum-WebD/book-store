@@ -5,7 +5,7 @@ import ThirtyPercentSingle from "./ThirtyPercentSingle";
 const ThirtyPercent = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://book-store-46yi.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -17,7 +17,7 @@ const ThirtyPercent = () => {
     { width: 1200, itemsToShow: 4 },
   ];
   return (
-    <div className="container mx-auto my-16 rounded-md shadow-lg">
+    <div className="container mx-auto my-28 rounded-md shadow-lg">
       <div className="flex justify-between items-center px-10">
         <div className="">
           <h2 className="uppercase text-gray-800  text-2xl font-bold">

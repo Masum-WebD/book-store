@@ -5,7 +5,7 @@ import TweentyPercentSingle from "./TweentyPercentSingle";
 const TweentyPercent = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://book-store-46yi.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -21,8 +21,12 @@ const TweentyPercent = () => {
       <div className="flex justify-between items-center px-10">
         <div>
           <h2 className="uppercase text-gray-800  text-2xl font-bold">
+<<<<<<< HEAD
             Up to <span className="text-green-600">20%</span> Off Fall's Biggest
             Books
+=======
+            Up to <span className="text-green-600">20%</span> Off Fall's Biggest Books
+>>>>>>> 317471af4efeec1b1f25885e5027dceb695c1404
           </h2>
         </div>
         <div className="text-gray-700 cursor-pointer hover:text-primary font-bold">

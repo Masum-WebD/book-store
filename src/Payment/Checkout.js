@@ -22,7 +22,7 @@ const Checkout = ({ price }) => {
   const email = user?.email;
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://book-store-46yi.onrender.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",

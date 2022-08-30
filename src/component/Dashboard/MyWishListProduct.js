@@ -13,7 +13,7 @@ const MyWishListProduct = ({ product, refetch }) => {
       price: price,
       stock: stock,
     };
-    fetch("http://localhost:5000/cartProduct", {
+    fetch("https://book-store-46yi.onrender.com/cartProduct", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -28,7 +28,7 @@ const MyWishListProduct = ({ product, refetch }) => {
   const handleRemoveWishList = (id) => {
     const request = window.confirm("Are you sure you want to Remove");
     if (request) {
-      fetch(`http://localhost:5000/wishList/${id}`, {
+      fetch(`https://book-store-46yi.onrender.com/wishList/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

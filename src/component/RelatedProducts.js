@@ -11,7 +11,7 @@ const RelatedProducts = ({ book }) => {
 
   return (
     <figure class="card img-container">
-      <div className="flex shadow-lg gap-5 p-5 rounded-md ml-5 lg:overflow-auto">
+      <div className="flex shadow-sm gap-5 p-5 ml-5 lg:overflow-auto">
         <img
           className="object-scale-down h-[160px] w-[115px]"
           src={img}
@@ -34,7 +34,7 @@ const RelatedProducts = ({ book }) => {
           <button
             onClick={() => navigateToProductDetail(_id)}
             style={{ marginTop: "auto", maxWidth: "155px" }}
-            className="bg-primary btn text-white py-2 px-5 border-0 hover:bg-green-800 rounded-sm mt-4 uppercase"
+            className="bg-primary btn text-white py-2 px-5 border-0 hover:bg-secondary rounded-sm mt-4 uppercase"
           >
             View Product
           </button>

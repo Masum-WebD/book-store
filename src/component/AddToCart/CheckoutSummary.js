@@ -20,7 +20,7 @@ const CheckoutSummary = () => {
   const handleOrder = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:5000/order", {
+    fetch("https://book-store-46yi.onrender.com/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",
