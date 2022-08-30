@@ -20,6 +20,7 @@ const SingleProductDetails = () => {
   const [item, setItem] = useState([]);
   const { _id, name, img, summary, category, language, author, price, stock } =
     item;
+    console.log(item)
 
   useEffect(() => {
     fetch(`https://book-store-46yi.onrender.com/product/${bookId}`)
