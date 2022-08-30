@@ -6,7 +6,7 @@ import ContactFormSolid from './ContactPage/ContactFormSolid';
 
 const Contact = () => {
     return (
-        <div>
+        <div className='p-3 lg:p-0'>
             <ContactBannerSolid></ContactBannerSolid>
             <ContactFormSolid></ContactFormSolid>
 

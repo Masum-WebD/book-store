@@ -42,7 +42,7 @@ const ContactFormSolid = () => {
                 </div>
 
             </div>
-            <div className=' sm:w-full lg:w-[60%] sm:ml-0 lg:ml-10 lg:mt-0'>
+            <div className=' sm:w-full lg:w-[60%] sm:ml-0 mt-5 lg:mt-0 lg:ml-10 lg:mt-0'>
                 <form onSubmit={formControl} action="https://formsubmit.co/dd3899985@gmail.com" method="POST">
                     <div className='flex justify-between items-center'>
                         <input type="text" name='fname' placeholder="First Name" class="outline-0 border-b-2 border-[#D9D9D9] text-[#0B1B28] p-2 bg-[#FFF9F9] w-full lg:max-w-xs sm:mt-6 lg:mt-0" />
