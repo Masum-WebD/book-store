@@ -1,23 +1,21 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import useCartBooks from "../Hooks/useCartBooks";
 
-
-
 const CheckoutSummary = () => {
-  const [cartProduct] = useCartBooks()
+  const [cartProduct] = useCartBooks();
   // console.log(cartProduct)
 
   const navigate = useNavigate();
 
-
-  const cartTotal = cartProduct.reduce((cPrice, PrPrice) =>
-    cPrice + parseInt(PrPrice?.price), 0
+  const cartTotal = cartProduct.reduce(
+    (cPrice, PrPrice) => cPrice + parseInt(PrPrice?.price),
+    0
   );
   const tax = (cartTotal / 100) * 2;
   const shopping = 50;
 
-  const subTotal = cartTotal + tax + shopping
+  const subTotal = cartTotal + tax + shopping;
 
   const handleOrder = (e) => {
     e.preventDefault();
@@ -35,18 +33,14 @@ const CheckoutSummary = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ subTotal })
+      body: JSON.stringify({ subTotal }),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
       });
-    navigate('/paymentUi')
-
-  }
-
-
-
+    navigate("/paymentUi");
+  };
 
   return (
     <div className="p-5 border border-red-100">

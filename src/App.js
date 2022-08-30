@@ -72,10 +72,6 @@ function App() {
           <Route path="/book/:bookId" element={<SingleProductDetails />} />
           <Route path="/addToCart" element={<AddToCart />} />
           <Route path="/paymentUi" element={<UiPayment />} />
-<<<<<<< HEAD
-=======
-
->>>>>>> 6620c76314bf0aa478fbc6b7a28565049185c267
         </Routes>
       </StartFromTop>
 
@@ -83,6 +79,7 @@ function App() {
         pageId="107580278651104"
         appId="5213313418754051"
       />
+      
       <Footer></Footer>
       <ToastContainer />
     </div>

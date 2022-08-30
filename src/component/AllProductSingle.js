@@ -18,7 +18,7 @@ const AllProductSingle = ({ book }) => {
         <button
           onClick={() => navigateToProductDetail(_id)}
           style={{ marginTop: "auto", maxWidth: "155px" }}
-          className="bg-primary btn text-white py-2 px-5 border-0 hover:bg-green-800 rounded-sm mt-4 uppercase"
+          className="bg-primary btn text-white py-2 px-5 border-0 hover:bg-secondary rounded-sm mt-4 uppercase"
         >
           View Product
         </button>

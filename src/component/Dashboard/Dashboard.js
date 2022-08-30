@@ -19,7 +19,7 @@ const Dashboard = () => {
   const [admin] = useAdmin(user);
 
   return (
-    <div className="drawer drawer-mobile">
+    <div className="drawer drawer-mobile mt-8">
       <PageTitle title="Dashboard" />
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle " />
       <div className="drawer-content">
@@ -89,7 +89,6 @@ const Dashboard = () => {
                 <>
                   <li>
                     <Link to="/dashboard/order">
-                      
                       {<FcBriefcase />}My Orders
                     </Link>
                   </li>
@@ -103,14 +102,14 @@ const Dashboard = () => {
               )}
               {admin && (
                 <>
+                  <li className="mt-3">
+                    <Link to="/dashboard">
+                      <MdDashboard />
+                      Dashboard
+                    </Link>
+                  </li>
                   <div class="collapse collapse-arrow">
                     <input type="checkbox" class="peer" />
-                    <li className="mt-3">
-                      <Link to="/dashboard">
-                        <MdDashboard />
-                        Dashboard
-                      </Link>
-                    </li>
                     <div class="collapse-title">
                       <Link
                         to="/dashboard/addProduct"
@@ -157,7 +156,7 @@ const Dashboard = () => {
                       </Link>
                     </div>
                     <div class="collapse-content flex flex-col text-left ml-10">
-                      <Link to="/dashboard/manageOrders">List</Link>
+                      <Link to="/dashboard/manageUsers">List</Link>
                       <Link to="/dashboard/addProduct" className="mt-3">
                         Details
                       </Link>

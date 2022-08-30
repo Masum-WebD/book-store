@@ -21,7 +21,7 @@ const ThirtyPercent = () => {
       <div className="flex justify-between items-center px-10">
         <div className="">
           <h2 className="uppercase text-gray-800  text-2xl font-bold">
-            Up to <span className="text-green-600">30%</span> Off Novels Books
+            Up to <span className="text-secondary">30%</span> Off Novels Books
           </h2>
         </div>
         <div className="text-gray-700 cursor-pointer hover:text-primary font-bold">

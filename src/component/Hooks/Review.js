@@ -3,13 +3,12 @@ import Loading from "../Loading";
 
 import ReviewShow from "./ReviewShow";
 
-
 const Review = ({ isLoading }) => {
   const [reviews, setReviews] = useState([]);
-//   console.log(reviews);
+  //   console.log(reviews);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/review/`)
+    fetch(`https://book-store-46yi.onrender.com/review/`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);

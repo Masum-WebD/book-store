@@ -6,7 +6,7 @@ import ProductSingle from "./ProductSingle";
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://book-store-46yi.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -46,7 +46,7 @@ const ProductList = () => {
                   <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-size-xxs border-b-solid tracking-none whitespace-nowrap text-slate-600 opacity-70">
                     Category
                   </th>
-                  
+
                   <th class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-600 opacity-70"></th>
                   <th class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-600 opacity-70"></th>
                 </tr>
@@ -55,7 +55,6 @@ const ProductList = () => {
                 {products.map((book) => (
                   <ProductSingle book={book}></ProductSingle>
                 ))}
-                
               </tbody>
             </table>
           </div>

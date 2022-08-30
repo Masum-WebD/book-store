@@ -16,7 +16,7 @@ const AllProducts = () => {
       <h2 className="capitalize text-neutral text-3xl mt-20 font-bold">
         Popular books
       </h2>
-      <div className="grid grid-cols-2 lg:grid-cols-5 lg:px-0 px-4 md:container mx-auto my-16 gap-5">
+      <div className="grid grid-cols-2 lg:grid-cols-3 lg:px-0 px-4 md:container mx-auto my-16 gap-5">
         {products?.slice(0, 10).map((book) => (
           <SingleProduct book={book}></SingleProduct>
         ))}

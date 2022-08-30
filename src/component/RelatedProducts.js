@@ -18,7 +18,9 @@ const RelatedProducts = ({ book }) => {
           alt=""
         />
         <div className="text-left flex flex-col text-accent">
-          <h2 className="text-md font-medium text-base-100">{name}</h2>
+          <h2 className="text-md font-medium text-base-100">
+            {name.slice(0, 25)}
+          </h2>
           <p className="text-base-100 my-1 text-sm">
             By <span className="text-primary">{author}</span>
           </p>

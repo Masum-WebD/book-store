@@ -20,10 +20,10 @@ const Footer = () => {
           <span>Terms · Privacy Policy</span>
         </a>
         <div className="flex mx-auto">
-          <img className="w-14 mx-2" src={paypal} alt="" />
-          <img className="w-14 mx-2" src={visa} alt="" />
-          <img className="w-14 mx-2" src={masterCard} alt="" />
-          <img className="w-14 mx-2" src={americanExpress} alt="" />
+          <img className="w-12 mx-2" src={paypal} alt="" />
+          <img className="w-12 mx-2" src={visa} alt="" />
+          <img className="w-12 mx-2" src={masterCard} alt="" />
+          <img className="w-12 mx-2" src={americanExpress} alt="" />
         </div>
       </div>
 

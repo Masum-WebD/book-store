@@ -92,7 +92,7 @@ const AddProduct = () => {
                 />
               </div>
             </div>
-            
+
             <div className="card p-6  border-l-2 border-l-purple-400 rounded-md border-y-2">
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -152,7 +152,7 @@ const AddProduct = () => {
                 />
               </div>
             </div>
-            
+
             <div className="card card-side flex flex-col border-1 p-5  border-l-2 border-l-purple-400 rounded-md border-y-2">
               <div className="form-control w-full max-w-xs">
                 <label className="label">
