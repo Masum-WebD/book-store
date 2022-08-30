@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
+import Carousel from "react-elastic-carousel";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { AiOutlineHeart } from "react-icons/ai";
 import { BiWalletAlt } from "react-icons/bi";
 import { BsCashCoin } from "react-icons/bs";
-import { VscBook } from "react-icons/vsc";
 import { FaShoppingCart, FaUndo } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
-import { useNavigate, useParams } from "react-router-dom";
+import { VscBook } from "react-icons/vsc";
+import { useParams } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { toast } from "react-toastify";
 import profile from "../asset/Images/author-1.jpg";
 import profile2 from "../asset/Images/author-2.jpg";
-import "./SingleProductDetails.css";
-import { add } from "../store/cartSlice";
-import { AiOutlineHeart } from "react-icons/ai";
-import { toast } from "react-toastify";
-import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../Firebase/firebase.init";
+import RelatedProducts from "./RelatedProducts";
+import "./SingleProductDetails.css";
 const SingleProductDetails = () => {
   const { bookId } = useParams();
   const [user] = useAuthState(auth);
@@ -23,7 +24,7 @@ const SingleProductDetails = () => {
     item;
 
   useEffect(() => {
-    fetch(`https://p-hero-bookshop.herokuapp.com/product/${bookId}`)
+    fetch(`http://localhost:5000/product/${bookId}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
   }, [bookId]);
@@ -37,7 +38,7 @@ const SingleProductDetails = () => {
       author: author,
       price: price,
       stock: stock,
-      email:user.email
+      email: user.email,
     };
     fetch("http://localhost:5000/cartProduct", {
       method: "PUT",
@@ -60,9 +61,9 @@ const SingleProductDetails = () => {
       author: author,
       price: price,
       stock: stock,
-      email:user.email
+      email: user.email,
     };
-    fetch("https://p-hero-bookshop.herokuapp.com/wishList", {
+    fetch("http://localhost:5000/wishList", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -77,71 +78,107 @@ const SingleProductDetails = () => {
       });
   };
 
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 4 },
+  ];
   return (
-    <div className="container lg:p-32 p-5 mt-20 lg:mt-0">
-      <h2 className="text-left my-2 text-green-500 font-bold">Book / {name}</h2>
+    <div className="container mx-auto pt-[80px] p-5 lg:mt-0">
       <div className="lg:gap-3">
-        <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-6">
-          <div>
-            <figure>
-              <img src={img} className="book-img" alt="tool" />
-            </figure>
-          </div>
-          <div className="book-card">
-            <h2 className="card-title text-left mb-3 text-2xl text-gray-700">
-              {name}
-            </h2>
-            <h2 className="card-title mb-3 text-sm text-gray-700">
-              by <span className=" text-green-500">{author}</span>
-            </h2>
-            <h2 className="card-title text-secondary mb-2 font-bold">
-              <span className="line-through text-gray-600">$1500</span> ${price}
-            </h2>
-            <div className="">
-              <p className="text-xl text-left text-gray-600">
-                In Stock: {stock}
-              </p>
-              <button
-                onClick={() => handleWishList(item)}
-                className="text-start mt-[10px] text-gray-600 text-lg flex hover:text-primary pt-5"
-              >
-                {" "}
-                <AiOutlineHeart className="text-center mt-[5px]" /> Add to
-                Wishlist
-              </button>
-            </div>
-            <div class="divider"></div>
+        <h2 className="text-left my-2 text-gray-600 font-bold">
+          Book / {name}
+        </h2>
+        <div class="card lg:card-side bg-base-100 shadow-xl lg:mt-5">
+          <figure
+            className="lg:p-5 
+          rounded-md  border border-green-400"
+          >
+            <img src={img} alt="Book" className="rounded-md" />
+          </figure>
+          <div class="card-body">
             <div>
-              <div className="flex flex-row lg:gap-6">
-                <div className="flex items-center justify-center">
-                  {/* <button class="btn btn-primary text-white">
+              <h2 className="card-title text-left mb-3 text-2xl text-gray-700">
+                {name}
+              </h2>
+              <h2 className="card-title mb-3 text-sm text-gray-700">
+                by <span className=" text-green-500">{author}</span>
+              </h2>
+              <h2 className="card-title text-secondary mb-2 font-bold">
+                <span className="line-through text-gray-600">$1500</span> $
+                {price}
+              </h2>
+              <div className="">
+                <p className="text-xl text-left text-gray-600">
+                  In Stock: {stock}
+                </p>
+                <button
+                  onClick={() => handleWishList(item)}
+                  className="text-start mt-[10px] text-gray-600 text-lg flex hover:text-primary pt-5"
+                >
+                  {" "}
+                  <AiOutlineHeart className="text-center mt-[5px]" /> Add to
+                  Wishlist
+                </button>
+              </div>
+              <div class="divider"></div>
+              <div>
+                <div className="flex flex-row lg:gap-6">
+                  <div className="flex items-center justify-center">
+                    {/* <button class="btn btn-primary text-white">
                     Read The Book <VscBook className="text-lg ml-2" />
                   </button> */}
-                  <label for="my-modal-6" class="btn btn-primary text-sm font-normal text-white">Read a bit <VscBook className="text-lg ml-2" /></label>
+                    <label
+                      for="my-modal-5"
+                      class="btn btn-primary text-sm font-normal text-white mr-5 lg:mr-0"
+                    >
+                      Read a bit <VscBook className="text-lg ml-2" />
+                    </label>
 
-                  <input type="checkbox" id="my-modal-6" class="modal-toggle" />
-                  <div class="modal modal-bottom sm:modal-middle">
-                    <div class="modal-box w-2/3 relative">
-                    <label for="my-modal-6" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <img src="https://i.ibb.co/FVs7qgZ/longs.png" alt="longs" border="0"/>
-                        <div class="modal-action">
-                        </div>
+                    <input
+                      type="checkbox"
+                      id="my-modal-5"
+                      class="modal-toggle"
+                    />
+                    <div class="modal modal-bottom sm:modal-middle">
+                      <div class="modal-box w-2/3 relative">
+                        <label
+                          for="my-modal-5"
+                          class="btn btn-sm btn-circle absolute right-2 top-2"
+                        >
+                          ✕
+                        </label>
+                        <img
+                          src="https://i.ibb.co/FVs7qgZ/longs.png"
+                          alt="longs"
+                          border="0"
+                        />
+                        <div class="modal-action"></div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div>
-                  <button
-                    onClick={handleAddToCart}
-                    class="btn btn-primary text-sm font-normal text-white"
-                  >
-                    Add to Cart <FaShoppingCart className="text-sm ml-2" />
-                  </button>
+                  <div>
+                    <button
+                      onClick={handleAddToCart}
+                      class="btn btn-primary text-sm font-normal text-white"
+                    >
+                      Add to Cart <FaShoppingCart className="text-sm ml-2" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div>
-            <ul class="menu bg-base-100 w-56 p-2 rounded-box">
+          <div className="card card-side gap-2 bg-gray-100">
+            <ul class="menu bg-gray-100 p-2 rounded-box">
               <li>
                 <a className="text-left text-gray-600" href=" ">
                   <BsCashCoin className="text-lg" />
@@ -166,38 +203,25 @@ const SingleProductDetails = () => {
                   Purchase & Earn
                 </a>
               </li>
-            </ul>
-            <div>
-              <h1 className="uppercase text-gray-600 text-lg font-bold">
-                Related Books
-              </h1>
-              <div class="w-50 carousel rounded-box">
-                <div class="carousel-item w-full">
-                  <div class="flex shadow-lg gap-5 p-5 border-box">
-                    <img
-                      className="object-scale-down h-[160px] w-[115px]"
-                      src={img}
-                      alt=""
-                    />
-                    <div className="text-left flex flex-col text-accent">
-                      <h2 className="text-lg font-bold">{name}</h2>
-                      <p>{author}</p>
-                      <p>${price}</p>
-                      <button
-                        style={{ marginTop: "25px", maxWidth: "155px" }}
-                        className="bg-primary text-white py-2 px-2 rounded-sm mt-4 uppercase"
-                      >
-                        View Product
-                      </button>
-                    </div>
+              {/* <li>
+                <div class="stats shadow">
+                  <div class="stat">
+                    <h1 class=" text-green-500">Positive Ratings</h1>
+                    <h3 class="text-gray-700">64%</h3>
+                  </div>
+                  <div class="divider lg:divider-horizontal"></div> 
+                  <div class="stat">
+                    <h1 class=" text-green-500">Shipped On Time</h1>
+                    <h3 class="text-gray-700">84%</h3>
                   </div>
                 </div>
-              </div>
-            </div>
+              </li> */}
+            </ul>
           </div>
         </div>
       </div>
-      <div className="text-left my-5">
+
+      <div className="card bg-base-100 shadow-xl text-left my-5 p-5">
         <Tabs>
           <TabList>
             <Tab>
@@ -432,6 +456,16 @@ const SingleProductDetails = () => {
             </article>
           </TabPanel>
         </Tabs>
+      </div>
+      <div>
+        <h1 className="uppercase text-gray-600 text-2xl mt-10 mb-5 font-bold">
+          Related Books
+        </h1>
+        <Carousel breakPoints={breakPoints}>
+          {products.slice(50, 68).map((book) => (
+            <RelatedProducts book={book}></RelatedProducts>
+          ))}
+        </Carousel>
       </div>
     </div>
   );

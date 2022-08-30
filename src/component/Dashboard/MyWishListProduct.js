@@ -1,10 +1,9 @@
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
 
-const MyWishListProduct = ({ product,refetch}) => {
-  const {_id, name, author, price, img  ,stock } = product;
+const MyWishListProduct = ({ product, refetch }) => {
+  const { _id, name, author, price, img, stock } = product;
   const handleAddToCart = (item) => {
     const AddToCart = {
       _id: _id,
@@ -25,25 +24,22 @@ const MyWishListProduct = ({ product,refetch}) => {
       .then((data) => {
         console.log(data);
       });
-   
   };
-  const handleRemoveWishList =(id)=>{
+  const handleRemoveWishList = (id) => {
     const request = window.confirm("Are you sure you want to Remove");
-    if(request){
-      
-      fetch(`http://localhost:5000/wishList/${id}`,{
+    if (request) {
+      fetch(`http://localhost:5000/wishList/${id}`, {
         method: "DELETE",
       })
-      .then((res) => res.json())
+        .then((res) => res.json())
         .then((data) => {
-          if(data.deletedCount){
-            toast.success('yes delete')
-            refetch()
-
+          if (data.deletedCount) {
+            toast.success("yes delete");
+            refetch();
           }
-      })
+        });
     }
-  }
+  };
 
   return (
     <div className="p-5 rounded border border-red-100">
@@ -57,7 +53,7 @@ const MyWishListProduct = ({ product,refetch}) => {
               <p className="font-medium text-gray-600">{name} </p>
               <p className="text-sm text-left text-gray-600">by {author}</p>
             </div>
-            <button onClick={() =>handleRemoveWishList(_id)}>
+            <button onClick={() => handleRemoveWishList(_id)}>
               <FontAwesomeIcon
                 className="text-[#fa6a6a]"
                 icon={faTrashCan}
@@ -70,12 +66,12 @@ const MyWishListProduct = ({ product,refetch}) => {
               <h1 className="text-gray-600 align-text-bottom font-medium text-sm ">
                 $ {price}
               </h1>
-              <button  onClick={() => handleAddToCart()}>
-              <FontAwesomeIcon
-                className="text-[#27AE61]"
-                icon={faCartShopping }
-              ></FontAwesomeIcon>
-            </button>
+              <button onClick={() => handleAddToCart()}>
+                <FontAwesomeIcon
+                  className="text-[#27AE61]"
+                  icon={faCartShopping}
+                ></FontAwesomeIcon>
+              </button>
             </div>
           </div>
         </div>

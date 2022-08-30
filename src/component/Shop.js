@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react";
+import { MdOutlineCategory } from "react-icons/md";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import EachProductForShop from "./EachProductForShop";
 import Loading from "./Loading";
-import { MdOutlineCategory } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 const Shop = () => {
   const { data, isLoading } = useQuery("AllProducts", () =>
@@ -35,7 +35,8 @@ const Shop = () => {
   }
 
   return (
-    <div class="drawer drawer-mobile pt-16">
+    <div class="drawer drawer-mobile ">
+      {/* <PageTitle title="Shop" /> */}
       <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
       <label
         for="my-drawer-2"

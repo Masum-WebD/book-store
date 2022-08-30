@@ -3,5 +3,11 @@
 @tailwind utilities;
 
 body {
-    font-family: 'Poppins';
+    font-family: 'Be Vietnam Pro';
+}
+
+p {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 500;
 }

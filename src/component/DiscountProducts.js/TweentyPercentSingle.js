@@ -1,22 +1,22 @@
 import React from "react";
-import { BsClockHistory } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
-const EachProductForShop = ({ book }) => {
-  const {_id, name, img, author, price } = book;
-  // console.log(book);
+const TweentyPercentSingle = ({ book }) => {
+  const { _id, name, img, author, price } = book;
   const navigate = useNavigate();
   const navigateToProductDetail = (id) => {
     navigate(`/book/${id}`);
   };
 
   return (
-    <div class="flex shadow-lg gap-5 p-5 border-box border rounded-md">
+    <div class="flex shadow-lg gap-5 p-5 border-box border rounded-md lg:h-[200px] lg:w-[100%] ml-5">
       <img className="object-scale-down h-[160px] w-[115px]" src={img} alt="" />
       <div className="text-left flex flex-col text-accent">
-        <h2 className="text-md font-medium text-gray-800">{name}</h2>
+        <h2 className="text-md font-medium text-gray-800">
+          {name.slice(0, 30)}
+        </h2>
         <p className="text-gray-800 my-1 text-sm">
-          By <span className="text-primary">{author}</span>
+          By: <span className="text-primary">{author.slice(0, 20)}</span>
         </p>
         <p>
           <span className="line-through text-gray-600">$1500</span>{" "}
@@ -34,4 +34,4 @@ const EachProductForShop = ({ book }) => {
   );
 };
 
-export default EachProductForShop;
+export default TweentyPercentSingle;
