@@ -5,7 +5,7 @@ import Carousel from "react-elastic-carousel";
 const TweentyPercent = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("https://the-online-book-shop.herokuapp.com/products")
+    fetch("https://book-store-46yi.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

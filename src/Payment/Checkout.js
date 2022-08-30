@@ -26,7 +26,7 @@ const Checkout = ({ price }) => {
     // const price = 19.99
 
     useEffect(() => {
-        fetch('https://the-online-book-shop.herokuapp.com/create-payment-intent', {
+        fetch('https://book-store-46yi.onrender.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

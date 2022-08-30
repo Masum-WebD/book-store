@@ -130,7 +130,7 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div class="navbar-end lg:mx-5 d-flex text-white font-bold">
+          <div class="navbar-end text-white font-bold">
             <NavLink to="addToCart">
               <label tabindex="0" class="text-neutral hover:cursor-pointer btn-circle">
                 <div class="indicator mr-4 h-6">
@@ -157,9 +157,9 @@ const Header = () => {
               <div class="dropdown dropdown-end ml-2 hidden lg:block">
                 <label
                   tabindex="0"
-                  class="btn btn-ghost text-neutral m-1"
+                  class="btn btn-ghost px-0 text-neutral m-1"
                 >
-                  <div className="flex items-center">
+                  <div className="items-center">
                     <div class="avatar">
                       <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img
@@ -176,7 +176,7 @@ const Header = () => {
                   class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <Link
-                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                     to="/dashboard"
                   >
                     My Account
@@ -184,19 +184,19 @@ const Header = () => {
                   {!admin && (
                     <>
                       <Link
-                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                        className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/order"
                       >
                         My Orders
                       </Link>
                       <Link
-                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                        className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/myReview"
                       >
                         My Ratings and Reviews
                       </Link>
                       <Link
-                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                        className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/wishlist"
                       >
                         My Wishlist

@@ -9,12 +9,12 @@ import PageTitle from "./PageTitle";
 const Shop = () => {
 
 
-    const { data, isLoading } = useQuery("AllProducts", () => fetch("https://the-online-book-shop.herokuapp.com/products").then(res => res.json()));
+    const { data, isLoading } = useQuery("AllProducts", () => fetch("https://book-store-46yi.onrender.com/products").then(res => res.json()));
 
     const [filteredItem, setFilteredItem] = useState([]);
 
     const showAllProduct = () => {
-        fetch("https://the-online-book-shop.herokuapp.com/products")
+        fetch("https://book-store-46yi.onrender.com/products")
             .then(res => res.json())
             .then(data => setFilteredItem(data))
     }
@@ -41,7 +41,7 @@ const Shop = () => {
 
 
     return (
-        <div class="drawer drawer-mobile mt-10">
+        <div class="drawer max-w-[1196px] mx-auto drawer-mobile mt-10">
             {/* <PageTitle title="Shop" /> */}
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content py-10">
