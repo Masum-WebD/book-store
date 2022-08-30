@@ -13,7 +13,7 @@ const Banner = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/product/?name=${searchText}`;
+    const url = `https://book-store-46yi.onrender.com/product/?name=${searchText}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBooks(data));
@@ -27,7 +27,9 @@ const Banner = () => {
   return (
     <section className="relative bg-[#F5FFF7] lg:mt-[60px]">
       <div class="bg-no-repeat bg-cover" style={{ backgroundImage: `url(${bg})` }}>
-        <div className="lg:py-[90px] py-[50px] px-4 max-w-[1196px] mx-auto">
+
+        <div className="lg:py-[90px] py-[50px] lg:px-0 px-4 max-w-[1196px] mx-auto">
+
           <div class="text-left text-neutral-content lg:w-1/2">
             <div class="">
               <h3 className="text-neutral text-sm lg:text-[16px] font-medium capitalize">

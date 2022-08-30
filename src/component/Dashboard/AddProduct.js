@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const AddProduct = () => {
   const { register, reset, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    const url = "https://the-online-book-shop.herokuapp.com/products";
+    const url = "https://book-store-46yi.onrender.com/products";
     fetch(url, {
       method: "POST",
       headers: {

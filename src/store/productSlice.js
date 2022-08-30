@@ -28,7 +28,7 @@ export function fetchProducts() {
   return async function fetchProductsThunk(dispatch, getState) {
     dispatch(setStatus(STATUSES.LOADING));
     try {
-      const res = await fetch("https://the-online-book-shop.herokuapp.com/products");
+      const res = await fetch("https://book-store-46yi.onrender.com/products");
       const data = await res.json();
       dispatch(setProducts(data));
       dispatch(setStatus(STATUSES.IDLE));

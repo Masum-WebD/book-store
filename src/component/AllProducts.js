@@ -10,7 +10,7 @@ const AllProducts = () => {
   // const dispatch = useDispatch();
   useEffect(() => {
 
-    fetch("http://localhost:5000/products")
+    fetch("https://book-store-46yi.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -21,11 +21,11 @@ const AllProducts = () => {
   //   return <h2 className="text-black">Product not found!</h2>;
   // }
   return (
-    <div className="max-w-[1140px] mx-auto">
+    <div className="max-w-[1196px] mx-auto">
       <h2 className="capitalize text-neutral text-3xl mt-20 font-bold">
         Popular books
       </h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-5 px-4 md:container mx-auto my-16 gap-5">
+      <div className="grid md:grid-cols-2 lg:grid-cols-5 lg:px-0 px-4 md:container mx-auto my-16 gap-5">
         {products.slice(0, 10).map((book) => (
           <SingleProduct book={book}></SingleProduct>
         ))}

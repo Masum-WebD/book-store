@@ -22,8 +22,8 @@ const Header = () => {
       title: "Are you sure for logout?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#27AE61",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#452473",
+      cancelButtonColor: "#FF745C",
       confirmButtonText: "Yes",
       allowEnterKey: true,
     }).then((result) => {
@@ -39,7 +39,7 @@ const Header = () => {
     <div className="bg-[#F8F3FF] fixed top-0 z-50 w-full">
       <div className="bg-[#F8F3FF] ">
         <div className="navbar p-0 mx-auto max-w-[1196px]">
-          <div className="navbar-start lg:mx-5">
+          <div className="navbar-start lg:mx-0">
             <div className="dropdown">
               <label tabIndex="0" className="btn btn-ghost lg:hidden">
                 <svg
@@ -130,13 +130,13 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div class="navbar-end lg:mx-5 d-flex text-white font-bold">
+          <div class="navbar-end text-white font-bold">
             <NavLink to="addToCart">
               <label tabindex="0" class="text-neutral hover:cursor-pointer btn-circle">
-                <div class="indicator mr-2 h-6">
+                <div class="indicator mr-4 h-6">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-8 w-8"
+                    class="h-5 w-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -148,7 +148,7 @@ const Header = () => {
                       d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                     />
                   </svg>
-                  <span class="badge badge-primary badge-sm indicator-item">{cartProduct.length} </span>
+                  <span class="badge text-[10px] badge-primary badge-sm indicator-item">{cartProduct.length} </span>
                 </div>
               </label>
             </NavLink>
@@ -157,9 +157,9 @@ const Header = () => {
               <div class="dropdown dropdown-end ml-2 hidden lg:block">
                 <label
                   tabindex="0"
-                  class="btn btn-ghost text-neutral m-1"
+                  class="btn btn-ghost px-0 text-neutral m-1"
                 >
-                  <div className="flex items-center">
+                  <div className="items-center">
                     <div class="avatar">
                       <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img
@@ -176,7 +176,7 @@ const Header = () => {
                   class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <Link
-                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                     to="/dashboard"
                   >
                     My Account
@@ -184,19 +184,19 @@ const Header = () => {
                   {!admin && (
                     <>
                       <Link
-                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                        className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/order"
                       >
                         My Orders
                       </Link>
                       <Link
-                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                        className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/myReview"
                       >
                         My Ratings and Reviews
                       </Link>
                       <Link
-                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                        className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/wishlist"
                       >
                         My Wishlist

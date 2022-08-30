@@ -23,7 +23,7 @@ const AddToCart = () => {
       allowEnterKey: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://the-online-book-shop.herokuapp.com/cartProduct/${id}`
+        const url = `https://book-store-46yi.onrender.com/cartProduct/${id}`
         fetch(url, {
           method: "DELETE",
         })

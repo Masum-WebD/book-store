@@ -11,7 +11,7 @@ const ContactFormSolid = () => {
         console.log('click')
     }
     return (
-        <div className='container lg:w-[1196px] sm:block lg:flex justify-around items-center w-fit mx-auto text-justify bg-[#FFF9F9] p-5 lg:h-screen'>
+        <div className='lg:w-[1196px] sm:block lg:flex justify-around items-center mx-auto text-justify  lg:h-screen'>
             <div className='bg-[#452473] p-12 sm:w-full lg:w-[35%] relative h-[450px] overflow-hidden sm:mb-6 lg:mb-0'>
                 <h3 className='text-2xl capitalize font-medium text-white mb-2'>Contact Information</h3>
                 <p className=' text-[14px] capitalize text-white font-normal mt-2'>Fill Up the form and our team <br />
@@ -42,15 +42,17 @@ const ContactFormSolid = () => {
                 </div>
 
             </div>
-            <div className='bg-[#FFF9F9] sm:w-full lg:w-[60%] sm:ml-0 lg:ml-10 lg:mt-0'>
+            <div className=' sm:w-full lg:w-[60%] sm:ml-0 lg:ml-10 lg:mt-0'>
                 <form onSubmit={formControl} action="https://formsubmit.co/dd3899985@gmail.com" method="POST">
-                    <input type="text" name='fname' placeholder="First Name" class="outline-0 border-b-2 border-[#D9D9D9] text-[#0B1B28] p-2 bg-[#FFF9F9] w-full lg:max-w-xs sm:mt-6 lg:mt-0" />
-                    <input type="text" name='lname' placeholder="Last Name" class="outline-0 border-b-2 border-[#D9D9D9] text-[#0B1B28] p-2 md:ml-0 lg:ml-8 bg-[#FFF9F9] w-full lg:max-w-xs" />
+                    <div className='flex justify-between items-center'>
+                        <input type="text" name='fname' placeholder="First Name" class="outline-0 border-b-2 border-[#D9D9D9] text-[#0B1B28] p-2 bg-[#FFF9F9] w-full lg:max-w-xs sm:mt-6 lg:mt-0" />
+                        <input type="text" name='lname' placeholder="Last Name" class="outline-0 border-b-2 border-[#D9D9D9] text-[#0B1B28] p-2 md:ml-0 lg:ml-8 bg-[#FFF9F9] w-full lg:max-w-xs" />
+                    </div>
                     <br />
-                    <input type="email" name='email' placeholder="Email" class="outline-0  mt-4 border-b-2 border-[#D9D9D9] text-[#0B1B28] p-2 bg-[#FFF9F9] w-full " />
+                    <input type="email" name='email' placeholder="Email" class="outline-0 mb-4  mt-4 border-b-2 border-[#D9D9D9] text-[#0B1B28] p-2 bg-[#FFF9F9] w-full " />
                     <br />
                     <input type="text" name='msg' placeholder="Message" class="outline-0 mt-4  border-b-2 border-[#D9D9D9] text-[#0B1B28] p-2 bg-[#FFF9F9] w-full " />
-                    <input type="submit" className='bg-[#FF745C] hover:bg-[#ed6249]  text-white mt-10 p-2 w-full' value="Sumbit" />
+                    <input type="submit" className='bg-[#FF745C] hover:bg-[#ed6249]  text-white mt-10 p-2 w-full' value="Submit" />
                 </form>
             </div>
 
