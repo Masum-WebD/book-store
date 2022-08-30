@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import bg from "../asset/Images/login-bg.jpg";
-import logo from "../asset/Images/logo.png";
+import login from "../asset/Images/Tablet login-amico-min.png";
 import auth from "../Firebase/firebase.init";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
@@ -10,6 +9,7 @@ import googleIcon from "../asset/Icons/google.png";
 import Loading from "./Loading";
 import Swal from "sweetalert2";
 import useToken from './Hooks/useToken.js'
+import PageTitle from "./PageTitle";
 
 const Login = () => {
   const {
@@ -84,21 +84,21 @@ const Login = () => {
       {loading || googleLoading ? (
         <Loading />
       ) : (
-        <div
-          className="min-h-screen bg-no-repeat bg-cover bg-fixed"
-          style={{ backgroundImage: `url(${bg})` }}
-        >
+        <div className="min-h-screen lg:grid lg:grid-cols-2 bg-[#F8F3FF] lg:px-32">
+          <PageTitle title="Login" />
+          <div>
+            <img src={login} className="hidden lg:block mx-auto mt-24 drop-shadow-lg" alt="" />
+          </div>
           <div className="flex justify-center items-center">
-            <div className="card flex-shrink-0 lg:w-96 w-80 shadow-2xl mt-24 glass mb-12">
-              <img className="w-48 mx-auto mt-4" src={logo} alt="" />
-              <p className="text-center font-bold mt-3 text-white underline-offset-2 underline">
+            <div className="card flex-shrink-0 lg:w-96 w-80 mt-24 mb-12">
+              <p className="text-center text-3xl font-bold mt-3 text-neutral underline-offset-4 underline">
                 USER LOGIN
               </p>
               <div className="card-body">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text text-white">Email</span>
+                      <span className="label-text text-neutral">Email</span>
                     </label>
                     <input
                       type="email"
@@ -131,7 +131,7 @@ const Login = () => {
 
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text text-white">Password</span>
+                      <span className="label-text text-neutral">Password</span>
                     </label>
                     <input
                       type="password"
@@ -160,7 +160,7 @@ const Login = () => {
                         </span>
                       )}
                       <Link to="/reset-your-password">
-                        <span className="label-text-alt link-hover link text-white">
+                        <span className="label-text-alt link-hover link text-neutral">
                           Forget Password?
                         </span>
                       </Link>
@@ -174,11 +174,11 @@ const Login = () => {
                   />
                 </form>
 
-                <div className="divider">OR</div>
+                <div className="divider text-neutral">OR</div>
                 <div className="form-control">
                   <button
                     onClick={() => signInWithGoogle()}
-                    className="btn btn-outline hover:text-black"
+                    className="btn btn-outline text-neutral hover:text-neutral"
                   >
                     <img src={googleIcon} className="w-5 mr-2" alt="" />{" "}
                     Continue with google
@@ -186,7 +186,7 @@ const Login = () => {
                 </div>
                 <Link
                   to="/create-new-account"
-                  className="text-center text-sm label-text-alt link link-hover mt-2 text-white"
+                  className="text-center text-sm label-text-alt link link-hover mt-2 text-neutral"
                 >
                   New here? Please create account
                 </Link>

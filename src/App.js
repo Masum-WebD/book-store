@@ -45,7 +45,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/term" element={<TermPolicy />} />
-          <Route path="/offer" element={<HomePopUp />}></Route>
           <Route path="/login" element={<Login />} />
           <Route path="/all-products" element={<Shop />} />
           <Route path="*" element={<ErrorPage />} />
@@ -73,6 +72,10 @@ function App() {
           <Route path="/book/:bookId" element={<SingleProductDetails />} />
           <Route path="/addToCart" element={<AddToCart />} />
           <Route path="/paymentUi" element={<UiPayment />} />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6620c76314bf0aa478fbc6b7a28565049185c267
         </Routes>
       </StartFromTop>
 

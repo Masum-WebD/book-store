@@ -12,6 +12,7 @@ import auth from "../../Firebase/firebase.init";
 import useAdmin from "../Hooks/useAdmin";
 import userProfile from "../../asset/Icons/user.png";
 import { FcBriefcase } from "react-icons/fc";
+import PageTitle from "../PageTitle";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
@@ -19,6 +20,7 @@ const Dashboard = () => {
 
   return (
     <div className="drawer drawer-mobile">
+      <PageTitle title="Dashboard" />
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle " />
       <div className="drawer-content">
         <div className="navbar ">

@@ -10,6 +10,7 @@ import logo from "../../asset/Images/logo.png";
 
 const ItemsContainer = () => {
   return (
+<<<<<<< HEAD
     <div className="footer-bg lg:flex text-gray-800 justify-evenly gap-6 sm:px-8 px-5 py-16">
       <div className="my-auto text-left ">
         <img src={logo} className="h-[50px] w-[190px]" alt="" />
@@ -23,6 +24,13 @@ const ItemsContainer = () => {
       <Item Links={CustomerAreas} title="Customer Area" />
       <Item Links={PopularCategory} title="Popular Category" />
       <Item Links={SocialMedia} title="Social Media" />
+=======
+    <div className="lg:flex text-neutral justify-evenly gap-6 sm:px-8 px-5 py-16">
+      <Item Links={PRODUCTS} title="CONTACT US" />
+      <Item Links={RESOURCES} title="INFORMATION" />
+      <Item Links={COMPANY} title="COMPANY" />
+      <Item Links={SUPPORT} title="SUPPORT" />
+>>>>>>> 6620c76314bf0aa478fbc6b7a28565049185c267
     </div>
   );
 };

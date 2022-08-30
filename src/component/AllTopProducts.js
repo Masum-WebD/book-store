@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from "react";
-import AllProductSingle from "./AllProductSingle";
+import React from "react";
+import SingleProduct from "./SingleProduct";
+import { useQuery } from "react-query";
+import Loading from "./Loading";
 
 const AllTopProducts = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetch("https://the-online-book-shop.herokuapp.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+
+  const { data: products, isLoading } = useQuery("topSellingBooks", () => fetch("https://book-store-46yi.onrender.com/products").then(res => res.json()));
+
+  if (isLoading) {
+    return <Loading />
+  }
 
   return (
-    <div className="my-28">
-      <h2 className="uppercase text-gray-700 text-3xl mt-20 font-bold">
-        Top Selling books
+    <div className="max-w-[1196px] mx-auto">
+      <h2 className="capitalize text-neutral text-3xl mt-20 font-bold">
+        Top selling books
       </h2>
-      <div className="h-[3px] w-[120px] bg-primary mt-2 mx-auto"></div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 px-4 md:container mx-auto mt-16 lg:mb-0 gap-5">
-        {products.slice(9, 12).map((book) => (
-          <AllProductSingle book={book}></AllProductSingle>
+      <div className="grid grid-cols-2 lg:grid-cols-5 lg:px-0 px-4 md:container mx-auto my-16 gap-5">
+        {products?.slice(12, 17).map((book) => (
+          <SingleProduct book={book}></SingleProduct>
         ))}
       </div>
     </div>
