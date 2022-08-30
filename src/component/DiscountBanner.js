@@ -7,7 +7,7 @@ const DiscountBanner = () => {
 
         <section className="mx-auto max-w-[1196px]">
             <div class="hero min-h-screen">
-                <div class="hero-content flex-col lg:flex-row-reverse">
+                <div class=" lg:py-0 lg:flex justify-between items-center lg:flex-row-reverse">
                     <img src={discountBanner} class="lg:w-3/6 rounded-lg drop-shadow-xl" alt='' />
                     <div className='lg:w-3/6 text-left'>
                         <h1 class="text-5xl font-bold text-neutral capitalize lg:leading-[65px]">Get 20% Discount on any
