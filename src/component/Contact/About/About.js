@@ -10,7 +10,7 @@ import AboutVission from '../AboutPage/AboutVission';
 const About = () => {
     return (
         <div className=''>
-        
+            <PageTitle title="About Us" />
             <AboutBannerSolid />
             <div className='max-w-[1196px] mx-auto lg:px-4 px-4'>
                 <AboutStory />
