@@ -1,25 +1,26 @@
-export const PRODUCTS = [
-  { name: " Washington DC, USA", link: "#" },
-  { name: "bookstore@domain.com", link: "#" },
-  { name: "(850) 0124 567 658", link: "#" },
+export const QuickLinks = [
+  { name: "Home", link: "/" },
+  { name: "Shop", link: "/all-products" },
+  { name: "Offer", link: "/" },
+  { name: "About Us", link: "/about" },
+  { name: "Contact Us", link: "/contact" },
 ];
-export const RESOURCES = [
-  { name: "Industries and tools", link: "#" },
-  { name: "Use cases", link: "#" },
-  { name: "Blog", link: "#" },
-  { name: "Online evenet", link: "#" },
-  { name: "Nostrud exercitation", link: "#" },
+export const CustomerAreas = [
+  { name: "Account", link: "#" },
+  { name: "Orders", link: "#" },
+  { name: "Wishlist", link: "#" },
+  { name: "Ratings & Reviews", link: "#" },
 ];
-export const COMPANY = [
-  { name: "Diversity & inclusion", link: "#" },
-  { name: "About us", link: "#" },
-  { name: "Press", link: "#" },
-  { name: "Customer Stories", link: "#" },
-  { name: "Online communities", link: "#" },
+export const PopularCategory = [
+  { name: "Novel", link: "#" },
+  { name: "Poem", link: "#" },
+  { name: "Drama", link: "#" },
+  { name: "History", link: "#" },
+  { name: "Science Fiction", link: "#" },
 ];
-export const SUPPORT = [
-  { name: "Documentation", link: "#" },
-  { name: "Tutorials & guides", link: "#" },
-  { name: "Webinars", link: "#" },
-  { name: "Open-source", link: "#" },
+export const SocialMedia = [
+  { name: "Facebook", link: "#" },
+  { name: "Instagram", link: "#" },
+  { name: "WhatsApp", link: "#" },
+  { name: "Twitter", link: "#" },
 ];

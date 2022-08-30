@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { BiWalletAlt } from "react-icons/bi";
 import { BsCashCoin } from "react-icons/bs";
@@ -23,8 +24,12 @@ const SingleProductDetails = () => {
     item;
 
   useEffect(() => {
+<<<<<<< HEAD
+ fetch(`http://localhost:5000/product/${bookId}`)
+=======
 
     fetch(`https://book-store-46yi.onrender.com/product/${bookId}`)
+>>>>>>> 6620c76314bf0aa478fbc6b7a28565049185c267
       .then((res) => res.json())
       .then((data) => setItem(data));
   }, [bookId]);
@@ -40,8 +45,12 @@ const SingleProductDetails = () => {
       stock: stock,
       email: user.email,
     };
+<<<<<<< HEAD
+    fetch("http://localhost:5000/cartProduct", {
+=======
 
     fetch("https://book-store-46yi.onrender.com/cartProduct", {
+>>>>>>> 6620c76314bf0aa478fbc6b7a28565049185c267
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -64,7 +73,11 @@ const SingleProductDetails = () => {
       stock: stock,
       email: user.email,
     };
+<<<<<<< HEAD
+    fetch("http://localhost:5000/wishList", {
+=======
     fetch("https://book-store-46yi.onrender.com/wishList", {
+>>>>>>> 6620c76314bf0aa478fbc6b7a28565049185c267
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -81,7 +94,11 @@ const SingleProductDetails = () => {
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
+<<<<<<< HEAD
+    fetch("http://localhost:5000/products")
+=======
     fetch("https://book-store-46yi.onrender.com/products")
+>>>>>>> 6620c76314bf0aa478fbc6b7a28565049185c267
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

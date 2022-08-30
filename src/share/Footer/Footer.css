@@ -1,6 +1,8 @@
-.footer-bg{
-    background-color: #22995644;
+.footer-bg {
+  background-image: url("../../asset/Images/footer-bg.png");
+  background-color: #e5e2eb65;
 }
-.under-footer{
-    background-color: #22995673;
+.footer-bottom {
+    border-top: 2px solid rgba(128, 128, 128, 0.5);
+    border-radius: 5px;
 }
