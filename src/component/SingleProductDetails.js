@@ -95,7 +95,7 @@ const SingleProductDetails = () => {
   return (
     <div className="max-w-[1196px] mx-auto pt-[80px] lg:mt-0">
       <div className="lg:gap-3">
-        
+
         <div class="card lg:card-side bg-base-100 shadow-sm rounded-none lg:mt-5">
           <figure
             className=" 
@@ -123,7 +123,7 @@ const SingleProductDetails = () => {
                   className="text-start text-neutral text-sm capitalize flex hover:text-primary pt-5"
                 >
                   {" "}
-                  <AiOutlineHeart className="text-center mr-[4px] mt-[4px]" /> Add to
+                  <AiOutlineHeart className="text-center mr-[4px] text-lg mt-[1px]" /> Add to
                   Wishlist
                 </button>
               </div>
@@ -135,7 +135,7 @@ const SingleProductDetails = () => {
                   </button> */}
                     <label
                       for="my-modal-5"
-                      class="btn bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0"
+                      class="btn mt-5 bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0"
                     >
                       Read a bit <VscBook className="ml-2" />
                     </label>
@@ -165,7 +165,7 @@ const SingleProductDetails = () => {
                   <div>
                     <button
                       onClick={handleAddToCart}
-                      class="btn bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0"
+                      class="btn mt-5 bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0"
                     >
                       Add to Cart <FaShoppingCart className="text-sm ml-2" />
                     </button>
