@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutStory = () => {
     return (
-        <div className='container text-left sm:block lg:flex justify-around items-center my-[100px] w-10/12 mx-auto '>
+        <div className='container text-left sm:block lg:flex justify-around items-center mt-[100px] w-10/12 mx-auto '>
             <div className='sm: w-full lg:w-[40%] relative'>
                 <div className='mb-12'>
                     <h4 className='text-[#452473] font-bold mb-4'>Our story</h4>
