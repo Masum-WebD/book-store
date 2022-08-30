@@ -6,6 +6,7 @@ import Loading from './Loading';
 import forgetPass from '../asset/Images/Forgot password-pana-min.png';
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
+import PageTitle from './PageTitle';
 
 const ResetPass = () => {
 
@@ -43,7 +44,7 @@ const ResetPass = () => {
                     :
 
                     <div className='min-h-screen lg:grid lg:grid-cols-2 bg-[#F8F3FF] lg:px-32'>
-
+                        <PageTitle title="Forgot Password" />
                         <div>
                             <img src={forgetPass} className="hidden lg:block mx-auto mt-24 drop-shadow-lg" alt="" />
                         </div>

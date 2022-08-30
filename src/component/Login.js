@@ -9,6 +9,7 @@ import googleIcon from "../asset/Icons/google.png";
 import Loading from "./Loading";
 import Swal from "sweetalert2";
 import useToken from './Hooks/useToken.js'
+import PageTitle from "./PageTitle";
 
 const Login = () => {
   const {
@@ -84,6 +85,7 @@ const Login = () => {
         <Loading />
       ) : (
         <div className="min-h-screen lg:grid lg:grid-cols-2 bg-[#F8F3FF] lg:px-32">
+          <PageTitle title="Login" />
           <div>
             <img src={login} className="hidden lg:block mx-auto mt-24 drop-shadow-lg" alt="" />
           </div>

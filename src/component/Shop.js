@@ -42,7 +42,7 @@ const Shop = () => {
 
     return (
         <div class="drawer max-w-[1196px] mx-auto drawer-mobile mt-10">
-            {/* <PageTitle title="Shop" /> */}
+            <PageTitle title="Shop" />
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content py-10">
                 <label for="my-drawer-2" class="drawer-button btn btn-link capitalize float-right lg:hidden"><MdOutlineCategory className='inline-block relative text-base mr-1' /> Show All Categories</label>

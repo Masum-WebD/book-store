@@ -4,12 +4,14 @@ import { MdSpaceDashboard } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/firebase.init";
 import useAdmin from "../Hooks/useAdmin";
+import PageTitle from "../PageTitle";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   return (
     <div className="drawer drawer-mobile">
+      <PageTitle title="Dashboard" />
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle " />
       <div className="drawer-content">
         <div className="navbar ">
