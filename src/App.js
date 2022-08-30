@@ -43,7 +43,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/term" element={<TermPolicy />} />
-          <Route path="/offer" element={<HomePopUp />}></Route>
           <Route path="/login" element={<Login />} />
           <Route path="/all-products" element={<Shop />} />
           <Route path="*" element={<ErrorPage />} />
@@ -61,7 +60,7 @@ function App() {
           <Route path="/reset-your-password" element={<ResetPass />} />
           <Route path="/book/:bookId" element={<SingleProductDetails />} />
           <Route path="/addToCart" element={<AddToCart />} />
-          <Route path="/paymentUi" element={<UiPayment/>} />
+          <Route path="/paymentUi" element={<UiPayment />} />
 
         </Routes>
       </StartFromTop>
