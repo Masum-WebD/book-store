@@ -51,8 +51,9 @@ const Banner = () => {
                     <input
                       type="submit"
                       value="Search"
-                      class="text-white text-sm mr-2"
+                      class="text-white cursor-pointer text-sm mr-2"
                     />
+                    {/* ddd */}
                   </span>
                 </form>
                 <div className="absolute bg-white w-full">
