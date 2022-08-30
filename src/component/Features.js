@@ -7,7 +7,7 @@ import fastDeli from '../asset/Icons/packing.png';
 
 const Features = () => {
     return (
-        <section className='lg:px-32 px-3 mt-16 mb-24'>
+        <section className='px-3 lg:px-0 max-w-[1196px] m-auto mt-16 mb-24'>
 
             <div className='grid lg:grid-cols-5 grid-cols-3 gap-5'>
 
