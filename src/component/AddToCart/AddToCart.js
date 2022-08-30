@@ -7,11 +7,9 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 
 const AddToCart = () => {
-  const [cartProduct, setCartProduct] = useCartBooks()
-
+  const [cartProduct, setCartProduct] = useCartBooks();
 
   const handleDeleteBtn = (id, e) => {
-
     Swal.fire({
       title:
         "Are you sure to delete it? Then this product may not be in our stock!",
@@ -23,25 +21,22 @@ const AddToCart = () => {
       allowEnterKey: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://the-online-book-shop.herokuapp.com/cartProduct/${id}`
+        const url = `http://localhost:5000/cartProduct/${id}`;
         fetch(url, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-
-            const remaining = cartProduct.filter((product) => product._id !== id);
+            const remaining = cartProduct.filter(
+              (product) => product._id !== id
+            );
             setCartProduct(remaining);
 
-            console.log(data)
-
-          })
+            console.log(data);
+          });
       }
-    })
-
-
-
-  }
+    });
+  };
 
   return (
     <div className="bg-[#F9FAFB] lg:px-20">
@@ -56,15 +51,15 @@ const AddToCart = () => {
 
           <div className=" bg-white">
             {cartProduct.map((p) => (
-
-              <CartProduct key={p._id} product={p} handleDeleteBtn={handleDeleteBtn}></CartProduct>
-
+              <CartProduct
+                key={p._id}
+                product={p}
+                handleDeleteBtn={handleDeleteBtn}
+              ></CartProduct>
             ))}
             <CheckoutSummary />
           </div>
-
         </div>
-
       </div>
     </div>
   );

@@ -4,19 +4,16 @@ import Loading from "./Loading";
 import { MdOutlineCategory } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import PageTitle from "./PageTitle";
 
 const Shop = () => {
   const { data, isLoading } = useQuery("AllProducts", () =>
-    fetch("https://the-online-book-shop.herokuapp.com/products").then((res) =>
-      res.json()
-    )
+    fetch("http://localhost:5000/products").then((res) => res.json())
   );
 
   const [filteredItem, setFilteredItem] = useState([]);
 
   const showAllProduct = () => {
-    fetch("https://the-online-book-shop.herokuapp.com/products")
+    fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setFilteredItem(data));
   };

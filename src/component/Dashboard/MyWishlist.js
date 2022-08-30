@@ -12,11 +12,8 @@ const MyWishlist = () => {
     isLoading,
     refetch,
   } = useQuery("wishList", () =>
-    fetch(`https://the-online-book-shop.herokuapp.com/wishList?email=${user.email}`, {
+    fetch(`http://localhost:5000/wishList?email=${user.email}`, {
       method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
     }).then((res) => res.json())
   );
   if (isLoading) {

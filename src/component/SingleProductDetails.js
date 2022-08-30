@@ -25,8 +25,7 @@ const SingleProductDetails = () => {
     item;
 
   useEffect(() => {
-
-    fetch(`https://the-online-book-shop.herokuapp.com/product/${bookId}`)
+    fetch(`http://localhost:5000/product/${bookId}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
   }, [bookId]);
@@ -43,7 +42,7 @@ const SingleProductDetails = () => {
       email: user.email,
     };
 
-    fetch("https://the-online-book-shop.herokuapp.com/cartProduct", {
+    fetch("http://localhost:5000/cartProduct", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -66,7 +65,7 @@ const SingleProductDetails = () => {
       stock: stock,
       email: user.email,
     };
-    fetch("https://the-online-book-shop.herokuapp.com/wishList", {
+    fetch("http://localhost:5000/wishList", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -83,7 +82,7 @@ const SingleProductDetails = () => {
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("https://the-online-book-shop.herokuapp.com/products")
+    fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -206,7 +205,6 @@ const SingleProductDetails = () => {
                   Purchase & Earn
                 </a>
               </li>
-              
             </ul>
           </div>
         </div>
@@ -300,7 +298,9 @@ const SingleProductDetails = () => {
                 className="review-area textarea text-black"
               />
 
-              <button className="review-btn bg-primary border-1 border-primary text-white">Submit</button>
+              <button className="review-btn bg-primary border-1 border-primary text-white">
+                Submit
+              </button>
             </div>
 
             <article className="mt-14">
