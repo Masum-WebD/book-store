@@ -82,9 +82,9 @@ const Header = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="text-black" to="/offer">
+                  <label for="my-modal-6" class="hover:text-primary hover:cursor-pointer text-neutral">
                     Offers
-                  </NavLink>
+                  </label>
                 </li>
                 <li>
                   {user && (

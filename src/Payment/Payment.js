@@ -8,7 +8,7 @@ const Payment = ({price}) => {
     // console.log(price)
     
     return (
-        <div >
+        <div className='max-w-[1196px] mx-auto lg:px-0 px-5'>
             <Elements stripe={stripePromise}>
                 <Checkout price={price} />
                 </Elements>

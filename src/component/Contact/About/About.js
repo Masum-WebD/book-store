@@ -9,13 +9,15 @@ import AboutVission from '../AboutPage/AboutVission';
 
 const About = () => {
     return (
-        <div>
-            <PageTitle title="About Us" />
+        <div className=''>
+        
             <AboutBannerSolid />
-            <AboutStory />
-            <AboutMission />
-            <AboutVission />
-            <AboutExtra />
+            <div className='max-w-[1196px] mx-auto lg:px-4 px-4'>
+                <AboutStory />
+                <AboutMission />
+                <AboutVission />
+                <AboutExtra />
+            </div>
         </div>
     );
 };

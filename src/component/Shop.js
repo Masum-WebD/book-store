@@ -62,7 +62,7 @@ const Shop = () => {
                 </div>
 
 
-                <div className='grid lg:grid-cols-4 gap-4 px-3'>
+                <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 px-3'>
                     {
                         filteredItem?.map((EachBook) => (
                             <EachProductForShop key={EachBook._id} book={EachBook}></EachProductForShop>
