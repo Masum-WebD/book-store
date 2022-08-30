@@ -20,7 +20,7 @@ const CheckoutSummary = () => {
   const handleOrder = (e) => {
     e.preventDefault();
 
-    fetch("https://book-store-46yi.onrender.com/order", {
+    fetch('https://book-store-46yi.onrender.com/order', {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -78,12 +78,9 @@ const CheckoutSummary = () => {
           value={subTotal}
         />
       </div>
-      <button
-        onClick={(e) => handleOrder(e)}
-        className="btn btn-primary  hover:bg-[#3f9866] text-white rounded-sm mt-4 w-full"
-      >
-        Place Order
-      </button>
+      <button onClick={(e) => handleOrder(e)} className='btn btn-primary  hover:bg-secondary border-none text-white rounded-sm mt-4 w-full'>Place Order</button>
+
+
     </div>
   );
 };

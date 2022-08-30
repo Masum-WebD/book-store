@@ -91,11 +91,12 @@ const SingleProductDetails = () => {
     { width: 1200, itemsToShow: 4 },
   ];
   return (
-    <div className="container mx-auto pt-[80px] p-5 lg:mt-0">
+    <div className="max-w-[1196px] mx-auto pt-[80px] lg:mt-0">
       <div className="lg:gap-3">
-        <div class="card lg:card-side bg-base-100 shadow-xl lg:mt-5">
+
+        <div class="card lg:card-side bg-base-100 shadow-sm rounded-none lg:mt-5">
           <figure
-            className="lg:p-5 
+            className=" 
           rounded-md"
           >
             <img src={img} alt="Book" className="rounded-md" />
@@ -120,8 +121,8 @@ const SingleProductDetails = () => {
                   className="text-start text-neutral text-sm capitalize flex hover:text-primary pt-5"
                 >
                   {" "}
-                  <AiOutlineHeart className="text-center mr-[4px] mt-[4px]" />{" "}
-                  Add to Wishlist
+                  <AiOutlineHeart className="text-center mr-[4px] text-lg mt-[1px]" /> Add to
+                  Wishlist
                 </button>
               </div>
               <div className="mt-2">
@@ -132,7 +133,7 @@ const SingleProductDetails = () => {
                   </button> */}
                     <label
                       for="my-modal-5"
-                      class="btn bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0"
+                      class="btn mt-5 bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0"
                     >
                       Read a bit <VscBook className="ml-2" />
                     </label>
@@ -162,7 +163,7 @@ const SingleProductDetails = () => {
                   <div>
                     <button
                       onClick={handleAddToCart}
-                      class="btn bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0"
+                      class="btn mt-5 bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0"
                     >
                       Add to Cart <FaShoppingCart className="text-sm ml-2" />
                     </button>
@@ -215,7 +216,7 @@ const SingleProductDetails = () => {
         </div>
       </div>
 
-      <div className="card bg-base-100 shadow-xl text-left my-5 p-5">
+      <div className="card bg-base-100 shadow-sm text-left my-5 p-5">
         <Tabs>
           <TabList>
             <Tab>
