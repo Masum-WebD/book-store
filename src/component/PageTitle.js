@@ -1,10 +1,11 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
-const PageTitle = () => {
+const PageTitle = ({ title }) => {
     return (
-        <div>
-
-        </div>
+        <Helmet>
+            <title>{title} - Book Shop.</title>
+        </Helmet>
     );
 };
 

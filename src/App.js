@@ -30,6 +30,7 @@ import HomePopUp from "./component/Contact/PopUp/HomePopUp";
 import UiPayment from "./Payment/UiPayment";
 import DashboardDetails from "./component/Dashboard/DashboardDetails/DashboardDetails";
 import ProductList from "./component/Dashboard/ProductsDetails/ProductList";
+import OrderHistory from "./component/Dashboard/OrderHistory";
 
 function App() {
   return (
@@ -44,7 +45,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/term" element={<TermPolicy />} />
-          <Route path="/offer" element={<HomePopUp />}></Route>
           <Route path="/login" element={<Login />} />
           <Route path="/all-products" element={<Shop />} />
           <Route path="*" element={<ErrorPage />} />
@@ -54,6 +54,7 @@ function App() {
             <Route path="myEbook" element={<Ebook></Ebook>}></Route>
             <Route path="order" element={<MyOrders />}></Route>
             <Route path="myReview" element={<MyReview></MyReview>}></Route>
+            <Route path="order/orderHistory" element={<OrderHistory></OrderHistory>}></Route>
             <Route
               path="addProduct"
               element={<AddProduct></AddProduct>}

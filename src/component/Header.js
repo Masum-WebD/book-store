@@ -187,12 +187,6 @@ const Header = () => {
                 >
                   <Link
                     className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                    to="/dashboard"
-                  >
-                    Dashboard
-                  </Link>
-                  <Link
-                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                     to="/dashboard/myAccount"
                   >
                     My Account
@@ -221,6 +215,12 @@ const Header = () => {
                   )}
                   {admin && (
                     <>
+                      <Link
+                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                        to="/dashboard"
+                      >
+                        Dashboard
+                      </Link>
                       <Link
                         className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/addProduct"

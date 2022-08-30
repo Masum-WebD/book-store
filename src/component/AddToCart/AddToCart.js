@@ -5,6 +5,7 @@ import ShopUserInfo from "./ShopUserInfo";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import PageTitle from "../PageTitle";
 
 const AddToCart = () => {
   const [cartProduct, setCartProduct] = useCartBooks();
@@ -21,7 +22,7 @@ const AddToCart = () => {
       allowEnterKey: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `http://localhost:5000/cartProduct/${id}`;
+        const url = `https://book-store-46yi.onrender.com/cartProduct/${id}`
         fetch(url, {
           method: "DELETE",
         })
@@ -40,6 +41,7 @@ const AddToCart = () => {
 
   return (
     <div className="bg-[#F9FAFB] lg:px-20">
+      <PageTitle title="Add To Cart" />
       <div className="pt-16 lg:pt-32 pb-16 flex flex-col-reverse lg:flex-row gap-10 text-left text-neutral container mx-auto">
         <div className=" lg:w-1/2 px-6 lg:px-0">
           <ShopUserInfo />
@@ -49,7 +51,7 @@ const AddToCart = () => {
             Order Summary
           </h2>
 
-          <div className=" bg-white">
+          <div className="lg:mt-[70px] bg-white">
             {cartProduct.map((p) => (
               <CartProduct
                 key={p._id}

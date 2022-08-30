@@ -11,7 +11,7 @@ const RelatedProducts = ({ book }) => {
 
   return (
     <figure class="card img-container">
-      <div className="flex shadow-lg gap-5 p-5 rounded-md ml-5 lg:overflow-auto">
+      <div className="flex shadow-sm gap-5 p-5 ml-5 lg:overflow-auto">
         <img
           className="object-scale-down h-[160px] w-[115px]"
           src={img}

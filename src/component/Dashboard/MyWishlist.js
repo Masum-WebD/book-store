@@ -12,7 +12,7 @@ const MyWishlist = () => {
     isLoading,
     refetch,
   } = useQuery("wishList", () =>
-    fetch(`http://localhost:5000/wishList?email=${user.email}`, {
+    fetch(`https://book-store-46yi.onrender.com/wishList?email=${user.email}`, {
       method: "GET",
     }).then((res) => res.json())
   );

@@ -4,20 +4,23 @@ import { RiShoppingBag3Fill } from "react-icons/ri";
 import { TiShoppingCart } from "react-icons/ti";
 import { IoPersonSharp } from "react-icons/io5";
 import { MdDashboard } from "react-icons/md";
-import { FaShippingFast } from "react-icons/fa";
+import { FaShippingFast, FaWallet } from "react-icons/fa";
 import { MdLocalOffer } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/firebase.init";
 import useAdmin from "../Hooks/useAdmin";
 import userProfile from "../../asset/Icons/user.png";
+import { FcBriefcase } from "react-icons/fc";
+import PageTitle from "../PageTitle";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
 
   return (
-    <div className="drawer drawer-mobile mt-[72px]">
+    <div className="drawer drawer-mobile mt-8">
+      <PageTitle title="Dashboard" />
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle " />
       <div className="drawer-content">
         <div className="navbar ">
@@ -81,20 +84,16 @@ const Dashboard = () => {
           </div>
           <div className="h-[3px] w-[120px] bg-pink-300 mt-2 mx-auto"></div>
           <ul className="menu overflow-auto px-4 w-56 text-gray-700">
-            <li className="mt-3">
-              <Link to="/dashboard">
-                <MdDashboard />
-                Dashboard
-              </Link>
-            </li>
             <>
               {!admin && (
                 <>
                   <li>
-                    <Link to="/dashboard/order">My Orders</Link>
+                    <Link to="/dashboard/order">
+                      {<FcBriefcase />}My Orders
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/dashboard/myReview">My Ratings and Review</Link>
+                    <Link to="/dashboard/myReview">My Review</Link>
                   </li>
                   <li>
                     <Link to="/dashboard/wishlist">My Wishlist</Link>
@@ -103,6 +102,12 @@ const Dashboard = () => {
               )}
               {admin && (
                 <>
+                  <li className="mt-3">
+                    <Link to="/dashboard">
+                      <MdDashboard />
+                      Dashboard
+                    </Link>
+                  </li>
                   <div class="collapse collapse-arrow">
                     <input type="checkbox" class="peer" />
                     <div class="collapse-title">

@@ -1,15 +1,18 @@
 import React from 'react';
-import ContactBanner from './ContactBanner';
-import ContactForm from './ContactForm';
-import Faq from './FAQ/Faq';
+import PageTitle from '../PageTitle';
+import ContactBannerSolid from './ContactPage/ContactBannerSolid';
+import ContactFormSolid from './ContactPage/ContactFormSolid';
+
 
 
 const Contact = () => {
     return (
-        <div>
-            <ContactBanner />
-            <ContactForm />
-            <Faq></Faq>
+        <div className='p-3 lg:p-0'>
+            <div>
+                <PageTitle title="Contact Us" />
+                <ContactBannerSolid></ContactBannerSolid>
+                <ContactFormSolid></ContactFormSolid>
+            </div>
         </div>
     );
 };
