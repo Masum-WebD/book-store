@@ -14,9 +14,6 @@ const MyWishlist = () => {
   } = useQuery("wishList", () =>
     fetch(`https://book-store-46yi.onrender.com/wishList?email=${user.email}`, {
       method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
     }).then((res) => res.json())
   );
   if (isLoading) {

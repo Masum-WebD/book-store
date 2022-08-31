@@ -1,4 +1,5 @@
 import React from 'react';
+import PageTitle from '../../PageTitle';
 import AboutBannerSolid from '../AboutPage/AboutBannerSolid';
 import AboutExtra from '../AboutPage/AboutExtra';
 import AboutMission from '../AboutPage/AboutMission';
@@ -8,12 +9,15 @@ import AboutVission from '../AboutPage/AboutVission';
 
 const About = () => {
     return (
-        <div>
+        <div className=''>
+            <PageTitle title="About Us" />
             <AboutBannerSolid />
-            <AboutStory />
-            <AboutMission />
-            <AboutVission />
-            <AboutExtra />
+            <div className='max-w-[1196px] mx-auto lg:px-4 px-4'>
+                <AboutStory />
+                <AboutMission />
+                <AboutVission />
+                <AboutExtra />
+            </div>
         </div>
     );
 };

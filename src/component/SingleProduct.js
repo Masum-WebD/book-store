@@ -9,20 +9,19 @@ const SingleProduct = ({ book }) => {
   };
 
   return (
-    <div class="shadow h-[340px] relative gap-5 p-2 border-box">
-      <img className="object-scale-down h-[160px] w-[115px] rounded-sm" src={img} alt="" />
-      <div className="text-left  mt-2 flex flex-col text-accent">
-        <h2 className="font-bold mb-2 text-neutral">{name}</h2>
-        <p><span className="font-medium text-gray-800">${price}</span></p>
-        <div className="mt-[15px] absolute bottom-[20px]">
-          <button
-            onClick={() => navigateToProductDetail(_id)}
-            style={{ marginTop: "auto", maxWidth: "155px" }}
-            className="bg-white hover:bg-primary text-[14px] text-primary hover:text-white py-2 px-5 border border-primary rounded-sm capitalize"
-          >
-            View Product
-          </button>
-        </div>
+    <div class="flex shadow-lg gap-5 p-5 border-box border rounded-md">
+      <img className="object-scale-down h-[160px] w-[115px]" src={img} alt="" />
+      <div className="text-left flex flex-col text-accent">
+        <h2 className="text-md font-medium text-gray-800">{name}</h2>
+        <p className="text-gray-800 my-1 text-sm">By: <span className="text-primary">{author}</span></p>
+        <p><span className="line-through text-gray-600">$1500</span> <span className="font-medium text-gray-800">${price}</span></p>
+        <button
+          onClick={() => navigateToProductDetail(_id)}
+          style={{ marginTop: "auto", maxWidth: "155px" }}
+          className="bg-primary btn text-white py-2 px-5 border-0 hover:bg-purple-600 rounded-sm mt-4 uppercase"
+        >
+          View Product
+        </button>
       </div>
     </div>
   );

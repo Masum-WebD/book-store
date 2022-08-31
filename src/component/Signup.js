@@ -8,6 +8,7 @@ import signup from '../asset/Images/Sign up-amico-min.png';
 import googleIcon from '../asset/Icons/google.png';
 import Swal from 'sweetalert2';
 import useToken from './Hooks/useToken.js'
+import PageTitle from './PageTitle';
 
 
 const Signup = () => {
@@ -64,7 +65,7 @@ const Signup = () => {
                     :
 
                     <div className='min-h-screen lg:grid lg:grid-cols-2 bg-[#F8F3FF] lg:px-32'>
-
+                        <PageTitle title="Sign Up" />
                         <div>
                             <img src={signup} className="hidden lg:block mx-auto mt-24 drop-shadow-lg" alt="" />
                         </div>

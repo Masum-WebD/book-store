@@ -21,7 +21,7 @@ const TweentyPercent = () => {
       <div className="flex justify-between items-center px-10">
         <div>
           <h2 className="uppercase text-gray-800  text-2xl font-bold">
-            Up to <span className="text-green-600">20%</span> Off Fall's Biggest
+            Up to <span className="text-secondary">20%</span> Off Fall's Biggest
             Books
           </h2>
         </div>

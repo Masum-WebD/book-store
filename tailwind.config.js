@@ -2,6 +2,7 @@ module.exports = {
   content: [
     "./src/**/*.{html,js}",
     "./src/**/*.{js,jsx,ts,tsx}",
+    "../path/to/chartjs.min.js",
   ],
 
   daisyui: {

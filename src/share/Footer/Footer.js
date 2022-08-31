@@ -9,21 +9,21 @@ import americanExpress from "../../asset/Icons/american-express.png";
 
 const Footer = () => {
   return (
-    <footer className="footer-bg text-white">
+    <footer className="text-white">
       <ItemsContainer />
       <div
-        className="grid under-footer grid-cols-1 lg:grid-cols-3
+        className="grid footer-bottom grid-cols-1 lg:grid-cols-3
       my-auto pt-6 text-black items-center text-sm pb-8"
       >
-        <span>© 2022 Book Store. All rights reserved.</span>
+        <span>© 2022 Book Shop. All rights reserved.</span>
         <a href="/term">
           <span>Terms · Privacy Policy</span>
         </a>
         <div className="flex mx-auto">
-          <img className="w-14 mx-2" src={paypal} alt="" />
-          <img className="w-14 mx-2" src={visa} alt="" />
-          <img className="w-14 mx-2" src={masterCard} alt="" />
-          <img className="w-14 mx-2" src={americanExpress} alt="" />
+          <img className="w-12 mx-2" src={paypal} alt="" />
+          <img className="w-12 mx-2" src={visa} alt="" />
+          <img className="w-12 mx-2" src={masterCard} alt="" />
+          <img className="w-12 mx-2" src={americanExpress} alt="" />
         </div>
       </div>
 

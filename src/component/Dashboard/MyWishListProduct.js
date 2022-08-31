@@ -34,7 +34,7 @@ const MyWishListProduct = ({ product, refetch }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount) {
-            toast.success("yes delete");
+            toast.success("Product Removed From Wishlist");
             refetch();
           }
         });

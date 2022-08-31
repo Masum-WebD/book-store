@@ -4,7 +4,7 @@ import Loading from "../Loading";
 import UserRow from "./UserRow";
 
 const AllUsers = () => {
-  let {
+  const {
     data: users,
     isLoading,
     refetch,
