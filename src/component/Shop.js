@@ -35,130 +35,59 @@ const Shop = () => {
   }
 
   return (
-    <div class="drawer drawer-mobile ">
-      {/* <PageTitle title="Shop" /> */}
-      <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-      <label
-        for="my-drawer-2"
-        class="btn btn-primary absolute top-6 drawer-button lg:hidden"
-      >
-        Open drawer
-      </label>
-      <div class="drawer-content py-10">
-        <div className="flex justify-between items-center lg:px-7 px-2">
-          <div class="breadcrumbs text-black lg:text-lg lg:font-semibold">
-            <ul>
-              <li>
-                <Link to="">Shop</Link>
-              </li>
-              <li>
-                <Link onClick={() => showAllProduct()} to="">
-                  All Products
-                </Link>
-              </li>
-              {filteredItem?.slice(0, 1).map((b) => (
-                <li>{b.category}</li>
-              ))}
-            </ul>
-          </div>
-          <h1 className="text-lg text-black my-4 font-semibold">
-            Showing all {filteredItem?.length} books
-          </h1>
-        </div>
+    <div class="drawer max-w-[1196px] mx-auto drawer-mobile mt-10">
+            {/* <PageTitle title="Shop" /> */}
+            <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+            <div class="drawer-content py-10">
+                <label for="my-drawer-2" class="drawer-button btn btn-link capitalize float-right lg:hidden"><MdOutlineCategory className='inline-block relative text-base mr-1' /> Show All Categories</label>
 
-        <div className="grid lg:grid-cols-3 gap-4">
-          {filteredItem?.map((EachBook) => (
-            <EachProductForShop
-              key={EachBook._id}
-              book={EachBook}
-            ></EachProductForShop>
-          ))}
+                <div className='lg:flex mt-1 lg:mt-0 justify-between items-center lg:px-7 px-2'>
+                    <div class="breadcrumbs text-black lg:text-lg text-sm lg:font-semibold">
+                        <ul>
+                            <li><Link to="">Shop</Link></li>
+                            <li><Link onClick={() => showAllProduct()} to="">All Products</Link></li>
+                            {
+                                filteredItem?.length > 60 ? <li></li> :
+                                    filteredItem?.slice(0, 1).map(b => <li>{b.category}</li>)
+                            }
+                        </ul>
+                    </div>
+                    <h1 className='lg:text-lg text-sm text-black my-4 lg:font-semibold'>Showing all {filteredItem?.length} books</h1>
+                </div>
+
+
+                <div className='grid lg:grid-cols-4 gap-4 px-3'>
+                    {
+                        filteredItem?.map((EachBook) => (
+                            <EachProductForShop key={EachBook._id} book={EachBook}></EachProductForShop>
+                        ))
+                    }
+                </div>
+
+            </div>
+            <div class="drawer-side">
+                <label for="my-drawer-2" class="drawer-overlay"></label>
+                <ul class="text-left p-10 overflow-y-auto w-80 text-base-content bg-[#F8F3FF]">
+                    <h1 className='text-2xl text-black font-semibold text-left'><MdOutlineCategory className='inline-block relative bottom-[2px]' /> Categories</h1>
+                    <div className='border-t-2 border-gray-300 mt-3'></div>
+                    <li className="text-black my-1 hover:underline hover:underline-offset-2 active:text-red-800"><Link onClick={() => filterResult('Poem')} to="">Poem</Link></li>
+                    <li className="text-black my-3 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Novel')} to="">Novel</Link></li>
+                    <li className="text-black my-3 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Drama')} to="">Drama</Link></li>
+                    <li className="text-black my-3 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('History')} to="">History</Link></li>
+                    <li className="text-black my-3 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Research')} to="">Research</Link></li>
+                    <li className="text-black my-3 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Business')} to="">Business</Link></li>
+                    <li className="text-black my-3 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Criticism')} to="">Criticism</Link></li>
+                    <li className="text-black my-3 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Biography')} to="">Biography</Link></li>
+                    <li className="text-black my-3 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Phycology')} to="">Phycology</Link></li>
+                    <li className="text-black my-3 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Philosophy')} to="">Philosophy</Link></li>
+                    <li className="text-black my-3 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Science fiction')} to="">Science fiction</Link></li>
+                    <li className="text-black my-3 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Mystery and thriller')} to="">Mystery and thriller</Link></li>
+                    <li className="text-black my-3 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Fantasy and adventure')} to="">Fantasy and adventure</Link></li>
+                    <li className="text-black my-3 hover:underline hover:underline-offset-2"><Link onClick={() => filterResult('Science and technologies')} to="">Science and technologies</Link></li>
+                </ul>
+
+            </div>
         </div>
-      </div>
-      <div class="drawer-side">
-        <label for="my-drawer-2" class="drawer-overlay"></label>
-        <ul class="text-left p-10 overflow-y-auto w-80 text-base-content bg-white">
-          <h1 className="text-2xl text-black font-semibold text-left">
-            <MdOutlineCategory className="inline-block relative bottom-[2px]" />{" "}
-            Categories
-          </h1>
-          <div className="border-t-2 border-gray-300 mt-3"></div>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2 active:text-red-800">
-            <Link onClick={() => filterResult("Poem")} to="">
-              Poem
-            </Link>
-          </li>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2">
-            <Link onClick={() => filterResult("Novel")} to="">
-              Novel
-            </Link>
-          </li>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2">
-            <Link onClick={() => filterResult("Drama")} to="">
-              Drama
-            </Link>
-          </li>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2">
-            <Link onClick={() => filterResult("History")} to="">
-              History
-            </Link>
-          </li>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2">
-            <Link onClick={() => filterResult("Research")} to="">
-              Research
-            </Link>
-          </li>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2">
-            <Link onClick={() => filterResult("Business")} to="">
-              Business
-            </Link>
-          </li>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2">
-            <Link onClick={() => filterResult("Criticism")} to="">
-              Criticism
-            </Link>
-          </li>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2">
-            <Link onClick={() => filterResult("Biography")} to="">
-              Biography
-            </Link>
-          </li>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2">
-            <Link onClick={() => filterResult("Phycology")} to="">
-              Phycology
-            </Link>
-          </li>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2">
-            <Link onClick={() => filterResult("Philosophy")} to="">
-              Philosophy
-            </Link>
-          </li>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2">
-            <Link onClick={() => filterResult("Science fiction")} to="">
-              Science fiction
-            </Link>
-          </li>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2">
-            <Link onClick={() => filterResult("Mystery and thriller")} to="">
-              Mystery and thriller
-            </Link>
-          </li>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2">
-            <Link onClick={() => filterResult("Fantasy and adventure")} to="">
-              Fantasy and adventure
-            </Link>
-          </li>
-          <li className="text-black my-1 hover:underline hover:underline-offset-2">
-            <Link
-              onClick={() => filterResult("Science and technologies")}
-              to=""
-            >
-              Science and technologies
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </div>
   );
 };
 
