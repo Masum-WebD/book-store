@@ -16,7 +16,7 @@ const RequireAuth = ({ children }) => {
     if (!user) {
         Swal.fire({
             position: 'center',
-            icon: 'error',
+            icon: 'warning',
             title: 'You need to login first',
             showConfirmButton: false,
             timer: 2000

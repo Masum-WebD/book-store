@@ -10,11 +10,10 @@ import "react-tabs/style/react-tabs.css";
 import profile from "../asset/Images/author-1.jpg";
 import profile2 from "../asset/Images/author-2.jpg";
 import "./SingleProductDetails.css";
-import { add } from "../store/cartSlice";
 import { AiOutlineHeart } from "react-icons/ai";
-import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../Firebase/firebase.init";
+import Swal from "sweetalert2";
 const SingleProductDetails = () => {
   const { bookId } = useParams();
   const [user] = useAuthState(auth);
@@ -29,54 +28,92 @@ const SingleProductDetails = () => {
       .then((data) => setItem(data));
   }, [bookId]);
 
+  const navigate = useNavigate();
+
   const handleAddToCart = (e) => {
     e.preventDefault();
-    const AddToCart = {
-      _id: _id,
-      name: name,
-      img: img,
-      author: author,
-      price: price,
-      stock: stock,
-      email: user.email,
-    };
 
-    fetch("https://book-store-46yi.onrender.com/cartProduct", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(AddToCart),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+    if (user) {
+      const AddToCart = {
+        _id: _id,
+        name: name,
+        img: img,
+        author: author,
+        price: price,
+        stock: stock,
+        email: user.email,
+      };
+
+      fetch("https://book-store-46yi.onrender.com/cartProduct", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(AddToCart),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Product added to cart successfully',
+            showConfirmButton: false,
+            timer: 2000
+          });
+        });
+    } else {
+      navigate("/login");
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'You need to login first',
+        showConfirmButton: false,
+        timer: 2000
       });
+    }
+
   };
 
   const handleWishList = () => {
-    const product = {
-      _id: _id,
-      name: name,
-      img: img,
-      author: author,
-      price: price,
-      stock: stock,
-      email: user.email,
-    };
-    fetch("https://book-store-46yi.onrender.com/wishList", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(product),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data) {
-          toast.success("Product Added to Wishlist Successfully");
-        }
+    if (user) {
+      const product = {
+        _id: _id,
+        name: name,
+        img: img,
+        author: author,
+        price: price,
+        stock: stock,
+        email: user.email,
+      };
+      fetch("https://book-store-46yi.onrender.com/wishList", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(product),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Product Added to Wishlist Successfully',
+              showConfirmButton: false,
+              timer: 2000
+            });
+          }
+        });
+    } else {
+      navigate("/login");
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'You need to login first',
+        showConfirmButton: false,
+        timer: 2000
       });
+    }
   };
 
   const [products, setProducts] = useState([]);
