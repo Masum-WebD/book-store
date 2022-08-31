@@ -67,9 +67,9 @@ const OrderHistory = () => {
               <h1 className="text-xl">Product Name: Harry potter</h1>
             </div>
             <div className="border">
-             <p>Price: 140</p>
-             <p>Qnt:1</p>
-             <p>TK:140</p>
+              <p>Price: 140</p>
+              <p>Qnt:1</p>
+              <p>TK:140</p>
             </div>
             <div className="">
               <p>Total item: 1 Products</p>
