@@ -179,27 +179,27 @@ const Header = () => {
                   class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <Link
-                    className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                    to="/dashboard"
+                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard/myAccount"
                   >
                     My Account
                   </Link>
                   {!admin && (
                     <>
                       <Link
-                        className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/order"
                       >
                         My Orders
                       </Link>
                       <Link
-                        className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/myReview"
                       >
                         My Ratings and Reviews
                       </Link>
                       <Link
-                        className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/wishlist"
                       >
                         My Wishlist
@@ -210,21 +210,9 @@ const Header = () => {
                     <>
                       <Link
                         className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                        to="/dashboard/addProduct"
+                        to="/dashboard"
                       >
-                        Add A Product
-                      </Link>
-                      <Link
-                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                        to="/dashboard/manageUsers"
-                      >
-                        Manage All Users
-                      </Link>
-                      <Link
-                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                        to="/dashboard/manageOrders"
-                      >
-                        Manage All Orders
+                        Go To Dashboard
                       </Link>
                     </>
                   )}

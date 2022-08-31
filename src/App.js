@@ -55,7 +55,10 @@ function App() {
             <Route path="myEbook" element={<Ebook></Ebook>}></Route>
             <Route path="order" element={<MyOrders />}></Route>
             <Route path="myReview" element={<MyReview></MyReview>}></Route>
-            <Route path="order/orderHistory" element={<OrderHistory></OrderHistory>}></Route>
+            <Route
+              path="order/orderHistory"
+              element={<OrderHistory></OrderHistory>}
+            ></Route>
             <Route
               path="addProduct"
               element={<AddProduct></AddProduct>}
@@ -71,7 +74,14 @@ function App() {
           <Route path="/create-new-account" element={<Signup />} />
           <Route path="/reset-your-password" element={<ResetPass />} />
           <Route path="/book/:bookId" element={<SingleProductDetails />} />
-          <Route path="/addToCart" element={<RequireAuth><AddToCart /></RequireAuth>} />
+          <Route
+            path="/addToCart"
+            element={
+              <RequireAuth>
+                <AddToCart />
+              </RequireAuth>
+            }
+          />
           <Route path="/paymentUi" element={<UiPayment />} />
         </Routes>
       </StartFromTop>

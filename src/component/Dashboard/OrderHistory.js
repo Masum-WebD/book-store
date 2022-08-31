@@ -13,9 +13,9 @@ import img22 from "../../asset/Images/Harry_Potter_and_the_Deathly_Hallows_(Se-J
 
 const OrderHistory = () => {
   return (
-    <div className="bg-gray-300">
+    <div className="px-10">
       <div className="w-full ">
-        <h1 className="text-2xl text-left">Product Id: #132910384239</h1>
+        <h1 className="text-2xl text-left py-3">Order Id: Order #50523</h1>
         <Timeline minEvents={5} placeholder>
           <TimelineEvent
             color="#22c55e"

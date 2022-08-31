@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { TiShoppingCart } from "react-icons/ti";
 import { IoPersonSharp } from "react-icons/io5";
 import { MdDashboard } from "react-icons/md";
-import { FaShippingFast, FaWallet } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
+import { MdOutlineAccountCircle } from "react-icons/md";
+import { RiShoppingCart2Line } from "react-icons/ri";
+import { FaShippingFast } from "react-icons/fa";
+import { MdOutlineReviews } from "react-icons/md";
 import { MdLocalOffer } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/firebase.init";
 import useAdmin from "../Hooks/useAdmin";
 import userProfile from "../../asset/Icons/user.png";
-import { FcBriefcase } from "react-icons/fc";
 import PageTitle from "../PageTitle";
 
 const Dashboard = () => {
@@ -49,8 +52,10 @@ const Dashboard = () => {
         <Outlet></Outlet>
       </div>
       <div className=""></div>
-      <div className="drawer-side drawer-mobile h-full border-r-2 rounded-md border-purple-300 bg-purple-50">
-        <label for="my-drawer-2 bg-red" className="drawer-overlay">kichhu lekah</label>
+      <div className="drawer-side drawer-mobile h-full border-r-2 rounded-md border-purple-300">
+        <label for="my-drawer-2 bg-red" className="drawer-overlay">
+          kichhu lekah
+        </label>
         <div className="menu overflow-hidden">
           <div className="flex items-center justify-between px-5 pt-5 rounded-md">
             <li>
@@ -83,20 +88,33 @@ const Dashboard = () => {
             </li>
           </div>
           <div className="h-[3px] w-[120px] bg-pink-300 mt-2 mx-auto"></div>
-          <ul className="menu overflow-auto px-4 w-56 text-gray-700">
+          <ul className="menu overflow-hidden px-4 w-56 text-gray-700">
             <>
               {!admin && (
                 <>
-                  <li>
-                    <Link to="/dashboard/order">
-                      {<FcBriefcase />}My Orders
+                  <li className="mt-3">
+                    <Link to="/dashboard/myAccount">
+                      <MdOutlineAccountCircle />
+                      My Account
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/dashboard/myReview">My Review</Link>
+                  <li className="mt-3">
+                    <Link to="/dashboard/order">
+                      <RiShoppingCart2Line />
+                      My Orders
+                    </Link>
                   </li>
-                  <li>
-                    <Link to="/dashboard/wishlist">My Wishlist</Link>
+                  <li className="mt-3">
+                    <Link to="/dashboard/myReview">
+                      <MdOutlineReviews />
+                      My Review
+                    </Link>
+                  </li>
+                  <li className="mt-3">
+                    <Link to="/dashboard/wishList">
+                      <FaRegHeart />
+                      My Wishlist
+                    </Link>
                   </li>
                 </>
               )}
