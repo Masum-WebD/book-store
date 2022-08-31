@@ -32,6 +32,11 @@ import DashboardDetails from "./component/Dashboard/DashboardDetails/DashboardDe
 import ProductList from "./component/Dashboard/ProductsDetails/ProductList";
 import OrderHistory from "./component/Dashboard/OrderHistory";
 import RequireAuth from "./share/Footer/RequireAuth";
+import OrderList from "./component/Dashboard/OrderDetails/OrderList";
+import UserDetails from "./component/Dashboard/UserDetails";
+import DiscountCoupon from "./component/Dashboard/DiscountCoupon";
+import SettingsPage from "./component/Dashboard/SettingsPage";
+import ShippingPage from "./component/Dashboard/ShippingPage";
 
 function App() {
   return (
@@ -64,7 +69,12 @@ function App() {
               element={<AddProduct></AddProduct>}
             ></Route>
             <Route path="productList" element={<ProductList />}></Route>
+            <Route path="orderList" element={<OrderList></OrderList>}></Route>
+            <Route path="userDetails" element={<UserDetails />}></Route>
             <Route path="manageUsers" element={<AllUsers></AllUsers>}></Route>
+            <Route path="discountCoupon" element={<DiscountCoupon />}></Route>
+            <Route path="shipping" element={<ShippingPage/>}></Route>
+            <Route path="settings" element={<SettingsPage />}></Route>
             <Route
               path="manageOrders"
               element={<ManageALLOrder></ManageALLOrder>}

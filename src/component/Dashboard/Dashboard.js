@@ -156,8 +156,8 @@ const Dashboard = () => {
                       </Link>
                     </div>
                     <div class="collapse-content flex flex-col text-left ml-10">
-                      <Link to="/dashboard/manageOrders">List</Link>
-                      <Link to="/dashboard/addProduct" className="mt-3">
+                      <Link to="/dashboard/orderList">List</Link>
+                      <Link to="/dashboard/manageOrders" className="mt-3">
                         Details
                       </Link>
                     </div>
@@ -175,25 +175,25 @@ const Dashboard = () => {
                     </div>
                     <div class="collapse-content flex flex-col text-left ml-10">
                       <Link to="/dashboard/manageUsers">List</Link>
-                      <Link to="/dashboard/addProduct" className="mt-3">
+                      <Link to="/dashboard/userDetails" className="mt-3">
                         Details
                       </Link>
                     </div>
                   </div>
                   <li>
-                    <Link to="/dashboard/manageUsers">
+                    <Link to="/dashboard/shipping">
                       <FaShippingFast />
                       Shipping
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dashboard/manageOrders">
+                    <Link to="/dashboard/discountCoupon">
                       <MdLocalOffer />
                       Discount
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dashboard/wishlist">
+                    <Link to="/dashboard/settings">
                       <FiSettings />
                       Settings
                     </Link>
