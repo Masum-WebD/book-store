@@ -1,7 +1,7 @@
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const MyWishListProduct = ({ product, refetch }) => {
   const { _id, name, author, price, img, stock } = product;
@@ -35,7 +35,13 @@ const MyWishListProduct = ({ product, refetch }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount) {
-            toast.success("Product Removed From Wishlist");
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Product Removed From Wishlist',
+              showConfirmButton: false,
+              timer: 2000
+            });
             refetch();
           }
         });

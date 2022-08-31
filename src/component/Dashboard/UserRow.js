@@ -1,5 +1,5 @@
 import React from "react";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const UserRow = ({ user, refetch, index }) => {
   const { email, role } = user;
@@ -13,7 +13,13 @@ const UserRow = ({ user, refetch, index }) => {
     })
       .then((res) => {
         if (res.status === 403) {
-          toast.error("Sorry! Failed to Make an admin");
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Sorry! Failed to Make an admin',
+            showConfirmButton: false,
+            timer: 2000
+          });
         }
         return res.json();
       })
@@ -21,7 +27,13 @@ const UserRow = ({ user, refetch, index }) => {
       .then((data) => {
         if (data.modifiedCount > 0) {
           refetch();
-          toast.success(`Successfully made an admin`);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Successfully made an admin',
+            showConfirmButton: false,
+            timer: 2000
+          });
         }
       });
   };
@@ -35,7 +47,13 @@ const UserRow = ({ user, refetch, index }) => {
         .then((data) => {
           console.log(data);
           if (data.deletedCount) {
-            toast.success(`Remove "${email}" this user`);
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: `Remove "${email}" this user`,
+              showConfirmButton: false,
+              timer: 2000
+            });
             refetch();
           }
         });
