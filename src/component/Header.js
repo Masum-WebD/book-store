@@ -94,7 +94,7 @@ const Header = () => {
                   )}
                 </li>
                 {user ? (
-                  <button onClick={handleOpen} class="btn btn-secondary rounded-3xl text-white">
+                  <button onClick={handleOpen} class="btn btn-primary btn-sm  text-[14px] font-normal capitalize rounded-sm text-white">
                     Log Out <FiLogOut className="text-xl ml-2" />
                   </button>
                 ) : (
@@ -130,8 +130,8 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div class="navbar-end text-white font-bold">
-            <NavLink to="addToCart">
+          <div class="navbar-end items-center text-white font-bold">
+            <NavLink to="addToCart" className="mt-[8px]">
               <label tabindex="0" class="text-neutral hover:cursor-pointer btn-circle">
                 <div class="indicator mr-4 h-6">
                   <svg
@@ -225,15 +225,17 @@ const Header = () => {
                       </Link>
                     </>
                   )}
-                  <button onClick={handleOpen} class="btn btn-secondary rounded-3xl text-white">
-                    Log Out
-                    <FiLogOut className="text-xl ml-2" />
-                  </button>
+                  <div className="flex bg-primary mx-auto py-3 rounded-sm w-[90%] px-3">
+                    <button onClick={handleOpen} class="w-full mr-3 text-[14px] text-left capitalize text-white">
+                      Log Out
+                    </button>
+                    <FiLogOut className="text-xl bg-red-400 ml-2" />
+                  </div>
                 </ul>
               </div>
             ) : (
               <div class="hidden ml-5 lg:block">
-                <Link to="/login" class="btn btn-secondary rounded-3xl text-white">
+                <Link to="/login" class="btn btn-primary btn-sm text-base capitalize rounded-sm text-white">
                   Log in <FiLogIn className="text-xl ml-2" />
                 </Link>
               </div>

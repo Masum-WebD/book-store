@@ -255,7 +255,7 @@ const SingleProductDetails = () => {
         </div>
       </div>
 
-      <div className="card bg-base-100 shadow-sm text-left my-5 p-5">
+      <div className="card bg-base-100 shadow text-left my-5 p-5">
         <Tabs>
           <TabList>
             <Tab>
@@ -492,14 +492,6 @@ const SingleProductDetails = () => {
         </Tabs>
       </div>
       <div>
-        {/* <h1 className="uppercase text-gray-600 text-2xl mt-10 mb-5 font-bold">
-          Related Books
-        </h1> */}
-        {/* <Carousel breakPoints={breakPoints}>
-          {products.slice(50, 68).map((book) => (
-            <RelatedProducts book={book}></RelatedProducts>
-          ))}
-        </Carousel> */}
       </div>
     </div>
   );
