@@ -4,8 +4,6 @@ import AllTopProducts from "./AllTopProducts";
 import Banner from "./Banner";
 import Delivery from "./Delivery";
 import DiscountBanner from "./DiscountBanner";
-import ThirtyPercent from "./DiscountProducts.js/ThirtyPercent";
-import TweentyPercent from "./DiscountProducts.js/TweentyPercent";
 import Features from "./Features";
 import PageTitle from "./PageTitle";
 import Subscribe from "./Subscribe";
@@ -20,9 +18,6 @@ const Home = () => {
 
         <AllProducts />
         <DiscountBanner />
-
-        <TweentyPercent />
-        <ThirtyPercent />
         <AllTopProducts />
 
         <Delivery />
