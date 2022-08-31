@@ -98,9 +98,12 @@ const Header = () => {
                     Log Out <FiLogOut className="text-xl ml-2" />
                   </button>
                 ) : (
-                  <Link to="/login" class="btn btn-secondary rounded-3xl text-white">
-                    Log in <FiLogIn className="text-xl ml-2" />
-                  </Link>
+                  <div class="bg-primary p-3 rounded-sm">
+                    <Link to="/login" class="text-white font-normal">
+                      Log in
+                    </Link>
+                    <FiLogIn className="text-xl inline-block ml-2 text-white" />
+                  </div>
                 )}
               </ul>
             </div>
@@ -234,10 +237,11 @@ const Header = () => {
                 </ul>
               </div>
             ) : (
-              <div class="hidden ml-5 lg:block">
-                <Link to="/login" class="btn btn-primary btn-sm text-base capitalize rounded-sm text-white">
-                  Log in <FiLogIn className="text-xl ml-2" />
+              <div class="hidden  ml-5 lg:block bg-primary p-3 rounded-sm">
+                <Link to="/login" class="font-normal text-white">
+                  Log in
                 </Link>
+                <FiLogIn className="text-xl inline-block ml-2 text-white" />
               </div>
             )}
           </div>
