@@ -19,11 +19,11 @@ const Dashboard = () => {
   const [admin] = useAdmin(user);
 
   return (
-    <div className="drawer drawer-mobile mt-8">
+    <div className="drawer max-w-[1196px] mx-auto drawer-mobile mt-16">
       <PageTitle title="Dashboard" />
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle " />
       <div className="drawer-content">
-        <div className="navbar ">
+        <div className="navbar bg-red">
           <label
             for="my-drawer-2"
             tabIndex="0"
@@ -50,7 +50,7 @@ const Dashboard = () => {
       </div>
       <div className=""></div>
       <div className="drawer-side drawer-mobile h-full border-r-2 rounded-md border-purple-300 bg-purple-50">
-        <label for="my-drawer-2" className="drawer-overlay"></label>
+        <label for="my-drawer-2 bg-red" className="drawer-overlay">kichhu lekah</label>
         <div className="menu overflow-hidden">
           <div className="flex items-center justify-between px-5 pt-5 rounded-md">
             <li>

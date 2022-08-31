@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const AboutBannerSolid = () => {
     return (
         <div>
-            <div class="hero lg:mt-0 pt-24  min-h-screen bg-[#F8F3FF] drop-shadow-lg relative">
+            <div class="hero lg:mt-0 py-24  bg-[#F8F3FF] drop-shadow-lg relative">
                 <div class="hero-content text-center ">
                     <div class="max-w-md">
                         <h1 class="text-5xl text-[#0B1B28] font-bold  leading-normal capitalize">We are changing the game</h1>

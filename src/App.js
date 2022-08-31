@@ -31,6 +31,7 @@ import UiPayment from "./Payment/UiPayment";
 import DashboardDetails from "./component/Dashboard/DashboardDetails/DashboardDetails";
 import ProductList from "./component/Dashboard/ProductsDetails/ProductList";
 import OrderHistory from "./component/Dashboard/OrderHistory";
+import RequireAuth from "./share/Footer/RequireAuth";
 
 function App() {
   return (
@@ -70,7 +71,7 @@ function App() {
           <Route path="/create-new-account" element={<Signup />} />
           <Route path="/reset-your-password" element={<ResetPass />} />
           <Route path="/book/:bookId" element={<SingleProductDetails />} />
-          <Route path="/addToCart" element={<AddToCart />} />
+          <Route path="/addToCart" element={<RequireAuth><AddToCart /></RequireAuth>} />
           <Route path="/paymentUi" element={<UiPayment />} />
         </Routes>
       </StartFromTop>
@@ -79,7 +80,7 @@ function App() {
         pageId="107580278651104"
         appId="5213313418754051"
       />
-      
+
       <Footer></Footer>
       <ToastContainer />
     </div>
