@@ -5,8 +5,8 @@ import discountBanner from '../asset/Images/discountBanner.png';
 const DiscountBanner = () => {
     return (
 
-        <section className="mx-auto max-w-[1196px]">
-            <div class="hero min-h-screen">
+        <section className="">
+            <div class="hero min-h-screen ">
                 <div class=" lg:py-0 lg:flex justify-between items-center lg:flex-row-reverse">
                     <img src={discountBanner} class="lg:w-3/6 rounded-lg drop-shadow-xl" alt='' />
                     <div className='lg:w-3/6 p-3 lg:p-0 text-left'>
