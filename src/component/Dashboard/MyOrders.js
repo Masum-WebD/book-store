@@ -2,7 +2,6 @@
 import React from "react";
 import "./Myorders.css";
 import { Link } from "react-router-dom";
-import OrderHistory from "./OrderHistory";
 
 const MyOrders = () => {
  
@@ -74,7 +73,7 @@ const MyOrders = () => {
               </td>
               <td class="p-3">
                 <Link to="/dashboard/order/orderHistory">
-                  <button className="bg-primary btn-sm rounded text-white px-5 border-0 hover:bg-green-800 rounded-sm mt-2 uppercase">
+                  <button className="bg-primary btn-sm text-white px-5 border-0 hover:bg-secondary rounded-sm mt-2 uppercase">
                     Details
                   </button>
                 </Link>

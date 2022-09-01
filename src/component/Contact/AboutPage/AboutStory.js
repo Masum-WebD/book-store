@@ -5,8 +5,8 @@ const AboutStory = () => {
         <div className='container text-left sm:block lg:flex justify-around items-center mt-[100px] w-10/12 mx-auto '>
             <div className='sm: w-full lg:w-[40%] relative'>
                 <div className='mb-12'>
-                    <h4 className='text-[#452473] font-bold mb-4'>Our story</h4>
-                    <p className='text-[#0B1B28] text-[18px] font-semibold'>We are building the economic infrastructure for the internet. Businneses of every size.</p>
+                    <h4 className='text-secondary text-[20px] font-bold mb-4'>Our story</h4>
+                    <p className='text-[#0B1B28] text-[14px] font-normal'>We are building the economic infrastructure for the internet. Businneses of every size.</p>
                 </div>
                 <div className='flex justify-center items-center '>
                     <div className='mt-4'>
@@ -18,7 +18,7 @@ const AboutStory = () => {
                         </div>
                     </div>
                     <div className=''>
-                        <p className='text-[#0B1B28] text-[14px] mt-8 pl-4 sm:pr-0 lg:pr-8'>A living place for curiosity and collaboration meeting and meaning. <br />The heart of a creative community.</p>
+                        <p className='text-[#0B1B28] text-[14px] font-normal ml-6'>A living place for curiosity and collaboration meeting and meaning. <br />The heart of a creative community.</p>
                     </div>
 
                 </div>
@@ -28,12 +28,12 @@ const AboutStory = () => {
 
             <div className='sm:w-full lg:w-[50%] lg:ml-6 pt-4'>
                 <div>
-                    <h4 className='text-[18px] text-[#0B1B28] font-bold mb-2'>01. 6 years of intence research </h4>
-                    <p className='text-[14px] text-[#0B1B28] ml-6 mb-2'>Our founders had a solution. This is your Email marketing specilist, newsslatter service, and campaign manager, all rolled into one.</p>
-                    <h4 className='text-[18px] text-[#0B1B28] font-bold mb-2'>02. Audience segmentation</h4>
-                    <p className='text-[14px] text-[#0B1B28] ml-6 mb-2'>Our founders had a solution. This is your Email marketing specilist, newsslatter service, and campaign manager, all rolled into one.</p>
-                    <h4 className='text-[18px] text-[#0B1B28] font-bold mb-2'>03. Contact monitoring</h4>
-                    <p className='text-[14px] text-[#0B1B28] ml-6'>Our founders had a solution. This is your Email marketing specilist, newsslatter service, and campaign manager, all rolled into one.</p>
+                    <h4 className='text-secondary text-[20px] font-bold mb-4'>01. 6 years of intence research </h4>
+                    <p className='text-[#0B1B28] text-[14px] font-normal mb-6'>Our founders had a solution. This is your Email marketing specilist, newsslatter service, and campaign manager, all rolled into one.</p>
+                    <h4 className='text-secondary text-[20px] font-bold mb-4'>02. Audience segmentation</h4>
+                    <p className='text-[#0B1B28] text-[14px] font-normal mb-6'>Our founders had a solution. This is your Email marketing specilist, newsslatter service, and campaign manager, all rolled into one.</p>
+                    <h4 className='text-secondary text-[20px] font-bold mb-4 '>03. Contact monitoring</h4>
+                    <p className='text-[#0B1B28] text-[14px] font-normal mb-6'>Our founders had a solution. This is your Email marketing specilist, newsslatter service, and campaign manager, all rolled into one.</p>
                 </div>
             </div>
         </div>
