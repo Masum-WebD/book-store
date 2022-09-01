@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useRef, useState } from "react"
 
 const CartProduct = ({ product, handleDeleteBtn }) => {
-  const { bookName, price, img, _id } = product;
+  const { bookName, price, quantity, img, _id } = product;
 
   const elementRef = useRef('null')
   const qty = elementRef.current.value
