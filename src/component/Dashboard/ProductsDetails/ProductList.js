@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { AiFillPrinter } from "react-icons/ai";
 import { AiOutlineDownload } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts, STATUSES } from "../../../store/productSlice";
+import Loading from "../../Loading";
 import ProductSingle from "./ProductSingle";
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const { data: products, status } = useSelector((state) => state.product);
+
   useEffect(() => {
-    fetch("https://book-store-46yi.onrender.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  if (status === STATUSES.LOADING) {
+    return <Loading />;
+  }
 
   return (
     <div className="container mx-auto rounded-md shadow-lg">
