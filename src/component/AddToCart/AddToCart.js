@@ -3,8 +3,6 @@ import useCartBooks from "../Hooks/useCartBooks";
 import CartProduct from "./CartProduct";
 import CheckoutSummary from "./CheckoutSummary";
 import ShopUserInfo from "./ShopUserInfo";
-import { toast } from "react-toastify";
-import { useState } from "react";
 import PageTitle from "../PageTitle";
 
 const AddToCart = () => {

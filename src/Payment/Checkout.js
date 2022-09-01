@@ -122,15 +122,18 @@ const Checkout = ({ price }) => {
                 <h1 className="text-black text-[25px] "> Happy journey</h1>
               </div>
 
-              <Link className="text-black" to="/all-products">
-                <button>
-                  {" "}
-                  <FontAwesomeIcon icon={faArrowLeft} /> Go back for shopping
-                </button>
-              </Link>
+              
             </div>
           </div>
         )}
+
+        {success ? <Link className="text-black" to="/all-products">
+          <button className="btn btn-sm btn-outline bg-secondary w-full mt-5" >
+            {" "}
+            <FontAwesomeIcon icon={faArrowLeft} /> Go back for shopping
+          </button>
+        </Link> 
+        :
         <button
           className="btn btn-sm btn-outline bg-secondary w-full mt-10"
           type="submit"
@@ -138,7 +141,10 @@ const Checkout = ({ price }) => {
         >
           Pay Now
         </button>
+        }
+        
       </form>
+      
     </>
   );
 };

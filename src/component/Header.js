@@ -8,6 +8,7 @@ import { signOut } from "firebase/auth";
 import Swal from "sweetalert2";
 import { IoIosArrowDown } from "react-icons/io";
 import userProfile from "../asset/Icons/user.png";
+
 import useCartBooks from "./Hooks/useCartBooks";
 import useAdmin from "./Hooks/useAdmin";
 
@@ -21,8 +22,8 @@ const Header = () => {
       title: "Are you sure for logout?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#27AE61",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#452473",
+      cancelButtonColor: "#FF745C",
       confirmButtonText: "Yes",
       allowEnterKey: true,
     }).then((result) => {
@@ -38,7 +39,7 @@ const Header = () => {
     <div className="bg-[#F8F3FF] fixed top-0 z-50 w-full">
       <div className="bg-[#F8F3FF] ">
         <div className="navbar p-0 mx-auto max-w-[1196px]">
-          <div className="navbar-start lg:mx-5">
+          <div className="navbar-start lg:mx-0">
             <div className="dropdown">
               <label tabIndex="0" className="btn btn-ghost lg:hidden">
                 <svg
@@ -81,9 +82,9 @@ const Header = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="text-black" to="/offer">
+                  <label for="my-modal-6" class="hover:text-primary hover:cursor-pointer text-neutral">
                     Offers
-                  </NavLink>
+                  </label>
                 </li>
                 <li>
                   {user && (
@@ -93,19 +94,16 @@ const Header = () => {
                   )}
                 </li>
                 {user ? (
-                  <button
-                    onClick={handleOpen}
-                    class="btn btn-secondary rounded-3xl text-white"
-                  >
+                  <button onClick={handleOpen} class="btn btn-primary btn-sm  text-[14px] font-normal capitalize rounded-sm text-white">
                     Log Out <FiLogOut className="text-xl ml-2" />
                   </button>
                 ) : (
-                  <Link
-                    to="/login"
-                    class="btn btn-secondary rounded-3xl text-white"
-                  >
-                    Log in <FiLogIn className="text-xl ml-2" />
-                  </Link>
+                  <Link to="/login" class=" bg-primary p-3 rounded-sm">
+                <p class="font-normal text-white inline-block">
+                  Log in
+                </p>
+                <FiLogIn className="text-xl inline-block ml-2 text-white" />
+              </Link>
                 )}
               </ul>
             </div>
@@ -129,25 +127,19 @@ const Header = () => {
                 <NavLink to="/contact">Contact Us</NavLink>
               </li>
               <li className="mx-5">
-                <label
-                  for="my-modal-6"
-                  class="hover:text-primary hover:cursor-pointer"
-                >
+                <label for="my-modal-6" class="hover:text-primary hover:cursor-pointer">
                   Offers
                 </label>
               </li>
             </ul>
           </div>
-          <div class="navbar-end lg:mx-5 d-flex text-white font-bold">
-            <NavLink to="addToCart">
-              <label
-                tabindex="0"
-                class="text-neutral hover:cursor-pointer btn-circle"
-              >
-                <div class="indicator mr-2 h-6">
+          <div class="navbar-end items-center text-white font-bold">
+            <NavLink to="addToCart" className="mt-[8px]">
+              <label tabindex="0" class="text-neutral hover:cursor-pointer btn-circle">
+                <div class="indicator mr-4 h-6">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-8 w-8"
+                    class="h-5 w-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -159,17 +151,18 @@ const Header = () => {
                       d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                     />
                   </svg>
-                  <span class="badge badge-primary badge-sm indicator-item">
-                    {cartProduct.length}{" "}
-                  </span>
+                  <span class="badge text-[10px] badge-primary badge-sm indicator-item">{cartProduct.length} </span>
                 </div>
               </label>
             </NavLink>
 
             {user ? (
               <div class="dropdown dropdown-end ml-2 hidden lg:block">
-                <label tabindex="0" class="btn btn-ghost text-neutral m-1">
-                  <div className="flex items-center">
+                <label
+                  tabindex="0"
+                  class="btn btn-ghost px-0 text-neutral m-1"
+                >
+                  <div className="items-center">
                     <div class="avatar">
                       <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img
@@ -186,27 +179,27 @@ const Header = () => {
                   class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <Link
-                    className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                    to="/dashboard/myAccount"
+                    className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                    to="/dashboard"
                   >
                     My Account
                   </Link>
                   {!admin && (
                     <>
                       <Link
-                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                        className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/order"
                       >
                         My Orders
                       </Link>
                       <Link
-                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                        className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/myReview"
                       >
                         My Ratings and Reviews
                       </Link>
                       <Link
-                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
+                        className="text-neutral text-base font-medium hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/wishlist"
                       >
                         My Wishlist
@@ -215,12 +208,6 @@ const Header = () => {
                   )}
                   {admin && (
                     <>
-                      <Link
-                        className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
-                        to="/dashboard"
-                      >
-                        Dashboard
-                      </Link>
                       <Link
                         className="text-black hover:underline hover:underline-offset-2 my-2 mx-5 text-left"
                         to="/dashboard/addProduct"
@@ -241,28 +228,25 @@ const Header = () => {
                       </Link>
                     </>
                   )}
-                  <button
-                    onClick={handleOpen}
-                    class="btn btn-secondary rounded-3xl text-white"
-                  >
-                    Log Out
-                    <FiLogOut className="text-xl ml-2" />
-                  </button>
+                  <div className="flex bg-primary mx-auto py-3 rounded-sm w-[90%] px-3">
+                    <button onClick={handleOpen} class="w-full mr-3 text-[14px] text-left capitalize text-white">
+                      Log Out
+                    </button>
+                    <FiLogOut className="text-xl bg-red-400 ml-2" />
+                  </div>
                 </ul>
               </div>
             ) : (
-              <div class="hidden ml-5 lg:block">
-                <Link
-                  to="/login"
-                  class="btn btn-secondary rounded-3xl text-white"
-                >
-                  Log in <FiLogIn className="text-xl ml-2" />
-                </Link>
-              </div>
+              <Link to="/login" class="hidden  ml-5 lg:block bg-primary p-3 rounded-sm">
+                <p class="font-normal text-white inline-block">
+                  Log in
+                </p>
+                <FiLogIn className="text-xl inline-block ml-2 text-white" />
+              </Link>
             )}
           </div>
         </div>
-      </div>
+      </div >
     </div>
   );
 };
