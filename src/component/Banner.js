@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import bg from '../../src/asset/Images/thebanner.png';
 import sicon from '../../src/asset/Images/Rectangle 22.png';
+import bg from '../../src/asset/Images/thebanner.png';
 
 const Banner = () => {
   const navigate = useNavigate();
@@ -66,10 +66,9 @@ const Banner = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-    </section>
+          </div>
+          </div>
+        </section>
   );
 };
 

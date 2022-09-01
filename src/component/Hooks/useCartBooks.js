@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useQuery } from "react-query";
-import auth from "../../Firebase/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/firebase.init";
 
 const useCartBooks = () => {
   const [cartProduct, setCartProduct] = useState([]);
