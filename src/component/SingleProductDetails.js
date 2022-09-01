@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { AiOutlineHeart } from "react-icons/ai";
 import { BiWalletAlt } from "react-icons/bi";
 import { BsCashCoin } from "react-icons/bs";
-import { VscBook } from "react-icons/vsc";
 import { FaShoppingCart, FaUndo } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
-import { useNavigate, useParams } from "react-router-dom";
+import { VscBook } from "react-icons/vsc";
+import { useParams } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { toast } from "react-toastify";
 import profile from "../asset/Images/author-1.jpg";
 import profile2 from "../asset/Images/author-2.jpg";
 import "./SingleProductDetails.css";
-import { AiOutlineHeart } from "react-icons/ai";
-import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../Firebase/firebase.init";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
@@ -19,13 +20,16 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
 
+
 const SingleProductDetails = () => {
   const { bookId } = useParams();
   const [user] = useAuthState(auth);
   const [item, setItem] = useState([]);
+
   const { _id, name, img, summary, category, language, author, price, stock } = item;
 
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
 
   useEffect(() => {
 

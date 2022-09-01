@@ -19,14 +19,6 @@ const CheckoutSummary = () => {
 
   const handleOrder = (e) => {
     e.preventDefault();
-    // const orderProduct = {
-    //   Name:cartProduct,
-    //   Product:{
-    //     cartProduct:[...cartProduct]
-    //   },
-    //   Price: subTotal,
-    //   Quantity: cartProduct.length
-    // }
 
     fetch('https://book-store-46yi.onrender.com/order', {
       method: "POST",

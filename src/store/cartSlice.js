@@ -13,7 +13,6 @@ const cartSlice =createSlice({
 
         },
         
-        
 
     }
 })

@@ -2,13 +2,16 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, {useRef, useState} from "react"
 
-const CartProduct = ({ product,handleDeleteBtn}) => {
+const CartProduct = ({ product,handleDeleteBtn,handleQuantity}) => {
   const { name, author, price, img,_id } =product;
 
   const elementRef =useRef('null')
   const qty = elementRef.current.value
   const totalPrice = price *qty
-
+// const handleQuantity =()=>{
+ 
+//   return totalPrice
+// }
 //  const quantity =e=>{
 //   e.preventDefault();  
 
@@ -39,7 +42,7 @@ const CartProduct = ({ product,handleDeleteBtn}) => {
           <div className=" mt-5">
             <div className="flex justify-between items-start">
               <h1 className=" align-text-bottom font-medium text-sm ">$ {totalPrice }</h1>
-              <select ref={elementRef} name="quantity" id=""  className="align-bottom mr-0 bg-white border border-red-100" >
+              <select ref={elementRef} onClick={handleQuantity} name="quantity" id=""  className="align-bottom mr-0 bg-white border border-red-100" >
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

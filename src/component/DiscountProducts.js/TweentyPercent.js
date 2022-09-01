@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import TweentyPercentSingle from "./TweentyPercentSingle";
 import Carousel from "react-elastic-carousel";
+import TweentyPercentSingle from "./TweentyPercentSingle";
 
 const TweentyPercent = () => {
   const [products, setProducts] = useState([]);
