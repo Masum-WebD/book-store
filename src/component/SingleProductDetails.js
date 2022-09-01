@@ -18,6 +18,7 @@ import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import PageTitle from "./PageTitle";
 
 
 
@@ -84,46 +85,66 @@ const SingleProductDetails = () => {
 
   const onSubmit = async (data) => {
 
-    const AddToCart = {
-      _id: _id,
-      bookName: name,
-      customerName: user?.displayName,
-      img: img,
-      price: price,
-      stock: stock,
-      email: user?.email,
-      phone: data?.phone,
-      address: data?.address,
-      quantity: data?.quantity
-    };
+    if (user) {
 
-    fetch("https://book-store-46yi.onrender.com/cartProduct", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(AddToCart),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data) {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Product added to cart successfully',
-            showConfirmButton: false,
-            timer: 2000
+      if (data.quantity > stock || data.quantity < 0) {
+        Swal.fire(
+          'Oops! 😭',
+          `We have ${stock} items left only. Your ordered quantity in beyond our available stock.`,
+          'error'
+        );
+      } else {
+        const AddToCart = {
+          bookName: name,
+          customerName: user?.displayName,
+          img: img,
+          price: price,
+          stock: stock,
+          email: user?.email,
+          phone: data?.phone,
+          address: data?.address,
+          quantity: data?.quantity
+        };
+
+        fetch("http://localhost:5000/add-to-cart", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(AddToCart),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data) {
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Product added to cart successfully',
+                showConfirmButton: false,
+                timer: 2000
+              });
+              console.log(data);
+            } else {
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Something went wrong please try again.',
+                showConfirmButton: false,
+                timer: 2000
+              });
+              console.log(data)
+            }
           });
-        } else {
-          Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'Something went wrong please try again.',
-            showConfirmButton: false,
-            timer: 2000
-          });
-        }
-      });
+      }
+    } else {
+
+      Swal.fire(
+        'Oops! 😭',
+        `We have ${stock} items left only. Your ordered quantity in beyond our available stock.`,
+        'error'
+      );
+
+    }
 
     reset();
     handleClose();
@@ -148,6 +169,7 @@ const SingleProductDetails = () => {
 
   return (
     <div className="max-w-[1196px] mx-auto pt-[80px] lg:mt-0">
+      <PageTitle title={`${name}`} />
       <div className="lg:gap-3">
 
         <div class="card lg:card-side bg-base-100 shadow-sm rounded-none lg:mt-5">
