@@ -1,22 +1,22 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, {useRef, useState} from "react"
+import React, { useRef, useState } from "react"
 
-const CartProduct = ({ product,handleDeleteBtn}) => {
-  const { name, author, price, img,_id } =product;
+const CartProduct = ({ product, handleDeleteBtn }) => {
+  const { bookName, price, img, _id } = product;
 
-  const elementRef =useRef('null')
+  const elementRef = useRef('null')
   const qty = elementRef.current.value
-  const totalPrice = price *qty
+  const totalPrice = price * qty
 
-//  const quantity =e=>{
-//   e.preventDefault();  
+  //  const quantity =e=>{
+  //   e.preventDefault();  
 
-//   console.log(totalPrice)
-//  }
-    
+  //   console.log(totalPrice)
+  //  }
+
   return (
-    
+
     <div className="p-5 rounded border border-red-100">
       <div className="flex gap-3">
         <div>
@@ -27,10 +27,9 @@ const CartProduct = ({ product,handleDeleteBtn}) => {
 
           <div className="flex justify-between items-start">
             <div>
-              <p className="font-medium">{name} </p>
-              <p className="text-sm">by {author}</p>
+              <p className="font-medium">{bookName} </p>
             </div>
-            <button onClick={()=>handleDeleteBtn(_id)} >
+            <button onClick={() => handleDeleteBtn(_id)} >
               <FontAwesomeIcon className="text-[#fa6a6a]" icon={faTrashCan}></FontAwesomeIcon>
             </button>
           </div>
@@ -38,8 +37,8 @@ const CartProduct = ({ product,handleDeleteBtn}) => {
 
           <div className=" mt-5">
             <div className="flex justify-between items-start">
-              <h1 className=" align-text-bottom font-medium text-sm ">$ {totalPrice }</h1>
-              <select ref={elementRef} name="quantity" id=""  className="align-bottom mr-0 bg-white border border-red-100" >
+              <h1 className=" align-text-bottom font-medium text-sm ">$ {totalPrice}</h1>
+              <select ref={elementRef} name="quantity" id="" className="align-bottom mr-0 bg-white border border-red-100" >
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
