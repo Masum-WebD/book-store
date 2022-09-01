@@ -39,7 +39,7 @@ const Banner = () => {
                 Get your new <span className="text-primary">book</span> with the best price
               </h1>
             </div>
-            <div className=" bg-white rounded-full lg:p-2 shadow-lg">
+            <div className=" bg-white rounded-full lg:p-2 shadow-2xl">
               <div class="relative">
                 <form onSubmit={handleSubmit} className="flex justify-between items-center">
                   <input
