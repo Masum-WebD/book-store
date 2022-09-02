@@ -1,13 +1,23 @@
-import React from "react";
+import React, {useEffect} from "react";
 import SingleProduct from "./SingleProduct";
 import { useQuery } from "react-query";
 import Loading from "./Loading";
+import {fetchProducts} from "../store/productSlice"
+import {STATUSES} from "../store/productSlice"
+import { useDispatch, useSelector } from "react-redux";
 
 const AllProducts = () => {
+  const dispatch =useDispatch()
+  const {data:products,status} =useSelector((state)=>state.product)
+  // const { data: products, isLoading } = useQuery("popularBooks", () => fetch("https://book-store-46yi.onrender.com/products").then(res => res.json()));
+  useEffect(()=>{
+    dispatch(fetchProducts())
+  },[dispatch ])
 
-  const { data: products, isLoading } = useQuery("popularBooks", () => fetch("https://book-store-46yi.onrender.com/products").then(res => res.json()));
-
-  if (isLoading) {
+  // if (isLoading) {
+  //   return <Loading />
+  // }
+  if (status === STATUSES.LOADING) {
     return <Loading />
   }
 

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import MyWishListProduct from "./MyWishListProduct";
-import { useQuery } from "react-query";
-import Loading from "../Loading";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
 import auth from "../../Firebase/firebase.init";
+import Loading from "../Loading";
+import MyWishListProduct from "./MyWishListProduct";
 
 const MyWishlist = () => {
   const [user] = useAuthState(auth);
