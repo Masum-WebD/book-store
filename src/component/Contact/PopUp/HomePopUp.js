@@ -23,13 +23,11 @@ const HomePopUp = () => {
                         <div className='popup w-50'>
 
                             <div className='w-50 pb-4 ml-2'>
-                                <h2 className='text-2xl text-neutral font-bold mb-2'>New collection Adventure Sale</h2>
-                                <p className='text-neutral mb-6'>Its the bright one, its the right one,thats offer</p>
-                                <input type="text" placeholder="Type name" class="input input-primary w-full  mb-2" />
+                                <h2 className='text-2xl text-neutral font-bold mb-2'>Get Surprise Offers!!</h2>
+                                <p className='text-neutral mb-6'>Its the bright one, its the right one, thats offer</p>
+                                <input type="text" placeholder="Write your coupon code" class="input input-primary w-full  mb-2" />
                                 <br />
-                                <input type="email" placeholder="Type email" class="input  input-primary w-full  mb-2" />
-                                <br />
-                                <Link to="/all-products"><button class="text-white w-full bg-primary p-3 rounded-sm">Spin</button></Link>
+                                <Link to="/all-products"><button class="text-white w-full bg-primary p-3 rounded-sm">Get Offer</button></Link>
                             </div>
                         </div>
                     </div>

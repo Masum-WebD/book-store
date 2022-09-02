@@ -83,55 +83,48 @@ const SingleProductDetails = () => {
 
     if (user) {
 
-      if (data.quantity > stock || data.quantity < 0) {
-        Swal.fire(
-          'Oops! 😭',
-          `We have ${stock} items left only. Your ordered quantity in beyond our available stock.`,
-          'error'
-        );
-      } else {
-        const AddToCart = {
-          bookName: name,
-          customerName: user?.displayName,
-          img: img,
-          price: price,
-          stock: stock,
-          email: user?.email,
-          phone: data?.phone,
-          address: data?.address,
-          quantity: data?.quantity
-        };
+      const AddToCart = {
+        bookName: name,
+        customerName: user?.displayName,
+        img: img,
+        price: price,
+        stock: stock,
+        email: user?.email,
+        phone: data?.phone,
+        address: data?.address,
+        quantity: data?.quantity
+      };
 
-        fetch("http://localhost:5000/add-to-cart", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(AddToCart),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data) {
-              Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Product added to cart successfully',
-                showConfirmButton: false,
-                timer: 2000
-              });
-              console.log(data);
-            } else {
-              Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Something went wrong please try again.',
-                showConfirmButton: false,
-                timer: 2000
-              });
-              console.log(data)
-            }
-          });
-      }
+      fetch("http://localhost:5000/add-to-cart", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(AddToCart),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Product added to cart successfully',
+              showConfirmButton: false,
+              timer: 2000
+            });
+            console.log(data);
+          } else {
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Something went wrong please try again.',
+              showConfirmButton: false,
+              timer: 2000
+            });
+            console.log(data)
+          }
+        });
+
     } else {
 
       navigate("/login");
