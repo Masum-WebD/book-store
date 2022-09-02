@@ -6,7 +6,7 @@ import { BsCashCoin } from "react-icons/bs";
 import { FaShoppingCart, FaUndo } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
 import { VscBook } from "react-icons/vsc";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { toast } from "react-toastify";
@@ -41,7 +41,7 @@ const SingleProductDetails = () => {
   const navigate = useNavigate();
 
 
-const handleWishList = () => {
+  const handleWishList = () => {
     if (user) {
       const product = {
         _id: _id,
@@ -99,7 +99,7 @@ const handleWishList = () => {
         quantity: data?.quantity
       };
 
-      fetch("http://localhost:5000/add-to-cart", {
+      fetch("https://book-store-46yi.onrender.com/add-to-cart", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -659,11 +659,6 @@ const handleWishList = () => {
             </article>
           </TabPanel>
         </Tabs>
-      </div>
-      <div>
-        <h1 className="uppercase text-gray-600 text-2xl mt-10 mb-5 font-bold">
-          Related Books
-        </h1>
       </div>
       <div></div>
     </div>

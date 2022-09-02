@@ -2,7 +2,6 @@ import Swal from "sweetalert2";
 import useCartBooks from "../Hooks/useCartBooks";
 import CartProduct from "./CartProduct";
 import CheckoutSummary from "./CheckoutSummary";
-import Swal from "sweetalert2";
 import PageTitle from "../PageTitle";
 
 const AddToCart = () => {
@@ -55,7 +54,7 @@ const AddToCart = () => {
                 handleDeleteBtn={handleDeleteBtn}
               ></CartProduct>
             ))}
-            <CheckoutSummary  />
+            <CheckoutSummary />
           </div>
         </div>
       </div>
