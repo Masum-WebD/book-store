@@ -2,9 +2,7 @@ import React from "react";
 import { Timeline, TimelineEvent } from "@mailtop/horizontal-timeline";
 import "./OrderHistory.css";
 import {
-  FaBug,
   FaPeopleCarry,
-  FaTaxi,
   FaBabyCarriage,
   FaAtom,
   FaRegCalendarCheck,
