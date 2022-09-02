@@ -138,11 +138,14 @@ const SingleProductDetails = () => {
       }
     } else {
 
-      Swal.fire(
-        'Oops! 😭',
-        `We have ${stock} items left only. Your ordered quantity in beyond our available stock.`,
-        'error'
-      );
+      navigate("/login");
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'You need to login first',
+        showConfirmButton: false,
+        timer: 2000
+      });
 
     }
 
@@ -169,7 +172,7 @@ const SingleProductDetails = () => {
 
   return (
     <div className="max-w-[1196px] mx-auto pt-[80px] lg:mt-0">
-      <PageTitle title={`${name}`} />
+      <PageTitle title={name === undefined ? "Loading" : `${name}`} />
       <div className="lg:gap-3">
 
         <div class="card lg:card-side bg-base-100 shadow-sm rounded-none lg:mt-5">

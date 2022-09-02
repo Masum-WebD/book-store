@@ -2,7 +2,7 @@ import React from 'react';
 
 const TermDetails = () => {
     return (
-        <div className='container w-11/12 mx-auto pt-20 font-serif text-start pb-20'>
+        <div className='container w-11/12 mx-auto pt-20 max-w-[1196px] text-start pb-20'>
             <div>
                 <h2 className='text-2xl text-[#0B1B28] font-semibold uppercase'>Introduction</h2>
                 <p className='text-[16px] text-[#0B1B28] mt-5 leading-7'>Nowadays, the network plays an import role in people’s life. In the process of the improvement of the people’s living standard, people’s demands of the life’s quality and efficiency is more higher, the traditional bookstore’s inconvenience gradually emerge, and the online bookstore has gradually be used in public.</p>
