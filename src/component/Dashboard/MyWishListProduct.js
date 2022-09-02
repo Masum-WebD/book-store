@@ -1,30 +1,11 @@
 import { faCartShopping, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MyWishListProduct = ({ product, refetch }) => {
   const { _id, name, author, price, img, stock } = product;
-  const handleAddToCart = (item) => {
-    const AddToCart = {
-      _id: _id,
-      name: name,
-      img: img,
-      author: author,
-      price: price,
-      stock: stock,
-    };
-    fetch("https://book-store-46yi.onrender.com/cartProduct", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(AddToCart),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  };
+
   const handleRemoveWishList = (id) => {
     const request = window.confirm("Are you sure you want to Remove");
     if (request) {
@@ -35,16 +16,20 @@ const MyWishListProduct = ({ product, refetch }) => {
         .then((data) => {
           if (data.deletedCount) {
             Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Product Removed From Wishlist',
+              position: "center",
+              icon: "success",
+              title: "Product Removed From Wishlist",
               showConfirmButton: false,
-              timer: 2000
+              timer: 2000,
             });
             refetch();
           }
         });
     }
+  };
+  const navigate = useNavigate();
+  const navigateToProductDetail = (id) => {
+    navigate(`/book/${id}`);
   };
 
   return (
@@ -72,7 +57,7 @@ const MyWishListProduct = ({ product, refetch }) => {
               <h1 className="text-gray-600 align-text-bottom font-medium text-sm ">
                 $ {price}
               </h1>
-              <button onClick={() => handleAddToCart()}>
+              <button onClick={() => navigateToProductDetail(_id)}>
                 <FontAwesomeIcon
                   className="text-[#27AE61]"
                   icon={faCartShopping}

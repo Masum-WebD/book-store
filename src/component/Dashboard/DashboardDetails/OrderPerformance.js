@@ -89,12 +89,11 @@ const OrderPerformance = () => {
   ];
   return (
     <div className="text-left grid lg:grid-cols-2 gap-5 mt-10">
-      <div class="relative flex flex-col w-full min-w-0 mb-0 break-words bg-white border-0 border-transparent border-solid shadow-xl rounded-2xl bg-clip-border text-gray-700">
+      <div class="text-gray-700 border-0 border-transparent border-solid shadow-xl rounded-2xl bg-clip-border">
         <div class="p-6 pb-0 mb-0 bg-white rounded-t-2xl text-purple-500">
           <h6>Recent Orders</h6>
         </div>
-        <div class="flex-auto px-0 pt-0 pb-2 pl-3">
-          <div class="overflow-x-auto">
+        <div class="flex px-0 pt-0 pb-2 pl-3 overflow-auto">
             <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
               <tbody>
                 <tr>
@@ -229,7 +228,6 @@ const OrderPerformance = () => {
                 </tr>
               </tbody>
             </table>
-          </div>
         </div>
       </div>
       <div class="text-gray-700 border-0 border-transparent border-solid shadow-xl rounded-2xl bg-clip-border">
