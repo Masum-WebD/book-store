@@ -1,28 +1,36 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { AiOutlineHeart } from "react-icons/ai";
 import { BiWalletAlt } from "react-icons/bi";
 import { BsCashCoin } from "react-icons/bs";
-import { VscBook } from "react-icons/vsc";
 import { FaShoppingCart, FaUndo } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
-import { useNavigate, useParams } from "react-router-dom";
+import { VscBook } from "react-icons/vsc";
+import { useParams } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { toast } from "react-toastify";
 import profile from "../asset/Images/author-1.jpg";
 import profile2 from "../asset/Images/author-2.jpg";
 import "./SingleProductDetails.css";
-import { AiOutlineHeart } from "react-icons/ai";
-import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../Firebase/firebase.init";
 import Swal from "sweetalert2";
-import Carousel from "react-elastic-carousel";
-import RelatedProducts from "./RelatedProducts";
+import { useForm } from "react-hook-form";
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import PageTitle from "./PageTitle";
+
+
 
 const SingleProductDetails = () => {
   const { bookId } = useParams();
   const [user] = useAuthState(auth);
   const [item, setItem] = useState([]);
-  const { _id, name, img, summary, category, language, author, price, stock } =
-    item;
+
+  const { _id, name, img, summary, category, language, author, price, stock } = item;
+
+  const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
 
   useEffect(() => {
     fetch(`https://book-store-46yi.onrender.com/product/${bookId}`)
@@ -32,50 +40,8 @@ const SingleProductDetails = () => {
 
   const navigate = useNavigate();
 
-  const handleAddToCart = (e) => {
-    e.preventDefault();
 
-    if (user) {
-      const AddToCart = {
-        _id: _id,
-        name: name,
-        img: img,
-        author: author,
-        price: price,
-        stock: stock,
-        email: user.email,
-      };
-
-      fetch("https://book-store-46yi.onrender.com/cartProduct", {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(AddToCart),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Product added to cart successfully",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        });
-    } else {
-      navigate("/login");
-      Swal.fire({
-        position: "center",
-        icon: "warning",
-        title: "You need to login first",
-        showConfirmButton: false,
-        timer: 2000,
-      });
-    }
-  };
-
-  const handleWishList = () => {
+const handleWishList = () => {
     if (user) {
       const product = {
         _id: _id,
@@ -117,21 +83,96 @@ const SingleProductDetails = () => {
     }
   };
 
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetch("https://book-store-46yi.onrender.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const onSubmit = async (data) => {
 
-  const breakPoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 550, itemsToShow: 2 },
-    { width: 768, itemsToShow: 3 },
-    { width: 1200, itemsToShow: 4 },
-  ];
+    if (user) {
+
+      if (data.quantity > stock || data.quantity < 0) {
+        Swal.fire(
+          'Oops! 😭',
+          `We have ${stock} items left only. Your ordered quantity in beyond our available stock.`,
+          'error'
+        );
+      } else {
+        const AddToCart = {
+          bookName: name,
+          customerName: user?.displayName,
+          img: img,
+          price: price,
+          stock: stock,
+          email: user?.email,
+          phone: data?.phone,
+          address: data?.address,
+          quantity: data?.quantity
+        };
+
+        fetch("http://localhost:5000/add-to-cart", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(AddToCart),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data) {
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Product added to cart successfully',
+                showConfirmButton: false,
+                timer: 2000
+              });
+              console.log(data);
+            } else {
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Something went wrong please try again.',
+                showConfirmButton: false,
+                timer: 2000
+              });
+              console.log(data)
+            }
+          });
+      }
+    } else {
+
+      navigate("/login");
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'You need to login first',
+        showConfirmButton: false,
+        timer: 2000
+      });
+
+    }
+
+    reset();
+    handleClose();
+  };
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #FF745C',
+    borderRadius: "5px",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <div className="max-w-[1196px] mx-auto pt-[80px] lg:mt-0">
+      <PageTitle title={name === undefined ? "Loading" : `${name}`} />
       <div className="lg:gap-3">
         <div class="card lg:card-side bg-base-100 shadow-sm rounded-none lg:mt-5">
           <figure
@@ -200,12 +241,147 @@ const SingleProductDetails = () => {
                     </div>
                   </div>
                   <div>
-                    <button
+                    {/* <button
                       onClick={handleAddToCart}
                       class="btn mt-5 bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0"
                     >
                       Add to Cart <FaShoppingCart className="text-sm ml-2" />
-                    </button>
+                    </button> */}
+                    <button onClick={handleOpen} class="btn modal-button mt-5 bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0">Add to Cart <FaShoppingCart className="text-sm ml-2" /></button>
+
+
+                    <input type="checkbox" id="cart-modal" class="modal-toggle" />
+                    <div class="modal modal-bottom sm:modal-middle">
+                      <div class="modal-box">
+                        <label for="cart-modal" class="btn btn-sm btn-circle btn-secondary absolute right-2 top-2">✕</label>
+
+                      </div>
+                    </div>
+
+                    <Modal
+                      open={open}
+                      onClose={handleClose}
+                      aria-labelledby="modal-modal-title"
+                      aria-describedby="modal-modal-description"
+                    >
+                      <Box sx={style}>
+                        <label onClick={handleClose} class="btn btn-sm btn-circle btn-secondary absolute right-2 top-2">✕</label>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                          <div className="form-control">
+                            <label className="label">
+                              <span className="label-text text-neutral">Name</span>
+                            </label>
+                            <input
+                              className="input input-bordered text-black"
+                              value={user?.displayName}
+                            />
+                          </div>
+                          <div className="form-control">
+                            <label className="label">
+                              <span className="label-text text-neutral">Email</span>
+                            </label>
+                            <input
+                              className="input input-bordered text-black"
+                              value={user?.email}
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <label className="label">
+                              <span className="label-text text-neutral">Phone</span>
+                            </label>
+                            <input
+                              type="number"
+                              placeholder="Your mobile number"
+                              className="input input-bordered text-black"
+                              {...register("phone", {
+                                required: {
+                                  value: true,
+                                  message: "Phone number is required",
+                                }
+                              })}
+                            />
+                            <label className="label">
+                              {errors.phone?.type === "required" && (
+                                <span className="label-text-alt text-red-500">
+                                  {errors.phone.message}
+                                </span>
+                              )}
+                              {errors.phone?.type === "minLength" && (
+                                <span className="label-text-alt text-red-500">
+                                  {errors.phone.message}
+                                </span>
+                              )}
+                            </label>
+                          </div>
+
+                          <div className="form-control">
+                            <label className="label">
+                              <span className="label-text text-neutral">Delivery Address</span>
+                            </label>
+                            <input
+                              type="text"
+                              placeholder="Your delivery address"
+                              className="input input-bordered text-black"
+                              {...register("address", {
+                                required: {
+                                  value: true,
+                                  message: "Address number is required",
+                                }
+                              })}
+                            />
+                            <label className="label">
+                              {errors.address?.type === "required" && (
+                                <span className="label-text-alt text-red-500">
+                                  {errors.address.message}
+                                </span>
+                              )}
+                              {errors.address?.type === "minLength" && (
+                                <span className="label-text-alt text-red-500">
+                                  {errors.address.message}
+                                </span>
+                              )}
+                            </label>
+                          </div>
+
+                          <div className="form-control">
+                            <label className="label">
+                              <span className="label-text text-neutral">Quantity</span>
+                            </label>
+                            <input
+                              type="number"
+                              placeholder="How many books you want"
+                              className="input input-bordered text-black"
+                              {...register("quantity", {
+                                required: {
+                                  value: true,
+                                  message: "Quantity is required",
+                                }
+                              })}
+                            />
+                            <label className="label">
+                              {errors.quantity?.type === "required" && (
+                                <span className="label-text-alt text-red-500">
+                                  {errors.quantity.message}
+                                </span>
+                              )}
+                              {errors.quantity?.type === "minLength" && (
+                                <span className="label-text-alt text-red-500">
+                                  {errors.quantity.message}
+                                </span>
+                              )}
+                            </label>
+                          </div>
+
+                          <input
+                            type="submit"
+                            value="Add to cart"
+                            className="btn btn-primary text-white w-full mt-3"
+                          />
+                        </form>
+                      </Box>
+                    </Modal>
+
                   </div>
                 </div>
               </div>
@@ -410,7 +586,7 @@ const SingleProductDetails = () => {
                 Thanks for fast delivery. The book quality is good.
               </p>
               <a
-                href="#"
+                href="/"
                 class="block mb-5 text-sm font-medium link text-primary"
               >
                 Read more
@@ -495,11 +671,6 @@ const SingleProductDetails = () => {
         <h1 className="uppercase text-gray-600 text-2xl mt-10 mb-5 font-bold">
           Related Books
         </h1>
-        <Carousel breakPoints={breakPoints}>
-          {products.slice(50, 68).map((book) => (
-            <RelatedProducts book={book}></RelatedProducts>
-          ))}
-        </Carousel>
       </div>
       <div></div>
     </div>
