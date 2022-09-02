@@ -32,6 +32,11 @@ import DashboardDetails from "./component/Dashboard/DashboardDetails/DashboardDe
 import ProductList from "./component/Dashboard/ProductsDetails/ProductList";
 import OrderHistory from "./component/Dashboard/OrderHistory";
 import RequireAuth from "./share/Footer/RequireAuth";
+import OrderList from "./component/Dashboard/OrderDetails/OrderList";
+import UserDetails from "./component/Dashboard/UserDetails";
+import DiscountCoupon from "./component/Dashboard/DiscountCoupon";
+import SettingsPage from "./component/Dashboard/SettingsPage";
+import ShippingPage from "./component/Dashboard/ShippingPage";
 
 function App() {
   return (
@@ -55,13 +60,21 @@ function App() {
             <Route path="myEbook" element={<Ebook></Ebook>}></Route>
             <Route path="order" element={<MyOrders />}></Route>
             <Route path="myReview" element={<MyReview></MyReview>}></Route>
-            <Route path="order/orderHistory" element={<OrderHistory></OrderHistory>}></Route>
+            <Route
+              path="order/orderHistory"
+              element={<OrderHistory></OrderHistory>}
+            ></Route>
             <Route
               path="addProduct"
               element={<AddProduct></AddProduct>}
             ></Route>
             <Route path="productList" element={<ProductList />}></Route>
+            <Route path="orderList" element={<OrderList></OrderList>}></Route>
+            <Route path="userDetails" element={<UserDetails />}></Route>
             <Route path="manageUsers" element={<AllUsers></AllUsers>}></Route>
+            <Route path="discountCoupon" element={<DiscountCoupon />}></Route>
+            <Route path="shipping" element={<ShippingPage/>}></Route>
+            <Route path="settings" element={<SettingsPage />}></Route>
             <Route
               path="manageOrders"
               element={<ManageALLOrder></ManageALLOrder>}
@@ -71,7 +84,14 @@ function App() {
           <Route path="/create-new-account" element={<Signup />} />
           <Route path="/reset-your-password" element={<ResetPass />} />
           <Route path="/book/:bookId" element={<SingleProductDetails />} />
-          <Route path="/addToCart" element={<RequireAuth><AddToCart /></RequireAuth>} />
+          <Route
+            path="/addToCart"
+            element={
+              <RequireAuth>
+                <AddToCart />
+              </RequireAuth>
+            }
+          />
           <Route path="/paymentUi" element={<UiPayment />} />
         </Routes>
       </StartFromTop>

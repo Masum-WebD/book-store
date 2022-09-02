@@ -30,13 +30,13 @@ const AddProduct = () => {
 
   return (
     <div>
-      <div className="my-5 border-2 border-t-4 border-t-purple-600 rounded-md mx-10 p-5">
+      <div className="mb-5 border-2 border-t-4 border-t-purple-600 rounded-md mx-10 p-5">
         <h2 className="text-2xl font-bold text-gray-700">Add A Product</h2>
         <h3 className="text-xl text-gray-500">
           Here you can add a product to the shop
         </h3>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center px-10">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="lg:flex justify-between gap-5 my-10 lg:my-0">
             <div className="card card-side flex flex-col p-6 border-l-2 border-l-purple-400 rounded-md border-y-2">

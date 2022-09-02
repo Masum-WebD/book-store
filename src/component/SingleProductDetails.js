@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { AiOutlineHeart } from "react-icons/ai";
 import { BiWalletAlt } from "react-icons/bi";
 import { BsCashCoin } from "react-icons/bs";
-import { VscBook } from "react-icons/vsc";
 import { FaShoppingCart, FaUndo } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
-import { useNavigate, useParams } from "react-router-dom";
+import { VscBook } from "react-icons/vsc";
+import { useParams } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { toast } from "react-toastify";
 import profile from "../asset/Images/author-1.jpg";
 import profile2 from "../asset/Images/author-2.jpg";
 import "./SingleProductDetails.css";
-import { AiOutlineHeart } from "react-icons/ai";
-import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../Firebase/firebase.init";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
@@ -20,16 +21,18 @@ import Modal from '@mui/material/Modal';
 import PageTitle from "./PageTitle";
 
 
+
 const SingleProductDetails = () => {
   const { bookId } = useParams();
   const [user] = useAuthState(auth);
   const [item, setItem] = useState([]);
+
   const { _id, name, img, summary, category, language, author, price, stock } = item;
 
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-  useEffect(() => {
 
+  useEffect(() => {
     fetch(`https://book-store-46yi.onrender.com/product/${bookId}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
@@ -37,7 +40,8 @@ const SingleProductDetails = () => {
 
   const navigate = useNavigate();
 
-  const handleWishList = () => {
+
+const handleWishList = () => {
     if (user) {
       const product = {
         _id: _id,
@@ -59,22 +63,22 @@ const SingleProductDetails = () => {
         .then((data) => {
           if (data) {
             Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Product Added to Wishlist Successfully',
+              position: "center",
+              icon: "success",
+              title: "Product Added to Wishlist Successfully",
               showConfirmButton: false,
-              timer: 2000
+              timer: 2000,
             });
           }
         });
     } else {
       navigate("/login");
       Swal.fire({
-        position: 'center',
-        icon: 'warning',
-        title: 'You need to login first',
+        position: "center",
+        icon: "warning",
+        title: "You need to login first",
         showConfirmButton: false,
-        timer: 2000
+        timer: 2000,
       });
     }
   };
@@ -163,7 +167,6 @@ const SingleProductDetails = () => {
     <div className="max-w-[1196px] mx-auto pt-[80px] lg:mt-0">
       <PageTitle title={name === undefined ? "Loading" : `${name}`} />
       <div className="lg:gap-3">
-
         <div class="card lg:card-side bg-base-100 shadow-sm rounded-none lg:mt-5">
           <figure
             className=" 
@@ -179,8 +182,8 @@ const SingleProductDetails = () => {
               <h2 className="card-title mb-3 text-sm capitalize text-neutral">
                 by:<span className=" text-primary">{author}</span>
               </h2>
-              <h2 className="card-title text-sm text-neutral mb-2 font-medium">$
-                {price}
+              <h2 className="card-title text-sm text-neutral mb-2 font-medium">
+                ${price}
               </h2>
               <div className="">
                 <p className="text-sm text-left text-neutral">
@@ -191,8 +194,8 @@ const SingleProductDetails = () => {
                   className="text-start text-neutral text-sm capitalize flex hover:text-primary pt-5"
                 >
                   {" "}
-                  <AiOutlineHeart className="text-center mr-[4px] text-lg mt-[1px]" /> Add to
-                  Wishlist
+                  <AiOutlineHeart className="text-center mr-[4px] text-lg mt-[1px]" />{" "}
+                  Add to Wishlist
                 </button>
               </div>
               <div className="mt-2">
@@ -658,7 +661,11 @@ const SingleProductDetails = () => {
         </Tabs>
       </div>
       <div>
+        <h1 className="uppercase text-gray-600 text-2xl mt-10 mb-5 font-bold">
+          Related Books
+        </h1>
       </div>
+      <div></div>
     </div>
   );
 };

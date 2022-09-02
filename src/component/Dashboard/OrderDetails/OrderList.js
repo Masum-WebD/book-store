@@ -1,29 +1,20 @@
-import React, { useEffect } from "react";
-import { AiFillPrinter } from "react-icons/ai";
-import { AiOutlineDownload } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts, STATUSES } from "../../../store/productSlice";
-import Loading from "../../Loading";
-import ProductSingle from "./ProductSingle";
+import React, { useEffect, useState } from "react";
+import { AiFillPrinter, AiOutlineDownload } from "react-icons/ai";
+import OrderSingle from "./OrderSingle";
 
-const ProductList = () => {
-  const dispatch = useDispatch();
-  const { data: products, status } = useSelector((state) => state.product);
-
+const OrderList = () => {
+  const [products, setProducts] = useState([]);
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
-
-  if (status === STATUSES.LOADING) {
-    return <Loading />;
-  }
-
+    fetch("https://book-store-46yi.onrender.com/wishlist")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
   return (
     <div className="container mx-auto rounded-md shadow-lg">
       <div className="flex justify-between items-center px-10">
         <div className="">
           <h2 className="uppercase text-gray-700  text-2xl font-bold">
-            Products List
+            Order List
           </h2>
         </div>
         <div className="text-gray-700 flex gap-3 cursor-pointer font-bold">
@@ -41,26 +32,29 @@ const ProductList = () => {
             <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
               <thead class="align-bottom">
                 <tr>
-                  <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-size-xxs border-b-solid tracking-none whitespace-nowrap text-slate-600 opacity-70">
-                    Book Information
-                  </th>
                   <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-size-xxs border-b-solid tracking-none whitespace-nowrap text-slate-600 opacity-70">
-                    Stock
+                    Order Id
+                  </th>
+                  <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-size-xxs border-b-solid tracking-none whitespace-nowrap text-slate-600 opacity-70">
+                    Order
+                  </th>
+
+                  <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-size-xxs border-b-solid tracking-none whitespace-nowrap text-slate-600 opacity-70">
+                    User Name
                   </th>
                   <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-size-xxs border-b-solid tracking-none whitespace-nowrap text-slate-600 opacity-70">
                     Price
                   </th>
                   <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-size-xxs border-b-solid tracking-none whitespace-nowrap text-slate-600 opacity-70">
-                    Category
+                    Quantity
                   </th>
 
-                  <th class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-600 opacity-70"></th>
                   <th class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-600 opacity-70"></th>
                 </tr>
               </thead>
               <tbody>
                 {products.map((book) => (
-                  <ProductSingle book={book}></ProductSingle>
+                  <OrderSingle book={book}></OrderSingle>
                 ))}
               </tbody>
             </table>
@@ -72,4 +66,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default OrderList;

@@ -8,7 +8,7 @@ import Tips from "./Tips";
 const DashboardDetails = () => {
   const [user] = useAuthState(auth);
   return (
-    <div className="ml-6">
+    <div className="ml-6 px-5">
       <h1 className="text-left text-2xl text-gray-800">
         Welcome , <span className="text-purple-500">{user?.displayName}</span> !
       </h1>

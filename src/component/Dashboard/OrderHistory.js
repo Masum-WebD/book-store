@@ -2,9 +2,7 @@ import React from "react";
 import { Timeline, TimelineEvent } from "@mailtop/horizontal-timeline";
 import "./OrderHistory.css";
 import {
-  FaBug,
   FaPeopleCarry,
-  FaTaxi,
   FaBabyCarriage,
   FaAtom,
   FaRegCalendarCheck,
@@ -13,71 +11,78 @@ import img22 from "../../asset/Images/Harry_Potter_and_the_Deathly_Hallows_(Se-J
 
 const OrderHistory = () => {
   return (
-    <div className="bg-gray-300">
-      <div className="w-full ">
-        <h1 className="text-2xl text-left">Product Id: #132910384239</h1>
-        <Timeline minEvents={5} placeholder>
-          <TimelineEvent
-            color="#22c55e"
-            icon={FaBabyCarriage}
-            title="Confirm Order"
-            subtitle="26/03/2019 09:51"
-          />
-          <TimelineEvent
-            color="#eab308"
-            icon={FaAtom}
-            title="Processing Order"
-            subtitle="26/03/2019 09:51"
-          />
-          <TimelineEvent
-            color="#9a3412"
-            icon={FaRegCalendarCheck}
-            title="Quantity Check"
-            subtitle="26/03/2019 09:51"
-          />
-          <TimelineEvent
-            color="#15803d"
-            icon={FaTaxi}
-            title="Product Dispatched"
-            subtitle="26/03/2019 09:51"
-          />
-          <TimelineEvent
-            color="#84cc16"
-            icon={FaPeopleCarry}
-            title="Home Delivered"
-            subtitle="26/03/2019 09:51"
-          />
-        </Timeline>
-      </div>
-      <div className=" flex grid-cols-lg-2 gap-3 ">
-        <div className="w-80 h-30 border bg-white">
-          <h1 className="text-2xl mx-0">Delivery Address</h1>
-          <h1 className="text-3xl">Home:</h1>
-          <p>Rangpur,Dinajpur</p>
-          <p>Dinajpur sadar, bangladesh</p>
-          <p>Phone Number: +8801742*****3</p>
-        </div>
-        <div className="bg-white w-full">
-          <h1 className="text-2xl">Product Summary</h1>
-          <div className="border flex gap-5 w-full ">
-            <div>
-              <img src={img22} className="img22" alt="" />
+    <div className="px-10 overflow-auto">
+      <h1 className="text-2xl text-left mb-10">
+        <span className="font-bold">Order Id:</span> Order #50523
+      </h1>
+      <div className="lg:w-full">
+        <Timeline minEvents={5}>
+          <div className="flex justify-between w-72 lg:w-full overflow-auto">
+            <div className="w-36">
+              <TimelineEvent
+                color="#22c55e"
+                icon={FaBabyCarriage}
+                title="Payment Done"
+                subtitle="26/03/2022 09:51"
+              />
             </div>
-            <div className="mt-5 mx-1">
-              <h1 className="text-xl">Product Name: Harry potter</h1>
+            <div className="w-36">
+              <TimelineEvent
+                color="#eab308"
+                icon={FaAtom}
+                title="Processing"
+                subtitle="26/03/2022 10:30"
+              />
             </div>
-            <div className="border">
-             <p>Price: 140</p>
-             <p>Qnt:1</p>
-             <p>TK:140</p>
+            <div className="w-36">
+              <TimelineEvent
+                color="#9a3412"
+                icon={FaRegCalendarCheck}
+                title="Shipped"
+                subtitle="29/03/2022 09:02"
+              />
             </div>
             <div className="">
-              <p>Total item: 1 Products</p>
-              <p>Sub Total: 143 Tk</p>
-              <p>Shipping Fe:50 tk</p>
-              <p className="mt-5 mx-auto border">Payable Amount: 200 Tk</p>
+              <TimelineEvent
+                color="#84cc16"
+                icon={FaPeopleCarry}
+                title="Delivered"
+                subtitle="30/03/2022 12:22"
+              />
             </div>
           </div>
+        </Timeline>
+      </div>
+      <div className="grid gap-3">
+        <div className="bg-white w-full">
+          <h1 className="text-2xl font-bold my-2">Product Summary</h1>
+          <div className="border grid grid-cols-3 items-center overflow-x-auto p-5">
+            <div className="lg:flex justify-between border-r-2">
+              <img src={img22} className="img22" alt="" />
+              <div className="items-center">
+                <h1 className="text-xl">Harry potter - Deathly Hallows</h1>
+                <p className="">By JK. Rowling</p>
+              </div>
+            </div>
+            <div className="border-r-2">
+              <p className="border-b-2 p-4">Price: $140</p>
+              <p className="border-b-2 p-4">Qantity: 1</p>
+              <p className="p-4">Total Price: $140</p>
+            </div>
+            <div className="">
+              <p className="border-b-2 p-2">Total item: 1 Products</p>
+              <p className="border-b-2 p-2">Sub Total: $140</p>
+              <p className="border-b-2 p-2">Shipping Fee:$50</p>
+              <p className="p-2">Payable Amount: $200</p>
+            </div>
+          </div>
+        </div>
+        <div className="border bg-white p-5">
+          <h1 className="text-2xl mx-0 font-bold">Delivery Address:</h1>
+          <p>New York</p>
+          <p>House no 24, Green Valley</p>
+          <p>Phone Number: +2460699</p>
+          <p>Email Id: Frankleen@gmail.com</p>
         </div>
       </div>
     </div>

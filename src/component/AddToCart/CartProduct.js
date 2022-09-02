@@ -2,15 +2,16 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useRef, useState } from "react"
 
+
 const CartProduct = ({ product, handleDeleteBtn }) => {
   const { bookName, price, quantity, img, _id } = product;
-
 
   //  const quantity =e=>{
   //   e.preventDefault();  
 
   //   console.log(totalPrice)
   //  }
+
 
   return (
 

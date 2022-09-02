@@ -7,7 +7,7 @@ import OrderHistory from "./OrderHistory";
 const MyOrders = () => {
  
   return (
-    <div className=" overflow-auto">
+    <div className="px-10">
       <div className="grid lg:grid-cols-2 border-2 border-t-4  rounded-md">
         <div className="my-5">
           <h2 className="text-2xl font-bold text-gray-700">My Orders</h2>
@@ -35,8 +35,8 @@ const MyOrders = () => {
         </div>
       </div>
 
-      <div class="grid p-10">
-        <table class="table text-gray-400 border-separate space-y-6 ">
+      <div class="grid">
+        <table class="table overflow-auto text-gray-400 border-separate space-y-6">
           <thead class="bg-gray-800 text-gray-500">
             <tr>
               <th class="p-3">Name</th>
@@ -58,7 +58,7 @@ const MyOrders = () => {
                   />
                   <div class="ml-3">
                     <div class="">
-                      Harry Potter and the Deathly Hallows (Series-7)
+                      Harry Potter and
                     </div>
                     <div class="text-gray-500">J.K. Rowling</div>
                   </div>

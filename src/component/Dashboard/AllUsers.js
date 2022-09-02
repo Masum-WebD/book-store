@@ -22,13 +22,13 @@ const AllUsers = () => {
   }
   return (
     <div className="px-5">
-      <div className="text-left border-2 border-t-4 border-gray-400 border-t-green-400 rounded-md my-2 p-5">
+      <div className="text-left border-2 border-t-4 border-gray-400 p-5 mb-5 border-t-purple-600 rounded-md mx-10">
         <h2 className="text-2xl font-bold text-gray-700">Manage All Users</h2>
         <h3 className="text-xl text-gray-500">
-          There are {users.length} users on this site.
+          There are <span className="text-primary">{users.length}</span> users on this site.
         </h3>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto px-10">
         <table className="table w-full">
           <thead>
             <tr>

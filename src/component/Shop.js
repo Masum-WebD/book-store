@@ -1,48 +1,42 @@
+import { useEffect, useState } from "react";
+import { MdOutlineCategory } from "react-icons/md";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import EachProductForShop from "./EachProductForShop";
 import Loading from "./Loading";
-import { MdOutlineCategory } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import PageTitle from "./PageTitle";
 
 const Shop = () => {
+  const { data, isLoading } = useQuery("AllProducts", () =>
+    fetch("https://book-store-46yi.onrender.com/products").then((res) => res.json())
+  );
 
+  const [filteredItem, setFilteredItem] = useState([]);
 
-    const { data, isLoading } = useQuery("AllProducts", () => fetch("https://book-store-46yi.onrender.com/products").then(res => res.json()));
+  const showAllProduct = () => {
+    fetch("https://book-store-46yi.onrender.com/products")
+      .then((res) => res.json())
+      .then((data) => setFilteredItem(data));
+  };
 
-    const [filteredItem, setFilteredItem] = useState([]);
+  useEffect(() => {
+    setFilteredItem(data);
+  }, [data]);
 
-    const showAllProduct = () => {
-        fetch("https://book-store-46yi.onrender.com/products")
-            .then(res => res.json())
-            .then(data => setFilteredItem(data))
-    }
+  const filterResult = (categoryName) => {
+    const result = data?.filter((curDate) => {
+      return curDate.category === categoryName;
+    });
 
-    useEffect(() => {
+    setFilteredItem(result);
+  };
 
-        setFilteredItem(data)
+  if (isLoading) {
+    return <Loading />;
+  }
 
-    }, [data])
-
-    const filterResult = (categoryName) => {
-
-        const result = data?.filter((curDate) => {
-            return curDate.category === categoryName;
-        });
-
-        setFilteredItem(result);
-
-    }
-
-    if (isLoading) {
-        return <Loading />
-    }
-
-
-    return (
-        <div class="drawer max-w-[1196px] mx-auto drawer-mobile mt-10">
-            <PageTitle title="Shop" />
+  return (
+    <div class="drawer max-w-[1196px] mx-auto drawer-mobile mt-10">
+            {/* <PageTitle title="Shop" /> */}
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content py-10">
                 <label for="my-drawer-2" class="drawer-button btn btn-link capitalize float-right lg:hidden"><MdOutlineCategory className='inline-block relative text-base mr-1' /> Show All Categories</label>
@@ -62,7 +56,7 @@ const Shop = () => {
                 </div>
 
 
-                <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 px-3'>
+                <div className='grid lg:grid-cols-4 gap-4 px-3'>
                     {
                         filteredItem?.map((EachBook) => (
                             <EachProductForShop key={EachBook._id} book={EachBook}></EachProductForShop>
@@ -94,7 +88,7 @@ const Shop = () => {
 
             </div>
         </div>
-    );
+  );
 };
 
 export default Shop;
