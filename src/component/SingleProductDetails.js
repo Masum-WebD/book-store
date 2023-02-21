@@ -16,21 +16,24 @@ import "./SingleProductDetails.css";
 import auth from "../Firebase/firebase.init";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
 import PageTitle from "./PageTitle";
-
-
 
 const SingleProductDetails = () => {
   const { bookId } = useParams();
   const [user] = useAuthState(auth);
   const [item, setItem] = useState([]);
 
-  const { _id, name, img, summary, category, language, author, price, stock } = item;
+  const { _id, name, img, summary, category, language, author, price, stock } =
+    item;
 
-  const { register, formState: { errors }, handleSubmit, reset } = useForm();
-
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
 
   useEffect(() => {
     fetch(`https://book-store-46yi.onrender.com/product/${bookId}`)
@@ -83,14 +86,12 @@ const SingleProductDetails = () => {
   };
 
   const onSubmit = async (data) => {
-
     if (user) {
-
       if (data.quantity > stock || data.quantity < 0) {
         Swal.fire(
-          'Oops! 😭',
+          "Oops! 😭",
           `We have ${stock} items left only. Your ordered quantity in beyond our available stock.`,
-          'error'
+          "error"
         );
       } else {
         const AddToCart = {
@@ -102,7 +103,7 @@ const SingleProductDetails = () => {
           email: user?.email,
           phone: data?.phone,
           address: data?.address,
-          quantity: data?.quantity
+          quantity: data?.quantity,
         };
 
         fetch("http://localhost:5000/add-to-cart", {
@@ -116,36 +117,34 @@ const SingleProductDetails = () => {
           .then((data) => {
             if (data) {
               Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Product added to cart successfully',
+                position: "center",
+                icon: "success",
+                title: "Product added to cart successfully",
                 showConfirmButton: false,
-                timer: 2000
+                timer: 2000,
               });
               console.log(data);
             } else {
               Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Something went wrong please try again.',
+                position: "center",
+                icon: "error",
+                title: "Something went wrong please try again.",
                 showConfirmButton: false,
-                timer: 2000
+                timer: 2000,
               });
-              console.log(data)
+              console.log(data);
             }
           });
       }
     } else {
-
       navigate("/login");
       Swal.fire({
-        position: 'center',
-        icon: 'warning',
-        title: 'You need to login first',
+        position: "center",
+        icon: "warning",
+        title: "You need to login first",
         showConfirmButton: false,
-        timer: 2000
+        timer: 2000,
       });
-
     }
 
     reset();
@@ -153,13 +152,13 @@ const SingleProductDetails = () => {
   };
 
   const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #FF745C',
+    bgcolor: "background.paper",
+    border: "2px solid #FF745C",
     borderRadius: "5px",
     boxShadow: 24,
     p: 4,
@@ -246,14 +245,26 @@ const SingleProductDetails = () => {
                     >
                       Add to Cart <FaShoppingCart className="text-sm ml-2" />
                     </button> */}
-                    <button onClick={handleOpen} class="btn modal-button mt-5 bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0">Add to Cart <FaShoppingCart className="text-sm ml-2" /></button>
+                    <button
+                      onClick={handleOpen}
+                      class="btn modal-button mt-5 bg-primary border-none capitalize text-[14px] hover:bg-secondary rounded-[5px] text-sm font-medium text-white mr-5 lg:mr-0"
+                    >
+                      Add to Cart <FaShoppingCart className="text-sm ml-2" />
+                    </button>
 
-
-                    <input type="checkbox" id="cart-modal" class="modal-toggle" />
+                    <input
+                      type="checkbox"
+                      id="cart-modal"
+                      class="modal-toggle"
+                    />
                     <div class="modal modal-bottom sm:modal-middle">
                       <div class="modal-box">
-                        <label for="cart-modal" class="btn btn-sm btn-circle btn-secondary absolute right-2 top-2">✕</label>
-
+                        <label
+                          for="cart-modal"
+                          class="btn btn-sm btn-circle btn-secondary absolute right-2 top-2"
+                        >
+                          ✕
+                        </label>
                       </div>
                     </div>
 
@@ -264,11 +275,18 @@ const SingleProductDetails = () => {
                       aria-describedby="modal-modal-description"
                     >
                       <Box sx={style}>
-                        <label onClick={handleClose} class="btn btn-sm btn-circle btn-secondary absolute right-2 top-2">✕</label>
+                        <label
+                          onClick={handleClose}
+                          class="btn btn-sm btn-circle btn-secondary absolute right-2 top-2"
+                        >
+                          ✕
+                        </label>
                         <form onSubmit={handleSubmit(onSubmit)}>
                           <div className="form-control">
                             <label className="label">
-                              <span className="label-text text-neutral">Name</span>
+                              <span className="label-text text-neutral">
+                                Name
+                              </span>
                             </label>
                             <input
                               className="input input-bordered text-black"
@@ -277,7 +295,9 @@ const SingleProductDetails = () => {
                           </div>
                           <div className="form-control">
                             <label className="label">
-                              <span className="label-text text-neutral">Email</span>
+                              <span className="label-text text-neutral">
+                                Email
+                              </span>
                             </label>
                             <input
                               className="input input-bordered text-black"
@@ -287,7 +307,9 @@ const SingleProductDetails = () => {
 
                           <div className="form-control">
                             <label className="label">
-                              <span className="label-text text-neutral">Phone</span>
+                              <span className="label-text text-neutral">
+                                Phone
+                              </span>
                             </label>
                             <input
                               type="number"
@@ -297,7 +319,7 @@ const SingleProductDetails = () => {
                                 required: {
                                   value: true,
                                   message: "Phone number is required",
-                                }
+                                },
                               })}
                             />
                             <label className="label">
@@ -316,7 +338,9 @@ const SingleProductDetails = () => {
 
                           <div className="form-control">
                             <label className="label">
-                              <span className="label-text text-neutral">Delivery Address</span>
+                              <span className="label-text text-neutral">
+                                Delivery Address
+                              </span>
                             </label>
                             <input
                               type="text"
@@ -326,7 +350,7 @@ const SingleProductDetails = () => {
                                 required: {
                                   value: true,
                                   message: "Address number is required",
-                                }
+                                },
                               })}
                             />
                             <label className="label">
@@ -345,7 +369,9 @@ const SingleProductDetails = () => {
 
                           <div className="form-control">
                             <label className="label">
-                              <span className="label-text text-neutral">Quantity</span>
+                              <span className="label-text text-neutral">
+                                Quantity
+                              </span>
                             </label>
                             <input
                               type="number"
@@ -355,7 +381,7 @@ const SingleProductDetails = () => {
                                 required: {
                                   value: true,
                                   message: "Quantity is required",
-                                }
+                                },
                               })}
                             />
                             <label className="label">
@@ -380,7 +406,6 @@ const SingleProductDetails = () => {
                         </form>
                       </Box>
                     </Modal>
-
                   </div>
                 </div>
               </div>
@@ -666,12 +691,6 @@ const SingleProductDetails = () => {
           </TabPanel>
         </Tabs>
       </div>
-      <div>
-        <h1 className="uppercase text-gray-600 text-2xl mt-10 mb-5 font-bold">
-          Related Books
-        </h1>
-      </div>
-      <div></div>
     </div>
   );
 };
